@@ -59,7 +59,9 @@ in
                 copilot-chat.enable = true;
               };
             };
-            pluginsFile."theme.lua".text = ''return{"LazyVim/LazyVim",opts={colorscheme="catppuccin"}}'';
+            pluginsFile."theme.lua".text = ''
+              return {"LazyVim/LazyVim", opts = {colorscheme = "catppuccin"}}
+            '';
           };
         })
         (lib.mkIf config.${namespace}.terminal.editors.neovim.nvchad.enable {
@@ -67,9 +69,9 @@ in
             enable = true;
             backup = false;
             chadrcConfig = ''
-              local M={
-                base46={theme="catppuccin",},
-                nvdash={load_on_startup=true},
+              local M = {
+                  base46 = {theme = "catppuccin"},
+                  nvdash = {load_on_startup = true}
               }
               return M
             '';
