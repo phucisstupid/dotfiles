@@ -3,9 +3,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.editors = {
     neovim = {
       lazyvim.enable = lib.mkEnableOption "neovim.lazyvim";
@@ -14,20 +16,28 @@ in {
     helix.enable = lib.mkEnableOption "helix";
   };
   config = lib.mkMerge [
-    (lib.mkIf (
+    (lib.mkIf
+      (
         config.${namespace}.terminal.editors.neovim.lazyvim.enable
         || config.${namespace}.terminal.editors.neovim.nvchad.enable
-      ) {
+      )
+      {
         home.sessionVariables.EDITOR = "nvim";
         home.shellAliases.vi = "nvim";
-      })
-    (lib.mkIf (
-        !(config.${namespace}.terminal.editors.neovim.lazyvim.enable
-          || config.${namespace}.terminal.editors.neovim.nvchad.enable)
+      }
+    )
+    (lib.mkIf
+      (
+        !(
+          config.${namespace}.terminal.editors.neovim.lazyvim.enable
+          || config.${namespace}.terminal.editors.neovim.nvchad.enable
+        )
         && config.${namespace}.terminal.editors.helix.enable
-      ) {
+      )
+      {
         home.sessionVariables.EDITOR = "hx";
-      })
+      }
+    )
     {
       programs = lib.mkMerge [
         (lib.mkIf config.${namespace}.terminal.editors.neovim.lazyvim.enable {
@@ -57,8 +67,10 @@ in {
             enable = true;
             backup = false;
             chadrcConfig = ''
-              local M = {}
-              M.base46 = { theme = "catppuccin" }
+              local M={
+                base46={theme="onedark",},
+                nvdash={load_on_startup=true},
+              }
               return M
             '';
           };
