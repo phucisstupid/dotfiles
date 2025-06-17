@@ -3,8 +3,7 @@
   lib,
   flake,
   ...
-}:
-{
+}: {
   imports = [
     ./all/default.nix
     ./prompts/default.nix
