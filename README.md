@@ -4,6 +4,8 @@
 
 ![image](https://github.com/user-attachments/assets/4f183a7b-f91d-4c2a-b1d8-bb313169cc8d)
 
+---
+
 ## Install
 
 ## ❗ Backup your `~/.config` if you already have existing configurations
