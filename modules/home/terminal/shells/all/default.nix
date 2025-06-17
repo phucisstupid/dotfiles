@@ -3,11 +3,18 @@
   pkgs,
   flake,
   ...
-}: {
-  home.shell = {
-    enableZshIntegration = config.${flake.config.me.namespace}.terminal.shells.zsh.enable;
-    enableFishIntegration = config.${flake.config.me.namespace}.terminal.shells.fish.enable;
-    enableNushellIntegration = config.${flake.config.me.namespace}.terminal.shells.nushell.enable;
+}:
+{
+  home = {
+    shell = {
+      enableZshIntegration = config.${flake.config.me.namespace}.terminal.shells.zsh.enable;
+      enableFishIntegration = config.${flake.config.me.namespace}.terminal.shells.fish.enable;
+      enableNushellIntegration = config.${flake.config.me.namespace}.terminal.shells.nushell.enable;
+    };
+    shellAliases = {
+      "..." = "cd ../..";
+      "...." = "cd ../../..";
+    };
   };
   programs = {
     zsh = {

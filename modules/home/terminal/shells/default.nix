@@ -3,11 +3,11 @@
   lib,
   flake,
   ...
-}: {
+}:
+{
   imports = [
     ./all/default.nix
     ./prompts/default.nix
-    ./aliases/default.nix
   ];
   options.${flake.config.me.namespace}.terminal.shells = {
     zsh.enable = lib.mkEnableOption "zsh";
