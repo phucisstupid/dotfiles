@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # essential macOs settings
   system.defaults = {
     CustomUserPreferences."com.apple.AdLib".allowApplePersonalizedAdvertising = false;
@@ -43,7 +44,6 @@
       AppleInterfaceStyle = "Dark";
       NSWindowShouldDragOnGesture = true;
       InitialKeyRepeat = 15;
-      AppleKeyboardUIMode = 2;
       KeyRepeat = 2;
       NSAutomaticCapitalizationEnabled = false;
       NSAutomaticDashSubstitutionEnabled = false;
@@ -69,5 +69,5 @@
   };
   # default shell
   programs.fish.enable = true;
-  environment.shells = [pkgs.fish];
+  environment.shells = [ pkgs.fish ];
 }
