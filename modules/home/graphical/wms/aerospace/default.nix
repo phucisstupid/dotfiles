@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.graphical.wms.aerospace.enable = lib.mkEnableOption "aerospace";
   config = lib.mkIf config.${namespace}.graphical.wms.aerospace.enable {
     programs.aerospace = {
@@ -18,7 +20,9 @@ in {
             "-c"
             "${lib.getExe pkgs.sketchybar} --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
           ];
-          on-focus-changed = ["exec-and-forget ${lib.getExe pkgs.sketchybar} --trigger aerospace_focus_change"];
+          on-focus-changed = [
+            "exec-and-forget ${lib.getExe pkgs.sketchybar} --trigger aerospace_focus_change"
+          ];
           gaps.outer.top = 45;
         })
         (lib.mkIf config.${namespace}.graphical.bars.simplebar.enable {
@@ -27,7 +31,9 @@ in {
             "-c"
             "osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\"'"
           ];
-          on-focus-changed = ["exec-and-forget osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\"'"];
+          on-focus-changed = [
+            "exec-and-forget osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\"'"
+          ];
           gaps.outer.top = 30;
         })
         {
@@ -38,7 +44,7 @@ in {
           default-root-container-orientation = "auto";
           automatically-unhide-macos-hidden-apps = true;
           accordion-padding = 40;
-          on-focus-changed = ["move-mouse window-lazy-center"];
+          on-focus-changed = [ "move-mouse window-lazy-center" ];
           gaps = {
             inner = {
               horizontal = 10;
@@ -69,34 +75,66 @@ in {
               "alt-r" = "mode resize";
               "alt-shift-semicolon" = "mode service";
             }
-            // builtins.listToAttrs (builtins.concatMap (letter: [
-              {
-                name = "alt-${lib.strings.toLower letter}";
-                value = "workspace ${letter}";
-              }
-              {
-                name = "alt-shift-${lib.strings.toLower letter}";
-                value = "move-node-to-workspace ${letter}";
-              }
-            ]) (lib.strings.stringToCharacters "1234BET"));
+            // builtins.listToAttrs (
+              builtins.concatMap (letter: [
+                {
+                  name = "alt-${lib.strings.toLower letter}";
+                  value = "workspace ${letter}";
+                }
+                {
+                  name = "alt-shift-${lib.strings.toLower letter}";
+                  value = "move-node-to-workspace ${letter}";
+                }
+              ]) (lib.strings.stringToCharacters "1234BET")
+            );
           mode.resize.binding = {
             "esc" = "mode main";
-            "b" = ["balance-sizes" "mode main"];
+            "b" = [
+              "balance-sizes"
+              "mode main"
+            ];
             "minus" = "resize smart -50";
             "equal" = "resize smart +50";
           };
           mode.service.binding = {
-            "esc" = ["reload-config" "mode main"];
-            "r" = ["flatten-workspace-tree" "mode main"];
-            "f" = ["layout floating tiling" "mode main"];
-            "backspace" = ["close-all-windows-but-current" "mode main"];
+            "esc" = [
+              "reload-config"
+              "mode main"
+            ];
+            "r" = [
+              "flatten-workspace-tree"
+              "mode main"
+            ];
+            "f" = [
+              "layout floating tiling"
+              "mode main"
+            ];
+            "backspace" = [
+              "close-all-windows-but-current"
+              "mode main"
+            ];
             "down" = "volume down";
             "up" = "volume up";
-            "shift-down" = ["volume set 0" "mode main"];
-            "alt-shift-h" = ["join-with left" "mode main"];
-            "alt-shift-j" = ["join-with down" "mode main"];
-            "alt-shift-k" = ["join-with up" "mode main"];
-            "alt-shift-l" = ["join-with right" "mode main"];
+            "shift-down" = [
+              "volume set 0"
+              "mode main"
+            ];
+            "alt-shift-h" = [
+              "join-with left"
+              "mode main"
+            ];
+            "alt-shift-j" = [
+              "join-with down"
+              "mode main"
+            ];
+            "alt-shift-k" = [
+              "join-with up"
+              "mode main"
+            ];
+            "alt-shift-l" = [
+              "join-with right"
+              "mode main"
+            ];
           };
           on-window-detected = [
             {
@@ -108,7 +146,7 @@ in {
               run = "move-node-to-workspace T";
             }
             {
-              "if".app-name-regex-substring = "zen|arc";
+              "if".app-name-regex-substring = "zen|arc|safari";
               run = "move-node-to-workspace B";
             }
             {
