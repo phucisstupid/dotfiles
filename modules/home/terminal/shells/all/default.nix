@@ -3,8 +3,7 @@
   pkgs,
   flake,
   ...
-}:
-{
+}: {
   home = {
     shell = {
       enableZshIntegration = config.${flake.config.me.namespace}.terminal.shells.zsh.enable;
