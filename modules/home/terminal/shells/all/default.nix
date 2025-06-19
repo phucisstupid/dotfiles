@@ -3,7 +3,8 @@
   pkgs,
   flake,
   ...
-}: {
+}:
+{
   home = {
     shell = {
       enableZshIntegration = config.${flake.config.me.namespace}.terminal.shells.zsh.enable;
@@ -34,10 +35,10 @@
     fish = {
       inherit (config.${flake.config.me.namespace}.terminal.shells.fish) enable;
       preferAbbrs = true;
-      interactiveShellInit = "
-      set fish_greeting
-      fish_vi_key_bindings
-    ";
+      interactiveShellInit = ''
+        set fish_greeting
+        fish_vi_key_bindings
+      '';
       plugins = [
         {
           inherit (pkgs.fishPlugins.fzf-fish) name src;
