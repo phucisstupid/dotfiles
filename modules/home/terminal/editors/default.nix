@@ -3,11 +3,9 @@
   lib,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   options.${namespace}.terminal.editors = {
     neovim = {
       lazyvim.enable = lib.mkEnableOption "neovim.lazyvim";
@@ -16,7 +14,8 @@ in
     helix.enable = lib.mkEnableOption "helix";
   };
   config = lib.mkMerge [
-    (lib.mkIf
+    (
+      lib.mkIf
       (
         config.${namespace}.terminal.editors.neovim.lazyvim.enable
         || config.${namespace}.terminal.editors.neovim.nvchad.enable
@@ -26,7 +25,8 @@ in
         home.shellAliases.vi = "nvim";
       }
     )
-    (lib.mkIf
+    (
+      lib.mkIf
       (
         !(
           config.${namespace}.terminal.editors.neovim.lazyvim.enable
