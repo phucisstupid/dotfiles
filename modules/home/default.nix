@@ -2,7 +2,8 @@
   pkgs,
   flake,
   ...
-}: {
+}:
+{
   imports = [
     ./graphical/default.nix
     ./terminal/default.nix
@@ -13,8 +14,8 @@
     inherit (flake.config.me) username;
     packages = with pkgs; [
       maple-mono.variable
-      onefetch
       uutils-coreutils-noprefix
+      onefetch
       localsend
     ];
   };
