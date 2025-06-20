@@ -3,9 +3,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.graphical.apps.chromium = {
     default.enable = lib.mkEnableOption "chromium";
     brave.enable = lib.mkEnableOption "brave";
@@ -13,7 +15,7 @@ in {
   config.programs = lib.mkMerge [
     (lib.mkIf config.${namespace}.graphical.apps.chromium.default.enable {
       chromium = {
-        enable = false;
+        enable = true;
         extensions = [
           "ddkjiahejlhfcafbddmgiahcphecmpfh" # uBlock Origin Lite
           "eimadpbcbfnmbkopoojfekhnkhdbieeh" # Dark Reader
