@@ -17,6 +17,7 @@ in
       chromium = {
         enable = false;
         extensions = [
+          "ddkjiahejlhfcafbddmgiahcphecmpfh" # uBlock Origin Lite
           "eimadpbcbfnmbkopoojfekhnkhdbieeh" # Dark Reader
           "clngdbkpkpeebahjckkjfobafhncgmne" # Stylus
           "pejdijmoenmkgeppbflobdenhhabjlaj" # iCloud Passwords
