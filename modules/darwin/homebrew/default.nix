@@ -1,5 +1,4 @@
-{ flake, ... }:
-{
+{flake, ...}: {
   nix-homebrew = {
     enable = true;
     user = "${flake.config.me.username}";
