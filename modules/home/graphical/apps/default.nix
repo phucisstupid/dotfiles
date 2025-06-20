@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ./kodi/default.nix
     ./obs-studio/default.nix

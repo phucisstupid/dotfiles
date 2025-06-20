@@ -4,11 +4,9 @@
   lib,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   options.${namespace}.graphical.wms.aerospace.enable = lib.mkEnableOption "aerospace";
   config = lib.mkIf config.${namespace}.graphical.wms.aerospace.enable {
     programs.aerospace = {
@@ -44,7 +42,7 @@ in
           default-root-container-orientation = "auto";
           automatically-unhide-macos-hidden-apps = true;
           accordion-padding = 40;
-          on-focus-changed = [ "move-mouse window-lazy-center" ];
+          on-focus-changed = ["move-mouse window-lazy-center"];
           gaps = {
             inner = {
               horizontal = 10;
