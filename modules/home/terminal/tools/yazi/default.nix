@@ -14,19 +14,22 @@ in
     programs.yazi = {
       enable = true;
       shellWrapperName = "y";
-      plugins = {
-        inherit (pkgs.yaziPlugins)
-          git
-          smart-filter
-          full-border
-          toggle-pane
-          bypass
-          yatline
-          yatline-catppuccin
-          yatline-githead
-          lazygit
-          ;
-      };
+      plugins =
+        {
+          inherit (pkgs.yaziPlugins)
+            git
+            smart-filter
+            full-border
+            toggle-pane
+            bypass
+            yatline
+            yatline-catppuccin
+            yatline-githead
+            ;
+        }
+        // lib.optionalAttrs config.${namespace}.terminal.tools.lazygit.enable {
+          inherit (pkgs.yaziPlugins) lazygit;
+        };
       initLua = ''
         require("full-border"):setup()
         require("git"):setup()
@@ -53,31 +56,34 @@ in
         ];
       };
       keymap = {
-        mgr.prepend_keymap = [
-          {
-            on = "T";
-            run = "plugin toggle-pane max-preview";
-          }
-          {
-            on = "F";
-            run = "plugin smart-filter";
-          }
-          {
-            on = "l";
-            run = "plugin bypass smart-enter";
-          }
-          {
-            on = "H";
-            run = "plugin bypass reverse";
-          }
-          {
-            on = [
-              "g"
-              "i"
-            ];
-            run = "plugin lazygit";
-          }
-        ];
+        mgr.prepend_keymap =
+          [
+            {
+              on = "T";
+              run = "plugin toggle-pane max-preview";
+            }
+            {
+              on = "F";
+              run = "plugin smart-filter";
+            }
+            {
+              on = "l";
+              run = "plugin bypass smart-enter";
+            }
+            {
+              on = "H";
+              run = "plugin bypass reverse";
+            }
+          ]
+          ++ lib.optionals config.${namespace}.terminal.tools.lazygit.enable [
+            {
+              on = [
+                "g"
+                "i"
+              ];
+              run = "plugin lazygit";
+            }
+          ];
       };
     };
   };
