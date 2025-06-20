@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.tools.yazi.enable = lib.mkEnableOption "yazi";
   config = lib.mkIf config.${namespace}.terminal.tools.yazi.enable {
     programs.yazi = {
@@ -14,8 +16,7 @@ in {
       shellWrapperName = "y";
       plugins =
         {
-          inherit
-            (pkgs.yaziPlugins)
+          inherit (pkgs.yaziPlugins)
             git
             smart-filter
             full-border
