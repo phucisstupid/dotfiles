@@ -1,4 +1,5 @@
-{flake, ...}: {
+{ flake, ... }:
+{
   nix-homebrew = {
     enable = true;
     user = "${flake.config.me.username}";
@@ -10,7 +11,7 @@
       "ghostty"
       "chatgpt"
       "sf-symbols"
-      "zen"
+      # "zen"
       "ubersicht"
     ];
     onActivation = {
