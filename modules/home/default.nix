@@ -2,7 +2,8 @@
   pkgs,
   flake,
   ...
-}: {
+}:
+{
   imports = [
     ./graphical/default.nix
     ./terminal/default.nix
@@ -41,7 +42,7 @@
       };
       multiplexers = {
         tmux.enable = false;
-        zellij.enable = true;
+        zellij.enable = false;
       };
       shells = {
         zsh.enable = false;
@@ -84,6 +85,10 @@
     };
     graphical = {
       apps = {
+        chromium = {
+          default.enable = false;
+          brave.enable = true;
+        };
         kodi.enable = false;
         obs-studio.enable = false;
         qutebrowser.enable = false;

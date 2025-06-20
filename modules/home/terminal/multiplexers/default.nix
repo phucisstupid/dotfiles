@@ -3,16 +3,18 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.multiplexers = {
     tmux.enable = lib.mkEnableOption "tmux";
     zellij.enable = lib.mkEnableOption "zellij";
   };
-  config = lib.mkMerge [
+  config.programs = lib.mkMerge [
     (lib.mkIf config.${namespace}.terminal.multiplexers.tmux.enable {
-      programs.tmux = {
+      tmux = {
         enable = true;
         mouse = true;
         prefix = "C-a";
@@ -21,7 +23,7 @@ in {
       };
     })
     (lib.mkIf config.${namespace}.terminal.multiplexers.zellij.enable {
-      programs.zellij = {
+      zellij = {
         enable = true;
         settings.show_startup_tips = false;
       };
