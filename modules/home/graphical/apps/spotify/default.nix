@@ -4,11 +4,13 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake) inputs;
   inherit (flake.config.me) namespace;
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
-in {
+in
+{
   options.${namespace}.graphical.apps.spotify.enable = lib.mkEnableOption "spotify";
   config = lib.mkIf config.${namespace}.graphical.apps.spotify.enable {
     programs.spicetify = {
@@ -18,9 +20,8 @@ in {
       enabledExtensions = with spicePkgs.extensions; [
         adblock
         keyboardShortcut
-        hidePodcasts
       ];
-      enabledCustomApps = with spicePkgs.apps; [lyricsPlus];
+      enabledCustomApps = with spicePkgs.apps; [ lyricsPlus ];
     };
   };
 }
