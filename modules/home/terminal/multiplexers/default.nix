@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.multiplexers = {
     tmux.enable = lib.mkEnableOption "tmux";
     zellij.enable = lib.mkEnableOption "zellij";
@@ -25,6 +27,7 @@ in {
       '';
       programs.tmux = {
         enable = true;
+        terminal = "screen-256color";
         shortcut = "a";
         keyMode = "vi";
         baseIndex = 1;
@@ -38,6 +41,7 @@ in {
           vim-tmux-navigator
         ];
         extraConfig = ''
+          set -ga terminal-overrides ",*:Tc"
           set -g status-position top
         '';
       };
