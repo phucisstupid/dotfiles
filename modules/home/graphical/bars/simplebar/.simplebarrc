@@ -82,9 +82,9 @@
     "processWidget": true,
     "weatherWidget": false,
     "netstatsWidget": false,
-    "cpuWidget": true,
+    "cpuWidget": false,
     "gpuWidget": false,
-    "memoryWidget": true,
+    "memoryWidget": false,
     "batteryWidget": true,
     "wifiWidget": true,
     "vpnWidget": false,
@@ -118,7 +118,7 @@
   "cpuWidgetOptions": {
     "refreshFrequency": 2000,
     "showOnDisplay": "",
-    "displayAsGraph": true,
+    "displayAsGraph": false,
     "cpuMonitorApp": "Activity Monitor"
   },
   "gpuWidgetOptions": {
