@@ -44,12 +44,19 @@ in
           max_height = 1500;
         };
         plugin = {
-          prepend_previewers = [
-            {
-              name = "*";
-              run = ''piper -- echo "$1"'';
-            }
-          ];
+          prepend_previewers =
+            [
+              {
+                name = "*.md";
+                run = "piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark \"$1\"";
+              }
+            ]
+            ++ lib.optionals config.${namespace}.terminal.tools.eza.enable [
+              {
+                name = "*/";
+                run = "piper -- eza -TL=3 --color=always --icons=always --group-directories-first --no-quotes \"$1\"";
+              }
+            ];
           prepend_fetchers = [
             {
               id = "git";
