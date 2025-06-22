@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.multiplexers = {
     tmux.enable = lib.mkEnableOption "tmux";
     zellij.enable = lib.mkEnableOption "zellij";
@@ -29,6 +31,7 @@ in {
       '';
       programs.tmux = {
         enable = true;
+        mouse = true;
         terminal = "screen-256color";
         shortcut = "a";
         keyMode = "vi";
