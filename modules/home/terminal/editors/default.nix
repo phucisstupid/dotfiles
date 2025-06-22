@@ -1,11 +1,14 @@
 {
   config,
+  pkgs,
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.editors = {
     neovim = {
       lazyvim.enable = lib.mkEnableOption "neovim.lazyvim";
@@ -14,8 +17,7 @@ in {
     helix.enable = lib.mkEnableOption "helix";
   };
   config = lib.mkMerge [
-    (
-      lib.mkIf
+    (lib.mkIf
       (
         config.${namespace}.terminal.editors.neovim.lazyvim.enable
         || config.${namespace}.terminal.editors.neovim.nvchad.enable
@@ -25,8 +27,7 @@ in {
         home.shellAliases.vi = "nvim";
       }
     )
-    (
-      lib.mkIf
+    (lib.mkIf
       (
         !(
           config.${namespace}.terminal.editors.neovim.lazyvim.enable
@@ -41,33 +42,58 @@ in {
     {
       programs = lib.mkMerge [
         (lib.mkIf config.${namespace}.terminal.editors.neovim.lazyvim.enable {
-          lazyvim = {
-            enable = true;
-            extras = {
-              coding.yanky.enable = true;
-              util.mini-hipatterns.enable = true;
-              editor = {
-                dial.enable = true;
-                inc-rename.enable = true;
+          lazyvim = lib.mkMerge [
+            {
+              enable = true;
+              extras = {
+                coding.yanky.enable = true;
+                util.mini-hipatterns.enable = true;
+                editor = {
+                  dial.enable = true;
+                  inc-rename.enable = true;
+                };
+                lang = {
+                  nix.enable = true;
+                  markdown.enable = true;
+                };
+                ai = {
+                  copilot.enable = true;
+                  copilot-chat.enable = true;
+                };
               };
-              lang = {
-                nix.enable = true;
-                markdown.enable = true;
-              };
-              ai = {
-                copilot.enable = true;
-                copilot-chat.enable = true;
-              };
-            };
-            pluginsFile."catppuccin.lua".text = ''
-              return {
-                "LazyVim/LazyVim",
-                opts = {
-                  colorscheme = "catppuccin",
-                },
-              }
-            '';
-          };
+              pluginsFile."catppuccin.lua".text = ''
+                return {
+                  "LazyVim/LazyVim",
+                  opts = {
+                    colorscheme = "catppuccin",
+                  },
+                }
+              '';
+            }
+            (lib.mkIf config.${namespace}.terminal.multiplexers.tmux.enable {
+              plugins = [ pkgs.vimPlugins.vim-tmux-navigator ];
+              pluginsFile."tmux.lua".text = ''
+                return {
+                  "christoomey/vim-tmux-navigator",
+                  cmd = {
+                    "TmuxNavigateLeft",
+                    "TmuxNavigateDown",
+                    "TmuxNavigateUp",
+                    "TmuxNavigateRight",
+                    "TmuxNavigatePrevious",
+                    "TmuxNavigatorProcessList",
+                  },
+                  keys = {
+                    { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+                    { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+                    { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+                    { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+                    { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+                  },
+                }
+              '';
+            })
+          ];
         })
         (lib.mkIf config.${namespace}.terminal.editors.neovim.nvchad.enable {
           nvchad = {

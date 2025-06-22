@@ -2,7 +2,8 @@
   pkgs,
   flake,
   ...
-}: {
+}:
+{
   imports = [
     ./graphical/default.nix
     ./terminal/default.nix
@@ -40,7 +41,7 @@
         ghostty.enable = true;
       };
       multiplexers = {
-        tmux.enable = false;
+        tmux.enable = true;
         zellij.enable = false;
       };
       shells = {
