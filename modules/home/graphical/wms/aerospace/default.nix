@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.graphical.wms.aerospace.enable = lib.mkEnableOption "aerospace";
   config = lib.mkIf config.${namespace}.graphical.wms.aerospace.enable {
     programs.aerospace = {
@@ -32,7 +34,7 @@ in {
           ])
         ];
         on-focus-changed = lib.mkMerge [
-          ["move-mouse window-lazy-center"]
+          [ "move-mouse window-lazy-center" ]
           (lib.optionals config.${namespace}.graphical.bars.simplebar.enable [
             "exec-and-forget osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\"'"
           ])
@@ -42,16 +44,17 @@ in {
         ];
         gaps = {
           inner = {
-            horizontal = 10;
-            vertical = 10;
+            horizontal = 5;
+            vertical = 5;
           };
           outer = {
             top = lib.mkDefault (
-              if config.${namespace}.graphical.bars.sketchybar.enable
-              then 45
-              else if config.${namespace}.graphical.bars.simplebar.enable
-              then 30
-              else 5
+              if config.${namespace}.graphical.bars.sketchybar.enable then
+                45
+              else if config.${namespace}.graphical.bars.simplebar.enable then
+                30
+              else
+                5
             );
             bottom = 5;
             left = 5;
