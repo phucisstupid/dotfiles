@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.tools.yazi.enable = lib.mkEnableOption "yazi";
   config = lib.mkIf config.${namespace}.terminal.tools.yazi.enable {
     programs.yazi = {
@@ -14,9 +16,9 @@ in {
       shellWrapperName = "y";
       plugins =
         {
-          inherit
-            (pkgs.yaziPlugins)
+          inherit (pkgs.yaziPlugins)
             git
+            piper
             smart-filter
             full-border
             toggle-pane
@@ -41,18 +43,26 @@ in {
           max_width = 1500;
           max_height = 1500;
         };
-        plugin.prepend_fetchers = [
-          {
-            id = "git";
-            name = "*";
-            run = "git";
-          }
-          {
-            id = "git";
-            name = "*/";
-            run = "git";
-          }
-        ];
+        plugin = {
+          prepend_previewers = [
+            {
+              name = "*";
+              run = ''piper -- echo "$1"'';
+            }
+          ];
+          prepend_fetchers = [
+            {
+              id = "git";
+              name = "*";
+              run = "git";
+            }
+            {
+              id = "git";
+              name = "*/";
+              run = "git";
+            }
+          ];
+        };
       };
       keymap = {
         mgr.prepend_keymap =

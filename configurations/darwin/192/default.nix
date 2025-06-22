@@ -1,7 +1,9 @@
-{flake, ...}: let
+{ flake, ... }:
+let
   inherit (flake) inputs;
   inherit (inputs) self;
-in {
+in
+{
   imports = [
     self.darwinModules.default
   ];
@@ -10,5 +12,8 @@ in {
   nixos-unified.sshTarget = "myuser@myhost";
   nixpkgs.hostPlatform = "aarch64-darwin";
   system.stateVersion = 6;
-  security.pam.services.sudo_local.touchIdAuth = true;
+  security.pam.services.sudo_local = {
+    touchIdAuth = true;
+    reattach = true;
+  };
 }

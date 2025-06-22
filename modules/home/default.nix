@@ -2,7 +2,8 @@
   pkgs,
   flake,
   ...
-}: {
+}:
+{
   imports = [
     ./graphical/default.nix
     ./terminal/default.nix
@@ -16,6 +17,8 @@
       uutils-coreutils-noprefix
       onefetch
       localsend
+      glow
+      gum
     ];
   };
   catppuccin = {
@@ -68,7 +71,6 @@
         lazygit.enable = true;
         pay-respects.enable = true;
         ripgrep.enable = true;
-        zoxide.enable = true;
         tealdeer.enable = true;
         nh.enable = true;
         gh-dash.enable = true;
@@ -80,6 +82,8 @@
           hyde.enable = true;
           ml4w.enable = false;
         };
+        sesh.enable = true;
+        zoxide.enable = true;
       };
     };
     graphical = {
