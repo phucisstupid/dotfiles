@@ -1,4 +1,5 @@
-{flake, ...}: {
+{ flake, ... }:
+{
   nix-homebrew = {
     enable = true;
     user = "${flake.config.me.username}";
@@ -13,9 +14,6 @@
       # "zen"
       "ubersicht"
     ];
-    onActivation = {
-      cleanup = "zap"; # Declarative nature of homebrew
-      upgrade = true;
-    };
+    onActivation.cleanup = "zap"; # Declarative nature of homebrew
   };
 }
