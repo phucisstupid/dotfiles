@@ -3,12 +3,13 @@
   pkgs,
   flake,
   ...
-}: {
+}:
+{
   home = {
     shell = {
-      enableZshIntegration = config.${flake.config.me.namespace}.terminal.shells.zsh.enable;
-      enableFishIntegration = config.${flake.config.me.namespace}.terminal.shells.fish.enable;
-      enableNushellIntegration = config.${flake.config.me.namespace}.terminal.shells.nushell.enable;
+      enableZshIntegration = true;
+      enableFishIntegration = true;
+      enableNushellIntegration = true;
     };
     shellAliases = {
       "..." = "cd ../..";
@@ -21,13 +22,12 @@
       autocd = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
-      prezto = {
-        inherit (config.${flake.config.me.namespace}.terminal.shells.zsh) enable;
-        editor.keymap = "vi";
-      };
       plugins = [
         {
           inherit (pkgs.zsh-fzf-tab) name src;
+        }
+        {
+          inherit (pkgs.zsh-vi-mode) name src;
         }
       ];
     };
