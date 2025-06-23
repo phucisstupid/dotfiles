@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.tools.yazi.enable = lib.mkEnableOption "yazi";
   config = lib.mkIf config.${namespace}.terminal.tools.yazi.enable {
     programs.yazi = {
@@ -14,8 +16,7 @@ in {
       shellWrapperName = "y";
       plugins =
         {
-          inherit
-            (pkgs.yaziPlugins)
+          inherit (pkgs.yaziPlugins)
             git
             piper
             smart-filter
@@ -43,19 +44,12 @@ in {
           max_height = 1500;
         };
         plugin = {
-          prepend_previewers =
-            [
-              {
-                name = "*.md";
-                run = "piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark \"$1\"";
-              }
-            ]
-            ++ lib.optionals config.${namespace}.terminal.tools.eza.enable [
-              {
-                name = "*/";
-                run = "piper -- eza -TL=3 --color=always --icons=always --group-directories-first --no-quotes \"$1\"";
-              }
-            ];
+          prepend_previewers = [
+            {
+              name = "*.md";
+              run = "piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark \"$1\"";
+            }
+          ];
           prepend_fetchers = [
             {
               id = "git";
