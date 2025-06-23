@@ -3,8 +3,7 @@
   pkgs,
   flake,
   ...
-}:
-{
+}: {
   home = {
     shell = {
       enableZshIntegration = true;
