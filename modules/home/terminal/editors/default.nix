@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.editors = {
     neovim = {
       lazyvim.enable = lib.mkEnableOption "neovim.lazyvim";
@@ -15,8 +17,7 @@ in {
     helix.enable = lib.mkEnableOption "helix";
   };
   config = lib.mkMerge [
-    (
-      lib.mkIf
+    (lib.mkIf
       (
         config.${namespace}.terminal.editors.neovim.lazyvim.enable
         || config.${namespace}.terminal.editors.neovim.nvchad.enable
@@ -26,8 +27,7 @@ in {
         home.shellAliases.vi = "nvim";
       }
     )
-    (
-      lib.mkIf
+    (lib.mkIf
       (
         !(
           config.${namespace}.terminal.editors.neovim.lazyvim.enable
@@ -36,7 +36,7 @@ in {
         && config.${namespace}.terminal.editors.helix.enable
       )
       {
-        home.sessionVariables.EDITOR = "hx";
+        programs.helix.defaultEditor = true;
       }
     )
     {
@@ -71,7 +71,7 @@ in {
               '';
             }
             (lib.mkIf config.${namespace}.terminal.multiplexers.tmux.enable {
-              plugins = [pkgs.vimPlugins.vim-tmux-navigator];
+              plugins = [ pkgs.vimPlugins.vim-tmux-navigator ];
               pluginsFile."tmux.lua".text = ''
                 return {
                   "christoomey/vim-tmux-navigator",
