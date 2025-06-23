@@ -20,6 +20,5 @@
     ./btop/default.nix
     ./navi/default.nix
     ./gh-dash/default.nix
-    ./sesh/default.nix
   ];
 }

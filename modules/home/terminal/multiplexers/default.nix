@@ -4,11 +4,14 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.multiplexers = {
     tmux.enable = lib.mkEnableOption "tmux";
+    tmux.sesh.enable = lib.mkEnableOption "tmux.sesh";
     zellij.enable = lib.mkEnableOption "zellij";
   };
   config = lib.mkMerge [
@@ -60,6 +63,11 @@ in {
           bind-key -T copy-mode-vi 'C-l' select-pane -R
           bind-key -T copy-mode-vi 'v' send-keys -X begin-selection
         '';
+      };
+    })
+    (lib.mkIf config.${namespace}.terminal.multiplexers.tmux.sesh.enable {
+      programs.sesh = {
+        enable = true;
       };
     })
     (lib.mkIf config.${namespace}.terminal.multiplexers.zellij.enable {
