@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.graphical.wms.aerospace.enable = lib.mkEnableOption "aerospace";
   config = lib.mkIf config.${namespace}.graphical.wms.aerospace.enable {
     programs.aerospace = {
@@ -24,7 +26,7 @@ in {
             "/bin/bash"
             "-c"
           ]
-          (lib.optionals config.${namespace}.graphical.bars.simplebar.enable [
+          (lib.optionals config.${namespace}.graphical.bars.simple-bar.enable [
             "osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\"'"
           ])
           (lib.optionals config.${namespace}.graphical.bars.sketchybar.enable [
@@ -32,8 +34,8 @@ in {
           ])
         ];
         on-focus-changed = lib.mkMerge [
-          ["move-mouse window-lazy-center"]
-          (lib.optionals config.${namespace}.graphical.bars.simplebar.enable [
+          [ "move-mouse window-lazy-center" ]
+          (lib.optionals config.${namespace}.graphical.bars.simple-bar.enable [
             "exec-and-forget osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\"'"
           ])
           (lib.optionals config.${namespace}.graphical.bars.sketchybar.enable [
@@ -47,11 +49,12 @@ in {
           };
           outer = {
             top = lib.mkDefault (
-              if config.${namespace}.graphical.bars.sketchybar.enable
-              then 45
-              else if config.${namespace}.graphical.bars.simplebar.enable
-              then 30
-              else 5
+              if config.${namespace}.graphical.bars.sketchybar.enable then
+                45
+              else if config.${namespace}.graphical.bars.simplebar.enable then
+                30
+              else
+                5
             );
             bottom = 5;
             left = 5;

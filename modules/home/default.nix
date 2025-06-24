@@ -2,7 +2,8 @@
   pkgs,
   flake,
   ...
-}: {
+}:
+{
   imports = [
     ./graphical/default.nix
     ./terminal/default.nix
@@ -101,7 +102,7 @@
       };
       bars = {
         sketchybar.enable = false;
-        simplebar.enable = true;
+        simple-bar.enable = true;
       };
       borders = {
         jankyborders.enable = true;

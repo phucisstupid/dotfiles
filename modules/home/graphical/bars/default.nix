@@ -1,6 +1,6 @@
 {
   imports = [
     ./sketchybar/default.nix
-    ./simplebar/default.nix
+    ./simple-bar/default.nix
   ];
 }

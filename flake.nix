@@ -34,8 +34,13 @@
       url = "github:Jean-Tinland/simple-bar";
       flake = false;
     };
+    dotfiles-stow = {
+      url = "github:phucisstupid/dotfiles-stow";
+      flake = false;
+    };
   };
-  outputs = inputs:
+  outputs =
+    inputs:
     inputs.nixos-unified.lib.mkFlake {
       inherit inputs;
       root = ./.;
