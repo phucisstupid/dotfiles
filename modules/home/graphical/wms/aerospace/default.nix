@@ -51,7 +51,7 @@ in
             top = lib.mkDefault (
               if config.${namespace}.graphical.bars.sketchybar.enable then
                 45
-              else if config.${namespace}.graphical.bars.simplebar.enable then
+              else if config.${namespace}.graphical.bars.simple-bar.enable then
                 30
               else
                 5
