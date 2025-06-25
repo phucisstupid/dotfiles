@@ -72,7 +72,7 @@ in {
             }
             (lib.mkIf config.${namespace}.terminal.multiplexers.tmux.enable {
               plugins = [pkgs.vimPlugins.vim-tmux-navigator];
-              pluginsFile."tmux.lua".text = ''
+              pluginsFile."vim-tmux-navigator.lua".text = ''
                 return {
                   "christoomey/vim-tmux-navigator",
                   cmd = {
