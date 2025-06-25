@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.editors = {
     neovim = {
       lazyvim.enable = lib.mkEnableOption "neovim.lazyvim";
@@ -15,8 +17,7 @@ in {
     helix.enable = lib.mkEnableOption "helix";
   };
   config = lib.mkMerge [
-    (
-      lib.mkIf
+    (lib.mkIf
       (
         config.${namespace}.terminal.editors.neovim.lazyvim.enable
         || config.${namespace}.terminal.editors.neovim.nvchad.enable
@@ -26,8 +27,7 @@ in {
         home.shellAliases.vi = "nvim";
       }
     )
-    (
-      lib.mkIf
+    (lib.mkIf
       (
         !(
           config.${namespace}.terminal.editors.neovim.lazyvim.enable
@@ -71,7 +71,7 @@ in {
               '';
             }
             (lib.mkIf config.${namespace}.terminal.multiplexers.tmux.enable {
-              plugins = [pkgs.vimPlugins.vim-tmux-navigator];
+              plugins = [ pkgs.vimPlugins.vim-tmux-navigator ];
               pluginsFile."tmux.lua".text = ''
                 return {
                   "christoomey/vim-tmux-navigator",
@@ -116,21 +116,9 @@ in {
         (lib.mkIf config.${namespace}.terminal.editors.helix.enable {
           helix = {
             enable = true;
-            settings = {
-              editor = {
-                line-number = "relative";
-                cursorline = true;
-                color-modes = true;
-                lsp.display-messages = true;
-                cursor-shape = {
-                  insert = "bar";
-                  normal = "block";
-                  select = "underline";
-                };
-                indent-guides = {
-                  render = true;
-                };
-              };
+            settings.editor = {
+              line-number = "relative";
+              lsp.display-messages = true;
             };
           };
         })
