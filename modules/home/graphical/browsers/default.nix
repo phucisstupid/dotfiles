@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ./chromium/default.nix
   ];

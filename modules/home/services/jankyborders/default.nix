@@ -3,11 +3,9 @@
   lib,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   options."${namespace}".services.jankyborders.enable = lib.mkEnableOption "jankyborders";
   config = lib.mkIf config."${namespace}".services.jankyborders.enable {
     services.jankyborders = {

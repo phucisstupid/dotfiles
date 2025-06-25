@@ -4,11 +4,9 @@
   lib,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   options.${namespace}.graphical.bars.sketchybar.enable = lib.mkEnableOption "sketchybar";
   config = lib.mkIf config.${namespace}.graphical.bars.sketchybar.enable {
     home.packages = with pkgs; [
@@ -30,8 +28,7 @@ in
       ];
     };
     xdg.configFile = {
-      "sketchybar/helpers/icon_map.lua".source =
-        "${pkgs.sketchybar-app-font}/lib/sketchybar-app-font/icon_map.lua";
+      "sketchybar/helpers/icon_map.lua".source = "${pkgs.sketchybar-app-font}/lib/sketchybar-app-font/icon_map.lua";
       "sketchybar/sketchybarrc" = {
         executable = true;
         text = ''
