@@ -3,15 +3,17 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
-  options.${namespace}.graphical.apps.chromium = {
-    default.enable = lib.mkEnableOption "chromium";
+in
+{
+  options.${namespace}.graphical.browsers = {
+    chromium.enable = lib.mkEnableOption "chromium";
     brave.enable = lib.mkEnableOption "brave";
   };
   config.programs = lib.mkMerge [
-    (lib.mkIf config.${namespace}.graphical.apps.chromium.default.enable {
+    (lib.mkIf config.${namespace}.graphical.browsers.chromium.enable {
       chromium = {
         enable = true;
         extensions = [
@@ -26,7 +28,7 @@ in {
         ];
       };
     })
-    (lib.mkIf config.${namespace}.graphical.apps.chromium.brave.enable {
+    (lib.mkIf config.${namespace}.graphical.browsers.brave.enable {
       brave = {
         enable = true;
         extensions = [

@@ -2,9 +2,11 @@
   pkgs,
   flake,
   ...
-}: {
+}:
+{
   imports = [
     ./graphical/default.nix
+    ./services/default.nix
     ./terminal/default.nix
   ];
   xdg.enable = true;
@@ -89,22 +91,19 @@
     };
     graphical = {
       apps = {
-        chromium = {
-          default.enable = false;
-          brave.enable = true;
-        };
         kodi.enable = false;
         obs-studio.enable = false;
         qutebrowser.enable = false;
         spotify.enable = true;
         zed-editor.enable = false;
       };
+      browsers = {
+        chromium.enable = false;
+        brave.enable = true;
+      };
       bars = {
         sketchybar.enable = false;
         simple-bar.enable = true;
-      };
-      borders = {
-        jankyborders.enable = true;
       };
       screenlockers = {
         hyprlock.enable = false;
@@ -112,6 +111,9 @@
       wms = {
         aerospace.enable = true;
       };
+    };
+    services = {
+      jankyborders.enable = true;
     };
   };
 }
