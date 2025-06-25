@@ -35,6 +35,22 @@
         "type": "github"
       }
     },
+    "dotfiles-stow": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1750785072,
+        "narHash": "sha256-4BFtzrjNFpejWGQLYWFXZ7MlUOM0+fXeDkQBkGWCods=",
+        "owner": "phucisstupid",
+        "repo": "dotfiles-stow",
+        "rev": "930633db53ecf4c8283510b63b478a788cf92efb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "phucisstupid",
+        "repo": "dotfiles-stow",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
@@ -78,11 +94,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1750781171,
-        "narHash": "sha256-39oPt8TJZmt3bNEKBcwB+QuasiavRDwM5jkw6UkRb98=",
+        "lastModified": 1750798083,
+        "narHash": "sha256-DTCCcp6WCFaYXWKFRA6fiI2zlvOLCf5Vwx8+/0R8Wc4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "a4bac2b9ba2f9bd68032880da8ae6b44fbc46047",
+        "rev": "ff31a4677c1a8ae506aa7e003a3dba08cb203f82",
         "type": "github"
       },
       "original": {
@@ -256,6 +272,7 @@
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
+        "dotfiles-stow": "dotfiles-stow",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "lazyvim": "lazyvim",
