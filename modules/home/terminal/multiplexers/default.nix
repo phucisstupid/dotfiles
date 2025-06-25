@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.multiplexers = {
     tmux.enable = lib.mkEnableOption "tmux";
     tmux.sesh.enable = lib.mkEnableOption "tmux.sesh";
@@ -15,18 +17,17 @@ in {
   config = lib.mkMerge [
     (lib.mkIf config.${namespace}.terminal.multiplexers.tmux.enable {
       catppuccin.tmux.extraConfig = ''
-        set -g @catppuccin_pane_status_enabled "yes"
-        set -g @catppuccin_pane_border_status "yes"
         set -g @catppuccin_window_status_style "rounded"
-        set -g @catppuccin_window_current_text " #W"
-        set -g @catppuccin_window_text " #W "
         set -g @catppuccin_window_flags "icon"
-        set -g status-left "#{E:@catppuccin_status_session}"
-        set -g status-right "#{E:@catppuccin_status_directory}"
-        set -agF status-right "#{E:@catppuccin_status_cpu}"
-        set -agF status-right "#{E:@catppuccin_status_weather}"
+        set -g @catppuccin_window_current_text " #{b:pane_current_path}"
+        set -g @catppuccin_window_text " #{b:pane_current_path}"
+        set -g @catppuccin_status_background "#1e1e2e" 
         set -g @catppuccin_status_connect_separator "no"
         set -g @catppuccin_status_right_separator " "
+        set -g status-left "#{E:@catppuccin_status_session}"
+        set -g status-right "#{E:@catppuccin_status_application}"
+        set -agF status-right "#{E:@catppuccin_status_cpu}"
+        set -agF status-right "#{E:@catppuccin_status_weather}"
       '';
       programs.tmux = {
         enable = true;
