@@ -4,9 +4,12 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+  inherit (flake) inputs;
+in
+{
   options.${namespace}.terminal.tools.yazi.enable = lib.mkEnableOption "yazi";
   config = lib.mkIf config.${namespace}.terminal.tools.yazi.enable {
     programs.yazi = {
@@ -14,8 +17,7 @@ in {
       shellWrapperName = "y";
       plugins =
         {
-          inherit
-            (pkgs.yaziPlugins)
+          inherit (pkgs.yaziPlugins)
             git
             piper
             smart-filter
@@ -30,12 +32,7 @@ in {
         // lib.optionalAttrs config.${namespace}.terminal.tools.lazygit.enable {
           inherit (pkgs.yaziPlugins) lazygit;
         };
-      initLua = ''
-        require("full-border"):setup()
-        require("git"):setup()
-        require("yatline"):setup(0,require("yatline-catppuccin"):setup("mocha"))
-        require("yatline-githead"):setup()
-      '';
+      initLua = builtins.readFile "${inputs.dotfiles-stow}/yazi/init.lua";
       settings = {
         mgr.show_hidden = true;
         preview = {
