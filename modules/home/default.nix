@@ -2,7 +2,8 @@
   pkgs,
   flake,
   ...
-}: {
+}:
+{
   imports = [
     ./graphical/default.nix
     ./services/default.nix
@@ -67,7 +68,7 @@
         atuin.enable = true;
         bat.enable = true;
         carapace.enable = true;
-        clock-rs.enable = true;
+        clock-rs.enable = false;
         eza.enable = true;
         fd.enable = true;
         fzf.enable = true;
