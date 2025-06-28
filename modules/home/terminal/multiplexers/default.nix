@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.multiplexers = {
     tmux.enable = lib.mkEnableOption "tmux";
     tmux.sesh.enable = lib.mkEnableOption "tmux.sesh";
@@ -25,7 +27,7 @@ in {
         set -g status-left "#{E:@catppuccin_status_session}"
         set -g status-right "#{E:@catppuccin_status_application}"
         set -agF status-right "#{E:@catppuccin_status_cpu}"
-        set -agF status-right "#{E:@catppuccin_status_weather}"
+        set -ag status-right "#{E:@catppuccin_status_uptime}"
       '';
       programs.tmux = {
         enable = true;
@@ -39,7 +41,6 @@ in {
         disableConfirmationPrompt = true;
         plugins = with pkgs.tmuxPlugins; [
           cpu
-          weather
           vim-tmux-navigator
           tmux-sessionx
           {
