@@ -1,10 +1,13 @@
 {
   config,
+  pkgs,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   programs = {
     wezterm = {
       inherit (config.${namespace}.terminal.emulators.wezterm) enable;
@@ -33,7 +36,7 @@ in {
     };
     ghostty = {
       inherit (config.${namespace}.terminal.emulators.ghostty) enable;
-      package = null; # Until ghostty is available in darwin
+      package = pkgs.brewCasks.ghostty; # Until ghostty is available in darwin
       settings = {
         font-family = "Maple Mono";
         font-size = 18;

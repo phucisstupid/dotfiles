@@ -15,8 +15,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Software
+    brew-nix = {
+      url = "github:BatteredBunny/brew-nix";
+      inputs.brew-api.follows = "brew-api";
+    };
+    brew-api = {
+      url = "github:BatteredBunny/brew-api";
+      flake = false;
+    };
     catppuccin.url = "github:catppuccin/nix";
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     mac-app-util.url = "github:hraban/mac-app-util";
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
@@ -40,7 +47,8 @@
       flake = false;
     };
   };
-  outputs = inputs:
+  outputs =
+    inputs:
     inputs.nixos-unified.lib.mkFlake {
       inherit inputs;
       root = ./.;

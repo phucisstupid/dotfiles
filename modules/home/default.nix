@@ -2,7 +2,8 @@
   pkgs,
   flake,
   ...
-}: {
+}:
+{
   imports = [
     ./graphical/default.nix
     ./services/default.nix
@@ -15,6 +16,7 @@
     packages = with pkgs; [
       maple-mono.variable
       uutils-coreutils-noprefix
+      chatgpt
       onefetch
       localsend
       glow
