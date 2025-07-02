@@ -14,7 +14,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     # Software
+    catppuccin.url = "github:catppuccin/nix";
+    mac-app-util.url = "github:hraban/mac-app-util";
     brew-nix = {
       url = "github:BatteredBunny/brew-nix";
       inputs.brew-api.follows = "brew-api";
@@ -23,8 +26,6 @@
       url = "github:BatteredBunny/brew-api";
       flake = false;
     };
-    catppuccin.url = "github:catppuccin/nix";
-    mac-app-util.url = "github:hraban/mac-app-util";
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -47,7 +48,8 @@
       flake = false;
     };
   };
-  outputs = inputs:
+  outputs =
+    inputs:
     inputs.nixos-unified.lib.mkFlake {
       inherit inputs;
       root = ./.;
