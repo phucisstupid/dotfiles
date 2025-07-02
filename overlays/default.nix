@@ -1,5 +1,4 @@
-{ flake, ... }:
-let
+{flake, ...}: let
   inherit (flake) inputs;
 in
-inputs.brew-nix.overlays.default
+  inputs.brew-nix.overlays.default
