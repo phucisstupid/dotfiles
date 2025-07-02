@@ -2,7 +2,7 @@
 
 ## MacOs Screenshot
 
-![image](https://github.com/user-attachments/assets/bc2a8b97-28a6-4a31-b724-43205d37b6c4)
+![image](https://github.com/user-attachments/assets/445b9bc6-91ce-49b7-9427-b15910a6a3e1)
 
 ---
 
