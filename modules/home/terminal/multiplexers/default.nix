@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.multiplexers = {
     tmux.enable = lib.mkEnableOption "tmux";
     tmux.sesh.enable = lib.mkEnableOption "tmux.sesh";
@@ -19,7 +21,6 @@ in {
         set -g @catppuccin_window_flags "icon"
         set -g @catppuccin_window_current_text " #{b:pane_current_path}"
         set -g @catppuccin_window_text " #{b:pane_current_path}"
-        set -g @catppuccin_status_background "#1e1e2e"
         set -g @catppuccin_status_connect_separator "no"
         set -g @catppuccin_status_right_separator " "
         set -g status-left "#{E:@catppuccin_status_session}"
