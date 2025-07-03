@@ -14,10 +14,10 @@
 
 #### Install with [`Nix Script`](https://github.com/phucleeuwu/dotflow/blob/main/nix.sh)
 
-> **Note:** For non-NixOS systems, my script will install [`Determinate Nix`](https://github.com/DeterminateSystems/nix-installer#installation).
+> **Note:** For non-NixOS systems, my script will install [`Lix`](https://github.com/lix-project/lix).
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/phucleeuwu/dotflow/main/nix.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/phucisstupid/dotflow/main/nix.sh)"
 ```
 
 > **More details:** check out [nixos-unified](https://nixos-unified.org/) and [nixos-unified-template](https://github.com/juspay/nixos-unified-template)
@@ -26,10 +26,10 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/phucleeuwu/dotflow/main/
 
 ### Stow 🏠 (FASTER)
 
-#### Install with [`Stow Script`](https://github.com/phucleeuwu/dotflow/blob/main/stow.sh)
+#### Install with [`Stow Script`](https://github.com/phucisstupid/dotflow/blob/main/stow.sh)
 
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/phucleeuwu/dotflow/main/stow.sh)"
 ```
 
-> **Repo:** [phucleeuwu/dotfiles-stow](https://github.com/phucleeuwu/dotfiles-stow)
+> **Repo:** [phucleeuwu/dotfiles-stow](https://github.com/phucisstupid/dotfiles-stow)
