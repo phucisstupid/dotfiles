@@ -200,11 +200,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1751513147,
-        "narHash": "sha256-idSXM3Y0KNf/WDDqGfthiOSQMwZYwis1JZhTkdWrr6A=",
+        "lastModified": 1751546660,
+        "narHash": "sha256-4lHbFzK5wylUJzVHte2JtEhcuDnIlcvbBnT/wIbVII4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "426b405d979d893832549b95f23c13537c65d244",
+        "rev": "b182e64c01aa4e61a007691525a3ea498a9aee63",
         "type": "github"
       },
       "original": {
@@ -264,7 +264,7 @@
         "narHash": "sha256-gbFOUtmkzzNAiHoUtySwbi+AVDgWOW8CpWmTmkoaQiI=",
         "rev": "ea74d925e650948d296fb85e4671fb0ce944f550",
         "type": "tarball",
-        "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/ea74d925e650948d296fb85e4671fb0ce944f550.tar.gz?rev=ea74d925e650948d296fb85e4671fb0ce944f550"
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/ea74d925e650948d296fb85e4671fb0ce944f550.tar.gz"
       },
       "original": {
         "type": "tarball",
