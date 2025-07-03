@@ -12,7 +12,7 @@
 
 ### Nix ❄️ (RECOMMEND — clones 1:1 setup)
 
-#### Install with [`Nix Script`](https://github.com/phucleeuwu/dotflow/blob/main/nix.sh)
+#### Install with [`Nix Script`](https://github.com/phucisstupid/dotflow/blob/main/nix.sh)
 
 > **Note:** For non-NixOS systems, my script will install [`Lix`](https://github.com/lix-project/lix).
 
@@ -32,4 +32,4 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/phucisstupid/dotflow/mai
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/phucleeuwu/dotflow/main/stow.sh)"
 ```
 
-> **Repo:** [phucleeuwu/dotfiles-stow](https://github.com/phucisstupid/dotfiles-stow)
+> **Repo:** [phucisstupid/dotfiles-stow](https://github.com/phucisstupid/dotfiles-stow)
