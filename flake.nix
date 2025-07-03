@@ -6,14 +6,9 @@
     systems.url = "github:nix-systems/default";
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixos-unified.url = "github:srid/nixos-unified";
-    lix = {
-      url = "github:lix-project/lix";
-      flake = false;
-    };
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.lix.follows = "lix";
     };
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
@@ -57,7 +52,8 @@
       flake = false;
     };
   };
-  outputs = inputs:
+  outputs =
+    inputs:
     inputs.nixos-unified.lib.mkFlake {
       inherit inputs;
       root = ./.;

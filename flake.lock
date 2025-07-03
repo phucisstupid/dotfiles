@@ -241,24 +241,20 @@
       "locked": {
         "lastModified": 1751497867,
         "narHash": "sha256-f8Grrh1VU/sPsEXlHazQ8XS4/2d4xJgWVtr/N0blj2Q=",
-        "owner": "lix-project",
-        "repo": "lix",
         "rev": "61c276e8589d00af699c6fb3d9a4f66445365eb0",
-        "type": "github"
+        "type": "tarball",
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/61c276e8589d00af699c6fb3d9a4f66445365eb0.tar.gz?rev=61c276e8589d00af699c6fb3d9a4f66445365eb0"
       },
       "original": {
-        "owner": "lix-project",
-        "repo": "lix",
-        "type": "github"
+        "type": "tarball",
+        "url": "https://git.lix.systems/lix-project/lix/archive/main.tar.gz"
       }
     },
     "lix-module": {
       "inputs": {
         "flake-utils": "flake-utils",
         "flakey-profile": "flakey-profile",
-        "lix": [
-          "lix"
-        ],
+        "lix": "lix",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -480,7 +476,6 @@
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "lazyvim": "lazyvim",
-        "lix": "lix",
         "lix-module": "lix-module",
         "mac-app-util": "mac-app-util",
         "nix-darwin": "nix-darwin_2",
