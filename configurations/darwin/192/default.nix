@@ -1,12 +1,13 @@
-{flake, ...}: let
+{ flake, ... }:
+let
   inherit (flake) inputs;
   inherit (inputs) self;
-in {
+in
+{
   imports = [
     self.darwinModules.default
   ];
   networking.hostName = "192";
-  nix.enable = false;
   nixos-unified.sshTarget = "myuser@myhost";
   nixpkgs.hostPlatform = "aarch64-darwin";
   system.stateVersion = 6;
