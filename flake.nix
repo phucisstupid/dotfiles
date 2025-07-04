@@ -22,17 +22,13 @@
     # Software
     catppuccin.url = "github:catppuccin/nix";
     mac-app-util.url = "github:hraban/mac-app-util";
-    wallpaper = {
-      url = "github:orangci/walls";
+    brew-api = {
+      url = "github:BatteredBunny/brew-api";
       flake = false;
     };
     brew-nix = {
       url = "github:BatteredBunny/brew-nix";
       inputs.brew-api.follows = "brew-api";
-    };
-    brew-api = {
-      url = "github:BatteredBunny/brew-api";
-      flake = false;
     };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
@@ -55,8 +51,13 @@
       url = "github:phucisstupid/dotfiles-stow";
       flake = false;
     };
+    wallpaper = {
+      url = "github:orangci/walls";
+      flake = false;
+    };
   };
-  outputs = inputs:
+  outputs =
+    inputs:
     inputs.nixos-unified.lib.mkFlake {
       inherit inputs;
       root = ./.;
