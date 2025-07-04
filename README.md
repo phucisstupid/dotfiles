@@ -8,9 +8,9 @@
 
 ## Install
 
-## ❗ Backup your `~/.config` if you already have existing configurations
+### Backup your `~/.config` if you already have existing configurations
 
-### Nix ❄️ (RECOMMEND — clones 1:1 setup)
+### - Nix ❄️ (RECOMMEND — clones 1:1 setup)
 
 #### Install with [`Nix Script`](https://github.com/phucisstupid/dotflow/blob/main/nix.sh)
 
@@ -24,7 +24,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/phucisstupid/dotflow/mai
 
 ---
 
-### Stow 🏠 (FASTER)
+### - Stow 🏠 (FASTER)
 
 #### Install with [`Stow Script`](https://github.com/phucisstupid/dotflow/blob/main/stow.sh)
 
