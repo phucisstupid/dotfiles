@@ -22,6 +22,10 @@
     # Software
     catppuccin.url = "github:catppuccin/nix";
     mac-app-util.url = "github:hraban/mac-app-util";
+    wallpaper = {
+      url = "github:orangci/walls";
+      flake = false;
+    };
     brew-nix = {
       url = "github:BatteredBunny/brew-nix";
       inputs.brew-api.follows = "brew-api";
@@ -52,7 +56,8 @@
       flake = false;
     };
   };
-  outputs = inputs:
+  outputs =
+    inputs:
     inputs.nixos-unified.lib.mkFlake {
       inherit inputs;
       root = ./.;

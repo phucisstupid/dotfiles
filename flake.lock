@@ -484,7 +484,8 @@
         "nixpkgs": "nixpkgs_4",
         "simple-bar": "simple-bar",
         "spicetify-nix": "spicetify-nix",
-        "systems": "systems_5"
+        "systems": "systems_5",
+        "wallpaper": "wallpaper"
       }
     },
     "simple-bar": {
@@ -596,6 +597,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "wallpaper": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1750604957,
+        "narHash": "sha256-nI9NMmb8YjY6PzL0++3TyqPMgfDw6DhpKuYc4+tNppo=",
+        "owner": "orangci",
+        "repo": "walls",
+        "rev": "25829110e8910201dc8478695c5414312f9e86a0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "orangci",
+        "repo": "walls",
         "type": "github"
       }
     }
