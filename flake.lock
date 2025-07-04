@@ -74,11 +74,11 @@
     "dotfiles-stow": {
       "flake": false,
       "locked": {
-        "lastModified": 1751610080,
-        "narHash": "sha256-cMrxEvucsKIjsWQjx5p/KCaT+N2qfLAABk9GGJLPBFw=",
+        "lastModified": 1751613893,
+        "narHash": "sha256-woTkNrKaRASZ946BfobsOAojBox/XLnQYY58Su1EOuc=",
         "owner": "phucisstupid",
         "repo": "dotfiles-stow",
-        "rev": "aaf0e700aa746f704f40ac1e5e05723a50cbc9ed",
+        "rev": "f3772ee4ac2706af59a21f30d34711ce7e0dadaa",
         "type": "github"
       },
       "original": {
@@ -264,7 +264,7 @@
         "narHash": "sha256-gbFOUtmkzzNAiHoUtySwbi+AVDgWOW8CpWmTmkoaQiI=",
         "rev": "ea74d925e650948d296fb85e4671fb0ce944f550",
         "type": "tarball",
-        "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/ea74d925e650948d296fb85e4671fb0ce944f550.tar.gz?rev=ea74d925e650948d296fb85e4671fb0ce944f550"
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/ea74d925e650948d296fb85e4671fb0ce944f550.tar.gz"
       },
       "original": {
         "type": "tarball",
