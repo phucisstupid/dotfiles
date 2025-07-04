@@ -24,7 +24,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/phucisstupid/dotflow/mai
 ### - Stow (faster)
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/phucleeuwu/dotflow/main/stow.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/phucisstupid/dotflow/main/stow.sh)"
 ```
 
 > **Repo:** [phucisstupid/dotfiles-stow](https://github.com/phucisstupid/dotfiles-stow)

@@ -11,4 +11,4 @@ jobs:
     steps:
       - uses: actions/checkout@main
       - uses: DeterminateSystems/nix-installer-action@main
-      - uses: phucleeuwu/statix-action@main
+      - uses: phucisstupid/statix-action@main
