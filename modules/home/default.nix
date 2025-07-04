@@ -2,7 +2,8 @@
   pkgs,
   flake,
   ...
-}: {
+}:
+{
   imports = [
     ./graphical/default.nix
     ./services/default.nix
@@ -102,8 +103,8 @@
         brave.enable = true;
       };
       bars = {
-        sketchybar.enable = false;
-        simple-bar.enable = true;
+        sketchybar.enable = true;
+        simple-bar.enable = false;
       };
       screenlockers = {
         hyprlock.enable = false;

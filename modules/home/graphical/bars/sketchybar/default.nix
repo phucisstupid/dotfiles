@@ -12,7 +12,7 @@ in
   options.${namespace}.graphical.bars.sketchybar.enable = lib.mkEnableOption "sketchybar";
   config = lib.mkIf config.${namespace}.graphical.bars.sketchybar.enable {
     home.packages = with pkgs; [
-      brewCasks.sf-symbols
+      # brewCasks.sf-symbols
       sketchybar-app-font
       nowplaying-cli
       switchaudio-osx
