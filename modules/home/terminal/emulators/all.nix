@@ -3,11 +3,9 @@
   pkgs,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   programs = {
     wezterm = {
       inherit (config.${namespace}.terminal.emulators.wezterm) enable;
