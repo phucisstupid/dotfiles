@@ -4,10 +4,12 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
   inherit (flake) inputs;
-in {
+in
+{
   options.${namespace}.terminal.tools.yazi.enable = lib.mkEnableOption "yazi";
   config = lib.mkIf config.${namespace}.terminal.tools.yazi.enable {
     programs.yazi = {
@@ -15,17 +17,17 @@ in {
       shellWrapperName = "y";
       plugins =
         {
-          inherit
-            (pkgs.yaziPlugins)
+          inherit (pkgs.yaziPlugins)
             git
             piper
             smart-filter
             full-border
             toggle-pane
-            bypass
+            smart-enter
             yatline
             yatline-catppuccin
             yatline-githead
+            relative-motions
             ;
         }
         // lib.optionalAttrs config.${namespace}.terminal.tools.lazygit.enable {
@@ -72,13 +74,13 @@ in {
             }
             {
               on = "l";
-              run = "plugin bypass smart-enter";
-            }
-            {
-              on = "H";
-              run = "plugin bypass reverse";
+              run = "plugin smart-enter";
             }
           ]
+          ++ builtins.map (n: {
+            on = "${toString n}";
+            run = "plugin relative-motions ${toString n}";
+          }) (lib.range 1 9)
           ++ lib.optionals config.${namespace}.terminal.tools.lazygit.enable [
             {
               on = [

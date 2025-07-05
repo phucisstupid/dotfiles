@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.graphical.wms.aerospace.enable = lib.mkEnableOption "aerospace";
   config = lib.mkIf config.${namespace}.graphical.wms.aerospace.enable {
     programs.aerospace = {
@@ -32,7 +34,7 @@ in {
           ])
         ];
         on-focus-changed = lib.mkMerge [
-          ["move-mouse window-lazy-center"]
+          [ "move-mouse window-lazy-center" ]
           (lib.optionals config.${namespace}.graphical.bars.simple-bar.enable [
             "exec-and-forget osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\"'"
           ])
@@ -47,11 +49,12 @@ in {
           };
           outer = {
             top = lib.mkDefault (
-              if config.${namespace}.graphical.bars.sketchybar.enable
-              then 45
-              else if config.${namespace}.graphical.bars.simple-bar.enable
-              then 30
-              else 5
+              if config.${namespace}.graphical.bars.sketchybar.enable then
+                45
+              else if config.${namespace}.graphical.bars.simple-bar.enable then
+                30
+              else
+                5
             );
             bottom = 5;
             left = 5;
@@ -77,16 +80,16 @@ in {
             "alt-shift-semicolon" = "mode service";
           }
           // builtins.listToAttrs (
-            builtins.concatMap (number: [
+            builtins.concatMap (n: [
               {
-                name = "alt-${number}";
-                value = "workspace ${number}";
+                name = "alt-${toString n}";
+                value = "workspace ${toString n}";
               }
               {
-                name = "alt-shift-${number}";
-                value = "move-node-to-workspace ${number}";
+                name = "alt-shift-${toString n}";
+                value = "move-node-to-workspace ${toString n}";
               }
-            ]) (lib.strings.stringToCharacters "1234")
+            ]) (lib.range 1 4)
           );
         mode.resize.binding = {
           "esc" = "mode main";
