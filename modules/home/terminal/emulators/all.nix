@@ -3,9 +3,11 @@
   pkgs,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   programs = {
     wezterm = {
       inherit (config.${namespace}.terminal.emulators.wezterm) enable;
@@ -29,7 +31,7 @@ in {
       };
       settings = {
         hide_window_decorations = "titlebar-only";
-        macos_option_as_alt = "left";
+        macos_option_as_alt = "yes";
       };
     };
     ghostty = {
@@ -40,7 +42,7 @@ in {
         font-size = 18;
         mouse-hide-while-typing = true;
         macos-titlebar-style = "hidden";
-        macos-option-as-alt = "left";
+        macos-option-as-alt = true;
       };
     };
   };
