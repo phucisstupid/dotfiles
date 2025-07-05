@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # essential macOs settings
   system.defaults = {
     CustomUserPreferences."com.apple.AdLib".allowApplePersonalizedAdvertising = false;
@@ -15,17 +16,15 @@
       DisableConsoleAccess = true;
     };
     dock = {
+      static-only = true;
+      autohide = true;
+      show-recents = false;
       expose-group-apps = true;
+      magnification = true;
       tilesize = 40;
+      largesize = 80;
       autohide-delay = 0.0;
       autohide-time-modifier = 0.0;
-      largesize = 80;
-      mru-spaces = false;
-      show-recents = false;
-      magnification = true;
-      showhidden = true;
-      autohide = true;
-      static-only = true;
     };
     finder = {
       FXPreferredViewStyle = "clmv";
@@ -41,7 +40,10 @@
     };
     NSGlobalDomain = {
       AppleInterfaceStyle = "Dark";
+      _HIHideMenuBar = true;
       NSWindowShouldDragOnGesture = true;
+      "com.apple.swipescrolldirection" = false;
+      "com.apple.trackpad.scaling" = 3.0;
       InitialKeyRepeat = 15;
       KeyRepeat = 2;
       NSAutomaticCapitalizationEnabled = false;
@@ -49,9 +51,6 @@
       NSAutomaticPeriodSubstitutionEnabled = false;
       NSAutomaticQuoteSubstitutionEnabled = false;
       NSAutomaticSpellingCorrectionEnabled = false;
-      _HIHideMenuBar = true;
-      "com.apple.trackpad.scaling" = 3.0;
-      "com.apple.swipescrolldirection" = false;
     };
   };
   networking = {
@@ -68,7 +67,7 @@
   };
   # default shell
   programs.fish.enable = true;
-  environment.shells = [pkgs.fish];
+  environment.shells = [ pkgs.fish ];
   services.karabiner-elements = {
     enable = true;
     package = pkgs.karabiner-elements.overrideAttrs (old: {
