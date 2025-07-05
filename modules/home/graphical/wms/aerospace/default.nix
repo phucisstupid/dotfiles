@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.graphical.wms.aerospace.enable = lib.mkEnableOption "aerospace";
   config = lib.mkIf config.${namespace}.graphical.wms.aerospace.enable {
     programs.aerospace = {
@@ -32,7 +34,7 @@ in {
           ])
         ];
         on-focus-changed = lib.mkMerge [
-          ["move-mouse window-lazy-center"]
+          [ "move-mouse window-lazy-center" ]
           (lib.optionals config.${namespace}.graphical.bars.simple-bar.enable [
             "exec-and-forget osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\"'"
           ])
@@ -47,11 +49,12 @@ in {
           };
           outer = {
             top = lib.mkDefault (
-              if config.${namespace}.graphical.bars.sketchybar.enable
-              then 45
-              else if config.${namespace}.graphical.bars.simple-bar.enable
-              then 30
-              else 5
+              if config.${namespace}.graphical.bars.sketchybar.enable then
+                45
+              else if config.${namespace}.graphical.bars.simple-bar.enable then
+                30
+              else
+                5
             );
             bottom = 5;
             left = 5;
@@ -77,16 +80,16 @@ in {
             "alt-shift-semicolon" = "mode service";
           }
           // builtins.listToAttrs (
-            builtins.concatMap (letter: [
+            builtins.concatMap (number: [
               {
-                name = "alt-${lib.strings.toLower letter}";
-                value = "workspace ${letter}";
+                name = "alt-${number}";
+                value = "workspace ${number}";
               }
               {
-                name = "alt-shift-${lib.strings.toLower letter}";
-                value = "move-node-to-workspace ${letter}";
+                name = "alt-shift-${number}";
+                value = "move-node-to-workspace ${number}";
               }
-            ]) (lib.strings.stringToCharacters "1234BET")
+            ]) (lib.strings.stringToCharacters "1234")
           );
         mode.resize.binding = {
           "esc" = "mode main";
@@ -139,19 +142,19 @@ in {
         };
         on-window-detected = [
           {
-            "if".app-name-regex-substring = "finder";
-            run = "move-node-to-workspace E";
-          }
-          {
-            "if".app-name-regex-substring = "wezterm|kitty|ghostty";
-            run = "move-node-to-workspace T";
-          }
-          {
             "if".app-name-regex-substring = "zen|arc|safari|brave";
-            run = "move-node-to-workspace B";
+            run = "move-node-to-workspace 1";
           }
           {
             "if".app-name-regex-substring = "spotify";
+            run = "move-node-to-workspace 2";
+          }
+          {
+            "if".app-name-regex-substring = "chatgpt";
+            run = "move-node-to-workspace 3";
+          }
+          {
+            "if".app-name-regex-substring = "wezterm|kitty|ghostty";
             run = "move-node-to-workspace 4";
           }
         ];
