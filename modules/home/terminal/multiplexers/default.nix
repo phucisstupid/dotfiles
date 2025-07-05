@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.multiplexers = {
     tmux.enable = lib.mkEnableOption "tmux";
     tmux.sesh.enable = lib.mkEnableOption "tmux.sesh";
@@ -63,6 +65,15 @@ in {
     (lib.mkIf config.${namespace}.terminal.multiplexers.tmux.sesh.enable {
       programs.sesh = {
         enable = true;
+        settings = {
+          session = [
+            {
+              name = "Downloads 📥";
+              path = "~/Downloads";
+              startup_command = "ls";
+            }
+          ];
+        };
       };
     })
     (lib.mkIf config.${namespace}.terminal.multiplexers.zellij.enable {
