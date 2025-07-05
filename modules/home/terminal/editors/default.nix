@@ -6,6 +6,7 @@
   ...
 }: let
   inherit (flake.config.me) namespace;
+  inherit (flake) inputs;
 in {
   options.${namespace}.terminal.editors = {
     neovim = {
@@ -61,37 +62,11 @@ in {
                   copilot-chat.enable = true;
                 };
               };
-              pluginsFile."catppuccin.lua".text = ''
-                return {
-                  "LazyVim/LazyVim",
-                  opts = {
-                    colorscheme = "catppuccin",
-                  },
-                }
-              '';
+              pluginsFile."catppuccin.lua".source = "${inputs.dotfiles-stow}/nvim/lua/plugins/catppuccin.lua";
             }
             (lib.mkIf config.${namespace}.terminal.multiplexers.tmux.enable {
               plugins = [pkgs.vimPlugins.vim-tmux-navigator];
-              pluginsFile."vim-tmux-navigator.lua".text = ''
-                return {
-                  "christoomey/vim-tmux-navigator",
-                  cmd = {
-                    "TmuxNavigateLeft",
-                    "TmuxNavigateDown",
-                    "TmuxNavigateUp",
-                    "TmuxNavigateRight",
-                    "TmuxNavigatePrevious",
-                    "TmuxNavigatorProcessList",
-                  },
-                  keys = {
-                    { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-                    { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-                    { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-                    { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-                    { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-                  },
-                }
-              '';
+              pluginsFile."vim-tmux-navigator.lua".source = "${inputs.dotfiles-stow}/nvim/lua/plugins/vim-tmux-navigator.lua";
             })
           ];
         })
