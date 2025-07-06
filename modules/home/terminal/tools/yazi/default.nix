@@ -4,19 +4,20 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
   inherit (flake) inputs;
-in {
+in
+{
   options.${namespace}.terminal.tools.yazi.enable = lib.mkEnableOption "yazi";
   config = lib.mkIf config.${namespace}.terminal.tools.yazi.enable {
     programs.yazi = {
       enable = true;
-      shellWrapperName = "y";
+      shellWrapperName = "y"; # todo: clean when default is fixed
       plugins =
         {
-          inherit
-            (pkgs.yaziPlugins)
+          inherit (pkgs.yaziPlugins)
             git
             piper
             smart-filter
