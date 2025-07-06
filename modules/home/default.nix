@@ -2,12 +2,12 @@
   pkgs,
   flake,
   ...
-}: {
+}:
+{
   imports = [
     ./graphical/default.nix
     ./services/default.nix
     ./terminal/default.nix
-    ./wallpaper.nix
   ];
   xdg.enable = true;
   home = {
@@ -31,7 +31,6 @@
 
   # config
   ${flake.config.me.namespace} = {
-    wallpaper.enable = true;
     terminal = {
       editors = {
         neovim = {
@@ -116,6 +115,7 @@
     };
     services = {
       jankyborders.enable = true;
+      wallpaper.enable = true;
     };
   };
 }
