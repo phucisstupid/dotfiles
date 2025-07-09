@@ -3,13 +3,10 @@
   pkgs,
   flake,
   ...
-}: {
+}:
+{
   home = {
-    shell = {
-      enableZshIntegration = true;
-      enableFishIntegration = true;
-      enableNushellIntegration = true;
-    };
+    shell.enableShellIntegration = true;
     shellAliases = {
       "..." = "cd ../..";
       "...." = "cd ../../..";
