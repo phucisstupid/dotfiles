@@ -3,11 +3,18 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.tools.navi.enable = lib.mkEnableOption "navi";
   config = lib.mkIf config.${namespace}.terminal.tools.navi.enable {
-    programs.navi.enable = true;
+    programs.navi = {
+      enable = true;
+      settings = {
+        client.tealdeer = true;
+      };
+    };
   };
 }
