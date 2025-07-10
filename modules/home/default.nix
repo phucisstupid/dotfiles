@@ -2,7 +2,8 @@
   pkgs,
   flake,
   ...
-}: {
+}:
+{
   imports = [
     ./graphical/default.nix
     ./services/default.nix
@@ -19,7 +20,6 @@
       onefetch
       localsend
       glow
-      gum
     ];
   };
   catppuccin = {
@@ -48,7 +48,7 @@
           enable = true;
           sesh.enable = true;
         };
-        zellij.enable = false;
+        zellij.enable = true;
       };
       shells = {
         zsh.enable = false;
@@ -80,7 +80,7 @@
         gh-dash.enable = true;
         jujutsu.enable = false;
         btop.enable = false;
-        navi.enable = false;
+        navi.enable = true;
         fastfetch = {
           jakoolit.enable = false;
           hyde.enable = true;
