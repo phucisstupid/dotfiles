@@ -3,7 +3,8 @@
   pkgs,
   flake,
   ...
-}: {
+}:
+{
   home = {
     shell.enableShellIntegration = true;
     shellAliases = {
@@ -17,12 +18,12 @@
       autocd = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
-      plugins = [
+      plugins = with pkgs; [
         {
-          inherit (pkgs.zsh-fzf-tab) name src;
+          inherit (zsh-fzf-tab) name src;
         }
         {
-          inherit (pkgs.zsh-vi-mode) name src;
+          inherit (zsh-vi-mode) name src;
         }
       ];
     };
@@ -33,9 +34,9 @@
         set fish_greeting
         fish_vi_key_bindings
       '';
-      plugins = [
+      plugins = with pkgs; [
         {
-          inherit (pkgs.fishPlugins.fzf-fish) name src;
+          inherit (fishPlugins.fzf-fish) name src;
         }
       ];
     };
