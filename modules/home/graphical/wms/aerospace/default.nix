@@ -61,74 +61,76 @@ in
             right = 5;
           };
         };
-        mode.main.binding =
-          {
-            "alt-h" = "focus left";
-            "alt-j" = "focus down";
-            "alt-k" = "focus up";
-            "alt-l" = "focus right";
-            "alt-shift-h" = "move left";
-            "alt-shift-j" = "move down";
-            "alt-shift-k" = "move up";
-            "alt-shift-l" = "move right";
-            "alt-tab" = "workspace-back-and-forth";
-            "alt-shift-tab" = "move-workspace-to-monitor --wrap-around next";
-            "alt-f" = "fullscreen";
-            "alt-slash" = "layout tiles horizontal vertical";
-            "alt-comma" = "layout accordion horizontal vertical";
-            "alt-shift-semicolon" = "mode service";
-            "alt-minus" = "resize smart -50";
-            "alt-equal" = "resize smart +50";
-          }
-          // builtins.listToAttrs (
-            builtins.concatMap (n: [
-              {
-                name = "alt-${toString n}";
-                value = "workspace ${toString n}";
-              }
-              {
-                name = "alt-shift-${toString n}";
-                value = "move-node-to-workspace ${toString n}";
-              }
-            ]) (lib.range 1 4)
-          );
-        mode.service.binding = {
-          "esc" = [
-            "reload-config"
-            "mode main"
-          ];
-          "b" = [
-            "balance-sizes"
-            "mode main"
-          ];
-          "r" = [
-            "flatten-workspace-tree"
-            "mode main"
-          ];
-          "f" = [
-            "layout floating tiling"
-            "mode main"
-          ];
-          "backspace" = [
-            "close-all-windows-but-current"
-            "mode main"
-          ];
-          "alt-shift-h" = [
-            "join-with left"
-            "mode main"
-          ];
-          "alt-shift-j" = [
-            "join-with down"
-            "mode main"
-          ];
-          "alt-shift-k" = [
-            "join-with up"
-            "mode main"
-          ];
-          "alt-shift-l" = [
-            "join-with right"
-            "mode main"
-          ];
+        mode = {
+          main.binding =
+            {
+              "alt-h" = "focus left";
+              "alt-j" = "focus down";
+              "alt-k" = "focus up";
+              "alt-l" = "focus right";
+              "alt-shift-h" = "move left";
+              "alt-shift-j" = "move down";
+              "alt-shift-k" = "move up";
+              "alt-shift-l" = "move right";
+              "alt-tab" = "workspace-back-and-forth";
+              "alt-shift-tab" = "move-workspace-to-monitor --wrap-around next";
+              "alt-f" = "fullscreen";
+              "alt-slash" = "layout tiles horizontal vertical";
+              "alt-comma" = "layout accordion horizontal vertical";
+              "alt-shift-semicolon" = "mode service";
+              "alt-minus" = "resize smart -50";
+              "alt-equal" = "resize smart +50";
+            }
+            // builtins.listToAttrs (
+              builtins.concatMap (n: [
+                {
+                  name = "alt-${toString n}";
+                  value = "workspace ${toString n}";
+                }
+                {
+                  name = "alt-shift-${toString n}";
+                  value = "move-node-to-workspace ${toString n}";
+                }
+              ]) (lib.range 1 4)
+            );
+          service.binding = {
+            "esc" = [
+              "reload-config"
+              "mode main"
+            ];
+            "b" = [
+              "balance-sizes"
+              "mode main"
+            ];
+            "r" = [
+              "flatten-workspace-tree"
+              "mode main"
+            ];
+            "f" = [
+              "layout floating tiling"
+              "mode main"
+            ];
+            "backspace" = [
+              "close-all-windows-but-current"
+              "mode main"
+            ];
+            "alt-shift-h" = [
+              "join-with left"
+              "mode main"
+            ];
+            "alt-shift-j" = [
+              "join-with down"
+              "mode main"
+            ];
+            "alt-shift-k" = [
+              "join-with up"
+              "mode main"
+            ];
+            "alt-shift-l" = [
+              "join-with right"
+              "mode main"
+            ];
+          };
         };
         on-window-detected = [
           {
