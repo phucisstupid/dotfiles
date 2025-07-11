@@ -2,8 +2,7 @@
   pkgs,
   flake,
   ...
-}:
-{
+}: {
   imports = [
     ./graphical/default.nix
     ./services/default.nix
