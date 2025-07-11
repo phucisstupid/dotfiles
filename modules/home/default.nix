@@ -2,7 +2,8 @@
   pkgs,
   flake,
   ...
-}: {
+}:
+{
   imports = [
     ./graphical/default.nix
     ./services/default.nix
@@ -80,7 +81,7 @@
         gh-dash.enable = true;
         jujutsu.enable = false;
         btop.enable = false;
-        navi.enable = true;
+        navi.enable = false;
         fastfetch = {
           jakoolit.enable = false;
           hyde.enable = true;
