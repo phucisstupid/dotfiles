@@ -2,7 +2,8 @@
   pkgs,
   flake,
   ...
-}: {
+}:
+{
   imports = [
     ./graphical/default.nix
     ./services/default.nix
@@ -19,6 +20,7 @@
       onefetch
       localsend
       glow
+      brewCasks.stremio
     ];
   };
   catppuccin = {

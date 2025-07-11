@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.graphical.wms.aerospace.enable = lib.mkEnableOption "aerospace";
   config = lib.mkIf config.${namespace}.graphical.wms.aerospace.enable {
     programs.aerospace = {
@@ -32,7 +34,7 @@ in {
           ])
         ];
         on-focus-changed = lib.mkMerge [
-          ["move-mouse window-lazy-center"]
+          [ "move-mouse window-lazy-center" ]
           (lib.optionals config.${namespace}.graphical.bars.simple-bar.enable [
             "exec-and-forget osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\"'"
           ])
@@ -47,11 +49,12 @@ in {
           };
           outer = {
             top = lib.mkDefault (
-              if config.${namespace}.graphical.bars.sketchybar.enable
-              then 45
-              else if config.${namespace}.graphical.bars.simple-bar.enable
-              then 30
-              else 5
+              if config.${namespace}.graphical.bars.sketchybar.enable then
+                45
+              else if config.${namespace}.graphical.bars.simple-bar.enable then
+                30
+              else
+                5
             );
             bottom = 5;
             left = 5;
@@ -73,8 +76,9 @@ in {
             "alt-f" = "fullscreen";
             "alt-slash" = "layout tiles horizontal vertical";
             "alt-comma" = "layout accordion horizontal vertical";
-            "alt-r" = "mode resize";
             "alt-shift-semicolon" = "mode service";
+            "alt-minus" = "resize smart -50";
+            "alt-equal" = "resize smart +50";
           }
           // builtins.listToAttrs (
             builtins.concatMap (n: [
@@ -88,18 +92,13 @@ in {
               }
             ]) (lib.range 1 4)
           );
-        mode.resize.binding = {
-          "esc" = "mode main";
-          "b" = [
-            "balance-sizes"
-            "mode main"
-          ];
-          "minus" = "resize smart -50";
-          "equal" = "resize smart +50";
-        };
         mode.service.binding = {
           "esc" = [
             "reload-config"
+            "mode main"
+          ];
+          "b" = [
+            "balance-sizes"
             "mode main"
           ];
           "r" = [
@@ -112,12 +111,6 @@ in {
           ];
           "backspace" = [
             "close-all-windows-but-current"
-            "mode main"
-          ];
-          "down" = "volume down";
-          "up" = "volume up";
-          "shift-down" = [
-            "volume set 0"
             "mode main"
           ];
           "alt-shift-h" = [
