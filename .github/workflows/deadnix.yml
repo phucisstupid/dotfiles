@@ -5,7 +5,7 @@ on:
   push:
 
 concurrency:
-  group: workflows-${{ github.ref }}
+  group: global-lock
   cancel-in-progress: false
 
 jobs:
