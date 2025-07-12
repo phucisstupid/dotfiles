@@ -6,6 +6,10 @@ on:
       - "**.nix"
   workflow_dispatch:
 
+concurrency:
+  group: workflows-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   format:
     name: Format Nix files

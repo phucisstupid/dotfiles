@@ -6,6 +6,10 @@ on:
   schedule:
     - cron: '0 0 * * *'
 
+concurrency:
+  group: workflows-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   lockfile:
     runs-on: ubuntu-latest
