@@ -4,10 +4,6 @@ on:
   push:
   pull_request:
 
-concurrency:
-  group: workflows-${{ github.ref }}
-  cancel-in-progress: false
-
 jobs:
   trufflehog:
     name: Run TruffleHog
