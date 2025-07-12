@@ -8,9 +8,9 @@
 
 ## Installation
 
-### ‼️ Backup your `~/.config` if you already have existing configurations
+‼️ Backup your `~/.config` if you already have existing configurations
 
-### - Nix (recommend — better setup)
+- Nix (recommend)
 
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/phucisstupid/dotflow/main/nix.sh)"
@@ -21,7 +21,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/phucisstupid/dotflow/mai
 
 ---
 
-### - Stow (faster)
+- Stow (faster)
 
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/phucisstupid/dotflow/main/stow.sh)"
