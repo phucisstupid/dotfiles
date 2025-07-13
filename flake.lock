@@ -3,11 +3,11 @@
     "brew-api": {
       "flake": false,
       "locked": {
-        "lastModified": 1752368883,
-        "narHash": "sha256-MPGZj/mZaOBboQNQLsReC1lXSDeLzuIsLsKSocaNmZs=",
+        "lastModified": 1752419468,
+        "narHash": "sha256-xX//Cgss7HbqBuqliqxlflIh4qQ3O106BiuPi4SL0y8=",
         "owner": "BatteredBunny",
         "repo": "brew-api",
-        "rev": "1862fb042f88d6c9ee791c96d536fc6778bd2660",
+        "rev": "bf6a8980680a553ad64e789b8eb24a8500eba931",
         "type": "github"
       },
       "original": {
@@ -200,11 +200,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1752372185,
-        "narHash": "sha256-k+qoXRmHSzAB3NbH2f8/ziu4et9gihk1xJw1GbPC+ZY=",
+        "lastModified": 1752402455,
+        "narHash": "sha256-mCHfZhQKdTj2JhCFcqfOfa3uKZbwUkPQbd0/zPnhOE8=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "2a8220dd923f5b4a06a8c8abc11d75e17b11e599",
+        "rev": "bf893ad4cbf46610dd1b620c974f824e266cd1df",
         "type": "github"
       },
       "original": {
@@ -343,11 +343,11 @@
         "nvchad-starter": "nvchad-starter"
       },
       "locked": {
-        "lastModified": 1752121961,
-        "narHash": "sha256-rW7MdcWsCjOXJj13EOPhgW6QVPZI/5YK+OlGOF9o/Jw=",
+        "lastModified": 1752380457,
+        "narHash": "sha256-aTeCddGfI8p8OlFOUJbB8QMcxdHHbe704tqWUGap7gQ=",
         "owner": "nix-community",
         "repo": "nix4nvchad",
-        "rev": "57bfd8bdc87c6d5f7cbf4953cb1d234a21e24f5d",
+        "rev": "be89a1c6b99e7341b90f48cfad5784327a97b3d5",
         "type": "github"
       },
       "original": {
@@ -512,11 +512,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1751776600,
-        "narHash": "sha256-75wd/aSvSoXUVd/buwI+Gsqx6LdmBVMbdXw+tCV1u58=",
+        "lastModified": 1752381641,
+        "narHash": "sha256-R2iDZb94RosuCeuIukacZVVXxzWYr4jn/QI/ax15nW8=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "54fad36eeae085f4a6ce4522bc351705b9c0c58a",
+        "rev": "8f9fd947c52aa6adb6bafe72516eccf186708954",
         "type": "github"
       },
       "original": {
@@ -603,11 +603,11 @@
     "wallpaper": {
       "flake": false,
       "locked": {
-        "lastModified": 1750604957,
-        "narHash": "sha256-nI9NMmb8YjY6PzL0++3TyqPMgfDw6DhpKuYc4+tNppo=",
+        "lastModified": 1752395297,
+        "narHash": "sha256-/qG2U9C52VYC1DEoD0Pent0IaNIIW4uoYH0Wl2Qv6UQ=",
         "owner": "orangci",
         "repo": "walls",
-        "rev": "25829110e8910201dc8478695c5414312f9e86a0",
+        "rev": "72e98db8d9be9d2fa0002c17442a0bc045d616b0",
         "type": "github"
       },
       "original": {
