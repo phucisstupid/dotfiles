@@ -2,7 +2,8 @@
   pkgs,
   flake,
   ...
-}: {
+}:
+{
   imports = [
     ./graphical/default.nix
     ./services/default.nix
@@ -16,8 +17,6 @@
       maple-mono.variable
       uutils-coreutils-noprefix
       chatgpt
-      onefetch
-      localsend
       glow
       brewCasks.stremio
     ];
