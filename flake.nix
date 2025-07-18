@@ -17,7 +17,7 @@
 
     # Software
     catppuccin.url = "github:catppuccin/nix";
-    mac-app-util.url = "github:hraban/mac-app-util";
+    mac-app-util.url = "github:hraban/mac-app-util"; # todo: remove when macOS understands .app files
     brew-api = {
       url = "github:BatteredBunny/brew-api";
       flake = false;
@@ -52,7 +52,8 @@
       flake = false;
     };
   };
-  outputs = inputs:
+  outputs =
+    inputs:
     inputs.nixos-unified.lib.mkFlake {
       inherit inputs;
       root = ./.;
