@@ -2,7 +2,8 @@
   pkgs,
   flake,
   ...
-}: {
+}:
+{
   imports = [
     ./graphical/default.nix
     ./services/default.nix
@@ -18,6 +19,7 @@
       chatgpt
       glow
       brewCasks.stremio
+      brewCasks.zen
     ];
   };
   catppuccin = {
@@ -97,7 +99,7 @@
       };
       browsers = {
         chromium.enable = false;
-        brave.enable = true;
+        brave.enable = false;
       };
       bars = {
         sketchybar.enable = false;
