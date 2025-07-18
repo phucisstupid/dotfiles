@@ -3,9 +3,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.graphical.browsers = {
     chromium.enable = lib.mkEnableOption "chromium";
     brave.enable = lib.mkEnableOption "brave";
@@ -23,6 +25,7 @@ in {
           "hlepfoohegkhhmjieoechaddaejaokhf" # Refined GitHub
           "mnjggcdmjocbbbhaepdhchncahnbgone" # SponsorBlock
           "hfjbmagddngcpeloejdejnfgbamkjaeg" # Vimium C
+          "lodbfhdipoipcjmlebjbgmmgekckhpfb" # Harper
         ];
       };
     })
@@ -37,6 +40,7 @@ in {
           "hlepfoohegkhhmjieoechaddaejaokhf" # Refined GitHub
           "mnjggcdmjocbbbhaepdhchncahnbgone" # SponsorBlock
           "hfjbmagddngcpeloejdejnfgbamkjaeg" # Vimium C
+          "lodbfhdipoipcjmlebjbgmmgekckhpfb" # Harper
         ];
       };
     })
