@@ -1,0 +1,42 @@
+name: Format Nix with Alejandra
+
+on:
+  push:
+    paths:
+      - "**.nix"
+  workflow_dispatch:
+
+concurrency:
+  group: global-lock
+  cancel-in-progress: false
+
+jobs:
+  format:
+    name: Format Nix files
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set Git user info
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Install Alejandra
+        run: |
+          nix run nixpkgs#alejandra .
+
+      - name: Commit changes
+        run: |
+          if ! git diff --quiet; then
+            git commit -am "Style: Format nix files with Alejandra"
+            git push
+          fi

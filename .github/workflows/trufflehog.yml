@@ -1,0 +1,19 @@
+name: TruffleHog OSS
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  trufflehog:
+    name: Run TruffleHog
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@main
+
+      - name: Run TruffleHog OSS
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: "."
+          extra_args: "--json --only-verified"
