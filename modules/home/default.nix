@@ -2,8 +2,12 @@
   pkgs,
   flake,
   ...
-}: {
-  imports = [./import.nix];
+}:
+{
+  imports = [
+    ./import.nix
+    ./brew.nix
+  ];
   xdg.enable = true;
   home = {
     stateVersion = "25.05";
@@ -13,8 +17,6 @@
       uutils-coreutils-noprefix
       chatgpt
       glow
-      brewCasks.stremio
-      brewCasks.zen
     ];
   };
   catppuccin = {
