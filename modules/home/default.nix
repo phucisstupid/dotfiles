@@ -2,8 +2,7 @@
   pkgs,
   flake,
   ...
-}:
-{
+}: {
   imports = [
     ./import.nix
     ./brew.nix
