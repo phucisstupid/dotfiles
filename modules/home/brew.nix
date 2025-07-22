@@ -1,6 +1,5 @@
 {
   pkgs,
-  flake,
   ...
 }: {
   home.packages = with pkgs; [
