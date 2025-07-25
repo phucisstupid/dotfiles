@@ -2,11 +2,9 @@
   pkgs,
   flake,
   ...
-}: {
-  imports = [
-    ./import.nix
-    ./brew.nix
-  ];
+}:
+{
+  imports = [ ./import.nix ];
   xdg.enable = true;
   home = {
     stateVersion = "25.05";
