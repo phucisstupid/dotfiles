@@ -50,8 +50,7 @@
       flake = false;
     };
   };
-  outputs =
-    inputs:
+  outputs = inputs:
     inputs.nixos-unified.lib.mkFlake {
       inherit inputs;
       root = ./.;
