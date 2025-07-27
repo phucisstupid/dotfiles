@@ -3,7 +3,6 @@
   inputs = {
     # System
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    systems.url = "github:nix-systems/default";
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixos-unified.url = "github:srid/nixos-unified";
     nix-darwin = {
@@ -31,9 +30,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lazyvim = {
-      url = "github:matadaniel/LazyVim-module";
+      url = "github:phucisstupid/LazyVim-module";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems";
     };
     nix4nvchad = {
       url = "github:nix-community/nix4nvchad";
@@ -52,7 +50,8 @@
       flake = false;
     };
   };
-  outputs = inputs:
+  outputs =
+    inputs:
     inputs.nixos-unified.lib.mkFlake {
       inherit inputs;
       root = ./.;
