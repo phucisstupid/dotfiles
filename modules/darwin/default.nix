@@ -7,7 +7,7 @@
   inherit
     (inputs)
     self
-    mac-app-util # todo: remove when macOS understands .app files
+    mac-app-util # TODO: remove when macOS understands .app files
     catppuccin
     lazyvim
     nix4nvchad
@@ -17,7 +17,7 @@ in {
   imports = [
     self.nixosModules.common
     self.darwinModules.configuration
-    mac-app-util.darwinModules.default # todo: remove when macOS understands .app files
+    mac-app-util.darwinModules.default # TODO: remove when macOS understands .app files
     {
       users.users.${config.me.username}.home = "/Users/${config.me.username}";
       system.primaryUser = config.me.username;
@@ -25,7 +25,7 @@ in {
         users.${config.me.username} = {};
         sharedModules = [
           self.homeModules.default
-          mac-app-util.homeManagerModules.default # todo: remove when macOS understands .app files
+          mac-app-util.homeManagerModules.default # TODO: remove when macOS understands .app files
           catppuccin.homeModules.catppuccin
           lazyvim.homeManagerModules.lazyvim
           nix4nvchad.homeManagerModules.default

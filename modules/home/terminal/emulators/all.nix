@@ -34,7 +34,7 @@ in {
     };
     ghostty = {
       inherit (config.${namespace}.terminal.emulators.ghostty) enable;
-      package = pkgs.ghostty-bin; # todo: remove when ghostty is available in darwin
+      package = pkgs.ghostty-bin; # TODO: remove when ghostty is available in darwin
       settings = {
         font-family = "Maple Mono";
         font-size = 18;

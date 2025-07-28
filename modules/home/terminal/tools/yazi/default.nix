@@ -12,7 +12,7 @@ in {
   config = lib.mkIf config.${namespace}.terminal.tools.yazi.enable {
     programs.yazi = {
       enable = true;
-      shellWrapperName = "y"; # todo: clean when default is fixed
+      shellWrapperName = "y"; # TODO: clean when default is fixed
       plugins =
         {
           inherit

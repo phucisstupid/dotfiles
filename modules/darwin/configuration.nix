@@ -71,7 +71,7 @@
   programs.fish.enable = true;
   environment.shells = [pkgs.fish];
   services.karabiner-elements = {
-    enable = true; # todo: use latest version when nix darwin supports it
+    enable = true; # TODO: use latest version when nix darwin supports it
     package = pkgs.karabiner-elements.overrideAttrs (old: {
       version = "14.13.0";
       src = pkgs.fetchurl {
