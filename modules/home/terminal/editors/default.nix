@@ -4,12 +4,10 @@
   lib,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
   inherit (flake) inputs;
-in
-{
+in {
   options.${namespace}.terminal.editors = {
     neovim = {
       lazyvim.enable = lib.mkEnableOption "neovim.lazyvim";
@@ -18,7 +16,8 @@ in
     helix.enable = lib.mkEnableOption "helix";
   };
   config = lib.mkMerge [
-    (lib.mkIf
+    (
+      lib.mkIf
       (
         config.${namespace}.terminal.editors.neovim.lazyvim.enable
         || config.${namespace}.terminal.editors.neovim.nvchad.enable
@@ -30,7 +29,8 @@ in
         };
       }
     )
-    (lib.mkIf
+    (
+      lib.mkIf
       (
         !(
           config.${namespace}.terminal.editors.neovim.lazyvim.enable
@@ -43,7 +43,7 @@ in
       }
     )
     (lib.mkIf config.${namespace}.terminal.editors.neovim.lazyvim.enable {
-      home.packages = [ pkgs.dwt1-shell-color-scripts ];
+      home.packages = [pkgs.dwt1-shell-color-scripts];
       programs.lazyvim = lib.mkMerge [
         {
           enable = true;
@@ -71,9 +71,8 @@ in
           };
         }
         (lib.mkIf config.${namespace}.terminal.multiplexers.tmux.enable {
-          plugins = [ pkgs.vimPlugins.vim-tmux-navigator ];
-          pluginsFile."vim-tmux-navigator.lua".source =
-            "${inputs.dotfiles-stow}/nvim/lua/plugins/vim-tmux-navigator.lua";
+          plugins = [pkgs.vimPlugins.vim-tmux-navigator];
+          pluginsFile."vim-tmux-navigator.lua".source = "${inputs.dotfiles-stow}/nvim/lua/plugins/vim-tmux-navigator.lua";
         })
       ];
     })
