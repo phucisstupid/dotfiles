@@ -43,7 +43,6 @@ in
       }
     )
     (lib.mkIf config.${namespace}.terminal.editors.neovim.lazyvim.enable {
-      home.packages = [ pkgs.dwt1-shell-color-scripts ];
       programs.lazyvim = lib.mkMerge [
         {
           enable = true;
