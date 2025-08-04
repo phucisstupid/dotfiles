@@ -4,14 +4,16 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
   inherit (flake) inputs;
-in {
+in
+{
   options.${namespace}.graphical.bars.sketchybar.enable = lib.mkEnableOption "sketchybar";
   config = lib.mkIf config.${namespace}.graphical.bars.sketchybar.enable {
     home.packages = with pkgs; [
-      brewCasks.sf-symbols
+      # brewCasks.sf-symbols # TODO: wait till brew-nix support this, manual install for now
       sketchybar-app-font
       nowplaying-cli
       switchaudio-osx
@@ -30,8 +32,10 @@ in {
       ];
     };
     xdg.configFile = {
-      "sketchybar/helpers/app_icons.lua".source = "${pkgs.sketchybar-app-font}/lib/sketchybar-app-font/icon_map.lua";
-      "sketchybar/helpers/icon_map.lua".source = "${pkgs.sketchybar-app-font}/lib/sketchybar-app-font/icon_map.lua";
+      "sketchybar/helpers/app_icons.lua".source =
+        "${pkgs.sketchybar-app-font}/lib/sketchybar-app-font/icon_map.lua";
+      "sketchybar/helpers/icon_map.lua".source =
+        "${pkgs.sketchybar-app-font}/lib/sketchybar-app-font/icon_map.lua";
     };
   };
 }
