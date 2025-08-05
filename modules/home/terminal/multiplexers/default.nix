@@ -4,11 +4,9 @@
   lib,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   options.${namespace}.terminal.multiplexers = {
     tmux.enable = lib.mkEnableOption "tmux";
     tmux.sesh.enable = lib.mkEnableOption "tmux.sesh";
@@ -53,7 +51,7 @@ in
           set -g status-right-length 100
           set -g status-left-length 100
           bind-key -T copy-mode-vi 'v' send-keys -X begin-selection
-          set -g default-command ${lib.getExe pkgs.fish}  
+          set -g default-command ${lib.getExe pkgs.fish}
         '';
       };
     })
