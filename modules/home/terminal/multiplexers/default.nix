@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.multiplexers = {
     tmux.enable = lib.mkEnableOption "tmux";
     tmux.sesh.enable = lib.mkEnableOption "tmux.sesh";
@@ -26,13 +28,12 @@ in {
       '';
       programs.tmux = {
         enable = true;
+        sensibleOnTop = true;
+        escapeTime = 0;
         mouse = true;
-        terminal = "screen-256color";
         shortcut = "a";
         keyMode = "vi";
         baseIndex = 1;
-        escapeTime = 0;
-        clock24 = true;
         disableConfirmationPrompt = true;
         plugins = with pkgs.tmuxPlugins; [
           cpu
@@ -45,16 +46,14 @@ in {
             '';
           }
         ];
+        # TODO: fix https://github.com/nix-community/home-manager/issues/6266
         extraConfig = ''
           set -ga terminal-overrides ",*:Tc"
           set -g status-position top
           set -g status-right-length 100
           set -g status-left-length 100
-          bind-key -T copy-mode-vi 'C-h' select-pane -L
-          bind-key -T copy-mode-vi 'C-j' select-pane -D
-          bind-key -T copy-mode-vi 'C-k' select-pane -U
-          bind-key -T copy-mode-vi 'C-l' select-pane -R
           bind-key -T copy-mode-vi 'v' send-keys -X begin-selection
+          set -g default-command ${lib.getExe pkgs.fish}  
         '';
       };
     })
