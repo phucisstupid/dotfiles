@@ -6,6 +6,7 @@
     ./graphical/apps/obs-studio/default.nix
     ./graphical/apps/qutebrowser/default.nix
     ./graphical/apps/spotify/default.nix
+    ./graphical/apps/zathura/default.nix
     ./graphical/apps/zed-editor/default.nix
 
     ./graphical/bars/simple-bar/default.nix
