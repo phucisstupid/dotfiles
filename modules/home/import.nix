@@ -1,6 +1,5 @@
 {
   imports = [
-    ./brew.nix
     # graphical
     ./graphical/apps/kodi/default.nix
     ./graphical/apps/obs-studio/default.nix
@@ -13,6 +12,7 @@
     ./graphical/bars/sketchybar/default.nix
 
     ./graphical/browsers/chromium/default.nix
+    ./graphical/browsers/zen-browser/default.nix
 
     ./graphical/screenlockers/hyprlock/default.nix
 

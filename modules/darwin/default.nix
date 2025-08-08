@@ -11,6 +11,7 @@ let
     lazyvim
     nix4nvchad
     spicetify-nix
+    zen-browser
     ;
 in
 {
@@ -23,6 +24,7 @@ in
       home-manager = {
         users.${config.me.username} = { };
         sharedModules = [
+          zen-browser.homeModules.beta
           self.homeModules.default
           catppuccin.homeModules.catppuccin
           lazyvim.homeManagerModules.lazyvim

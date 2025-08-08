@@ -9,15 +9,6 @@
   home = {
     stateVersion = "25.05";
     inherit (flake.config.me) username;
-    packages = with pkgs; [
-      maple-mono.variable
-      uutils-coreutils-noprefix
-      chatgpt
-      rustc
-      cargo
-      gemini-cli
-      raycast
-    ];
   };
   catppuccin = {
     enable = true;
@@ -98,6 +89,7 @@
       browsers = {
         chromium.enable = false;
         brave.enable = false;
+        zen-browser.enable = true;
       };
       bars = {
         sketchybar.enable = false;
