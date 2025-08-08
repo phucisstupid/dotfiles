@@ -2,30 +2,28 @@
   flake,
   inputs,
   ...
-}: let
+}:
+let
   inherit (flake) config inputs;
-  inherit
-    (inputs)
+  inherit (inputs)
     self
-    mac-app-util # TODO: remove when macOS understands .app files
     catppuccin
     lazyvim
     nix4nvchad
     spicetify-nix
     ;
-in {
+in
+{
   imports = [
     self.nixosModules.common
     self.darwinModules.configuration
-    mac-app-util.darwinModules.default # TODO: remove when macOS understands .app files
     {
       users.users.${config.me.username}.home = "/Users/${config.me.username}";
       system.primaryUser = config.me.username;
       home-manager = {
-        users.${config.me.username} = {};
+        users.${config.me.username} = { };
         sharedModules = [
           self.homeModules.default
-          mac-app-util.homeManagerModules.default # TODO: remove when macOS understands .app files
           catppuccin.homeModules.catppuccin
           lazyvim.homeManagerModules.lazyvim
           nix4nvchad.homeManagerModules.default

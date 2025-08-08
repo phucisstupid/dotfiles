@@ -16,6 +16,7 @@
       rustc
       cargo
       gemini-cli
+      raycast
     ];
   };
   catppuccin = {
