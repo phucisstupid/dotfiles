@@ -59,11 +59,11 @@
     "dotfiles-stow": {
       "flake": false,
       "locked": {
-        "lastModified": 1754727456,
-        "narHash": "sha256-/IyjCZvrXwBvhRH2eEnr6h9XLnSoaXu10AYL/BY6GUE=",
+        "lastModified": 1754752455,
+        "narHash": "sha256-bFSaVho7Jj2BEQz/gZ2vONTZ+yoFoDU/MFjjdPzcQR8=",
         "owner": "phucisstupid",
         "repo": "dotfiles-stow",
-        "rev": "e235bc3f80c4d2e96955cbfb790f50f87a23dce6",
+        "rev": "48482ce8425d0c6e6ce2aa89e64629b4688cc9a0",
         "type": "github"
       },
       "original": {
