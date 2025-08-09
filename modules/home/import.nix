@@ -1,5 +1,6 @@
 {
   imports = [
+    ./app.nix
     # graphical
     ./graphical/apps/kodi/default.nix
     ./graphical/apps/obs-studio/default.nix
