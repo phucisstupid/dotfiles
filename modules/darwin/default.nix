@@ -2,10 +2,10 @@
   flake,
   inputs,
   ...
-}:
-let
+}: let
   inherit (flake) config inputs;
-  inherit (inputs)
+  inherit
+    (inputs)
     self
     catppuccin
     lazyvim
@@ -13,8 +13,7 @@ let
     spicetify-nix
     zen-browser
     ;
-in
-{
+in {
   imports = [
     self.nixosModules.common
     self.darwinModules.configuration
@@ -22,7 +21,7 @@ in
       users.users.${config.me.username}.home = "/Users/${config.me.username}";
       system.primaryUser = config.me.username;
       home-manager = {
-        users.${config.me.username} = { };
+        users.${config.me.username} = {};
         sharedModules = [
           zen-browser.homeModules.beta
           self.homeModules.default
