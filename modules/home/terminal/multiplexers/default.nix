@@ -28,9 +28,9 @@ in
       '';
       programs.tmux = {
         enable = true;
-        sensibleOnTop = true;
+        # sensibleOnTop = true; # TODO: fix https://github.com/nix-community/home-manager/issues/6266
+        terminal = "screen-256color";
         escapeTime = 0;
-        mouse = true;
         shortcut = "a";
         keyMode = "vi";
         baseIndex = 1;
@@ -42,13 +42,11 @@ in
           fzf-tmux-url
           tmux-floax
         ];
-        # TODO: fix https://github.com/nix-community/home-manager/issues/6266
         extraConfig = ''
           set -g status-position top
           set -g status-right-length 100
           set -g status-left-length 100
           bind-key -T copy-mode-vi 'v' send-keys -X begin-selection
-          set -g default-command ${lib.getExe pkgs.fish}
         '';
       };
     })
