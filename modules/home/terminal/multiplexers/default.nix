@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.multiplexers = {
     tmux.enable = lib.mkEnableOption "tmux";
     tmux.sesh.enable = lib.mkEnableOption "tmux.sesh";
@@ -36,13 +38,9 @@ in {
         plugins = with pkgs.tmuxPlugins; [
           cpu
           vim-tmux-navigator
-          tmux-sessionx
-          {
-            plugin = tmux-floax;
-            extraConfig = ''
-              set -g @floax-bind H
-            '';
-          }
+          tmux-thumbs
+          fzf-tmux-url
+          tmux-floax
         ];
         # TODO: fix https://github.com/nix-community/home-manager/issues/6266
         extraConfig = ''
