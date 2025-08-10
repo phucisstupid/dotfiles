@@ -5,7 +5,7 @@
 - I’ve spent thousands of hours refining these dotfiles — going through countless pages of documentation to find the best possible setup.  
 - If something is already enabled by default, you won’t see it duplicated here — keeping the Nix configuration clean.  
 - Everything is structured so updates are effortless, avoiding reliance on static, hard-coded configs.  
-- These dotfiles contain **no personal preference settings** — they are fully generic and can be used by anyone as a solid starting point.
+- These dotfiles contain **no personal preference settings** — they are fully generic and can be used by anyone as a solid starting point (edit config.nix).
 
 ---
 
