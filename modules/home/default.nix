@@ -85,7 +85,7 @@
       browsers = {
         chromium.enable = false;
         brave.enable = false;
-        zen-browser.enable = true;
+        zen-browser.enable = false;
       };
       bars = {
         sketchybar.enable = true;
