@@ -44,7 +44,6 @@ in
         ];
         # TODO: fix https://github.com/nix-community/home-manager/issues/6266
         extraConfig = ''
-          set -ga terminal-overrides ",*:Tc"
           set -g status-position top
           set -g status-right-length 100
           set -g status-left-length 100
