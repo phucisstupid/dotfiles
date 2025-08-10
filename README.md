@@ -1,4 +1,12 @@
-#
+# Dotfiles
+
+## About This Configuration
+
+- I’ve spent thousands of hours refining these dotfiles — going through countless pages of documentation to find the best possible setup.  
+- If something is already enabled by default, you won’t see it duplicated here — keeping the Nix configuration clean.  
+- Everything is structured so updates are effortless, avoiding reliance on static, hard-coded configs.  
+
+---
 
 ## Screenshots
 
