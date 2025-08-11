@@ -37,6 +37,7 @@ in
         baseIndex = 1;
         disableConfirmationPrompt = true;
         plugins = with pkgs.tmuxPlugins; [
+          yank
           cpu
           weather
           vim-tmux-navigator
@@ -48,7 +49,6 @@ in
           set -g status-position top
           set -g status-right-length 100
           set -g status-left-length 100
-          bind-key -T copy-mode-vi 'v' send-keys -X begin-selection
         '';
       };
     })
