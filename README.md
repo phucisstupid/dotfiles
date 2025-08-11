@@ -1,5 +1,3 @@
-# Dotfiles
-
 ## About This Configuration
 
 - I’ve spent thousands of hours refining these dotfiles - going through countless pages of documentation to find the best possible setup.  
