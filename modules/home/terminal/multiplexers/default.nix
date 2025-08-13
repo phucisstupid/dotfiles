@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.multiplexers = {
     tmux.enable = lib.mkEnableOption "tmux";
     tmux.sesh.enable = lib.mkEnableOption "tmux.sesh";
@@ -44,6 +46,7 @@ in {
           tmux-floax
         ];
         extraConfig = ''
+          set -ga terminal-overrides ",*:Tc"
           set -g status-position top
           set -g status-right-length 100
           set -g status-left-length 100
