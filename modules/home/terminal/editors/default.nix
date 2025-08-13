@@ -61,10 +61,7 @@ in
               markdown.enable = true;
               # rust.enable = true;
             };
-            ai = {
-              copilot.enable = true;
-              copilot-chat.enable = true;
-            };
+            ai.copilot.enable = true;
           };
           pluginsFile = {
             "colorscheme.lua".source = "${inputs.dotfiles-stow}/nvim/lua/plugins/colorscheme.lua";
