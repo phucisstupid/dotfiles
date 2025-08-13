@@ -1,5 +1,6 @@
-{flake, ...}: {
-  imports = [./import.nix];
+{ flake, ... }:
+{
+  imports = [ ./import.nix ];
   xdg.enable = true;
   home = {
     stateVersion = "25.05";
@@ -88,7 +89,7 @@
       };
       bars = {
         sketchybar.enable = false;
-        simple-bar.enable = true;
+        simple-bar.enable = false;
       };
       screenlockers = {
         hyprlock.enable = false;

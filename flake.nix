@@ -16,14 +16,6 @@
 
     # Software
     catppuccin.url = "github:catppuccin/nix";
-    brew-api = {
-      url = "github:BatteredBunny/brew-api";
-      flake = false;
-    };
-    brew-nix = {
-      url = "github:BatteredBunny/brew-nix";
-      inputs.brew-api.follows = "brew-api";
-    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -49,7 +41,8 @@
       flake = false;
     };
   };
-  outputs = inputs:
+  outputs =
+    inputs:
     inputs.nixos-unified.lib.mkFlake {
       inherit inputs;
       root = ./.;
