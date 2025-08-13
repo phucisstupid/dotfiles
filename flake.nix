@@ -13,6 +13,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    systems.url = "github:nix-systems/aarch64-darwin";
 
     # Software
     catppuccin.url = "github:catppuccin/nix";
@@ -21,8 +22,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lazyvim = {
-      url = "github:phucisstupid/LazyVim-module";
+      url = "github:matadaniel/LazyVim-module";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
     };
     nix4nvchad = {
       url = "github:nix-community/nix4nvchad";
