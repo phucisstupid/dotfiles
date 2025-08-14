@@ -35,9 +35,11 @@
     ./terminal/tools/atuin/default.nix
     ./terminal/tools/bat/default.nix
     ./terminal/tools/btop/default.nix
+    ./terminal/tools/bottom/default.nix
     ./terminal/tools/carapace/default.nix
     ./terminal/tools/clock-rs/default.nix
     ./terminal/tools/eza/default.nix
+    ./terminal/tools/lsd/default.nix
     ./terminal/tools/fastfetch/default.nix
     ./terminal/tools/fd-ripgrep/default.nix
     ./terminal/tools/fzf/default.nix

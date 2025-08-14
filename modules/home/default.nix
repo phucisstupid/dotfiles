@@ -1,5 +1,6 @@
-{flake, ...}: {
-  imports = [./import.nix];
+{ flake, ... }:
+{
+  imports = [ ./import.nix ];
   xdg.enable = true;
   home = {
     stateVersion = "25.05";
@@ -53,6 +54,7 @@
         carapace.enable = true;
         clock-rs.enable = false;
         eza.enable = true;
+        lsd.enable = false;
         fd.enable = true;
         fzf.enable = true;
         lazygit.enable = true;
@@ -62,7 +64,8 @@
         nh.enable = true;
         gh-dash.enable = true;
         jujutsu.enable = false;
-        btop.enable = false;
+        btop.enable = true;
+        bottom.enable = false;
         navi.enable = false;
         fastfetch = {
           jakoolit.enable = false;

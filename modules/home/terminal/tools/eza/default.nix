@@ -3,9 +3,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.tools.eza.enable = lib.mkEnableOption "eza";
   config = lib.mkIf config.${namespace}.terminal.tools.eza.enable {
     programs.eza = {
@@ -13,7 +15,7 @@ in {
       git = true;
       icons = "auto";
       colors = "auto";
-      extraOptions = ["--group-directories-first"];
+      extraOptions = [ "--group-directories-first" ];
     };
   };
 }
