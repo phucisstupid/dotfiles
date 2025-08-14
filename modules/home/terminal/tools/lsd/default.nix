@@ -3,11 +3,9 @@
   lib,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   options.${namespace}.terminal.tools.lsd.enable = lib.mkEnableOption "lsd";
   config = lib.mkIf config.${namespace}.terminal.tools.lsd.enable {
     programs.lsd = {
