@@ -81,7 +81,7 @@
         obs-studio.enable = false;
         qutebrowser.enable = false;
         spotify.enable = true;
-        zathura.enable = true;
+        zathura.enable = false;
         zed-editor.enable = false;
       };
       browsers = {
