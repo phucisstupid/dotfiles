@@ -3,9 +3,13 @@
   lib,
   flake,
   ...
-}: {
-  options.${flake.config.me.namespace}.graphical.apps.zathura.enable = lib.mkEnableOption "zathura";
-  config = lib.mkIf config.${flake.config.me.namespace}.graphical.apps.zathura.enable {
+}:
+let
+  namespace = flake.config.me.namespace;
+in
+{
+  options.${namespace}.graphical.apps.zathura.enable = lib.mkEnableOption "zathura";
+  config = lib.mkIf config.${namespace}.graphical.apps.zathura.enable {
     programs.zathura = {
       enable = true;
     };

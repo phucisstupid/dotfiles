@@ -1,11 +1,11 @@
+{ config, flake, ... }:
+let
+  namespace = flake.config.me.namespace;
+in
 {
-  config,
-  flake,
-  ...
-}: {
   programs = {
     starship = {
-      inherit (config.${flake.config.me.namespace}.terminal.shells.prompts.starship) enable;
+      inherit (config.${namespace}.terminal.shells.prompts.starship) enable;
       enableTransience = true;
       settings = {
         character = {
@@ -22,7 +22,7 @@
       };
     };
     oh-my-posh = {
-      inherit (config.${flake.config.me.namespace}.terminal.shells.prompts.oh-my-posh) enable;
+      inherit (config.${namespace}.terminal.shells.prompts.oh-my-posh) enable;
       useTheme = "pure";
     };
   };

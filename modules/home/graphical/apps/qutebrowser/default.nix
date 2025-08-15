@@ -1,11 +1,16 @@
 {
   config,
+  pkgs,
   lib,
   flake,
   ...
-}: {
-  options.${flake.config.me.namespace}.graphical.apps.qutebrowser.enable = lib.mkEnableOption "qutebrowser";
-  config = lib.mkIf config.${flake.config.me.namespace}.graphical.apps.qutebrowser.enable {
+}:
+let
+  namespace = flake.config.me.namespace;
+in
+{
+  options.${namespace}.graphical.apps.qutebrowser.enable = lib.mkEnableOption "qutebrowser";
+  config = lib.mkIf config.${namespace}.graphical.apps.qutebrowser.enable {
     programs.qutebrowser = {
       enable = true;
       settings = {

@@ -3,10 +3,13 @@
   lib,
   flake,
   ...
-}: {
-  options.${flake.config.me.namespace}.graphical.apps.zed-editor.enable =
-    lib.mkEnableOption "zed-editor";
-  config = lib.mkIf config.${flake.config.me.namespace}.graphical.apps.zed-editor.enable {
+}:
+let
+  namespace = flake.config.me.namespace;
+in
+{
+  options.${namespace}.graphical.apps.zed-editor.enable = lib.mkEnableOption "zed-editor";
+  config = lib.mkIf config.${namespace}.graphical.apps.zed-editor.enable {
     programs.zed-editor = {
       enable = true;
       userSettings = {
