@@ -5,7 +5,7 @@
   ...
 }:
 let
-  namespace = flake.config.me.namespace;
+  inherit (flake.config.me) namespace;
 in
 {
   home = {

@@ -6,7 +6,7 @@
   ...
 }:
 let
-  namespace = flake.config.me.namespace;
+  inherit (flake.config.me) namespace;
 in
 {
   options.${namespace}.graphical.apps.obs-studio.enable = lib.mkEnableOption "obs-studio";

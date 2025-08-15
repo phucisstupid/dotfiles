@@ -5,7 +5,7 @@
   ...
 }:
 let
-  namespace = flake.config.me.namespace;
+  inherit (flake.config.me) namespace;
 in
 {
   options.${namespace}.graphical.apps.zed-editor.enable = lib.mkEnableOption "zed-editor";
