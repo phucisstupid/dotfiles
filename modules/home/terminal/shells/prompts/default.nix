@@ -1,8 +1,10 @@
-{ config, flake, ... }:
-let
-  inherit (flake.config.me) namespace;
-in
 {
+  config,
+  flake,
+  ...
+}: let
+  inherit (flake.config.me) namespace;
+in {
   programs = {
     starship = {
       inherit (config.${namespace}.terminal.shells.prompts.starship) enable;

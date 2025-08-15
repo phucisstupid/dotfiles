@@ -3,11 +3,9 @@
   pkgs,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   home = {
     shell.enableShellIntegration = true;
     shellAliases = {
@@ -22,8 +20,8 @@ in
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       plugins = with pkgs; [
-        { inherit (zsh-fzf-tab) name src; }
-        { inherit (zsh-vi-mode) name src; }
+        {inherit (zsh-fzf-tab) name src;}
+        {inherit (zsh-vi-mode) name src;}
       ];
     };
     fish = {
@@ -34,7 +32,7 @@ in
         fish_vi_key_bindings
       '';
       plugins = with pkgs; [
-        { inherit (fishPlugins.fzf-fish) name src; }
+        {inherit (fishPlugins.fzf-fish) name src;}
       ];
     };
     nushell = {
