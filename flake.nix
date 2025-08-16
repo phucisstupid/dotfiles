@@ -1,5 +1,10 @@
 {
-  description = "Smartest nix config";
+  outputs =
+    inputs:
+    inputs.nixos-unified.lib.mkFlake {
+      inherit inputs;
+      root = ./.;
+    };
   inputs = {
     # System
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -13,7 +18,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    systems.url = "github:nix-systems/aarch64-darwin";
+    systems.url = "github:nix-systems/default";
 
     # Software
     catppuccin.url = "github:catppuccin/nix";
@@ -43,9 +48,4 @@
       flake = false;
     };
   };
-  outputs = inputs:
-    inputs.nixos-unified.lib.mkFlake {
-      inherit inputs;
-      root = ./.;
-    };
 }
