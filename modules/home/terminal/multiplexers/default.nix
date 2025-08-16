@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.multiplexers = {
     tmux.enable = lib.mkEnableOption "tmux";
     tmux.sesh.enable = lib.mkEnableOption "tmux.sesh";
@@ -39,7 +41,12 @@ in {
           cpu
           weather
           vim-tmux-navigator
-          tmux-thumbs
+          {
+            plugin = fingers;
+            extraConfig = ''
+              set -g @fingers-key space
+            '';
+          }
           fzf-tmux-url
           tmux-floax
         ];
