@@ -1,9 +1,9 @@
-## About This Configuration
+## The philosophy my dotfiles
 
-- I’ve spent thousands of hours refining these dotfiles - going through countless pages of documentation to find the best possible setup.  
-- If something is already enabled by default, you won’t see it duplicated here — keeping the Nix configuration clean.  
-- Everything is structured so updates are effortless, avoiding reliance on static, hard-coded configs.  
-- These dotfiles contain **no personal preference settings** (edit [config.nix](./config.nix)) — fully generic and can be used by anyone as a solid starting point.
+- The result of thousands of hours spent simplifying configs, removing clutter, and digging through documentation
+- Clean and declarative, **no duplicated defaults**.
+- Fully structured for effortless updates, no hard-coded configs.
+- No personal preferences included — customize in [config.nix](./config.nix).
 
 ---
 
@@ -20,4 +20,5 @@
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/phucisstupid/dotflow/main/nix.sh)"
 ```
-> More details: check out [nixos-unified](https://nixos-unified.org/) and [nixos-unified-template](https://github.com/juspay/nixos-unified-template)
+
+> see my [nix.sh](https://github.com/phucisstupid/dotflow/blob/main/nix.sh)
