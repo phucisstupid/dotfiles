@@ -1,21 +1,20 @@
-# Configuration common to all Linux systems
-{flake, ...}: let
+{ flake, ... }:
+let
   inherit (flake) config inputs;
-  inherit
-    (inputs)
+  inherit (inputs)
     self
     catppuccin
     lazyvim
     nix4nvchad
     spicetify-nix
     ;
-in {
+in
+{
   imports = [
-    self.nixosModules.common
     {
       users.users.${config.me.username}.isNormalUser = true;
       home-manager = {
-        users.${config.me.username} = {};
+        users.${config.me.username} = { };
         sharedModules = [
           self.homeModules.default
           catppuccin.homeModules.catppuccin
