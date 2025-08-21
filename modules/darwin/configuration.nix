@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   # essential macOs settings
   system.defaults = {
     CustomUserPreferences."com.apple.AdLib".allowApplePersonalizedAdvertising = false;
@@ -70,7 +69,7 @@
   };
   # default shell
   programs.fish.enable = true;
-  environment.shells = [ pkgs.fish ];
+  environment.shells = [pkgs.fish];
   services.karabiner-elements = {
     enable = true;
     # TODO: use latest version when nix darwin supports it
