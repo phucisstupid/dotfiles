@@ -3,9 +3,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.tools.lazygit.enable = lib.mkEnableOption "lazygit";
   config = lib.mkIf config.${namespace}.terminal.tools.lazygit.enable {
     home.shellAliases.lg = "lazygit";
@@ -21,7 +23,7 @@ in {
         git = {
           paging = {
             colorArg = "always";
-            pager = "delta --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
+            pager = "delta --paging=never --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
           };
         };
       };

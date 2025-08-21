@@ -3,9 +3,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.tools.git = {
     enable = lib.mkEnableOption "git";
     delta.enable = lib.mkEnableOption "git.delta";
@@ -21,7 +23,13 @@ in {
       };
     })
     (lib.mkIf config.${namespace}.terminal.tools.git.delta.enable {
-      delta.enable = true;
+      delta = {
+        enable = true;
+        options = {
+          line-numbers = true;
+          hyperlinks = true;
+        };
+      };
     })
   ];
 }
