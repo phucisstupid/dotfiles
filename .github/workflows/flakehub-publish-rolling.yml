@@ -17,4 +17,4 @@ jobs:
           name: "phucisstupid/dotfiles"
           rolling: true
           visibility: "public"
-          include-output-paths: false
+          include-output-paths: true
