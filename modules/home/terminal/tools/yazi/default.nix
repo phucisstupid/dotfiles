@@ -33,7 +33,7 @@ in {
         // lib.optionalAttrs config.${namespace}.terminal.tools.lazygit.enable {
           inherit (pkgs.yaziPlugins) lazygit;
         };
-      initLua = builtins.readFile "${inputs.dotfiles-stow}/yazi/init.lua";
+      initLua = builtins.readFile "${inputs.dotfiles-stow}/.config/yazi/init.lua";
       settings = {
         mgr.show_hidden = true;
         preview = {

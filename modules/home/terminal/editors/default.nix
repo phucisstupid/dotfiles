@@ -64,14 +64,14 @@ in {
             ai.copilot.enable = true;
           };
           pluginsFile = {
-            "colorscheme.lua".source = "${inputs.dotfiles-stow}/nvim/lua/plugins/colorscheme.lua";
-            "editor.lua".source = "${inputs.dotfiles-stow}/nvim/lua/plugins/editor.lua";
-            "ui.lua".source = "${inputs.dotfiles-stow}/nvim/lua/plugins/ui.lua";
+            "colorscheme.lua".source = "${inputs.dotfiles-stow}/.config/nvim/lua/plugins/colorscheme.lua";
+            "editor.lua".source = "${inputs.dotfiles-stow}/.config/nvim/lua/plugins/editor.lua";
+            "ui.lua".source = "${inputs.dotfiles-stow}/.config/nvim/lua/plugins/ui.lua";
           };
         }
         (lib.mkIf config.${namespace}.terminal.multiplexers.tmux.enable {
           plugins = [pkgs.vimPlugins.vim-tmux-navigator];
-          pluginsFile."vim-tmux-navigator.lua".source = "${inputs.dotfiles-stow}/nvim/lua/plugins/vim-tmux-navigator.lua";
+          pluginsFile."vim-tmux-navigator.lua".source = "${inputs.dotfiles-stow}/.config/nvim/lua/plugins/vim-tmux-navigator.lua";
         })
       ];
     })

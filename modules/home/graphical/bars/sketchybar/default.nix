@@ -20,7 +20,7 @@ in {
       enable = true;
       configType = "lua";
       config = {
-        source = "${inputs.dotfiles-stow}/sketchybar";
+        source = "${inputs.dotfiles-stow}/.config/sketchybar";
         recursive = true;
       };
       extraPackages = with pkgs; [
