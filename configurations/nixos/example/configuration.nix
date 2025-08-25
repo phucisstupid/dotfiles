@@ -7,7 +7,10 @@
     fsType = "btrfs";
   };
 
-  nixpkgs.hostPlatform = "x86_64-linux";
+  nixpkgs = {
+    hostPlatform = "x86_64-linux";
+    config.allowUnfree = true;
+  };
   networking.hostName = "example";
 
   # Used for backwards compatibility, please read the changelog before changing.
