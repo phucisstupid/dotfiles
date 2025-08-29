@@ -1,5 +1,6 @@
-{flake, ...}: {
-  imports = [./import.nix];
+{ flake, ... }:
+{
+  imports = [ ./import.nix ];
   xdg.enable = true;
   home = {
     stateVersion = "25.05";
@@ -81,7 +82,7 @@
         qutebrowser.enable = false;
         spotify.enable = true;
         zathura.enable = false;
-        zed-editor.enable = false;
+        zed-editor.enable = true;
       };
       browsers = {
         chromium.enable = false;
