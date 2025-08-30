@@ -11,10 +11,8 @@ in {
     programs.nvf = {
       enable = true;
       settings.vim = {
-        enableLuaLoader = true;
         viAlias = true;
         clipboard.enable = true;
-        options.tabstop = 2;
         lsp = {
           formatOnSave = true;
           enable = true;
@@ -27,7 +25,7 @@ in {
         };
         utility = {
           snacks-nvim.enable = true;
-          # yanky-nvim.enable = true;
+          yanky-nvim.enable = true;
           smart-splits.enable = true;
           oil-nvim.enable = true;
           motion = {

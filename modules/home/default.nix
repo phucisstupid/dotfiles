@@ -16,9 +16,9 @@
     terminal = {
       editors = {
         neovim = {
-          lazyvim.enable = false;
+          lazyvim.enable = true;
           nvchad.enable = false;
-          nvf.enable = true;
+          nvf.enable = false;
         };
         helix.enable = false;
       };
