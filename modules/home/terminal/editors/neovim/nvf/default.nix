@@ -3,13 +3,16 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.editors.neovim.nvf.enable = lib.mkEnableOption "neovim.nvf";
   config = lib.mkIf config.${namespace}.terminal.editors.neovim.nvf.enable {
     programs.nvf = {
       enable = true;
+      defaultEditor = true;
       settings.vim = {
         viAlias = true;
         clipboard.enable = true;
