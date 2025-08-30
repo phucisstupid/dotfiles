@@ -1,10 +1,7 @@
-{
-  flake,
-  ...
-}:
-let
+{flake, ...}: let
   inherit (flake) config inputs;
-  inherit (inputs)
+  inherit
+    (inputs)
     self
     catppuccin
     lazyvim
@@ -12,15 +9,14 @@ let
     nix4nvchad
     spicetify-nix
     ;
-in
-{
+in {
   imports = [
     self.darwinModules.configuration
     {
       users.users.${config.me.username}.home = "/Users/${config.me.username}";
       system.primaryUser = config.me.username;
       home-manager = {
-        users.${config.me.username} = { };
+        users.${config.me.username} = {};
         sharedModules = [
           self.homeModules.default
           catppuccin.homeModules.catppuccin
