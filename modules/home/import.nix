@@ -24,7 +24,11 @@
     ./services/wallpaper/default.nix
 
     # terminal
-    ./terminal/editors/default.nix
+    ./terminal/editors/helix/default.nix
+    ./terminal/editors/neovim/lazyvim/default.nix
+    ./terminal/editors/neovim/nvchad/default.nix
+    ./terminal/editors/neovim/nvf/default.nix
+
     ./terminal/emulators/default.nix
     ./terminal/emulators/all.nix
     ./terminal/multiplexers/default.nix

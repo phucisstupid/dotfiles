@@ -1,5 +1,6 @@
 {
-  outputs = inputs:
+  outputs =
+    inputs:
     inputs.nixos-unified.lib.mkFlake {
       inherit inputs;
       root = ./.;
@@ -23,6 +24,10 @@
     catppuccin.url = "github:catppuccin/nix";
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nvf = {
+      url = "github:NotAShelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lazyvim = {
