@@ -1,5 +1,6 @@
-{flake, ...}: {
-  imports = [./import.nix];
+{ flake, ... }:
+{
+  imports = [ ./import.nix ];
   xdg.enable = true;
   home = {
     stateVersion = "25.05";
@@ -62,7 +63,7 @@
         tealdeer.enable = true;
         nh.enable = true;
         gh-dash.enable = true;
-        jujutsu.enable = false;
+        jujutsu.enable = true;
         btop.enable = true;
         bottom.enable = false;
         navi.enable = false;
