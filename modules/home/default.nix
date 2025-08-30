@@ -1,6 +1,5 @@
-{ flake, ... }:
-{
-  imports = [ ./import.nix ];
+{flake, ...}: {
+  imports = [./import.nix];
   xdg.enable = true;
   home = {
     stateVersion = "25.05";
@@ -17,8 +16,9 @@
     terminal = {
       editors = {
         neovim = {
-          lazyvim.enable = true;
+          lazyvim.enable = false;
           nvchad.enable = false;
+          nvf.enable = true;
         };
         helix.enable = false;
       };
@@ -82,7 +82,7 @@
         qutebrowser.enable = false;
         spotify.enable = true;
         zathura.enable = false;
-        zed-editor.enable = true;
+        zed-editor.enable = false;
       };
       browsers = {
         chromium.enable = false;
