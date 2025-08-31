@@ -56,6 +56,7 @@
     ./terminal/tools/pay-respects/default.nix
     ./terminal/tools/tealdeer/default.nix
     ./terminal/tools/yazi/default.nix
+    ./terminal/tools/spotify-player/default.nix
     ./terminal/tools/zoxide/default.nix
   ];
 }

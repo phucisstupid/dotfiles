@@ -1,5 +1,6 @@
-{flake, ...}: {
-  imports = [./import.nix];
+{ flake, ... }:
+{
+  imports = [ ./import.nix ];
   xdg.enable = true;
   home = {
     stateVersion = "25.05";
@@ -69,10 +70,11 @@
         navi.enable = false;
         fastfetch = {
           jakoolit.enable = false;
-          hyde.enable = true;
+          hyde.enable = false;
           ml4w.enable = false;
         };
         zoxide.enable = true;
+        spotify-player.enable = false;
       };
     };
     graphical = {
