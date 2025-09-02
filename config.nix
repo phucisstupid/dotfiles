@@ -5,6 +5,6 @@
     username = "wow";
     name = "phucisstupid";
     email = "125681538+phucisstupid@users.noreply.github.com";
-    namespace = "phuc";
+    namespace = "hello";
   };
 }

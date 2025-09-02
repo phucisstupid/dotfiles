@@ -1,6 +1,16 @@
 { flake, ... }:
+let
+  inherit (flake) inputs;
+in
 {
-  imports = [ ./import.nix ];
+  imports = [
+    (inputs.import-tree [
+      ./graphical
+      ./terminal
+      ./services
+      ./apps.nix
+    ])
+  ];
   xdg.enable = true;
   home = {
     stateVersion = "25.05";
