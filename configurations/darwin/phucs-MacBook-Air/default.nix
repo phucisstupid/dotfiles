@@ -1,10 +1,10 @@
-{flake, ...}: let
+{ flake, ... }:
+let
   inherit (flake) inputs;
-in {
+in
+{
   imports = [
-    (inputs.import-tree [
-      ../../../modules/darwin
-    ])
+    (inputs.import-tree [ ../../../modules/darwin ])
   ];
   nixpkgs = {
     hostPlatform = "aarch64-darwin";
