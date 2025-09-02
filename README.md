@@ -18,7 +18,7 @@
 ‼️ Backup your `~/.config` if you already have existing configurations
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/phucisstupid/dotflow/main/nix.sh)"
+curl -fsSL https://raw.githubusercontent.com/phucisstupid/dotflow/main/nix.sh | sh -s
 ```
 
 > see my [nix.sh](https://github.com/phucisstupid/dotflow/blob/main/nix.sh)
