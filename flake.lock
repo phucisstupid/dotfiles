@@ -21,11 +21,11 @@
     "dotfiles-stow": {
       "flake": false,
       "locked": {
-        "lastModified": 1756828457,
-        "narHash": "sha256-RR71VoPltrriD9PhZX+3A11YMoWFrpD3HyKEmTJWRWo=",
+        "lastModified": 1756901790,
+        "narHash": "sha256-Z49QR/HVeOxoc7S/gM2iuM/NwhqgRymsJC/y8og9UbU=",
         "owner": "phucisstupid",
         "repo": "dotfiles-stow",
-        "rev": "0bdf33c054fc4ba50c50fc3a81c6531e9f5b6fc2",
+        "rev": "082a409c0d4a89eab149a574b25fe8ff7722ed9c",
         "type": "github"
       },
       "original": {
@@ -114,11 +114,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1756842514,
-        "narHash": "sha256-XbtRMewPGJwTNhBC4pnBu3w/xT1XejvB0HfohC2Kga8=",
+        "lastModified": 1756903364,
+        "narHash": "sha256-vZh/YH2D7oDFek10r0TbGn3qJrqGv69sSP+oF8PFDqQ=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "30fc1b532645a21e157b6e33e3f8b4c154f86382",
+        "rev": "6159629d05a0e92bb7fb7211e74106ae1d552401",
         "type": "github"
       },
       "original": {
@@ -312,11 +312,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1756820835,
-        "narHash": "sha256-JIOeGuhbPAe3ySjCCJwCLn3vClwHfYOlR+lxSX33NAc=",
+        "lastModified": 1756870502,
+        "narHash": "sha256-0diPvHFwQbKvKkz0bmEVEoFIzL4rdD80CaApHaj6hzs=",
         "owner": "NotAShelf",
         "repo": "nvf",
-        "rev": "7d1061210a43e16ffa3657a0e9b88d226ed6efe1",
+        "rev": "7b009c945d2f0213409aa0bae07c79d28b92d625",
         "type": "github"
       },
       "original": {
