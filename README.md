@@ -20,7 +20,7 @@
 
 If you don’t want to do all of installation manually, use my script:
 
-‼️ Backup your `~/.config` if you already have existing configurations
+‼️ Backup your `~/dotfiles` if you already have existing configurations
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/phucisstupid/dotflow/main/nix.sh | sh -s
