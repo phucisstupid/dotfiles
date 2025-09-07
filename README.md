@@ -3,7 +3,7 @@
 - The result of thousands of hours spent simplifying configs, removing clutter, and digging through documentation
 - Clean and declarative, **no duplicated defaults**.
 - Fully structured for effortless updates, no hard-coded configs.
-- No personal preferences included — customize in [config.nix](./config.nix).
+- No personal preferences included - A set options that should be acceptable to everyone.
 
 ---
 
