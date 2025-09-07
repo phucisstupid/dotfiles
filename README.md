@@ -26,7 +26,8 @@ git clone --depth 1 https://github.com/phucisstupid/dotfiles
 
 4. Use command `hostname -s` to find your host name
 5. Create a host at [configurations/`<system>`/`<hostname>`](./configurations)
-6. Go to dotfiles path and run:
+6. Update [config.nix](./config.nix)
+7. Go to dotfiles path and run:
 
 ```bash
 nix run
