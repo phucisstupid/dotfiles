@@ -18,7 +18,7 @@
 
 ### Option 1: One-liner script
 
-If you don’t want to do all of that manually, use my installation script:
+If you don’t want to do all of installation manually, use my script:
 
 ‼️ Backup your `~/.config` if you already have existing configurations
 
