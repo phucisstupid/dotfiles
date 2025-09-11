@@ -1,4 +1,3 @@
-
 ## The philosophy my dotfiles
 
 - The result of thousands of hours spent simplifying configs, removing clutter, and digging through documentation
