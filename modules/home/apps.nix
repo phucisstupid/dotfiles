@@ -1,8 +1,8 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
-    maple-mono.variable
+    maple-mono.opentype
     uutils-coreutils-noprefix
-    # crush
     raycast
   ];
 }
