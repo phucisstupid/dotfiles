@@ -1,5 +1,4 @@
 # Top-level configuration for everything in this repo.
-#
 # Values are set in 'config.nix' in repo root.
 { config, lib, ... }:
 {
