@@ -24,6 +24,5 @@
         type = lib.types.str;
       };
     };
-    terminal.enable = lib.mkEnableOption "Enable terminal configuration";
   };
 }
