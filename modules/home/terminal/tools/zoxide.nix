@@ -3,14 +3,12 @@
   lib,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   options.${namespace}.terminal.tools.zoxide.enable = lib.mkEnableOption "zoxide";
   config.programs.zoxide = {
     inherit (config.${namespace}.terminal.tools.zoxide) enable;
-    options = [ "--cmd=cd" ];
+    options = ["--cmd=cd"];
   };
 }

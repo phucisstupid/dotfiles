@@ -3,11 +3,9 @@
   lib,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   options.${namespace}.terminal.editors.neovim.nvf.enable = lib.mkEnableOption "nvf";
   config.programs.nvf = {
     inherit (config.${namespace}.terminal.editors.neovim.nvf) enable;

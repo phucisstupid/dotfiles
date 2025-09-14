@@ -4,11 +4,9 @@
   flake,
   lib,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   options.${namespace}.terminal.shells = {
     zsh.enable = lib.mkEnableOption "zsh";
     fish.enable = lib.mkEnableOption "fish";
@@ -29,8 +27,8 @@ in
         autosuggestion.enable = true;
         syntaxHighlighting.enable = true;
         plugins = with pkgs; [
-          { inherit (zsh-fzf-tab) name src; }
-          { inherit (zsh-vi-mode) name src; }
+          {inherit (zsh-fzf-tab) name src;}
+          {inherit (zsh-vi-mode) name src;}
         ];
       };
       fish = {
@@ -41,7 +39,7 @@ in
           fish_vi_key_bindings
         '';
         plugins = with pkgs; [
-          { inherit (fishPlugins.fzf-fish) name src; }
+          {inherit (fishPlugins.fzf-fish) name src;}
         ];
       };
       nushell = {

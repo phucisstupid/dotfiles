@@ -3,17 +3,15 @@
   lib,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   options.${namespace}.terminal.editors.helix.enable = lib.mkEnableOption "helix";
   config.programs.helix = {
     inherit (config.${namespace}.terminal.editors.helix) enable;
     defaultEditor = true;
     languages.language = [
-      { name = "nix"; }
+      {name = "nix";}
     ];
     settings.editor = {
       line-number = "relative";
