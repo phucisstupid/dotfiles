@@ -1,0 +1,31 @@
+{
+  config,
+  lib,
+  flake,
+  ...
+}:
+let
+  inherit (flake.config.me) namespace;
+in
+{
+  options.${namespace}.terminal.tools.git = {
+    enable = lib.mkEnableOption "git";
+    delta.enable = lib.mkEnableOption "git.delta";
+  };
+  config.programs.git = {
+    inherit (config.${namespace}.terminal.tools.git) enable;
+    userName = flake.config.me.name;
+    userEmail = flake.config.me.email;
+    extraConfig = {
+      init.defaultBranch = "main";
+      credential.helper = "osxkeychain";
+    };
+    delta = {
+      inherit (config.${namespace}.terminal.tools.git.delta) enable;
+      options = {
+        line-numbers = true;
+        hyperlinks = true;
+      };
+    };
+  };
+}

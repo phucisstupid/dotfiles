@@ -1,6 +1,8 @@
-{flake, ...}: let
+{ flake, ... }:
+let
   inherit (flake) inputs;
-in {
+in
+{
   imports = [
     (inputs.import-tree [
       ./graphical
@@ -57,6 +59,7 @@ in {
           enable = true;
           delta.enable = true;
         };
+        broot.enable = false;
         yazi.enable = true;
         atuin.enable = true;
         bat.enable = true;
