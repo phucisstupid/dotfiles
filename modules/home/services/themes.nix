@@ -10,7 +10,7 @@ in
 {
   options.${namespace}.services.themes.catppuccin.enable = lib.mkEnableOption "catppuccin";
   config.catppuccin = {
-    enable = config.${namespace}.services.themes.catppuccin.enable;
+    inherit (config.${namespace}.services.themes.catppuccin) enable;
     flavor = "mocha";
     accent = "mauve";
     tmux.extraConfig = ''
