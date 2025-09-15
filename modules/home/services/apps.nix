@@ -14,9 +14,10 @@ in
     linux-apps.enable = lib.mkEnableOption "Enable extra applications on Linux";
   };
   config = lib.mkMerge [
+    # Default apps
     {
       home.packages = with pkgs; [
-        maple-mono.opentype # default font
+        maple-mono.variable
         uutils-coreutils-noprefix
       ];
     }
