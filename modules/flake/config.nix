@@ -1,11 +1,7 @@
 # Top-level configuration for everything in this repo.
 # Values are set in 'config.nix' in repo root.
-{
-  lib,
-  ...
-}:
-{
-  imports = [ ../../config.nix ];
+{lib, ...}: {
+  imports = [../../config.nix];
   options = {
     me = {
       username = lib.mkOption {
