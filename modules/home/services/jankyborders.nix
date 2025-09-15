@@ -3,17 +3,17 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
-  options."${namespace}".services.jankyborders.enable = lib.mkEnableOption "jankyborders";
-  config = lib.mkIf config."${namespace}".services.jankyborders.enable {
-    services.jankyborders = {
-      enable = true;
-      settings = {
-        order = "below";
-        active_color = "0xffcba6f7";
-      };
+in
+{
+  options.${namespace}.services.jankyborders.enable = lib.mkEnableOption "jankyborders";
+  config.services.jankyborders = {
+    inherit (config.${namespace}.services.jankyborders) enable;
+    settings = {
+      order = "below";
+      active_color = "0xffcba6f7";
     };
   };
 }

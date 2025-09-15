@@ -47,7 +47,7 @@
       url = "github:phucisstupid/dotfiles-stow";
       flake = false;
     };
-    wallpaper = {
+    wallpapers = {
       url = "github:orangci/walls";
       flake = false;
     };

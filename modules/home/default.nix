@@ -1,24 +1,20 @@
-{flake, ...}: let
+{ flake, pkgs, ... }:
+let
   inherit (flake) inputs;
-in {
-  imports = [
-    (inputs.import-tree [
-      ./graphical
-      ./terminal
-      ./services
-      ./apps.nix
-    ])
-  ];
+in
+{
   xdg.enable = true;
   home = {
     stateVersion = "25.05";
     inherit (flake.config.me) username;
   };
-  catppuccin = {
-    enable = true;
-    flavor = "mocha";
-    accent = "mauve";
-  };
+  imports = [
+    (inputs.import-tree [
+      ./graphical
+      ./terminal
+      ./services
+    ])
+  ];
 
   # config
   ${flake.config.me.namespace} = {
@@ -113,7 +109,10 @@ in {
     };
     services = {
       jankyborders.enable = true;
-      wallpaper.enable = true;
+      wallpapers.enable = true;
+      themes.catppuccin.enable = true;
+      darwin-apps.enable = true;
+      linux-apps.enable = false;
     };
   };
 }

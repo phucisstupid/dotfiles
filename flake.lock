@@ -341,7 +341,7 @@
         "simple-bar": "simple-bar",
         "spicetify-nix": "spicetify-nix",
         "systems": "systems_4",
-        "wallpaper": "wallpaper"
+        "wallpapers": "wallpapers"
       }
     },
     "simple-bar": {
@@ -441,7 +441,7 @@
         "type": "github"
       }
     },
-    "wallpaper": {
+    "wallpapers": {
       "flake": false,
       "locked": {
         "lastModified": 1753332607,
