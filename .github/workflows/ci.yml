@@ -1,0 +1,75 @@
+name: Nix CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *' # for flake.lock updates
+
+jobs:
+  alejandra:
+    name: Format with Alejandra
+    runs-on: ubuntu-latest
+    steps:
+      - &checkout
+        uses: actions/checkout@v4
+      - &nix-installer
+        uses: DeterminateSystems/nix-installer-action@v14
+      - run: nix run nixpkgs#alejandra .
+      - run: |
+          if ! git diff --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git commit -am "Style: Format nix files with Alejandra"
+            git push
+          fi
+
+  cache:
+    name: Nix Flake Check
+    runs-on: ubuntu-latest
+    needs: alejandra
+    steps:
+      - *checkout
+      - *nix-installer
+      - uses: DeterminateSystems/magic-nix-cache-action@v4
+      - run: nix flake check
+
+  deadnix:
+    name: Dead Code Analysis
+    runs-on: ubuntu-latest
+    needs: cache
+    steps:
+      - *checkout
+      - *nix-installer
+      - uses: phucisstupid/deadnix-action@v1
+
+  statix:
+    name: Statix Linter
+    runs-on: ubuntu-latest
+    needs: deadnix
+    steps:
+      - *checkout
+      - *nix-installer
+      - uses: phucisstupid/statix-action@v1
+
+  update-flake-lock:
+    name: Update Flake Lock
+    runs-on: ubuntu-latest
+    needs: statix
+    concurrency:
+      group: global-lock
+      cancel-in-progress: false
+    steps:
+      - *checkout
+      - *nix-installer
+      - run: nix flake update
+      - run: |
+          if ! git diff --quiet flake.lock; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add flake.lock
+            git commit -m "Chore: Auto update flake.lock"
+            git push
+          fi
+
