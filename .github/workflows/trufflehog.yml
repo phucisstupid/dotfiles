@@ -1,3 +1,5 @@
+name: Truffle Hog
+
 on:
   push:
     branches:
