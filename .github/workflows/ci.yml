@@ -15,7 +15,7 @@ jobs:
       - &checkout
         uses: actions/checkout@v4
       - &nix-installer
-        uses: DeterminateSystems/nix-installer-action@v14
+        uses: DeterminateSystems/nix-installer-action@v20
       - run: nix run nixpkgs#alejandra .
       - run: |
           if ! git diff --quiet; then
