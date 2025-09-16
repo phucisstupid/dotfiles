@@ -51,7 +51,7 @@ jobs:
     steps:
       - *checkout
       - *nix-installer
-      - uses: phucisstupid/statix-action@v1
+      - uses: phucisstupid/statix-action@v2
 
   update-flake-lock:
     name: Update Flake Lock
