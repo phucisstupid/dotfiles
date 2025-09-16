@@ -32,7 +32,7 @@ jobs:
     steps:
       - *checkout
       - *nix-installer
-      - uses: DeterminateSystems/magic-nix-cache-action@v4
+      - uses: DeterminateSystems/magic-nix-cache-action@v13
       - run: nix flake check
 
   deadnix:
