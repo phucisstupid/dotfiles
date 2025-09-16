@@ -5,71 +5,36 @@ on:
   pull_request:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *' # for flake.lock updates
+    - cron: '0 0 * * *' # daily flake.lock update
 
 jobs:
-  alejandra:
-    name: Format with Alejandra
+  nix-ci:
     runs-on: ubuntu-latest
     steps:
-      - &checkout
-        uses: actions/checkout@v5
-      - &nix-installer
-        uses: DeterminateSystems/nix-installer-action@v20
+      - uses: actions/checkout@v5
+      - uses: DeterminateSystems/nix-installer-action@v20
+      - uses: DeterminateSystems/magic-nix-cache-action@v13
+
+      # Format with Alejandra
       - run: nix run nixpkgs#alejandra .
+
+      # Update flake.lock
+      - run: nix flake update
+
+      # Commit + push if anything changed
       - run: |
           if ! git diff --quiet; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git commit -am "Style: Format nix files with Alejandra"
+            git commit -am "Chore: Format nix files + update flake.lock"
             git push
           fi
 
-  cache:
-    name: Nix Flake Check
-    runs-on: ubuntu-latest
-    needs: alejandra
-    steps:
-      - *checkout
-      - *nix-installer
-      - uses: DeterminateSystems/magic-nix-cache-action@v13
+      # Run flake check
       - run: nix flake check
 
-  deadnix:
-    name: Dead Code Analysis
-    runs-on: ubuntu-latest
-    needs: cache
-    steps:
-      - *checkout
-      - *nix-installer
+      # Deadnix
       - uses: phucisstupid/deadnix-action@v1
 
-  statix:
-    name: Statix Linter
-    runs-on: ubuntu-latest
-    needs: deadnix
-    steps:
-      - *checkout
-      - *nix-installer
+      # Statix
       - uses: phucisstupid/statix-action@v2
-
-  update-flake-lock:
-    name: Update Flake Lock
-    runs-on: ubuntu-latest
-    needs: statix
-    concurrency:
-      group: global-lock
-      cancel-in-progress: false
-    steps:
-      - *checkout
-      - *nix-installer
-      - run: nix flake update
-      - run: |
-          if ! git diff --quiet flake.lock; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add flake.lock
-            git commit -m "Chore: Auto update flake.lock"
-            git push
-          fi
-
