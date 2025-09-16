@@ -1,9 +1,12 @@
-{flake, ...}: let
+{ flake, ... }:
+let
   inherit (flake) inputs;
-in {
+in
+{
   imports = [
     (inputs.import-tree ../../../modules/darwin)
   ];
+  networking.hostName = "phucs-MacBook-Air";
   nixpkgs = {
     hostPlatform = "aarch64-darwin";
     config.allowUnfree = true;
