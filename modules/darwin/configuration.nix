@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   # essential macOs settings
   system.defaults = {
     CustomUserPreferences."com.apple.AdLib".allowApplePersonalizedAdvertising = false;
@@ -70,5 +69,5 @@
   };
   # default shell
   programs.fish.enable = true;
-  environment.shells = [ pkgs.fish ];
+  environment.shells = [pkgs.fish];
 }

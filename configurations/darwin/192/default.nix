@@ -1,8 +1,6 @@
-{ flake, ... }:
-let
+{flake, ...}: let
   inherit (flake) inputs;
-in
-{
+in {
   imports = [
     (inputs.import-tree ../../../modules/darwin)
   ];
