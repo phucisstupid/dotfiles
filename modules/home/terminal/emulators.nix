@@ -4,9 +4,11 @@
   flake,
   lib,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${flake.config.me.namespace}.terminal.emulators = {
     wezterm.enable = lib.mkEnableOption "wezterm";
     kitty.enable = lib.mkEnableOption "kitty";
@@ -16,13 +18,10 @@ in {
     wezterm = {
       inherit (config.${namespace}.terminal.emulators.wezterm) enable;
       extraConfig = ''
-        local wezterm = require 'wezterm'
-        local config = {
-          font = wezterm.font 'Maple Mono',
-          font_size = 18,
-          window_decorations = "RESIZE",
-          hide_tab_bar_if_only_one_tab = true,
-        }
+        config.font = wezterm.font 'Maple Mono'
+        config.font_size = 18
+        config.window_decorations = "RESIZE"
+        config.hide_tab_bar_if_only_one_tab = true
         return config
       '';
     };
