@@ -4,9 +4,11 @@
   flake,
   lib,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${flake.config.me.namespace}.terminal.emulators = {
     wezterm.enable = lib.mkEnableOption "wezterm";
     kitty.enable = lib.mkEnableOption "kitty";
@@ -41,6 +43,7 @@ in {
         font-family = "Maple Mono";
         font-size = 18;
         mouse-hide-while-typing = true;
+        macos-titlebar-style = "hidden";
       };
     };
   };
