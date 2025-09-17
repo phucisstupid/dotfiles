@@ -4,11 +4,9 @@
   flake,
   lib,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   options.${flake.config.me.namespace}.terminal.emulators = {
     wezterm.enable = lib.mkEnableOption "wezterm";
     kitty.enable = lib.mkEnableOption "kitty";
