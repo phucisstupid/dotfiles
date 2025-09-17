@@ -23,8 +23,7 @@ in
           font = wezterm.font 'Maple Mono',
           font_size = 18,
           window_decorations = "RESIZE",
-          enable_tab_bar = false,
-          window_close_confirmation = 'NeverPrompt',
+          hide_tab_bar_if_only_one_tab = true,
         }
         return config
       '';
