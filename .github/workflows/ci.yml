@@ -12,29 +12,55 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+
       - uses: DeterminateSystems/nix-installer-action@v20
       - uses: DeterminateSystems/magic-nix-cache-action@v13
 
-      # Format with Alejandra
-      - run: nix run nixpkgs#alejandra .
+      # Validate
+      - name: Nix flake check
+        run: nix flake check
 
-      # Update flake.lock
-      - run: nix flake update
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      # Commit + push if anything changed
-      - run: |
+      # Deadnix
+      - name: Deadnix
+        run: |
+          nix run nixpkgs#deadnix -- --edit .
           if ! git diff --quiet; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git commit -am "Chore: Format nix files + update flake.lock"
+            git commit -am "chore: clean dead code"
+            git pull --rebase origin "$GITHUB_REF_NAME"
             git push
           fi
 
-      # Run flake check
-      - run: nix flake check
-
-      # Deadnix
-      - uses: phucisstupid/deadnix-action@v1
-
       # Statix
-      - uses: phucisstupid/statix-action@v2
+      - name: Statix
+        run: |
+          nix run nixpkgs#statix -- fix .
+          if ! git diff --quiet; then
+            git commit -am "chore: lint with statix"
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push
+          fi
+
+      # Alejandra
+      - name: Alejandra
+        run: |
+          nix run nixpkgs#alejandra -- .
+          if ! git diff --quiet; then
+            git commit -am "chore: format nix files"
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push
+          fi
+
+      # Update flake.lock
+      - name: Update flake.lock
+        run: |
+          nix flake update
+          if ! git diff --quiet; then
+            git commit -am "chore: update flake.lock"
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push
+          fi
