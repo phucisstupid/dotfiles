@@ -444,11 +444,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1758086017,
-        "narHash": "sha256-O9z2SbOJk//GHch6lqL1Oe/NxncnB4NEcxrjYFDHlzc=",
+        "lastModified": 1758087081,
+        "narHash": "sha256-ez6sgY53vLO9n+3Of8AgzCO1j7RFtnJ2TgxcPhjoKDw=",
         "owner": "phucisstupid",
         "repo": "wallpapers",
-        "rev": "d0f692facab7302073a97a578485d44ae182cd8a",
+        "rev": "a471a592c190d95934c4b777aa2c8893c5b8b6e9",
         "type": "github"
       },
       "original": {
