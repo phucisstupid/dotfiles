@@ -3,16 +3,18 @@
   flake,
   lib,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.shells.prompts = {
     starship.enable = lib.mkEnableOption "starship";
     oh-my-posh.enable = lib.mkEnableOption "oh-my-posh";
   };
-  config.programs = {
+  config.programs = with config.${namespace}.terminal.shells.prompts; {
     starship = {
-      inherit (config.${namespace}.terminal.shells.prompts.starship) enable;
+      inherit (starship) enable;
       enableTransience = true;
       settings = {
         character = {
@@ -29,7 +31,7 @@ in {
       };
     };
     oh-my-posh = {
-      inherit (config.${namespace}.terminal.shells.prompts.oh-my-posh) enable;
+      inherit (oh-my-posh) enable;
       useTheme = "pure";
     };
   };

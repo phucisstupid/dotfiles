@@ -3,21 +3,22 @@
   lib,
   flake,
   ...
-}: {
+}:
+{
   options.${flake.config.me.namespace}.terminal.tools = {
     eza.enable = lib.mkEnableOption "eza";
     lsd.enable = lib.mkEnableOption "lsd";
   };
-  config.programs = {
+  config.programs = with config.${flake.config.me.namespace}.terminal.tools; {
     eza = {
-      inherit (config.${flake.config.me.namespace}.terminal.tools.eza) enable;
+      inherit (eza) enable;
       git = true;
       icons = "auto";
       colors = "auto";
-      extraOptions = ["--group-directories-first"];
+      extraOptions = [ "--group-directories-first" ];
     };
     lsd = {
-      inherit (config.${flake.config.me.namespace}.terminal.tools.lsd) enable;
+      inherit (lsd) enable;
     };
   };
 }

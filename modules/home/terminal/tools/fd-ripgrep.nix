@@ -3,16 +3,18 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.tools = {
     fd.enable = lib.mkEnableOption "fd";
     ripgrep.enable = lib.mkEnableOption "ripgrep";
   };
-  config.programs = {
+  config.programs = with config.${namespace}.terminal.tools; {
     fd = {
-      inherit (config.${namespace}.terminal.tools.fd) enable;
+      inherit (fd) enable;
       hidden = true;
       ignores = [
         ".git/"
@@ -20,7 +22,7 @@ in {
       ];
     };
     ripgrep = {
-      inherit (config.${namespace}.terminal.tools.ripgrep) enable;
+      inherit (ripgrep) enable;
       arguments = [
         "--max-columns=150"
         "--max-columns-preview"

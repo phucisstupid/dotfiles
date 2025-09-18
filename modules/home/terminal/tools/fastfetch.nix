@@ -3,21 +3,24 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.tools.fastfetch = {
     jakoolit.enable = lib.mkEnableOption "jakoolit.fastfetch";
     hyde.enable = lib.mkEnableOption "hyde.fastfetch";
     ml4w.enable = lib.mkEnableOption "ml4w.fastfetch";
   };
-  config.programs.fastfetch = {
-    enable =
-      config.${namespace}.terminal.tools.fastfetch.jakoolit.enable
-      || config.${namespace}.terminal.tools.fastfetch.hyde.enable
-      || config.${namespace}.terminal.tools.fastfetch.ml4w.enable;
+  config.programs.fastfetch = with config.${namespace}.terminal.tools.fastfetch; {
+    enable = lib.any (x: x.enable) [
+      jakoolit
+      hyde
+      ml4w
+    ];
     settings = lib.mkMerge [
-      (lib.mkIf config.${namespace}.terminal.tools.fastfetch.hyde.enable {
+      (lib.mkIf hyde.enable {
         display.separator = " : ";
         modules = [
           {
@@ -131,7 +134,7 @@ in {
         ];
       })
 
-      (lib.mkIf config.${namespace}.terminal.tools.fastfetch.ml4w.enable {
+      (lib.mkIf ml4w.enable {
         display.separator = " ➜  ";
         modules = [
           "break"
@@ -227,7 +230,7 @@ in {
         ];
       })
 
-      (lib.mkIf config.${namespace}.terminal.tools.fastfetch.jakoolit.enable {
+      (lib.mkIf jakoolit.enable {
         display.separator = " 󰑃  ";
         modules = [
           "break"
