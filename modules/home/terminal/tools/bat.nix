@@ -4,17 +4,19 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.tools.bat.enable = lib.mkEnableOption "bat";
-  config = lib.mkIf config.${namespace}.terminal.tools.bat.enable {
-    home.shellAliases.rg = "batgrep";
+  config = with config.${namespace}.terminal.tools; {
     programs.bat = {
-      enable = true;
-      extraPackages = with pkgs.bat-extras; [
-        batgrep
-      ];
+      inherit (bat) enable;
+      extraPackages = lib.mkIf ripgrep.enable ([ pkgs.bat-extras.batgrep ]);
+    };
+    home.shellAliases = lib.mkIf ripgrep.enable {
+      rg = "batgrep";
     };
   };
 }
