@@ -3,11 +3,9 @@
   flake,
   lib,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   options.${namespace}.terminal.shells.prompts = {
     starship.enable = lib.mkEnableOption "starship";
     oh-my-posh.enable = lib.mkEnableOption "oh-my-posh";

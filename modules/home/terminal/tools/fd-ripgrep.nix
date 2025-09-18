@@ -3,11 +3,9 @@
   lib,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   options.${namespace}.terminal.tools = {
     fd.enable = lib.mkEnableOption "fd";
     ripgrep.enable = lib.mkEnableOption "ripgrep";

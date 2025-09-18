@@ -3,11 +3,9 @@
   lib,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   options.${namespace}.terminal.tools.fastfetch = {
     jakoolit.enable = lib.mkEnableOption "jakoolit.fastfetch";
     hyde.enable = lib.mkEnableOption "hyde.fastfetch";
