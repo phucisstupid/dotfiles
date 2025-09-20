@@ -209,11 +209,11 @@
         "nvchad-starter": "nvchad-starter"
       },
       "locked": {
-        "lastModified": 1758252386,
-        "narHash": "sha256-qtYHZwWY8k7DDsOZayHqVod0o1BW2TbtWX5yj1Z5If8=",
+        "lastModified": 1758339154,
+        "narHash": "sha256-rgS4np+Yb3ci3PYOeQEDYj61tueROML9RoQEUSVzg08=",
         "owner": "nix-community",
         "repo": "nix4nvchad",
-        "rev": "9a05fc1127f4da9ae0e3397d5a420ed83ee110a6",
+        "rev": "91576b50d2aaec7ac073e6ae0cdb5a3fb461021a",
         "type": "github"
       },
       "original": {
@@ -444,11 +444,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1758104197,
-        "narHash": "sha256-JYGrzM8VveMAug7gCloFsWpBk+TD/tQfdi1wvCfQ8lM=",
+        "lastModified": 1758371943,
+        "narHash": "sha256-NTbvdp63GUJPD4G97tkoY9vEe7NvXf2/pbmb4vHauyY=",
         "owner": "phucisstupid",
         "repo": "wallpapers",
-        "rev": "337687289ca15d85846f88f9aaf72ea6164a06f4",
+        "rev": "3b026f840bf195228dcf0d980fcd8d0028ccaa9c",
         "type": "github"
       },
       "original": {
