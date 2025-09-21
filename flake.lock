@@ -21,11 +21,11 @@
     "dotfiles-stow": {
       "flake": false,
       "locked": {
-        "lastModified": 1758270364,
-        "narHash": "sha256-ZDiyKXsr1oyD6SP01coc67E9svDz1x8aURlZnk0pXAs=",
+        "lastModified": 1758420124,
+        "narHash": "sha256-hbX1W/5u1JLV+jR/p7+Q1ZQ/05b1OfQtAO1dpKhohvw=",
         "owner": "phucisstupid",
         "repo": "dotfiles-stow",
-        "rev": "68882df6a8bc6b28591eb9c741b24bffead5b586",
+        "rev": "cb10936b17f8ac761c71880bfc7da20fec83c458",
         "type": "github"
       },
       "original": {
@@ -444,11 +444,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1758371943,
-        "narHash": "sha256-NTbvdp63GUJPD4G97tkoY9vEe7NvXf2/pbmb4vHauyY=",
+        "lastModified": 1758419006,
+        "narHash": "sha256-wV1sACgQ99cw2Zrm/LwuzYjSlAbcFmhxej1HLIUM9r4=",
         "owner": "phucisstupid",
         "repo": "wallpapers",
-        "rev": "3b026f840bf195228dcf0d980fcd8d0028ccaa9c",
+        "rev": "36414079ff681012ae9217a25143616037d48519",
         "type": "github"
       },
       "original": {
