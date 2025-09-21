@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # essential macOs settings
   system.defaults = {
     CustomUserPreferences."com.apple.AdLib".allowApplePersonalizedAdvertising = false;
@@ -42,6 +43,7 @@
     };
     NSGlobalDomain = {
       AppleInterfaceStyle = "Dark";
+      AppleIconAppearanceTheme = "DarkAutomatic";
       _HIHideMenuBar = true;
       NSWindowShouldDragOnGesture = true;
       "com.apple.swipescrolldirection" = false;
@@ -69,5 +71,5 @@
   };
   # default shell
   programs.fish.enable = true;
-  environment.shells = [pkgs.fish];
+  environment.shells = [ pkgs.fish ];
 }
