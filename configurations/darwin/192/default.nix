@@ -1,9 +1,12 @@
-{flake, ...}: let
+{ flake, ... }:
+let
   inherit (flake) inputs;
-in {
+in
+{
   imports = [
     (inputs.import-tree ../../../modules/darwin)
   ];
+  nix.enable = false; # for Determinate Nix
   networking.hostName = "192";
   nixpkgs = {
     hostPlatform = "aarch64-darwin";
