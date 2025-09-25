@@ -1,5 +1,6 @@
-{pkgs, ...}: {
-  # essential macOs settings
+{ pkgs, ... }:
+{
+  # Best macOS settings you’ll ever need
   system.defaults = {
     CustomUserPreferences."com.apple.AdLib".allowApplePersonalizedAdvertising = false;
     LaunchServices.LSQuarantine = false;
@@ -68,7 +69,8 @@
       "2606:4700:4700::1001"
     ];
   };
+
   # default shell
   programs.fish.enable = true;
-  environment.shells = [pkgs.fish];
+  environment.shells = [ pkgs.fish ];
 }
