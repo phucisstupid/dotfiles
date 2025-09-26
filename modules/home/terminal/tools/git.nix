@@ -48,11 +48,8 @@ in
             showBottomLine = false;
             nerdFontsVersion = "3";
           };
-          git = {
-            paging = {
-              colorArg = "always";
-              pager = "delta --paging=never --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
-            };
+          git.paging = lib.mkIf delta.enable {
+            pager = "delta --paging=never --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
           };
         };
       };
