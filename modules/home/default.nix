@@ -1,6 +1,8 @@
-{flake, ...}: let
+{ flake, ... }:
+let
   inherit (flake) inputs;
-in {
+in
+{
   xdg.enable = true;
   home = {
     stateVersion = "25.05";
@@ -50,6 +52,9 @@ in {
         git = {
           enable = true;
           delta.enable = true;
+          gh.enable = true;
+          gh-dash.enable = true;
+          lazygit.enable = true;
         };
         broot.enable = false;
         yazi.enable = true;
@@ -61,12 +66,10 @@ in {
         lsd.enable = false;
         fd.enable = true;
         fzf.enable = true;
-        lazygit.enable = true;
         pay-respects.enable = true;
         ripgrep.enable = true;
         tealdeer.enable = true;
         nh.enable = true;
-        gh-dash.enable = true;
         jujutsu.enable = true;
         btop.enable = true;
         bottom.enable = false;

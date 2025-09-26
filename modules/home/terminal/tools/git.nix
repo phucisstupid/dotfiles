@@ -3,26 +3,56 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.tools.git = {
     enable = lib.mkEnableOption "git";
     delta.enable = lib.mkEnableOption "git.delta";
+    gh.enable = lib.mkEnableOption "gh";
+    gh-dash.enable = lib.mkEnableOption "gh-dash";
+    lazygit.enable = lib.mkEnableOption "lazygit";
   };
-  config.programs.git = with config.${namespace}.terminal.tools.git; {
-    inherit enable;
-    userName = flake.config.me.name;
-    userEmail = flake.config.me.email;
-    extraConfig = {
-      init.defaultBranch = "main";
-      credential.helper = "osxkeychain";
+  config.programs = with config.${namespace}.terminal.tools.git; {
+    git = {
+      inherit enable;
+      userName = flake.config.me.name;
+      userEmail = flake.config.me.email;
+      extraConfig = {
+        init.defaultBranch = "main";
+        credential.helper = "osxkeychain";
+      };
+      delta = {
+        inherit (delta) enable;
+        options = {
+          line-numbers = true;
+          hyperlinks = true;
+        };
+      };
     };
-    delta = {
-      inherit (delta) enable;
-      options = {
-        line-numbers = true;
-        hyperlinks = true;
+    gh = {
+      inherit (gh) enable;
+    };
+    gh-dash = {
+      inherit (gh-dash) enable;
+    };
+    lazygit = {
+      inherit (lazygit) enable;
+      settings = {
+        gui = {
+          expandFocusedSidePanel = true;
+          showPanelJumps = false;
+          showBottomLine = false;
+          nerdFontsVersion = "3";
+        };
+        git = {
+          paging = {
+            colorArg = "always";
+            pager = "delta --paging=never --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
+          };
+        };
       };
     };
   };
