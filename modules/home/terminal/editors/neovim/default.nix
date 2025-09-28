@@ -1,10 +1,10 @@
-{pkgs, ...}:{
+{pkgs, ...}: {
   programs.neovim = {
-	enable = true;
+    enable = true;
     defaultEditor = true;
     viAlias = true;
     vimdiffAlias = true;
-  withNodeJs = true;
-  extraPackages = [pkgs.cargo];
+    withNodeJs = true;
+    extraPackages = [pkgs.cargo];
   };
 }
