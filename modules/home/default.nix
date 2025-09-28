@@ -1,6 +1,8 @@
-{flake, ...}: let
+{ flake, ... }:
+let
   inherit (flake) inputs;
-in {
+in
+{
   xdg.enable = true;
   home = {
     stateVersion = "25.05";
@@ -19,7 +21,7 @@ in {
     terminal = {
       editors = {
         neovim = {
-          lazyvim.enable = true;
+          lazyvim.enable = false;
           nvchad.enable = false;
           nvf.enable = false;
         };

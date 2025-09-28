@@ -1,8 +1,9 @@
 {
-  outputs = inputs:
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+  outputs =
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = import inputs.systems;
-      imports = [(inputs.import-tree ./modules/flake)];
+      imports = [ (inputs.import-tree ./modules/flake) ];
     };
   inputs = {
     # System
@@ -33,7 +34,6 @@
     lazyvim = {
       url = "github:matadaniel/LazyVim-module";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems";
     };
     nix4nvchad = {
       url = "github:nix-community/nix4nvchad";
