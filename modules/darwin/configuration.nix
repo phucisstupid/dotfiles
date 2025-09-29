@@ -42,7 +42,6 @@
     };
     NSGlobalDomain = {
       AppleInterfaceStyle = "Dark";
-      AppleIconAppearanceTheme = "ClearAutomatic";
       _HIHideMenuBar = true;
       NSWindowShouldDragOnGesture = true;
       "com.apple.swipescrolldirection" = false;
