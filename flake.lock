@@ -21,11 +21,11 @@
     "dotfiles-stow": {
       "flake": false,
       "locked": {
-        "lastModified": 1759048038,
-        "narHash": "sha256-JrOlMCiSy8+GCS7NKeUXeBlx2h3O7VSHw1m2NQ3DF78=",
+        "lastModified": 1759118511,
+        "narHash": "sha256-BSHEndMkdPg9fpWF1JHXmYiWImhLJDP73SkCKoMh3RA=",
         "owner": "phucisstupid",
         "repo": "dotfiles-stow",
-        "rev": "e7d37621f049c74b309c88cc47856c568a671ce4",
+        "rev": "a28b87281228a5cd29077de231843e2f49f69ecc",
         "type": "github"
       },
       "original": {
@@ -270,11 +270,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1759036355,
-        "narHash": "sha256-0m27AKv6ka+q270dw48KflE0LwQYrO7Fm4/2//KCVWg=",
+        "lastModified": 1759070547,
+        "narHash": "sha256-JVZl8NaVRYb0+381nl7LvPE+A774/dRpif01FKLrYFQ=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "e9f00bd893984bc8ce46c895c3bf7cac95331127",
+        "rev": "647e5c14cbd5067f44ac86b74f014962df460840",
         "type": "github"
       },
       "original": {
