@@ -131,7 +131,7 @@ in {
         };
         on-window-detected = [
           {
-            "if".app-name-regex-substring = "zen|arc|safari|brave";
+            "if".app-name-regex-substring = "zen|safari|helium";
             run = "move-node-to-workspace 1";
           }
           {
@@ -139,7 +139,7 @@ in {
             run = "move-node-to-workspace 2";
           }
           {
-            "if".app-name-regex-substring = "bluebook|classin";
+            "if".app-name-regex-substring = "bluebook";
             run = "move-node-to-workspace 3";
           }
           {
