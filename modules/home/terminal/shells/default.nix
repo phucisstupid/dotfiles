@@ -25,10 +25,10 @@ in {
         inherit (config.${namespace}.terminal.shells.zsh) enable;
         autocd = true;
         autosuggestion.enable = true;
+        defaultKeymap = "viins";
         syntaxHighlighting.enable = true;
         plugins = with pkgs; [
           {inherit (zsh-fzf-tab) name src;}
-          {inherit (zsh-vi-mode) name src;}
         ];
       };
       fish = {
