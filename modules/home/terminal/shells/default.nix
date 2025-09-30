@@ -38,9 +38,6 @@ in {
           set fish_greeting
           fish_vi_key_bindings
         '';
-        plugins = with pkgs; [
-          {inherit (fishPlugins.fzf-fish) name src;}
-        ];
       };
       nushell = {
         inherit (config.${namespace}.terminal.shells.nushell) enable;
