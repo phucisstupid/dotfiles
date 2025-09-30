@@ -15,9 +15,7 @@ in {
   config.programs = {
     tmux = {
       inherit (config.${namespace}.terminal.multiplexers.tmux) enable;
-      # sensibleOnTop = true; # TODO: fix https://github.com/nix-community/home-manager/issues/6266
-      terminal = "screen-256color";
-      escapeTime = 0;
+      sensibleOnTop = true;
       shortcut = "a";
       keyMode = "vi";
       baseIndex = 1;
@@ -27,14 +25,13 @@ in {
         cpu
         weather
         vim-tmux-navigator
+        tmux-floax
         {
           plugin = fingers;
           extraConfig = ''
             set -g @fingers-key space
           '';
         }
-        fzf-tmux-url
-        tmux-floax
       ];
       extraConfig = ''
         set -ga terminal-overrides ",*:Tc"
