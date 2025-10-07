@@ -11,7 +11,6 @@ in {
   options.${namespace}.graphical.bars.sketchybar.enable = lib.mkEnableOption "sketchybar";
   config = lib.mkIf config.${namespace}.graphical.bars.sketchybar.enable {
     home.packages = with pkgs; [
-      # sf-symbols # TODO: wait till nixpkgs support this, manual install for now
       sketchybar-app-font
       nowplaying-cli
       switchaudio-osx
