@@ -77,6 +77,7 @@ in {
               "${mod}-tab" = "workspace-back-and-forth";
               "${mod}-shift-tab" = "move-workspace-to-monitor --wrap-around next";
               "${mod}-shift-semicolon" = "mode service";
+              "${mod}-shift-f" = "fullscreen --no-outer-gaps";
             }
             // builtins.listToAttrs (
               builtins.concatMap (n: [
