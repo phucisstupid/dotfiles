@@ -1,8 +1,8 @@
 {
-  outputs = inputs:
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = import inputs.systems;
-      imports = [(inputs.import-tree ./modules/flake)];
+  outputs = inputs @ {flake-parts,systems,import-tree,...}:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = import systems;
+      imports = [(import-tree ./modules/flake)];
     };
   inputs = {
     # System
