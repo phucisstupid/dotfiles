@@ -1,5 +1,10 @@
 {
-  outputs = inputs @ {flake-parts,systems,import-tree,...}:
+  outputs = inputs @ {
+    flake-parts,
+    systems,
+    import-tree,
+    ...
+  }:
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = import systems;
       imports = [(import-tree ./modules/flake)];
