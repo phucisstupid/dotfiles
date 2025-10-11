@@ -18,7 +18,7 @@ in {
         "Library/Application Support/Übersicht/widgets/simple-bar" = {
           source = inputs.simple-bar;
         };
-        ".simplebarrc".source = "${inputs.dotfiles-stow}/simple-bar/.simplebarrc";
+        ".simplebarrc".source = "${inputs.dotfiles-stow}/.simplebarrc";
       };
     };
   };
