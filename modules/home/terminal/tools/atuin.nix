@@ -3,18 +3,18 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminal.tools.atuin.enable = lib.mkEnableOption "atuin";
   config = lib.mkIf config.${namespace}.terminal.tools.atuin.enable {
     programs.atuin = {
       enable = true;
       settings = {
-        records = true;
+        keymap_mode = "auto";
         inline_height = 20;
-        enter_accept = true;
-        keymap_mode = "vim-insert";
       };
     };
   };
