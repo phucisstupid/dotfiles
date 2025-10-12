@@ -1,6 +1,8 @@
-{flake, ...}: let
+{ flake, ... }:
+let
   inherit (flake) inputs;
-in {
+in
+{
   xdg.enable = true;
   home = {
     stateVersion = "25.05";
@@ -85,13 +87,13 @@ in {
       apps = {
         kodi.enable = false;
         obs-studio.enable = false;
-        qutebrowser.enable = false;
-        spotify.enable = false;
+        spotify.enable = true;
         zathura.enable = false;
         zed-editor.enable = false;
       };
       browsers = {
         chromium.enable = false;
+        qutebrowser.enable = false;
         brave.enable = false;
         zen-browser.enable = false;
       };
