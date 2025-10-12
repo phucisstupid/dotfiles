@@ -21,11 +21,11 @@
     "dotfiles-stow": {
       "flake": false,
       "locked": {
-        "lastModified": 1759932984,
-        "narHash": "sha256-feiQoAuTbcuONIKW36b+gg/vjHMOZrzH01PS8+NRUAk=",
+        "lastModified": 1760234261,
+        "narHash": "sha256-nqH0TgJjpbYYTJkAUfI8/KoV5yB7202HRR9Dl5hrq4w=",
         "owner": "phucisstupid",
         "repo": "dotfiles-stow",
-        "rev": "5d1677e1867f989d5b3791d8a2384b66d529b225",
+        "rev": "246b1e167ee91534d99780b0bd5663269540a6a2",
         "type": "github"
       },
       "original": {
@@ -114,11 +114,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760130406,
-        "narHash": "sha256-GKMwBaFRw/C1p1VtjDz4DyhyzjKUWyi1K50bh8lgA2E=",
+        "lastModified": 1760239230,
+        "narHash": "sha256-eqSP/BAbQwNTlQ/6yuK0yILzZAPNNj91gp6oIfVtu/E=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "d305eece827a3fe317a2d70138f53feccaf890a1",
+        "rev": "c4aaddeaecc09554c92518fd904e3e84b497ed09",
         "type": "github"
       },
       "original": {
@@ -272,11 +272,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1760103332,
-        "narHash": "sha256-BMsGVfKl4Q80Pr9T1AkCRljO1bpwCmY8rTBVj8XGuhA=",
+        "lastModified": 1760164275,
+        "narHash": "sha256-gKl2Gtro/LNf8P+4L3S2RsZ0G390ccd5MyXYrTdMCFE=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "870493f9a8cb0b074ae5b411b2f232015db19a65",
+        "rev": "362791944032cb532aabbeed7887a441496d5e6e",
         "type": "github"
       },
       "original": {
@@ -404,11 +404,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1759638324,
-        "narHash": "sha256-bj0L3n2UWE/DjqFjsydWsSzO74+dqUA4tiOX4At6LbM=",
+        "lastModified": 1760243311,
+        "narHash": "sha256-LNrok211+WWlMGWqpGPpnGcnWhyo5SfvMv62uDiLzoI=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "c39a58510e55c4970e57176ab14b722a978e5f01",
+        "rev": "93f1d45e48191a0b24c5c15e5cf369566ff75be9",
         "type": "github"
       },
       "original": {
@@ -480,11 +480,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1759628606,
-        "narHash": "sha256-nLwodFxzMrEMLJ/ob3tbT7lGMHuFtDTUgNEHVlm+/Vo=",
+        "lastModified": 1760233192,
+        "narHash": "sha256-2Xat0/wFSMqHbs39N1Q7s1KKkJRWjrM2S4o75wqNDSY=",
         "owner": "phucisstupid",
         "repo": "wallpapers",
-        "rev": "e3496c23619ea3c43c8808a6b045cdadcb072897",
+        "rev": "b31a70e47d5f1dda035a4925dfc10c25d38ac4fe",
         "type": "github"
       },
       "original": {
