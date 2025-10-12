@@ -4,29 +4,30 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
   inherit (flake) inputs;
-in {
+in
+{
   options.${namespace}.terminal.editors.neovim.lazyvim.enable = lib.mkEnableOption "neovim.lazyvim";
   config.programs.lazyvim = lib.mkMerge [
     {
       inherit (config.${namespace}.terminal.editors.neovim.lazyvim) enable;
       extras = {
+        ai.copilot.enable = true;
         coding = {
           mini-surround.enable = true;
           yanky.enable = true;
         };
-        util.mini-hipatterns.enable = true;
         editor = {
           dial.enable = true;
           inc-rename.enable = true;
         };
         lang = {
           nix.enable = true;
-          markdown.enable = true;
         };
-        ai.copilot.enable = true;
+        util.mini-hipatterns.enable = true;
       };
       pluginsFile = {
         "colorscheme.lua".source = "${inputs.dotfiles-stow}/.config/nvim/lua/plugins/colorscheme.lua";
@@ -35,8 +36,9 @@ in {
       };
     }
     (lib.mkIf config.${namespace}.terminal.multiplexers.tmux.enable {
-      plugins = [pkgs.vimPlugins.vim-tmux-navigator];
-      pluginsFile."vim-tmux-navigator.lua".source = "${inputs.dotfiles-stow}/.config/nvim/lua/plugins/vim-tmux-navigator.lua";
+      plugins = [ pkgs.vimPlugins.vim-tmux-navigator ];
+      pluginsFile."vim-tmux-navigator.lua".source =
+        "${inputs.dotfiles-stow}/.config/nvim/lua/plugins/vim-tmux-navigator.lua";
     })
   ];
 }

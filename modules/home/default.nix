@@ -19,7 +19,7 @@ in {
     terminal = {
       editors = {
         neovim = {
-          lazyvim.enable = false;
+          lazyvim.enable = true;
           nvchad.enable = false;
           nvf.enable = false;
         };
@@ -86,7 +86,7 @@ in {
         kodi.enable = false;
         obs-studio.enable = false;
         qutebrowser.enable = false;
-        spotify.enable = true;
+        spotify.enable = false;
         zathura.enable = false;
         zed-editor.enable = false;
       };

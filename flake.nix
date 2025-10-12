@@ -1,18 +1,22 @@
 {
-  outputs = inputs @ {
-    flake-parts,
-    systems,
-    import-tree,
-    ...
-  }:
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = import systems;
-      imports = [(import-tree ./modules/flake)];
+  outputs =
+    inputs@{
+      flake-parts,
+      import-tree,
+      ...
+    }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "aarch64-darwin"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "x86_64-linux"
+      ];
+      imports = [ (import-tree ./modules/flake) ];
     };
   inputs = {
     # System
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    systems.url = "github:nix-systems/default";
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixos-unified.url = "github:srid/nixos-unified";
     import-tree.url = "github:vic/import-tree";
@@ -38,7 +42,6 @@
     lazyvim = {
       url = "github:matadaniel/LazyVim-module";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems"; # TODO: delete this soon
     };
     nix4nvchad = {
       url = "github:nix-community/nix4nvchad";
