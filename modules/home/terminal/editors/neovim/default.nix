@@ -1,5 +1,4 @@
-_:
-{
+_: {
   programs.neovim = {
     defaultEditor = true;
     viAlias = true;
