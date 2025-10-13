@@ -1,8 +1,6 @@
-{ flake, ... }:
-let
+{flake, ...}: let
   inherit (flake) inputs;
-in
-{
+in {
   xdg.enable = true;
   home = {
     stateVersion = "25.05";
