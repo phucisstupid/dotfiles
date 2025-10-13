@@ -4,12 +4,14 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.services = {
-    darwin-apps.enable = lib.mkEnableOption "Enable extra applications on Darwin";
-    linux-apps.enable = lib.mkEnableOption "Enable extra applications on Linux";
+    extras-darwin-apps.enable = lib.mkEnableOption "Enable extra applications on Darwin";
+    extras-linux-apps.enable = lib.mkEnableOption "Enable extra applications on Linux";
   };
   config = lib.mkMerge [
     # Default apps
@@ -20,13 +22,13 @@ in {
       ];
     }
     # Darwin-specific apps
-    (lib.mkIf config.${namespace}.services.darwin-apps.enable {
+    (lib.mkIf config.${namespace}.services.extras-darwin-apps.enable {
       home.packages = with pkgs; [
         raycast
       ];
     })
     # Linux-specific apps
-    (lib.mkIf config.${namespace}.services.linux-apps.enable {
+    (lib.mkIf config.${namespace}.services.extras-linux-apps.enable {
       home.packages = with pkgs; [
         # put linux-only apps here
       ];
