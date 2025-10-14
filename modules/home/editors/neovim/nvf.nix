@@ -57,7 +57,12 @@ in {
       mini = {
         ai.enable = true;
         align.enable = true;
-        animate.enable = true;
+        animate = {
+          enable = true;
+          setupOpts = {
+            cursor.enable = false;
+          };
+        };
         bracketed.enable = true;
         bufremove.enable = true;
         comment.enable = true;
