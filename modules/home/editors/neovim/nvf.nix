@@ -69,9 +69,14 @@ in {
       };
       lsp = {
         enable = true;
-        inlayHints.enable = true;
-        trouble.enable = true;
         formatOnSave = true;
+        inlayHints.enable = true;
+        trouble = {
+          enable = true;
+          setupOpts = {
+            modes.lsp.win.position = "right";
+          };
+        };
       };
       theme = {
         enable = true;
@@ -91,9 +96,11 @@ in {
         enable = true;
         setupOpts = {
           keymap.preset = "enter";
-          cmdline.keymap.preset = "cmdline";
+          cmdline = {
+            completion.menu.auto_show = true;
+          };
+          friendly-snippets.enable = true;
         };
-        friendly-snippets.enable = true;
       };
       assistant = {
         copilot.enable = true;
