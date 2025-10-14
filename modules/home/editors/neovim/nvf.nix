@@ -12,11 +12,55 @@ in {
     defaultEditor = true;
     settings.vim = {
       options = {
-        tabstop = 2;
+        switchbuf = "usetab";
+        shada = "'100,<50,s10,:1000,/100,@100,h";
+
+        # UI
+        breakindent = true;
+        breakindentopt = "list:-1";
+        colorcolumn = "+1";
+        cursorline = true;
+        linebreak = true;
+        list = true;
+        number = true;
+        pumheight = 10;
+        ruler = false;
+        shortmess = "CFOSWaco";
+        showmode = false;
+        signcolumn = "yes";
+        splitbelow = true;
+        splitkeep = "screen";
+        splitright = true;
+        wrap = false;
+        cursorlineopt = "both";
+        fillchars = "eob: ,fold:╌";
+        listchars = "extends:…,nbsp:␣,precedes:…,tab:> ";
+
+        # Folds
+        foldlevel = 10;
+        foldmethod = "indent";
+        foldnestmax = 10;
+        foldtext = "";
+
+        # Editing
+        autoindent = true;
+        expandtab = true;
+        formatoptions = "rqnl1j";
+        ignorecase = true;
+        incsearch = true;
+        infercase = true;
+        shiftwidth = 2;
+        smartcase = true;
         smartindent = true;
+        spelloptions = "camel";
+        tabstop = 2;
+        virtualedit = "block";
+        iskeyword = "@,48-57,_,192-255,-";
+        formatlistpat = ''^\s*[0-9\-\+\*]\+[\.\)]*\s\+''; # must be quoted
+        complete = ".,w,b,kspell";
+        completeopt = "menuone,noselect,fuzzy,nosort";
       };
-      diagnostics.enable =
-        true;
+      diagnostics.enable = true;
       undoFile.enable = true;
       viAlias = true;
       clipboard = {
