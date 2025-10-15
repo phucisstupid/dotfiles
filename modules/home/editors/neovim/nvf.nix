@@ -104,7 +104,13 @@ in {
       };
       utility = {
         motion.flash-nvim.enable = true;
-        snacks-nvim.enable = true;
+        snacks-nvim = {
+          enable = true;
+          setupOpts = {
+            input.enable = true;
+            notifier.enable = true;
+          };
+        };
         oil-nvim = {
           enable = true;
           gitStatus.enable = true;
