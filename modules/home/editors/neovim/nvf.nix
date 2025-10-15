@@ -3,9 +3,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.editors.neovim.nvf.enable = lib.mkEnableOption "nvf";
   config.programs.nvf = {
     inherit (config.${namespace}.editors.neovim.nvf) enable;
@@ -22,7 +24,6 @@ in {
         cursorline = true;
         linebreak = true;
         list = true;
-        number = true;
         pumheight = 10;
         ruler = false;
         shortmess = "CFOSWaco";
