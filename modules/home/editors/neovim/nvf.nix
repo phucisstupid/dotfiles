@@ -123,13 +123,7 @@ in {
         };
       };
       telescope.enable = true;
-      ui = {
-        noice.enable = true;
-        breadcrumbs = {
-          enable = true;
-          lualine.winbar.alwaysRender = false;
-        };
-      };
+      ui.noice.enable = true;
       autopairs.nvim-autopairs.enable = true;
       session.nvim-session-manager.enable = true;
       mini = {
