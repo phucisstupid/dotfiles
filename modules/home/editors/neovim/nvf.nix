@@ -72,7 +72,6 @@ in {
         enable = true;
         formatOnSave = true;
         inlayHints.enable = true;
-        null-ls.enable = true;
         trouble.enable = true;
       };
       languages = {
@@ -86,25 +85,20 @@ in {
       };
       autocomplete.blink-cmp = {
         enable = true;
+        friendly-snippets.enable = true;
         setupOpts = {
           keymap.preset = "enter";
-          cmdline = {
-            keymap = {
-              "<Tab>" = ["accept"];
-              "<CR>" = ["accept_and_enter" "fallback"];
-            };
-            completion.menu.auto_show = lib.generators.mkLuaInline ''
+          cmdline.completion = {
+            list.selection.preselect = false;
+            menu.auto_show = lib.generators.mkLuaInline ''
               function(ctx)
                 return vim.fn.getcmdtype() == ':'
               end
             '';
           };
         };
-        friendly-snippets.enable = true;
       };
-      assistant = {
-        copilot.enable = true;
-      };
+      assistant.copilot.enable = true;
       binds.whichKey = {
         enable = true;
         setupOpts.preset = "helix";
@@ -118,7 +112,10 @@ in {
         };
       };
       statusline.lualine.enable = true;
-      tabline.nvimBufferline.enable = true;
+      tabline.nvimBufferline = {
+        enable = true;
+        setupOpts.options.always_show_bufferline = false;
+      };
       terminal = {
         toggleterm = {
           enable = true;
@@ -126,7 +123,13 @@ in {
         };
       };
       telescope.enable = true;
-      ui.noice.enable = true;
+      ui = {
+        noice.enable = true;
+        breadcrumbs = {
+          enable = true;
+          lualine.winbar.alwaysRender = false;
+        };
+      };
       autopairs.nvim-autopairs.enable = true;
       session.nvim-session-manager.enable = true;
       mini = {
@@ -158,9 +161,7 @@ in {
         visits.enable = true;
         basics = {
           enable = true;
-          setupOpts = {
-            mappings.windows = true;
-          };
+          setupOpts.mappings.windows = true;
         };
       };
     };
