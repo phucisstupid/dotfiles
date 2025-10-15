@@ -104,7 +104,6 @@ in {
         setupOpts.preset = "helix";
       };
       utility = {
-        yazi-nvim.enable = true;
         motion.flash-nvim.enable = true;
         oil-nvim = {
           enable = true;
@@ -115,12 +114,6 @@ in {
       tabline.nvimBufferline = {
         enable = true;
         setupOpts.options.always_show_bufferline = false;
-      };
-      terminal = {
-        toggleterm = {
-          enable = true;
-          lazygit.enable = true;
-        };
       };
       telescope.enable = true;
       ui.noice.enable = true;
