@@ -11,6 +11,7 @@ in {
     inherit (config.${namespace}.editors.neovim.nvf) enable;
     defaultEditor = true;
     settings.vim = {
+      withNodeJs = true;
       options = {
         switchbuf = "usetab";
         shada = "'100,<50,s10,:1000,/100,@100,h";
@@ -25,13 +26,11 @@ in {
         pumheight = 10;
         ruler = false;
         shortmess = "CFOSWaco";
-        showmode = false;
         signcolumn = "yes";
         splitbelow = true;
         splitkeep = "screen";
         splitright = true;
         wrap = false;
-        cursorlineopt = "both";
         fillchars = "eob: ,fold:╌";
         listchars = "extends:…,nbsp:␣,precedes:…,tab:> ";
 
@@ -55,11 +54,14 @@ in {
         tabstop = 2;
         virtualedit = "block";
         iskeyword = "@,48-57,_,192-255,-";
-        formatlistpat = ''^\s*[0-9\-\+\*]\+[\.\)]*\s\+''; # must be quoted
         complete = ".,w,b,kspell";
         completeopt = "menuone,noselect,fuzzy,nosort";
       };
-      diagnostics.enable = true;
+      theme = {
+        enable = true;
+        name = "catppuccin";
+        style = "mocha";
+      };
       undoFile.enable = true;
       viAlias = true;
       clipboard = {
@@ -70,17 +72,8 @@ in {
         enable = true;
         formatOnSave = true;
         inlayHints.enable = true;
-        trouble = {
-          enable = true;
-          setupOpts = {
-            modes.lsp.win.position = "right";
-          };
-        };
-      };
-      theme = {
-        enable = true;
-        name = "catppuccin";
-        style = "mocha";
+        null-ls.enable = true;
+        trouble.enable = true;
       };
       languages = {
         enableFormat = true;
@@ -89,17 +82,25 @@ in {
         nix.enable = true;
         lua.enable = true;
         markdown.enable = true;
-        rust.enable = false;
+        # rust.enable = true;
       };
       autocomplete.blink-cmp = {
         enable = true;
         setupOpts = {
           keymap.preset = "enter";
           cmdline = {
-            completion.menu.auto_show = true;
+            keymap = {
+              "<Tab>" = ["accept"];
+              "<CR>" = ["accept_and_enter" "fallback"];
+            };
+            completion.menu.auto_show = lib.generators.mkLuaInline ''
+              function(ctx)
+                return vim.fn.getcmdtype() == ':'
+              end
+            '';
           };
-          friendly-snippets.enable = true;
         };
+        friendly-snippets.enable = true;
       };
       assistant = {
         copilot.enable = true;
@@ -108,7 +109,26 @@ in {
         enable = true;
         setupOpts.preset = "helix";
       };
-      utility.motion.flash-nvim.enable = true;
+      utility = {
+        yazi-nvim.enable = true;
+        motion.flash-nvim.enable = true;
+        oil-nvim = {
+          enable = true;
+          gitStatus.enable = true;
+        };
+      };
+      statusline.lualine.enable = true;
+      tabline.nvimBufferline.enable = true;
+      terminal = {
+        toggleterm = {
+          enable = true;
+          lazygit.enable = true;
+        };
+      };
+      telescope.enable = true;
+      ui.noice.enable = true;
+      autopairs.nvim-autopairs.enable = true;
+      session.nvim-session-manager.enable = true;
       mini = {
         ai.enable = true;
         align.enable = true;
@@ -125,7 +145,6 @@ in {
         diff.enable = true;
         extra.enable = true;
         files.enable = true;
-        fuzzy.enable = true;
         git.enable = true;
         hipatterns.enable = true;
         icons.enable = true;
@@ -133,17 +152,8 @@ in {
         map.enable = true;
         misc.enable = true;
         move.enable = true;
-        notify.enable = true;
         operators.enable = true;
-        pairs.enable = true;
-        pick.enable = true;
-        sessions.enable = true;
-        snippets.enable = true;
         splitjoin.enable = true;
-        starter.enable = true;
-        statusline.enable = true;
-        tabline.enable = true;
-        test.enable = true;
         trailspace.enable = true;
         visits.enable = true;
         basics = {
