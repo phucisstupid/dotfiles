@@ -79,7 +79,6 @@ in {
         enableTreesitter = true;
         enableExtraDiagnostics = true;
         nix.enable = true;
-        lua.enable = true;
         markdown.enable = true;
         # rust.enable = true;
       };
