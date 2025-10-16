@@ -11,6 +11,17 @@ in {
     inherit (config.${namespace}.editors.neovim.nvf) enable;
     defaultEditor = true;
     settings.vim = {
+      viAlias = true;
+      withNodeJs = true;
+      theme = {
+        enable = true;
+        name = "catppuccin";
+        style = "mocha";
+      };
+      clipboard = {
+        enable = true;
+        registers = "unnamedplus";
+      };
       autocmds = [
         {
           event = ["InsertEnter" "CmdlineEnter"];
@@ -23,12 +34,13 @@ in {
           command = "nnoremap <silent> <Esc> :nohlsearch<CR>";
         }
       ];
-      withNodeJs = true;
+      searchCase = "smart";
       options = {
         switchbuf = "usetab";
         shada = "'100,<50,s10,:1000,/100,@100,h";
 
         # UI
+        wrap = false;
         breakindentopt = "list:-1";
         colorcolumn = "+1";
         list = true;
@@ -53,16 +65,6 @@ in {
         iskeyword = "@,48-57,_,192-255,-";
         completeopt = "menu,menuone,noselect";
       };
-      theme = {
-        enable = true;
-        name = "catppuccin";
-        style = "mocha";
-      };
-      viAlias = true;
-      clipboard = {
-        enable = true;
-        registers = "unnamedplus";
-      };
       lsp = {
         enable = true;
         formatOnSave = true;
@@ -72,6 +74,8 @@ in {
       diagnostics = {
         enable = true;
         config = {
+          virtual_text.enable = true;
+          severity_sort = true;
           signs.text = lib.generators.mkLuaInline ''
             {
               [vim.diagnostic.severity.ERROR] = " ",
@@ -79,11 +83,6 @@ in {
               [vim.diagnostic.severity.INFO] = " ",
               [vim.diagnostic.severity.HINT] = " ",
             }
-          '';
-          virtual_text.format = lib.generators.mkLuaInline ''
-            function(diagnostic)
-              return string.format("%s (%s)", diagnostic.message, diagnostic.source)
-            end
           '';
         };
       };
