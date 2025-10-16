@@ -11,26 +11,28 @@ in {
     inherit (config.${namespace}.editors.neovim.nvf) enable;
     defaultEditor = true;
     settings.vim = {
+      autocmds = [
+        {
+          event = ["InsertEnter" "CmdlineEnter"];
+          desc = "Unmap <Esc> during insert/cmdline modes";
+          command = "silent! nunmap <Esc>";
+        }
+        {
+          event = ["InsertLeave" "CmdlineLeave"];
+          desc = "Remap <Esc> to clear search highlight in normal mode";
+          command = "nnoremap <silent> <Esc> :nohlsearch<CR>";
+        }
+      ];
       withNodeJs = true;
       options = {
         switchbuf = "usetab";
         shada = "'100,<50,s10,:1000,/100,@100,h";
 
         # UI
-        breakindent = true;
         breakindentopt = "list:-1";
         colorcolumn = "+1";
-        cursorline = true;
-        linebreak = true;
         list = true;
         pumheight = 10;
-        ruler = false;
-        shortmess = "CFOSWaco";
-        signcolumn = "yes";
-        splitbelow = true;
-        splitkeep = "screen";
-        splitright = true;
-        wrap = false;
         fillchars = "eob: ,fold:╌";
         listchars = "extends:…,nbsp:␣,precedes:…,tab:> ";
 
@@ -41,28 +43,21 @@ in {
         foldtext = "";
 
         # Editing
+        confirm = true;
         autoindent = true;
         expandtab = true;
         formatoptions = "rqnl1j";
-        ignorecase = true;
-        incsearch = true;
-        infercase = true;
         shiftwidth = 2;
-        smartcase = true;
-        smartindent = true;
         spelloptions = "camel";
         tabstop = 2;
-        virtualedit = "block";
         iskeyword = "@,48-57,_,192-255,-";
-        complete = ".,w,b,kspell";
-        completeopt = "menuone,noselect,fuzzy,nosort";
+        completeopt = "menu,menuone,noselect";
       };
       theme = {
         enable = true;
         name = "catppuccin";
         style = "mocha";
       };
-      undoFile.enable = true;
       viAlias = true;
       clipboard = {
         enable = true;
@@ -73,6 +68,24 @@ in {
         formatOnSave = true;
         inlayHints.enable = true;
         trouble.enable = true;
+      };
+      diagnostics = {
+        enable = true;
+        config = {
+          signs.text = lib.generators.mkLuaInline ''
+            {
+              [vim.diagnostic.severity.ERROR] = " ",
+              [vim.diagnostic.severity.WARN] = " ",
+              [vim.diagnostic.severity.INFO] = " ",
+              [vim.diagnostic.severity.HINT] = " ",
+            }
+          '';
+          virtual_text.format = lib.generators.mkLuaInline ''
+            function(diagnostic)
+              return string.format("%s (%s)", diagnostic.message, diagnostic.source)
+            end
+          '';
+        };
       };
       languages = {
         enableFormat = true;
