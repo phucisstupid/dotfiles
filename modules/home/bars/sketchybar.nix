@@ -11,7 +11,7 @@ in {
   options.${namespace}.bars.sketchybar.enable = lib.mkEnableOption "sketchybar";
   config = lib.mkIf config.${namespace}.bars.sketchybar.enable {
     home.packages = with pkgs; [
-	    sketchybar-app-font
+      sketchybar-app-font
     ];
     programs.sketchybar = {
       enable = true;
@@ -20,7 +20,7 @@ in {
         recursive = true;
       };
       extraPackages = with pkgs; [
-      aerospace
+        aerospace
         imagemagick
         macmon
       ];
@@ -28,7 +28,7 @@ in {
     xdg.configFile = {
       "sketchybar/dyn-icon_map.sh".source = "${pkgs.sketchybar-app-font}/bin/icon_map.sh";
       "sketchybar/config.sh".text = ''
-        BAR_TRANSPARENCY=false 
+        BAR_TRANSPARENCY=false
         COLOR_SCHEME="catppuccin-mocha"
         BAR_LOOK="compact"
       '';
