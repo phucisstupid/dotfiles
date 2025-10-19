@@ -58,5 +58,9 @@
       url = "github:phucisstupid/wallpapers";
       flake = false;
     };
+    sketchybar-config = {
+      url = "github:kcraft059/sketchybar-config";
+      flake = false;
+    };
   };
 }

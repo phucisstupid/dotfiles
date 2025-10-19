@@ -56,7 +56,7 @@ in {
           outer = {
             top = lib.mkDefault (
               if bars.sketchybar.enable
-              then 45
+              then 35
               else if bars.simple-bar.enable
               then 30
               else 5

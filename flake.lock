@@ -373,6 +373,7 @@
         "nixpkgs": "nixpkgs_2",
         "nvf": "nvf",
         "simple-bar": "simple-bar",
+        "sketchybar-config": "sketchybar-config",
         "spicetify-nix": "spicetify-nix",
         "wallpapers": "wallpapers"
       }
@@ -390,6 +391,22 @@
       "original": {
         "owner": "Jean-Tinland",
         "repo": "simple-bar",
+        "type": "github"
+      }
+    },
+    "sketchybar-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1760819521,
+        "narHash": "sha256-XoGjMnAh30TwlBkmu6jpNJ9/jsNb75SiH7y7TG6sw9A=",
+        "owner": "kcraft059",
+        "repo": "sketchybar-config",
+        "rev": "862a180df5831622e92b378402036f1b3ce21571",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kcraft059",
+        "repo": "sketchybar-config",
         "type": "github"
       }
     },
