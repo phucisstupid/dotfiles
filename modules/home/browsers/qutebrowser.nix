@@ -14,7 +14,6 @@ in {
         window.hide_decoration = true;
         fonts = {
           default_family = "Maple Mono";
-          default_size = 18;
         };
       };
     };
