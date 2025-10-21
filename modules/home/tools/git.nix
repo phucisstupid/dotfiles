@@ -22,8 +22,8 @@ in {
         inherit enable;
         settings = {
           user = {
-            name = flake.config.me.name;
-            email = flake.config.me.email;
+            inherit (flake.config.me) name;
+            inherit (flake.config.me) email;
           };
           init.defaultBranch = "main";
           credential.helper = "osxkeychain";
