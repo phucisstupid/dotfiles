@@ -75,7 +75,7 @@ in {
       fzf.enable = true;
       pay-respects.enable = true;
       ripgrep.enable = true;
-      tealdeer.enable = true;
+      tldr.enable = true;
       nh.enable = true;
       jujutsu.enable = true;
       btop.enable = true;
