@@ -22,7 +22,6 @@ in {
             full-border
             toggle-pane
             smart-enter
-            smart-paste
             yatline
             yatline-catppuccin
             relative-motions
@@ -51,10 +50,6 @@ in {
       };
       keymap.mgr.prepend_keymap =
         [
-          {
-            on = "p";
-            run = "plugin smart-paste";
-          }
           {
             on = "T";
             run = "plugin toggle-pane max-preview";
