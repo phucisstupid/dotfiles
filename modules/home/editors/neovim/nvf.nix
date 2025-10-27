@@ -121,6 +121,7 @@ in {
           setupOpts = {
             input.enable = true;
             notifier.enable = true;
+            scroll.enable = true;
           };
         };
         oil-nvim = {
@@ -140,12 +141,6 @@ in {
       mini = {
         ai.enable = true;
         align.enable = true;
-        animate = {
-          enable = true;
-          setupOpts = {
-            cursor.enable = false;
-          };
-        };
         bracketed.enable = true;
         bufremove.enable = true;
         comment.enable = true;
