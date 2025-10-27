@@ -23,12 +23,13 @@ in {
     (lib.mkIf config.${namespace}.services.extras-darwin-apps.enable {
       home.packages = with pkgs; [
         raycast
+	bitwarden-desktop
       ];
     })
     # Linux-specific apps
     (lib.mkIf config.${namespace}.services.extras-linux-apps.enable {
       home.packages = with pkgs; [
-        # put linux-only apps here
+	bitwarden-desktop
       ];
     })
   ];
