@@ -26,6 +26,9 @@ in {
         };
         git_branch.style = "bold mauve";
         git_metrics.disabled = false;
+        battery.display = [
+          {threshold = 30; }
+        ];
       };
     };
     oh-my-posh = {
