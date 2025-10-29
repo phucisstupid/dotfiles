@@ -30,12 +30,16 @@
 
     # Software
     catppuccin.url = "github:catppuccin/nix";
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nvf = {
-      url = "github:NotAShelf/nvf";
+      url = "github:NotAShelf/nvf/v0.8";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lazyvim = {
