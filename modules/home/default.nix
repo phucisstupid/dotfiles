@@ -25,9 +25,9 @@ in {
   ${flake.config.me.namespace} = {
     editors = {
       neovim = {
-        lazyvim.enable = true;
+        lazyvim.enable = false;
         nvchad.enable = false;
-        nvf.enable = false;
+        nvf.enable = true;
       };
       helix.enable = false;
       zed-editor.enable = false;
@@ -82,9 +82,8 @@ in {
       bottom.enable = false;
       navi.enable = false;
       fastfetch = {
-        jakoolit.enable = false;
-        hyde.enable = false;
-        ml4w.enable = false;
+        enable = false;
+        preset = "ml4w";
       };
       zoxide.enable = true;
       spotify-player.enable = false;
@@ -113,7 +112,10 @@ in {
     };
     services = {
       wallpapers.enable = true;
-      themes.catppuccin.enable = true;
+      themes = {
+        catppuccin.enable = true;
+        stylix.enable = false;
+      };
       extras-darwin-apps.enable = true;
       extras-linux-apps.enable = false;
     };

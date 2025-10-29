@@ -7,18 +7,18 @@
   inherit (flake.config.me) namespace;
 in {
   options.${namespace}.tools.fastfetch = {
-    jakoolit.enable = lib.mkEnableOption "jakoolit.fastfetch";
-    hyde.enable = lib.mkEnableOption "hyde.fastfetch";
-    ml4w.enable = lib.mkEnableOption "ml4w.fastfetch";
+    enable = lib.mkEnableOption "Enable fastfetch with selected preset.";
+    preset = lib.mkOption {
+      type = lib.types.enum ["jakoolit" "hyde" "ml4w"];
+      default = "jakoolit";
+      description = "Choose fastfetch preset: jakoolit | hyde | ml4w";
+    };
   };
+
   config.programs.fastfetch = with config.${namespace}.tools.fastfetch; {
-    enable = lib.any (x: x.enable) [
-      jakoolit
-      hyde
-      ml4w
-    ];
+    enable = enable;
     settings = lib.mkMerge [
-      (lib.mkIf hyde.enable {
+      (lib.mkIf (preset == "hyde") {
         display.separator = " : ";
         modules = [
           {
@@ -132,103 +132,86 @@ in {
         ];
       })
 
-      (lib.mkIf ml4w.enable {
-        display.separator = " ➜  ";
+      (lib.mkIf (preset == "ml4w") {
+        logo = {
+          type = "small";
+          padding.top = 1;
+        };
+        display.separator = " ";
         modules = [
-          "break"
-          "break"
-          "break"
           {
+            key = "╭───────────╮";
+            type = "custom";
+          }
+          {
+            key = "│ {#31} user    {#keys}│";
+            type = "title";
+            format = "{user-name}";
+          }
+          {
+            key = "│ {#32}󰇅 hname   {#keys}│";
+            type = "title";
+            format = "{host-name}";
+          }
+          {
+            key = "│ {#33}󰅐 uptime  {#keys}│";
+            type = "uptime";
+          }
+          {
+            key = "│ {#34}{icon} distro  {#keys}│";
             type = "os";
-            key = "OS   ";
-            keyColor = "31";
           }
           {
+            key = "│ {#35} kernel  {#keys}│";
             type = "kernel";
-            key = " ├  ";
-            keyColor = "31";
           }
           {
-            type = "shell";
-            key = " └  ";
-            keyColor = "31";
-          }
-          "break"
-          {
+            key = "│ {#36} wm      {#keys}│";
             type = "wm";
-            key = "WM   ";
-            keyColor = "32";
           }
           {
-            type = "wmtheme";
-            key = " ├ 󰉼 ";
-            keyColor = "32";
+            key = "│ {#36}󰇄 desktop {#keys}│";
+            type = "de";
           }
           {
-            type = "icons";
-            key = " ├ 󰀻 ";
-            keyColor = "32";
-          }
-          {
-            type = "cursor";
-            key = " ├  ";
-            keyColor = "32";
-          }
-          {
+            key = "│ {#31} term    {#keys}│";
             type = "terminal";
-            key = " ├  ";
-            keyColor = "32";
           }
           {
-            type = "terminalfont";
-            key = " └  ";
-            keyColor = "32";
-          }
-          "break"
-          {
-            type = "host";
-            format = "{5} {1} Type {2}";
-            key = "PC   ";
-            keyColor = "33";
+            key = "│ {#32} shell   {#keys}│";
+            type = "shell";
           }
           {
+            key = "│ {#33}󰍛 cpu     {#keys}│";
             type = "cpu";
-            format = "{1} ({3}) @ {7} GHz";
-            key = " ├  ";
-            keyColor = "33";
+            showPeCoreCount = true;
           }
           {
-            type = "gpu";
-            format = "{1} {2} @ {12} GHz";
-            key = " ├ 󰢮 ";
-            keyColor = "33";
-          }
-          {
-            type = "memory";
-            key = " ├  ";
-            keyColor = "33";
-          }
-          {
-            type = "swap";
-            key = " ├ 󰓡 ";
-            keyColor = "33";
-          }
-          {
+            key = "│ {#34}󰉉 disk    {#keys}│";
             type = "disk";
-            key = " ├ 󰋊 ";
-            keyColor = "33";
+            folders = "/";
           }
           {
-            type = "monitor";
-            key = " └  ";
-            keyColor = "33";
+            key = "│ {#36} memory  {#keys}│";
+            type = "memory";
           }
-          "break"
-          "break"
+          {
+            key = "├───────────┤";
+            type = "custom";
+          }
+          {
+            key = "│ {#39} colors  {#keys}│";
+            type = "colors";
+            symbol = "circle";
+          }
+          {
+            key = "╰───────────╯";
+            type = "custom";
+          }
         ];
       })
 
-      (lib.mkIf jakoolit.enable {
+      (lib.mkIf (preset == "jakoolit") {
         display.separator = " 󰑃  ";
         modules = [
           "break"
