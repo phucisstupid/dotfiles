@@ -143,7 +143,7 @@ in {
             run = "move-node-to-workspace 2";
           }
           {
-            "if".app-name-regex-substring = "bluebook";
+            "if".app-name-regex-substring = "bluebook|preview";
             run = "move-node-to-workspace 3";
           }
           {
