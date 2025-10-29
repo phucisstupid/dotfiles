@@ -28,9 +28,9 @@ in {
     xdg.configFile = {
       "sketchybar/dyn-icon_map.sh".source = "${pkgs.sketchybar-app-font}/bin/icon_map.sh";
       "sketchybar/config.sh".text = ''
-        BAR_TRANSPARENCY=false
-        COLOR_SCHEME="catppuccin-mocha"
         BAR_LOOK="compact"
+        COLOR_SCHEME="catppuccin-mocha"
+        BAR_TRANSPARENCY=false
       '';
     };
   };

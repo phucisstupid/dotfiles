@@ -13,6 +13,8 @@ in {
   config = lib.mkIf config.${namespace}.apps.spotify.enable {
     programs.spicetify = {
       enable = true;
+      theme = spicePkgs.themes.catppuccin;
+      colorScheme = "mocha";
       enabledExtensions = with spicePkgs.extensions; [
         adblock
         keyboardShortcut
