@@ -114,7 +114,7 @@ in {
       wallpapers.enable = true;
       themes = {
         catppuccin.enable = true;
-        stylix.enable = false;
+        stylix.enable = true;
       };
       extras-darwin-apps.enable = true;
       extras-linux-apps.enable = false;
