@@ -99,10 +99,6 @@ in {
               ]) (lib.range 1 4)
             );
           service.binding = {
-            "esc" = [
-              "reload-config"
-              "mode main"
-            ];
             "b" = [
               "balance-sizes"
               "mode main"
