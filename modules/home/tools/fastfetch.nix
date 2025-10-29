@@ -16,7 +16,7 @@ in {
   };
 
   config.programs.fastfetch = with config.${namespace}.tools.fastfetch; {
-    enable = enable;
+    inherit enable;
     settings = lib.mkMerge [
       (lib.mkIf (preset == "hyde") {
         display.separator = " : ";
