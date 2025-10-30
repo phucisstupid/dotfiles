@@ -56,7 +56,7 @@ in {
           outer = {
             top = lib.mkDefault (
               if bars.sketchybar.enable
-              then 35
+              then 31
               else if bars.simple-bar.enable
               then 30
               else 5
@@ -99,6 +99,7 @@ in {
               ]) (lib.range 1 4)
             );
           service.binding = {
+            "esc" = ["mode main"];
             "b" = [
               "balance-sizes"
               "mode main"

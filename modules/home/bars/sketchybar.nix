@@ -12,6 +12,7 @@ in {
   config = lib.mkIf config.${namespace}.bars.sketchybar.enable {
     home.packages = with pkgs; [
       sketchybar-app-font
+      macmon
     ];
     programs.sketchybar = {
       enable = true;
