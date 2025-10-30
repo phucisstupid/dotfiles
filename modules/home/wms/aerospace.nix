@@ -21,12 +21,8 @@ in {
       inherit (wms.aerospace) enable;
       userSettings = {
         start-at-login = true;
-        enable-normalization-flatten-containers = true;
-        enable-normalization-opposite-orientation-for-nested-containers = true;
         default-root-container-layout = "tiles";
-        default-root-container-orientation = "auto";
         automatically-unhide-macos-hidden-apps = true;
-        accordion-padding = 30;
         exec-on-workspace-change = lib.mkMerge [
           [
             "/bin/bash"
