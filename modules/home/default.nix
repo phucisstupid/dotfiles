@@ -69,8 +69,7 @@ in {
       bat.enable = true;
       carapace.enable = true;
       clock-rs.enable = false;
-      eza.enable = true;
-      lsd.enable = false;
+      ls = "eza";
       fd.enable = true;
       fzf.enable = true;
       pay-respects.enable = true;
