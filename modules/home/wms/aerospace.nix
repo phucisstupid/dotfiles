@@ -59,7 +59,7 @@ in {
               then 30
               else if bars.simple-bar.enable
               then 30
-              else 5
+              else 2
             );
             bottom = 2;
             left = 2;
