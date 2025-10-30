@@ -50,20 +50,20 @@ in {
         ];
         gaps = {
           inner = {
-            horizontal = 5;
-            vertical = 5;
+            horizontal = 3;
+            vertical = 3;
           };
           outer = {
             top = lib.mkDefault (
               if bars.sketchybar.enable
-              then 31
+              then 30
               else if bars.simple-bar.enable
               then 30
               else 5
             );
-            bottom = 5;
-            left = 5;
-            right = 5;
+            bottom = 2;
+            left = 2;
+            right = 2;
           };
         };
         mode = {
