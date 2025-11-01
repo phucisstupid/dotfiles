@@ -89,11 +89,11 @@
     "dotfiles-stow": {
       "flake": false,
       "locked": {
-        "lastModified": 1761444227,
-        "narHash": "sha256-TCUiphk2yTOY16rGGwhKoHOyRnDKsz+4YQyiTVDmWkg=",
+        "lastModified": 1761915222,
+        "narHash": "sha256-igzaWaPeAjXvmMXj9u+i1nJiXlpSJAl5JocYlGS30D0=",
         "owner": "phucisstupid",
         "repo": "dotfiles-stow",
-        "rev": "ef9efaf9e8c5a3d456609779228325d7b90c4dce",
+        "rev": "d16dead4e65b65094321a9512abf1538633774c9",
         "type": "github"
       },
       "original": {
@@ -475,11 +475,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1761514959,
-        "narHash": "sha256-7xcjhq6lKupZGph2qAmHfBjTB9nKJs32+n/3iAkl36I=",
+        "lastModified": 1761920420,
+        "narHash": "sha256-6kYN+5S+55iFete09uvoTGDo6RPPcE1owOZcdAs7dPo=",
         "owner": "NotAShelf",
         "repo": "nvf",
-        "rev": "96ba7b64862ec27becbd6846a9d5c05de1697f8e",
+        "rev": "e6b2d28159a61b258eb53b84dc114a2db93a022f",
         "type": "github"
       },
       "original": {
