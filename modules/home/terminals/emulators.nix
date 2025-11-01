@@ -16,8 +16,6 @@ in {
     wezterm = {
       inherit (config.${namespace}.terminals.emulators.wezterm) enable;
       extraConfig = ''
-        config.font = wezterm.font 'Maple Mono'
-        config.font_size = 17
         config.window_decorations = "RESIZE"
         config.hide_tab_bar_if_only_one_tab = true
         return config
@@ -25,10 +23,6 @@ in {
     };
     kitty = {
       inherit (config.${namespace}.terminals.emulators.kitty) enable;
-      font = {
-        name = "Maple Mono";
-        size = 17;
-      };
       settings = {
         hide_window_decorations = "titlebar-only";
         macos_option_as_alt = "yes";
@@ -38,8 +32,6 @@ in {
       inherit (config.${namespace}.terminals.emulators.ghostty) enable;
       package = pkgs.ghostty-bin; # TODO: remove when ghostty is available in darwin
       settings = {
-        font-family = "Maple Mono";
-        font-size = 17;
         mouse-hide-while-typing = true;
         macos-titlebar-style = "hidden";
         macos-option-as-alt = true;

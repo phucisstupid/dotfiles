@@ -12,9 +12,6 @@ in {
       enable = true;
       settings = {
         window.hide_decoration = true;
-        fonts = {
-          default_family = "Maple Mono";
-        };
       };
     };
   };

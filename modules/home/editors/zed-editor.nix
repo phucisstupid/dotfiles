@@ -15,14 +15,8 @@ in {
         vim.enable_vim_sneak = true;
 
         relative_line_numbers = true;
-        buffer_font_family = "Maple Mono";
-        buffer_font_size = 17;
-        ui_font_size = 17;
 
-        terminal = {
-          font_family = "Maple Mono";
-          env.EDITOR = "zed --wait";
-        };
+        terminal.env.EDITOR = "zed --wait";
 
         telemetry = {
           metrics = false;
