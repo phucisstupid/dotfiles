@@ -63,7 +63,7 @@
       flake = false;
     };
     sketchybar-config = {
-      url = "github:kcraft059/sketchybar-config";
+      url = "github:phucisstupid/sketchybar-config";
       flake = false;
     };
   };

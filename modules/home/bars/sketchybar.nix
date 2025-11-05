@@ -12,26 +12,29 @@ in {
   config = lib.mkIf config.${namespace}.bars.sketchybar.enable {
     home.packages = with pkgs; [
       sketchybar-app-font
-      macmon
     ];
     programs.sketchybar = {
       enable = true;
+      configType = "lua";
       config = {
         source = "${inputs.sketchybar-config}";
         recursive = true;
       };
       extraPackages = with pkgs; [
         aerospace
-        imagemagick
-        macmon
       ];
     };
     xdg.configFile = {
-      "sketchybar/dyn-icon_map.sh".source = "${pkgs.sketchybar-app-font}/bin/icon_map.sh";
-      "sketchybar/config.sh".text = ''
-        BAR_LOOK="compact"
-        COLOR_SCHEME="catppuccin-mocha"
-        BAR_TRANSPARENCY=false
+      "sketchybar/helpers/spaces_util/icon_map.lua".source = "${pkgs.sketchybar-app-font}/lib/sketchybar-app-font/icon_map.lua";
+      "sketchybar/settings.lua".text = ''
+        return {
+          bar_preset = "compact",
+          window_manager = "aerospace",
+          modules = {
+            logo = { enabled = false },
+            brew = { enabled = false },
+          },
+        }
       '';
     };
   };
