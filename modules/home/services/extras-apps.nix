@@ -15,7 +15,7 @@ in {
     # Default apps
     {
       home.packages = with pkgs; [
-        maple-mono.variable
+        maple-mono.NF
         uutils-coreutils-noprefix
       ];
     }

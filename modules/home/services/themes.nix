@@ -35,8 +35,8 @@ in {
       fonts = {
         sizes.applications = 17;
         monospace = {
-          package = pkgs.maple-mono.variable;
-          name = "Maple Mono";
+          package = pkgs.maple-mono.NF;
+          name = "Maple Mono NF";
         };
         serif = config.stylix.fonts.monospace;
         sansSerif = config.stylix.fonts.monospace;

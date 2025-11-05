@@ -11,28 +11,34 @@ in {
     programs.zed-editor = {
       enable = true;
       userSettings = {
+        redact_private_values = true;
+
+        git_panel = {
+          dock = "right";
+        };
+
+        features = {
+          edit_prediction_provider = "zed";
+        };
+
+        ui_font_size = 17;
+        buffer_font_size = 18;
+
+        file_finder = {
+          modal_max_width = "medium";
+        };
+
+        buffer_font_family = "Maple Mono NF";
+
         vim_mode = true;
-        vim.enable_vim_sneak = true;
 
         relative_line_numbers = true;
-        buffer_font_family = "Maple Mono";
-        buffer_font_size = 17;
-        ui_font_size = 17;
 
-        terminal = {
-          font_family = "Maple Mono";
-          env.EDITOR = "zed --wait";
-        };
+        tab_bar = {show = true;};
 
-        telemetry = {
-          metrics = false;
-          diagnostics = false;
-        };
+        scrollbar = {show = "never";};
 
-        file_finder.modal_width = "medium";
-        tab_bar.show = true;
-        scrollbar.show = "never";
-        tabs.show_diagnostics = "errors";
+        tabs = {show_diagnostics = "errors";};
 
         indent_guides = {
           enabled = true;
@@ -44,68 +50,101 @@ in {
           right_padding = 0.15;
         };
 
-        assistant = {
+        agent = {
           default_model = {
             provider = "copilot_chat";
-            model = "claude-3-7-sonnet";
+            model = "gpt-4o";
           };
-          version = "2";
         };
 
-        language_models.ollama.api_url = "http://localhost:11434";
-        inlay_hints.enabled = true;
+        language_models = {
+          ollama = {
+            api_url = "http://localhost:11434";
+          };
+        };
 
-        lsp.tailwindcss-language-server.settings.classAttributes = [
-          "class"
-          "className"
-          "ngClass"
-          "styles"
-        ];
+        inlay_hints = {enabled = true;};
+
+        lsp = {
+          "tailwindcss-language-server" = {
+            settings = {
+              classAttributes = [
+                "class"
+                "className"
+                "ngClass"
+                "styles"
+              ];
+            };
+          };
+        };
 
         languages = {
-          TypeScript.inlay_hints = {
-            enabled = true;
-            show_parameter_hints = false;
-            show_other_hints = true;
-            show_type_hints = true;
+          TypeScript = {
+            inlay_hints = {
+              enabled = true;
+              show_parameter_hints = false;
+              show_other_hints = true;
+              show_type_hints = true;
+            };
           };
 
           Python = {
-            format_on_save.language_server.name = "ruff";
-            formatter.language_server.name = "ruff";
-            language_servers = [
-              "pyright"
-              "ruff"
-            ];
+            format_on_save = "on";
+            formatter = {
+              language_server = {name = "ruff";};
+            };
+            language_servers = ["pyright" "ruff"];
           };
         };
 
-        git_panel.dock = "right";
+        terminal = {
+          font_family = "Maple Mono NF";
+          env = {EDITOR = "zed --wait";};
+        };
+
+        file_types = {
+          Dockerfile = ["Dockerfile" "Dockerfile.*"];
+          JSON = ["json" "jsonc" "*.code-snippets"];
+        };
+
+        file_scan_exclusions = [
+          "**/.git"
+          "**/.svn"
+          "**/.hg"
+          "**/CVS"
+          "**/.DS_Store"
+          "**/Thumbs.db"
+          "**/.classpath"
+          "**/.settings"
+          "**/out"
+          "**/dist"
+          "**/.husky"
+          "**/.turbo"
+          "**/.vscode-test"
+          "**/.vscode"
+          "**/.next"
+          "**/.storybook"
+          "**/.tap"
+          "**/.nyc_output"
+          "**/report"
+          "**/node_modules"
+        ];
+
+        telemetry = {
+          diagnostics = false;
+          metrics = false;
+        };
+
         project_panel = {
           button = true;
           dock = "right";
           git_status = true;
         };
-        outline_panel.dock = "right";
-        collaboration_panel.dock = "left";
-        notification_panel.dock = "left";
-        chat_panel.dock = "left";
 
-        file_types.Dockerfile = [
-          "Dockerfile"
-          "Dockerfile.*"
-        ];
-        file_types.JSON = [
-          "json"
-          "jsonc"
-          "*.code-snippets"
-        ];
-
-        features.edit_prediction_provider = "zed";
+        outline_panel = {dock = "right";};
+        collaboration_panel = {dock = "left";};
+        notification_panel = {dock = "left";};
       };
-      extensions = [
-        "git-firefly"
-      ];
     };
   };
 }

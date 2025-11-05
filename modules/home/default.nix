@@ -77,7 +77,7 @@ in {
       tldr.enable = true;
       nh.enable = true;
       jujutsu.enable = true;
-      btop.enable = true;
+      btop.enable = false;
       bottom.enable = false;
       navi.enable = false;
       fastfetch = {
@@ -100,7 +100,7 @@ in {
       zen-browser.enable = false;
     };
     bars = {
-      sketchybar.enable = false;
+      sketchybar.enable = true;
       simple-bar.enable = false;
     };
     screenlockers = {
