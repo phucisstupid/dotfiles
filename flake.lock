@@ -252,11 +252,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1762296971,
-        "narHash": "sha256-Jyv3L5rrUYpecON+9zyFz2VqgTSTsIG35fXuCyuCQv0=",
+        "lastModified": 1762367206,
+        "narHash": "sha256-c/164YOPkV09BH8KIUdvVvJs3VF2LNIbE2piKGgXPxk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "34fe48801d2a5301b814eaa1efb496499d06cebc",
+        "rev": "af119feb17cb242398e0fb97f92b867d25882522",
         "type": "github"
       },
       "original": {
@@ -475,11 +475,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1761920420,
-        "narHash": "sha256-6kYN+5S+55iFete09uvoTGDo6RPPcE1owOZcdAs7dPo=",
+        "lastModified": 1762355423,
+        "narHash": "sha256-9I5+xHx0DDlvevbR4wxB/191FRcjLK9wkQl1si33WFw=",
         "owner": "NotAShelf",
         "repo": "nvf",
-        "rev": "e6b2d28159a61b258eb53b84dc114a2db93a022f",
+        "rev": "da5c91424e6d5028c7cfd171833ac7a71f98cbfc",
         "type": "github"
       },
       "original": {
@@ -562,11 +562,11 @@
     "sketchybar-config": {
       "flake": false,
       "locked": {
-        "lastModified": 1762331737,
-        "narHash": "sha256-bCQ2O9sNV3/6+iWSI7WeO32ZsCQ8qaCsIEhHQp8KfNU=",
+        "lastModified": 1762366349,
+        "narHash": "sha256-uomFLVFjECGeAMuRz1hN5qsK6wKN5E/yidIaTuBy9d8=",
         "owner": "phucisstupid",
         "repo": "sketchybar-config",
-        "rev": "9d63bde0bbd04aced3efa63a4ef982735ce4556e",
+        "rev": "e99dfc01bbd161f245ab49df701e36ae4415881c",
         "type": "github"
       },
       "original": {
