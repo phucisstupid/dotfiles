@@ -48,9 +48,11 @@ in {
           showBottomLine = false;
           nerdFontsVersion = "3";
         };
-        git.pagers = lib.mkIf delta.enable {
-          pager = "delta --paging=never --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
-        };
+        git.pagers = [
+          {
+            pager = "delta --paging=never --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
+          }
+        ];
       };
     };
   };
