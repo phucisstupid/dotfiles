@@ -546,11 +546,11 @@
     "simple-bar": {
       "flake": false,
       "locked": {
-        "lastModified": 1762289177,
-        "narHash": "sha256-HZ8EeimwsHqTxsLw4MFwpMGxlns/Xb7LtgI/Cllj8r8=",
+        "lastModified": 1762542018,
+        "narHash": "sha256-qixeEwHYKsU/xHOJZu3KT/crjiMENUUG0kSt0sBp6no=",
         "owner": "Jean-Tinland",
         "repo": "simple-bar",
-        "rev": "1584a43e2c6a3050004030a69946178dfc8a66a4",
+        "rev": "98500581df8535aea3f530ec824cf7f64c904358",
         "type": "github"
       },
       "original": {
