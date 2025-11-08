@@ -31,8 +31,10 @@ in {
           bar_preset = "compact",
           window_manager = "aerospace",
           modules = {
-            logo = { enabled = false },
-            brew = { enabled = false },
+            logo = false,
+            brew = false,
+            front_app = false,
+            menus = false,
           },
         }
       '';
