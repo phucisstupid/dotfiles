@@ -100,7 +100,7 @@ in {
       zen-browser.enable = false;
     };
     bars = {
-      sketchybar.enable = true;
+      sketchybar.enable = false;
       simple-bar.enable = false;
     };
     screenlockers = {
