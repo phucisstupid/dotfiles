@@ -33,8 +33,6 @@ in {
           modules = {
             logo = false,
             brew = false,
-            front_app = false,
-            menus = false,
           },
         }
       '';
