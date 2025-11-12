@@ -92,7 +92,7 @@ in {
                   name = "${mod}-shift-${toString n}";
                   value = "move-node-to-workspace ${toString n}";
                 }
-              ]) (lib.range 1 4)
+              ]) (lib.range 1 5)
             );
           service.binding = {
             "esc" = ["mode main"];
