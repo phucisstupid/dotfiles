@@ -269,11 +269,11 @@
     },
     "import-tree": {
       "locked": {
-        "lastModified": 1762327901,
-        "narHash": "sha256-AJ96FNj50DU0bTyIzAPkPOjCZTHqjURVjok8qoXvmqM=",
+        "lastModified": 1763263999,
+        "narHash": "sha256-AZ4UkBJQKfaL9sX+/mzc1xBtcJk8hDQGkhjWX0Py5hU=",
         "owner": "vic",
         "repo": "import-tree",
-        "rev": "90fa129798be99cde036b78658e89475710966a1",
+        "rev": "058bd03ac818ea349946323ae3c2837b4cab7f22",
         "type": "github"
       },
       "original": {
@@ -585,11 +585,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1762718300,
-        "narHash": "sha256-oOQimZTaV1jCw0OBmmK2g7Rdj3E8YGVpkJYD32BWKRQ=",
+        "lastModified": 1763267524,
+        "narHash": "sha256-CywB4iCpGr4CYZAD+WboFwBQ7Wnc7LdfSemFWuH/1Ro=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "c7175bd485ed5052df5075fcdde395b631316e94",
+        "rev": "cf33e39bd1a21993a28ffee8be433e212ecf346a",
         "type": "github"
       },
       "original": {
@@ -791,11 +791,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1762792379,
-        "narHash": "sha256-UTO8FWrkl9K2k7IpRYoDlxKLak84F811/5opDzUSRqc=",
+        "lastModified": 1763257715,
+        "narHash": "sha256-LeFFhkmKI/YYL5fJAoDtucdOBqWK5SZqBtrXcZDy530=",
         "owner": "phucisstupid",
         "repo": "wallpapers",
-        "rev": "e02f7bedcb60c249b8b9fe5c0f966eccf31579c8",
+        "rev": "4c4288ca62bec6d48203eb65471312c35d9e5c17",
         "type": "github"
       },
       "original": {
