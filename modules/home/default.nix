@@ -3,7 +3,7 @@
 in {
   xdg.enable = true;
   home = {
-    stateVersion = "25.05";
+    stateVersion = "26.05";
     inherit (flake.config.me) username;
   };
   imports = [
@@ -115,8 +115,8 @@ in {
         catppuccin.enable = true;
         stylix.enable = false;
       };
-      extras-darwin-apps.enable = true;
-      extras-linux-apps.enable = false;
+      extra-darwin-apps.enable = true;
+      extra-linux-apps.enable = false;
     };
   };
 }

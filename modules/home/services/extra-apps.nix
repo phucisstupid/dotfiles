@@ -8,8 +8,8 @@
   inherit (flake.config.me) namespace;
 in {
   options.${namespace}.services = {
-    extras-darwin-apps.enable = lib.mkEnableOption "Enable extra applications on Darwin";
-    extras-linux-apps.enable = lib.mkEnableOption "Enable extra applications on Linux";
+    extra-darwin-apps.enable = lib.mkEnableOption "Enable extra applications on Darwin";
+    extra-linux-apps.enable = lib.mkEnableOption "Enable extra applications on Linux";
   };
   config = lib.mkMerge [
     # Default apps
@@ -20,14 +20,14 @@ in {
       ];
     }
     # Darwin-specific apps
-    (lib.mkIf config.${namespace}.services.extras-darwin-apps.enable {
+    (lib.mkIf config.${namespace}.services.extra-darwin-apps.enable {
       home.packages = with pkgs; [
         raycast
-        bitwarden-desktop
+        # bitwarden-desktop
       ];
     })
     # Linux-specific apps
-    (lib.mkIf config.${namespace}.services.extras-linux-apps.enable {
+    (lib.mkIf config.${namespace}.services.extra-linux-apps.enable {
       home.packages = with pkgs; [
         bitwarden-desktop
       ];

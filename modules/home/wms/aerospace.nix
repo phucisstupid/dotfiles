@@ -20,7 +20,7 @@ in {
     programs.aerospace = {
       inherit (wms.aerospace) enable;
       launchd.enable = true;
-      userSettings = {
+      settings = {
         default-root-container-layout = "tiles";
         automatically-unhide-macos-hidden-apps = true;
         exec-on-workspace-change = lib.mkMerge [
