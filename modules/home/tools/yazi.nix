@@ -6,7 +6,6 @@
   ...
 }: let
   inherit (flake.config.me) namespace;
-  inherit (flake) inputs;
 in {
   options.${namespace}.tools.yazi.enable = lib.mkEnableOption "yazi";
   config = with config.${namespace}.tools; {
