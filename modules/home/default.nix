@@ -90,7 +90,7 @@ in {
     apps = {
       kodi.enable = false;
       obs-studio.enable = false;
-      spotify.enable = true;
+      spotify.enable = false;
       zathura.enable = false;
     };
     browsers = {
@@ -115,7 +115,7 @@ in {
         catppuccin.enable = true;
         stylix.enable = false;
       };
-      extra-darwin-apps.enable = true;
+      extra-darwin-apps.enable = false;
       extra-linux-apps.enable = false;
     };
   };
