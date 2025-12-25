@@ -86,22 +86,6 @@
         "type": "github"
       }
     },
-    "dotfiles-stow": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1766283743,
-        "narHash": "sha256-x24lbUpvyYdlwyHipJY+Pn3gF6L8Rg/GC6T1XVUkkdI=",
-        "owner": "phucisstupid",
-        "repo": "dotfiles-stow",
-        "rev": "af97034fd3d62b9ee0270a0c5460f75529b58b02",
-        "type": "github"
-      },
-      "original": {
-        "owner": "phucisstupid",
-        "repo": "dotfiles-stow",
-        "type": "github"
-      }
-    },
     "firefox-gnome-theme": {
       "flake": false,
       "locked": {
@@ -544,7 +528,6 @@
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
-        "dotfiles-stow": "dotfiles-stow",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "import-tree": "import-tree",

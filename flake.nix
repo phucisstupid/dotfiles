@@ -54,10 +54,6 @@
       url = "github:Jean-Tinland/simple-bar";
       flake = false;
     };
-    dotfiles-stow = {
-      url = "github:phucisstupid/dotfiles-stow";
-      flake = false;
-    };
     wallpapers = {
       url = "github:phucisstupid/wallpapers";
       flake = false;
