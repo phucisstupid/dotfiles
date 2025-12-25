@@ -28,7 +28,12 @@ in {
             ;
         }
         // lib.optionalAttrs config.${namespace}.tools.git.lazygit.enable {inherit lazygit;};
-      initLua = builtins.readFile "${inputs.dotfiles-stow}/.config/yazi/init.lua";
+      initLua = ''
+        require("full-border"):setup()
+        require("git"):setup()
+        require("yatline"):setup(0, require("yatline-catppuccin"):setup("mocha"))
+        require("relative-motions"):setup({ show_numbers = "relative_absolute" })
+      '';
       settings = {
         mgr.show_hidden = true;
         preview = {
