@@ -1,12 +1,10 @@
 {
   config,
-  pkgs,
   lib,
   flake,
   ...
 }: let
   inherit (flake.config.me) namespace;
-  inherit (flake) inputs;
 in {
   options.${namespace}.editors.neovim.lazyvim.enable = lib.mkEnableOption "neovim.lazyvim";
   config.programs.lazyvim = lib.mkMerge [
@@ -27,15 +25,16 @@ in {
         };
         util.mini-hipatterns.enable = true;
       };
-      pluginsFile = {
-        "colorscheme.lua".source = "${inputs.dotfiles-stow}/.config/nvim/lua/plugins/colorscheme.lua";
-        "editor.lua".source = "${inputs.dotfiles-stow}/.config/nvim/lua/plugins/editor.lua";
-        "ui.lua".source = "${inputs.dotfiles-stow}/.config/nvim/lua/plugins/ui.lua";
+      plugins = {
+        colorscheme = ''
+          return {
+            "LazyVim/LazyVim",
+            opts = {
+              colorscheme = "catppuccin",
+            },
+          }
+        '';
       };
     }
-    (lib.mkIf config.${namespace}.terminals.multiplexers.tmux.enable {
-      plugins = [pkgs.vimPlugins.vim-tmux-navigator];
-      pluginsFile."vim-tmux-navigator.lua".source = "${inputs.dotfiles-stow}/.config/nvim/lua/plugins/vim-tmux-navigator.lua";
-    })
   ];
 }

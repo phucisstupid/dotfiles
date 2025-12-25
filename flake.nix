@@ -43,7 +43,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lazyvim = {
-      url = "github:matadaniel/LazyVim-module";
+      url = "github:pfassina/lazyvim-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix4nvchad = {
