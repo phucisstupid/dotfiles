@@ -90,7 +90,7 @@ in {
     apps = {
       kodi.enable = false;
       obs-studio.enable = false;
-      spotify.enable = false;
+      spotify.enable = true;
       zathura.enable = false;
     };
     browsers = {
