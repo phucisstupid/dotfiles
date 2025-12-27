@@ -136,16 +136,16 @@ in {
             run = "move-node-to-workspace 1";
           }
           {
-            "if".app-name-regex-substring = "TV|spotify|stremio";
-            run = "move-node-to-workspace 2";
-          }
-          {
             "if".app-name-regex-substring = "bluebook|preview";
             run = "move-node-to-workspace 3";
           }
           {
             "if".app-name-regex-substring = "wezterm|kitty|ghostty|terminal";
             run = "move-node-to-workspace 4";
+          }
+          {
+            "if".app-name-regex-substring = "TV|spotify|stremio";
+            run = "move-node-to-workspace 5";
           }
         ];
       };
