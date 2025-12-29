@@ -136,7 +136,11 @@ in {
             run = "move-node-to-workspace 1";
           }
           {
-            "if".app-name-regex-substring = "bluebook|preview";
+            "if".app-name-regex-substring = "preview";
+            run = "move-node-to-workspace 2";
+          }
+          {
+            "if".app-name-regex-substring = "bluebook";
             run = "move-node-to-workspace 3";
           }
           {
@@ -144,7 +148,7 @@ in {
             run = "move-node-to-workspace 4";
           }
           {
-            "if".app-name-regex-substring = "TV|spotify|stremio";
+            "if".app-name-regex-substring = "TV|spotify|stremio|netflix";
             run = "move-node-to-workspace 5";
           }
         ];
