@@ -24,7 +24,7 @@ in {
             yatline
             yatline-catppuccin
             relative-motions
-            zoom
+            # zoom
             ;
         }
         // lib.optionalAttrs config.${namespace}.tools.git.lazygit.enable {inherit lazygit;};

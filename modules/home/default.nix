@@ -40,10 +40,10 @@ in {
       };
       multiplexers = {
         tmux = {
-          enable = true;
-          sesh.enable = true;
+          enable = false;
+          sesh.enable = false;
         };
-        zellij.enable = true;
+        zellij.enable = false;
       };
     };
     shells = {
