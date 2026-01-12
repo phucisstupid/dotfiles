@@ -14,7 +14,7 @@
     "widgetsBackgroundColorAsForeground": false,
     "widgetMaxWidth": "160px",
     "slidingAnimationPace": 4,
-    "font": "Maple Mono",
+    "font": "Maple Mono NF",
     "fontSize": "15px",
     "yabaiPath": "$(which yabai)",
     "aerospacePath": "$(which aerospace)",
