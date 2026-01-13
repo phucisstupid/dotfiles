@@ -148,7 +148,7 @@ in {
             run = "move-node-to-workspace 4";
           }
           {
-            "if".app-name-regex-substring = "TV|spotify|stremio|netflix";
+            "if".app-name-regex-substring = "tv|music|spotify|stremio|netflix";
             run = "move-node-to-workspace 5";
           }
         ];
