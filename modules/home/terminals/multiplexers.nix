@@ -24,8 +24,8 @@ in {
         yank
         cpu
         weather
+        battery
         vim-tmux-navigator
-        tmux-floax
         {
           plugin = fingers;
           extraConfig = ''

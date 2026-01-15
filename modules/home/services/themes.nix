@@ -27,6 +27,7 @@ in {
         set -agF status-right "#{E:@catppuccin_status_cpu}"
         set -agF status-right "#{E:@catppuccin_status_weather}"
         set -ag status-right "#{E:@catppuccin_status_uptime}"
+        set -agF status-right "#{E:@catppuccin_status_battery}"
       '';
     };
     stylix = {
