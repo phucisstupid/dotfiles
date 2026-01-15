@@ -18,6 +18,9 @@ in {
       accent = "mauve";
       wezterm.apply = true; # TODO: remove when catppuccin/nix fix wezterm
       tmux.extraConfig = ''
+        set -g status-position top
+        set -g status-right-length 100
+        set -g status-left-length 100
         set -g @catppuccin_window_flags "icon"
         set -g @catppuccin_window_status_style "rounded"
         set -g @catppuccin_window_current_text " #{b:pane_current_path}"
