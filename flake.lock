@@ -778,11 +778,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1768701624,
-        "narHash": "sha256-JuAeul1J2E5cyF3LFlrqi/qfI9RVWBK2F22E+mP7Kxw=",
+        "lastModified": 1769306647,
+        "narHash": "sha256-XktOnLAwFnBK1old6Nbb4540NO0NppasDYlBywmPNCY=",
         "owner": "phucisstupid",
         "repo": "wallpapers",
-        "rev": "4b61532ab63639893bda58ff48b1e9787542883f",
+        "rev": "d02a5e8488268aa05dc690df0cd228e0f83e6e6f",
         "type": "github"
       },
       "original": {
