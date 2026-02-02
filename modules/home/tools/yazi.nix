@@ -24,7 +24,6 @@ in {
             yatline
             yatline-catppuccin
             relative-motions
-            # zoom
             ;
         }
         // lib.optionalAttrs config.${namespace}.tools.git.lazygit.enable {inherit lazygit;};
@@ -66,14 +65,6 @@ in {
           {
             on = "l";
             run = "plugin smart-enter";
-          }
-          {
-            on = "+";
-            run = "plugin zoom 1";
-          }
-          {
-            on = "_";
-            run = "plugin zoom -1";
           }
           {
             on = [
