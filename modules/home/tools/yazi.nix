@@ -11,7 +11,6 @@ in {
   config = with config.${namespace}.tools; {
     programs.yazi = {
       inherit (yazi) enable;
-      shellWrapperName = "y"; # TODO: clean when default is fixed
       plugins = with pkgs.yaziPlugins;
         {
           inherit
