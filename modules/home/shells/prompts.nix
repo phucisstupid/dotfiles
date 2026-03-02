@@ -14,6 +14,7 @@ in {
     starship = {
       inherit (starship) enable;
       enableTransience = true;
+      presets = ["nerd-font-symbols"];
       settings = {
         character = {
           success_symbol = "[[󰄛](green) ❯](peach)";
