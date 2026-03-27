@@ -18,7 +18,7 @@ in {
       git = true;
       icons = "auto";
       colors = "auto";
-      extraOptions = ["--group-directories-first"];
+      extraOptions = ["--group-directories-first" "--hyperlink"];
     };
     lsd = lib.mkIf (ls == "lsd") {
       enable = true;
