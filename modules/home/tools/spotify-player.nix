@@ -3,9 +3,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.tools.spotify-player.enable = lib.mkEnableOption "spotify-player";
   config = lib.mkIf config.${namespace}.tools.spotify-player.enable {
     programs.spotify-player = {

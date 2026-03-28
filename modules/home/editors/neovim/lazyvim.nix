@@ -3,38 +3,39 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.editors.neovim.lazyvim.enable = lib.mkEnableOption "neovim.lazyvim";
-  config.programs.lazyvim = lib.mkMerge [
-    {
-      inherit (config.${namespace}.editors.neovim.lazyvim) enable;
-      extras = {
-        ai.copilot.enable = true;
-        coding = {
-          mini-surround.enable = true;
-          yanky.enable = true;
-        };
-        editor = {
-          dial.enable = true;
-          inc-rename.enable = true;
-        };
-        lang = {
-          nix.enable = true;
-        };
-        util.mini-hipatterns.enable = true;
+  config.programs.lazyvim = {
+    inherit (config.${namespace}.editors.neovim.lazyvim) enable;
+    pluginSource = "nixpkgs";
+    extras = {
+      ai.sidekick.enable = true;
+      coding = {
+        mini-surround.enable = true;
+        yanky.enable = true;
       };
-      plugins = {
-        colorscheme = ''
-          return {
-            "LazyVim/LazyVim",
-            opts = {
-              colorscheme = "catppuccin",
-            },
-          }
-        '';
+      editor = {
+        dial.enable = true;
+        inc-rename.enable = true;
       };
-    }
-  ];
+      lang = {
+        nix.enable = true;
+      };
+      util.mini-hipatterns.enable = true;
+    };
+    plugins = {
+      colorscheme = ''
+        return {
+          "LazyVim/LazyVim",
+          opts = {
+            colorscheme = "catppuccin",
+          },
+        }
+      '';
+    };
+  };
 }

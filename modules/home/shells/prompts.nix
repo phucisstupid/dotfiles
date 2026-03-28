@@ -3,9 +3,11 @@
   flake,
   lib,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.shells.prompts = {
     starship.enable = lib.mkEnableOption "starship";
     oh-my-posh.enable = lib.mkEnableOption "oh-my-posh";
@@ -14,7 +16,7 @@ in {
     starship = {
       inherit (starship) enable;
       enableTransience = true;
-      presets = ["nerd-font-symbols"];
+      presets = [ "nerd-font-symbols" ];
       settings = {
         character = {
           success_symbol = "[[󰄛](green) ❯](peach)";
@@ -28,7 +30,7 @@ in {
         git_branch.style = "bold mauve";
         git_metrics.disabled = false;
         battery.display = [
-          {threshold = 30;}
+          { threshold = 30; }
         ];
       };
     };

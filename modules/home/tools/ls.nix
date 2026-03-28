@@ -3,11 +3,18 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.tools.ls = lib.mkOption {
-    type = lib.types.nullOr (lib.types.enum ["eza" "lsd"]);
+    type = lib.types.nullOr (
+      lib.types.enum [
+        "eza"
+        "lsd"
+      ]
+    );
     default = null;
     description = "Choose which ls replacement to use (eza or lsd).";
   };
@@ -18,7 +25,10 @@ in {
       git = true;
       icons = "auto";
       colors = "auto";
-      extraOptions = ["--group-directories-first" "--hyperlink"];
+      extraOptions = [
+        "--group-directories-first"
+        "--hyperlink"
+      ];
     };
     lsd = lib.mkIf (ls == "lsd") {
       enable = true;

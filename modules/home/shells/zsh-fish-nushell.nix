@@ -4,9 +4,11 @@
   flake,
   lib,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.shells = {
     zsh.enable = lib.mkEnableOption "zsh";
     fish.enable = lib.mkEnableOption "fish";
@@ -28,7 +30,7 @@ in {
         defaultKeymap = "viins";
         syntaxHighlighting.enable = true;
         plugins = with pkgs; [
-          {inherit (zsh-fzf-tab) name src;}
+          { inherit (zsh-fzf-tab) name src; }
         ];
       };
       fish = {

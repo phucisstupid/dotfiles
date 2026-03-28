@@ -3,13 +3,19 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.tools.fastfetch = {
     enable = lib.mkEnableOption "Enable fastfetch with selected preset.";
     preset = lib.mkOption {
-      type = lib.types.enum ["jakoolit" "hyde" "ml4w"];
+      type = lib.types.enum [
+        "jakoolit"
+        "hyde"
+        "ml4w"
+      ];
       default = "jakoolit";
       description = "Choose fastfetch preset: jakoolit | hyde | ml4w";
     };

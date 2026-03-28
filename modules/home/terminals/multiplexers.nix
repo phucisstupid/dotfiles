@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.terminals.multiplexers = {
     tmux.enable = lib.mkEnableOption "Enable tmux";
     tmux.sesh.enable = lib.mkEnableOption "Enable tmux.sesh";

@@ -3,9 +3,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.tools.jujutsu.enable = lib.mkEnableOption "jujutsu";
   config = lib.mkIf config.${namespace}.tools.jujutsu.enable {
     programs.jujutsu = {

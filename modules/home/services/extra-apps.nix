@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.services = {
     extra-darwin-apps.enable = lib.mkEnableOption "Enable extra applications on Darwin";
     extra-linux-apps.enable = lib.mkEnableOption "Enable extra applications on Linux";

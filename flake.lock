@@ -528,8 +528,7 @@
         "simple-bar": "simple-bar",
         "sketchybar-config": "sketchybar-config",
         "spicetify-nix": "spicetify-nix",
-        "stylix": "stylix",
-        "wallpapers": "wallpapers"
+        "stylix": "stylix"
       }
     },
     "simple-bar": {
@@ -772,22 +771,6 @@
       "original": {
         "owner": "tinted-theming",
         "repo": "base16-zed",
-        "type": "github"
-      }
-    },
-    "wallpapers": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1774146510,
-        "narHash": "sha256-ZUqEpN1UfMHl5GzVTO+vWePmqFG7IBBqmYY0aMtcS08=",
-        "owner": "phucisstupid",
-        "repo": "wallpapers",
-        "rev": "614ebdd0d84cca5381049847752344f599316417",
-        "type": "github"
-      },
-      "original": {
-        "owner": "phucisstupid",
-        "repo": "wallpapers",
         "type": "github"
       }
     }

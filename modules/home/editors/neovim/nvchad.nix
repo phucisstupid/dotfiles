@@ -3,9 +3,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.editors.neovim.nvchad.enable = lib.mkEnableOption "nvchad";
   config.programs.nvchad = {
     inherit (config.${namespace}.editors.neovim.nvchad) enable;

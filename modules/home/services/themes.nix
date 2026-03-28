@@ -4,9 +4,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.services.themes = {
     catppuccin.enable = lib.mkEnableOption "catppuccin";
     stylix.enable = lib.mkEnableOption "stylix.catppuccin";

@@ -3,9 +3,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.editors.zed-editor.enable = lib.mkEnableOption "zed-editor";
   config = lib.mkIf config.${namespace}.editors.zed-editor.enable {
     programs.zed-editor = {
@@ -34,11 +36,17 @@ in {
 
         relative_line_numbers = true;
 
-        tab_bar = {show = true;};
+        tab_bar = {
+          show = true;
+        };
 
-        scrollbar = {show = "never";};
+        scrollbar = {
+          show = "never";
+        };
 
-        tabs = {show_diagnostics = "errors";};
+        tabs = {
+          show_diagnostics = "errors";
+        };
 
         indent_guides = {
           enabled = true;
@@ -63,7 +71,9 @@ in {
           };
         };
 
-        inlay_hints = {enabled = true;};
+        inlay_hints = {
+          enabled = true;
+        };
 
         lsp = {
           "tailwindcss-language-server" = {
@@ -91,20 +101,34 @@ in {
           Python = {
             format_on_save = "on";
             formatter = {
-              language_server = {name = "ruff";};
+              language_server = {
+                name = "ruff";
+              };
             };
-            language_servers = ["pyright" "ruff"];
+            language_servers = [
+              "pyright"
+              "ruff"
+            ];
           };
         };
 
         terminal = {
           font_family = "Maple Mono NF";
-          env = {EDITOR = "zed --wait";};
+          env = {
+            EDITOR = "zed --wait";
+          };
         };
 
         file_types = {
-          Dockerfile = ["Dockerfile" "Dockerfile.*"];
-          JSON = ["json" "jsonc" "*.code-snippets"];
+          Dockerfile = [
+            "Dockerfile"
+            "Dockerfile.*"
+          ];
+          JSON = [
+            "json"
+            "jsonc"
+            "*.code-snippets"
+          ];
         };
 
         file_scan_exclusions = [
@@ -141,9 +165,15 @@ in {
           git_status = true;
         };
 
-        outline_panel = {dock = "right";};
-        collaboration_panel = {dock = "left";};
-        notification_panel = {dock = "left";};
+        outline_panel = {
+          dock = "right";
+        };
+        collaboration_panel = {
+          dock = "left";
+        };
+        notification_panel = {
+          dock = "left";
+        };
       };
     };
   };

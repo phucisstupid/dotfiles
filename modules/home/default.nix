@@ -1,6 +1,8 @@
-{flake, ...}: let
+{ flake, ... }:
+let
   inherit (flake) inputs;
-in {
+in
+{
   xdg.enable = true;
   home = {
     stateVersion = "26.05";
@@ -25,9 +27,9 @@ in {
   ${flake.config.me.namespace} = {
     editors = {
       neovim = {
-        lazyvim.enable = false;
+        lazyvim.enable = true;
         nvchad.enable = false;
-        nvf.enable = true;
+        nvf.enable = false;
       };
       helix.enable = false;
       zed-editor.enable = false;
@@ -40,7 +42,7 @@ in {
       };
       multiplexers = {
         tmux = {
-          enable = true;
+          enable = false;
           sesh.enable = true;
         };
         zellij.enable = false;
@@ -110,7 +112,6 @@ in {
       aerospace.enable = true;
     };
     services = {
-      wallpapers.enable = true;
       themes = {
         catppuccin.enable = true;
         stylix.enable = false;

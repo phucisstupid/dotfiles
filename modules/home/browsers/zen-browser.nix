@@ -3,9 +3,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.browsers.zen-browser.enable = lib.mkEnableOption "zen-browser";
   config = lib.mkIf config.${namespace}.browsers.zen-browser.enable {
     # programs.zen-browser = {

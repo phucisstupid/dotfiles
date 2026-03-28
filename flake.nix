@@ -1,17 +1,18 @@
 {
-  outputs = inputs @ {
-    flake-parts,
-    import-tree,
-    ...
-  }:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+  outputs =
+    inputs@{
+      flake-parts,
+      import-tree,
+      ...
+    }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "aarch64-darwin"
         "aarch64-linux"
         "x86_64-darwin"
         "x86_64-linux"
       ];
-      imports = [(import-tree ./modules/flake)];
+      imports = [ (import-tree ./modules/flake) ];
     };
   inputs = {
     # System
@@ -52,10 +53,6 @@
     };
     simple-bar = {
       url = "github:Jean-Tinland/simple-bar";
-      flake = false;
-    };
-    wallpapers = {
-      url = "github:phucisstupid/wallpapers";
       flake = false;
     };
     sketchybar-config = {

@@ -3,9 +3,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.tools.nh.enable = lib.mkEnableOption "nh";
   config = lib.mkIf config.${namespace}.tools.nh.enable {
     programs.nh = {

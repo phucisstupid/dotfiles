@@ -3,9 +3,11 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
-in {
+in
+{
   options.${namespace}.editors.neovim.nvf.enable = lib.mkEnableOption "nvf";
   config.programs.nvf = {
     inherit (config.${namespace}.editors.neovim.nvf) enable;
@@ -24,12 +26,18 @@ in {
       };
       autocmds = [
         {
-          event = ["InsertEnter" "CmdlineEnter"];
+          event = [
+            "InsertEnter"
+            "CmdlineEnter"
+          ];
           desc = "Unmap <Esc> during insert/cmdline modes";
           command = "silent! nunmap <Esc>";
         }
         {
-          event = ["InsertLeave" "CmdlineLeave"];
+          event = [
+            "InsertLeave"
+            "CmdlineLeave"
+          ];
           desc = "Remap <Esc> to clear search highlight in normal mode";
           command = "nnoremap <silent> <Esc> :nohlsearch<CR>";
         }

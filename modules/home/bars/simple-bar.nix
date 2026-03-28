@@ -4,10 +4,12 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
   inherit (flake) inputs;
-in {
+in
+{
   options.${namespace}.bars.simple-bar.enable = lib.mkEnableOption "simple-bar";
   config = lib.mkIf config.${namespace}.bars.simple-bar.enable {
     home = {

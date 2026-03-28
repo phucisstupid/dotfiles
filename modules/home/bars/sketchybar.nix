@@ -4,10 +4,12 @@
   lib,
   flake,
   ...
-}: let
+}:
+let
   inherit (flake.config.me) namespace;
   inherit (flake) inputs;
-in {
+in
+{
   options.${namespace}.bars.sketchybar.enable = lib.mkEnableOption "sketchybar";
   config = lib.mkIf config.${namespace}.bars.sketchybar.enable {
     home.packages = with pkgs; [
@@ -25,7 +27,8 @@ in {
       ];
     };
     xdg.configFile = {
-      "sketchybar/helpers/spaces_util/icon_map.lua".source = "${pkgs.sketchybar-app-font}/lib/sketchybar-app-font/icon_map.lua";
+      "sketchybar/helpers/spaces_util/icon_map.lua".source =
+        "${pkgs.sketchybar-app-font}/lib/sketchybar-app-font/icon_map.lua";
       "sketchybar/settings.lua".text = ''
         return {
           bar_preset = "compact",
