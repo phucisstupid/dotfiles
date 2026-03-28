@@ -3,11 +3,9 @@
   lib,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   options.${namespace}.screenlockers.hyprlock.enable = lib.mkEnableOption "hyprlock";
   config = lib.mkIf config.${namespace}.screenlockers.hyprlock.enable {
     programs.hyprlock = {

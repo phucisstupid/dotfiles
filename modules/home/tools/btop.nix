@@ -3,11 +3,9 @@
   lib,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   options.${namespace}.tools.btop.enable = lib.mkEnableOption "btop";
   config = lib.mkIf config.${namespace}.tools.btop.enable {
     programs.btop = {

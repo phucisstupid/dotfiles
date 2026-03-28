@@ -3,11 +3,9 @@
   lib,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   options.${namespace}.tools.ls = lib.mkOption {
     type = lib.types.nullOr (
       lib.types.enum [

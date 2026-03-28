@@ -3,11 +3,9 @@
   lib,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   options.${namespace}.editors.neovim.lazyvim.enable = lib.mkEnableOption "neovim.lazyvim";
   config.programs.lazyvim = {
     inherit (config.${namespace}.editors.neovim.lazyvim) enable;

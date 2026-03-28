@@ -3,11 +3,9 @@
   lib,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   options.${namespace}.browsers = {
     chromium.enable = lib.mkEnableOption "chromium";
     brave.enable = lib.mkEnableOption "brave";

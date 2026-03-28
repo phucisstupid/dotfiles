@@ -3,11 +3,9 @@
   lib,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   options.${namespace}.browsers.qutebrowser.enable = lib.mkEnableOption "qutebrowser";
   config = lib.mkIf config.${namespace}.browsers.qutebrowser.enable {
     programs.qutebrowser = {

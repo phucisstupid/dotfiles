@@ -3,11 +3,9 @@
   lib,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   options.${namespace}.apps.zathura.enable = lib.mkEnableOption "zathura";
   config = lib.mkIf config.${namespace}.apps.zathura.enable {
     programs.zathura = {

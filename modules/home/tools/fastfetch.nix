@@ -3,11 +3,9 @@
   lib,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   options.${namespace}.tools.fastfetch = {
     enable = lib.mkEnableOption "Enable fastfetch with selected preset.";
     preset = lib.mkOption {

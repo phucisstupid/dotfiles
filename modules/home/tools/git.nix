@@ -3,11 +3,9 @@
   lib,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
-in
-{
+in {
   options.${namespace}.tools.git = {
     enable = lib.mkEnableOption "git";
     delta.enable = lib.mkEnableOption "delta";

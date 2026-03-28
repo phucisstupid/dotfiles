@@ -4,12 +4,10 @@
   lib,
   flake,
   ...
-}:
-let
+}: let
   inherit (flake.config.me) namespace;
   mod = "alt";
-in
-{
+in {
   options.${namespace}.wms.aerospace.enable = lib.mkEnableOption "aerospace";
   config = with config.${namespace}; {
     services.jankyborders = {
@@ -53,7 +51,7 @@ in
           ])
         ];
         on-focus-changed = lib.mkMerge [
-          [ "move-mouse window-lazy-center" ]
+          ["move-mouse window-lazy-center"]
           (lib.optionals bars.simple-bar.enable [
             "exec-and-forget osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\"'"
           ])
@@ -68,12 +66,11 @@ in
           };
           outer = {
             top = lib.mkDefault (
-              if bars.sketchybar.enable then
-                30
-              else if bars.simple-bar.enable then
-                30
-              else
-                2
+              if bars.sketchybar.enable
+              then 30
+              else if bars.simple-bar.enable
+              then 30
+              else 2
             );
             bottom = 2;
             left = 2;
@@ -81,38 +78,39 @@ in
           };
         };
         mode = {
-          main.binding = {
-            "${mod}-slash" = "layout tiles horizontal vertical";
-            "${mod}-comma" = "layout accordion horizontal vertical";
-            "${mod}-h" = "focus left";
-            "${mod}-j" = "focus down";
-            "${mod}-k" = "focus up";
-            "${mod}-l" = "focus right";
-            "${mod}-shift-h" = "move left";
-            "${mod}-shift-j" = "move down";
-            "${mod}-shift-k" = "move up";
-            "${mod}-shift-l" = "move right";
-            "${mod}-minus" = "resize smart -50";
-            "${mod}-equal" = "resize smart +50";
-            "${mod}-tab" = "workspace-back-and-forth";
-            "${mod}-shift-tab" = "move-workspace-to-monitor --wrap-around next";
-            "${mod}-shift-semicolon" = "mode service";
-            "${mod}-shift-f" = "fullscreen --no-outer-gaps";
-          }
-          // builtins.listToAttrs (
-            builtins.concatMap (n: [
-              {
-                name = "${mod}-${toString n}";
-                value = "workspace ${toString n}";
-              }
-              {
-                name = "${mod}-shift-${toString n}";
-                value = "move-node-to-workspace ${toString n}";
-              }
-            ]) (lib.range 1 6)
-          );
+          main.binding =
+            {
+              "${mod}-slash" = "layout tiles horizontal vertical";
+              "${mod}-comma" = "layout accordion horizontal vertical";
+              "${mod}-h" = "focus left";
+              "${mod}-j" = "focus down";
+              "${mod}-k" = "focus up";
+              "${mod}-l" = "focus right";
+              "${mod}-shift-h" = "move left";
+              "${mod}-shift-j" = "move down";
+              "${mod}-shift-k" = "move up";
+              "${mod}-shift-l" = "move right";
+              "${mod}-minus" = "resize smart -50";
+              "${mod}-equal" = "resize smart +50";
+              "${mod}-tab" = "workspace-back-and-forth";
+              "${mod}-shift-tab" = "move-workspace-to-monitor --wrap-around next";
+              "${mod}-shift-semicolon" = "mode service";
+              "${mod}-shift-f" = "fullscreen --no-outer-gaps";
+            }
+            // builtins.listToAttrs (
+              builtins.concatMap (n: [
+                {
+                  name = "${mod}-${toString n}";
+                  value = "workspace ${toString n}";
+                }
+                {
+                  name = "${mod}-shift-${toString n}";
+                  value = "move-node-to-workspace ${toString n}";
+                }
+              ]) (lib.range 1 6)
+            );
           service.binding = {
-            "esc" = [ "mode main" ];
+            "esc" = ["mode main"];
             "b" = [
               "balance-sizes"
               "mode main"
