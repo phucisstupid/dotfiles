@@ -500,11 +500,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1774631252,
-        "narHash": "sha256-SBPYPLuM+KSaauKsWa7sETRf26NT7LH0ilUw36V5nkA=",
+        "lastModified": 1774672570,
+        "narHash": "sha256-FeAPrb5LnyM44FYt0nFCoHOdDRxf7ORC4Uuu2Me6zbw=",
         "owner": "NotAShelf",
         "repo": "nvf",
-        "rev": "5836038ead139a0c54269ecde45cba262fb3a3db",
+        "rev": "bfb6e4856e7b7b22971f1cb89b8219f5306758b2",
         "type": "github"
       },
       "original": {
