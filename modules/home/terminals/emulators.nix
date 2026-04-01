@@ -42,6 +42,7 @@ in {
         font-size = 17;
         mouse-hide-while-typing = true;
         macos-option-as-alt = true;
+macos-titlebar-style = "hidden";
       };
     };
   };
