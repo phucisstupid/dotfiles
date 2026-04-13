@@ -16,7 +16,6 @@ in {
     {
       home.packages = with pkgs; [
         maple-mono.NF
-        uutils-coreutils-noprefix
       ];
     }
     # Darwin-specific apps
