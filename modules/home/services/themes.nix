@@ -21,16 +21,13 @@ in {
         set -g status-position top
         set -g status-right-length 100
         set -g status-left-length 100
-        set -g @catppuccin_window_flags "icon"
-        set -g @catppuccin_window_status_style "rounded"
-        set -g @catppuccin_window_current_text " #{b:pane_current_path}"
-        set -g @catppuccin_window_text " #{b:pane_current_path}"
-        set -g status-left "#{E:@catppuccin_status_session}"
-        set -g status-right "#{E:@catppuccin_status_application}"
-        set -agF status-right "#{E:@catppuccin_status_cpu}"
-        set -agF status-right "#{E:@catppuccin_status_weather}"
-        set -ag status-right "#{E:@catppuccin_status_uptime}"
+        set -g @catppuccin_window_current_text " #W"
+        set -g @catppuccin_window_text " #W"
+        set -g @catppuccin_status_background "none"
+        set -g status-left ""
+        set -g status-right "#{E:@catppuccin_status_session}"
         set -agF status-right "#{E:@catppuccin_status_battery}"
+        set -agF status-right "#{E:@catppuccin_status_date_time}"
       '';
     };
     stylix = {

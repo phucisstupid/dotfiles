@@ -18,8 +18,8 @@ in {
       sensibleOnTop = true;
       shortcut = "a";
       keyMode = "vi";
+      customPaneNavigationAndResize = true;
       baseIndex = 1;
-      disableConfirmationPrompt = true;
       plugins = with pkgs.tmuxPlugins; [
         yank
         cpu
