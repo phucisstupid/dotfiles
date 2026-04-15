@@ -44,7 +44,6 @@ in {
       settings = {
         gui = {
           expandFocusedSidePanel = true;
-          showPanelJumps = false;
           showBottomLine = false;
           nerdFontsVersion = "3";
         };

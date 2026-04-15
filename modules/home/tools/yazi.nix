@@ -17,22 +17,14 @@ in {
             git
             mount
             chmod
-            full-border
             toggle-pane
             smart-enter
-            yatline-catppuccin
-            yatline
             relative-motions
             ;
         }
         // lib.optionalAttrs config.${namespace}.tools.git.lazygit.enable {inherit lazygit;};
       initLua = ''
-        local catppuccin_theme = require("yatline-catppuccin"):setup("mocha")
-        require("full-border"):setup()
         require("git"):setup()
-        require("yatline"):setup({
-          theme = catppuccin_theme,
-        })
         require("relative-motions"):setup({
           show_numbers = "relative_absolute",
         })
