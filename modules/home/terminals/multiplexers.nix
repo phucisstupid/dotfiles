@@ -16,6 +16,7 @@ in {
     tmux = {
       inherit (config.${namespace}.terminals.multiplexers.tmux) enable;
       sensibleOnTop = true;
+      terminal = "tmux-256color";
       shortcut = "a";
       keyMode = "vi";
       customPaneNavigationAndResize = true;
