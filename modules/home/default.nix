@@ -97,7 +97,6 @@ in {
       chromium.enable = false;
       qutebrowser.enable = false;
       brave.enable = false;
-      zen-browser.enable = false;
     };
     bars = {
       sketchybar.enable = false;
