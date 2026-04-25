@@ -99,7 +99,6 @@ in {
         nix.enable = true;
         markdown.enable = true;
         lua.enable = true;
-        # rust.enable = true;
       };
       autocomplete.blink-cmp = {
         enable = true;
