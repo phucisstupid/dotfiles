@@ -5,6 +5,11 @@
   flake,
   ...
 }: let
+  relativeMotionsKeymap = builtins.genList (n: let m = toString (n + 1); in {
+    on = m;
+    run = "plugin relative-motions ${m}";
+  }) 9;
+
   inherit (flake.config.me) namespace;
 in {
   options.${namespace}.tools.yazi.enable = lib.mkEnableOption "yazi";
@@ -70,10 +75,7 @@ in {
             run = "plugin chmod";
           }
         ]
-        ++ builtins.map (n: {
-          on = "${toString n}";
-          run = "plugin relative-motions ${toString n}";
-        }) (lib.range 1 9)
+        ++ relativeMotionsKeymap
         ++ lib.optionals git.lazygit.enable [
           {
             on = [
