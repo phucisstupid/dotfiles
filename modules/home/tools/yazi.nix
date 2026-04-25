@@ -5,10 +5,14 @@
   flake,
   ...
 }: let
-  relativeMotionsKeymap = builtins.genList (n: let m = toString (n + 1); in {
-    on = m;
-    run = "plugin relative-motions ${m}";
-  }) 9;
+  relativeMotionsKeymap =
+    builtins.genList (n: let
+      m = toString (n + 1);
+    in {
+      on = m;
+      run = "plugin relative-motions ${m}";
+    })
+    9;
 
   inherit (flake.config.me) namespace;
 in {
