@@ -8,8 +8,8 @@
   inherit (flake.config.me) namespace;
   inherit (flake) inputs;
 in {
-  options.${namespace}.bars.sketchybar.enable = lib.mkEnableOption "sketchybar";
-  config = lib.mkIf config.${namespace}.bars.sketchybar.enable {
+  options.${namespace}.bars.enable = lib.mkEnableOption "sketchybar";
+  config = lib.mkIf config.${namespace}.bars.enable {
     home.packages = with pkgs; [
       sketchybar-app-font
     ];

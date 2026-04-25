@@ -50,13 +50,10 @@
       url = "github:nix-community/nix4nvchad";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    simple-bar = {
-      url = "github:Jean-Tinland/simple-bar";
-      flake = false;
-    };
     sketchybar-config = {
       url = "github:phucisstupid/sketchybar-config";
       flake = false;
     };
+    tmux-nerd-font-window-name.url = "github:joshmedeski/tmux-nerd-font-window-name";
   };
 }

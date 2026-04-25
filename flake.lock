@@ -444,6 +444,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1776877367,
+        "narHash": "sha256-EHq1/OX139R1RvBzOJ0aMRT3xnWyqtHBRUBuO1gFzjI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "0726a0ecb6d4e08f6adced58726b95db924cef57",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nur": {
       "inputs": {
         "flake-parts": [
@@ -523,26 +539,10 @@
         "nixos-unified": "nixos-unified",
         "nixpkgs": "nixpkgs_2",
         "nvf": "nvf",
-        "simple-bar": "simple-bar",
         "sketchybar-config": "sketchybar-config",
         "spicetify-nix": "spicetify-nix",
-        "stylix": "stylix"
-      }
-    },
-    "simple-bar": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1776855660,
-        "narHash": "sha256-QlvVtTPvaE7hJhTKI7nuyNHs4CuhZPJAVVR/ECL4USU=",
-        "owner": "Jean-Tinland",
-        "repo": "simple-bar",
-        "rev": "4709b85b202fbfc4128f5ee2aa833d56c92a7f69",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Jean-Tinland",
-        "repo": "simple-bar",
-        "type": "github"
+        "stylix": "stylix",
+        "tmux-nerd-font-window-name": "tmux-nerd-font-window-name"
       }
     },
     "sketchybar-config": {
@@ -751,6 +751,24 @@
       "original": {
         "owner": "tinted-theming",
         "repo": "base16-zed",
+        "type": "github"
+      }
+    },
+    "tmux-nerd-font-window-name": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1775836742,
+        "narHash": "sha256-b6CQdN33hU5li/0LUOHMs7oN8ffVRVQlSf17Twhz2e8=",
+        "owner": "joshmedeski",
+        "repo": "tmux-nerd-font-window-name",
+        "rev": "0af812a228e1b9f538b8d220c6c59d82d7228973",
+        "type": "github"
+      },
+      "original": {
+        "owner": "joshmedeski",
+        "repo": "tmux-nerd-font-window-name",
         "type": "github"
       }
     }

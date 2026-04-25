@@ -90,7 +90,7 @@ in {
     apps = {
       kodi.enable = false;
       obs-studio.enable = false;
-      spotify.enable = true;
+      spotify.enable = false;
       zathura.enable = false;
     };
     browsers = {
@@ -98,10 +98,7 @@ in {
       qutebrowser.enable = false;
       brave.enable = false;
     };
-    bars = {
-      sketchybar.enable = false;
-      simple-bar.enable = false;
-    };
+    bars.enable = false;
     screenlockers = {
       hyprlock.enable = false;
     };

@@ -16,14 +16,13 @@ in {
       inherit (catppuccin) enable;
       flavor = "mocha";
       accent = "mauve";
-      wezterm.apply = true; # TODO: remove when catppuccin/nix fix wezterm
       tmux.extraConfig = ''
         set -g status-position top
         set -g status-right-length 100
         set -g status-left-length 100
+        set -g @catppuccin_window_status_style "rounded"
         set -g @catppuccin_window_current_text " #W"
         set -g @catppuccin_window_text " #W"
-        set -g @catppuccin_status_background "none"
         set -g status-left ""
         set -g status-right "#{E:@catppuccin_status_session}"
         set -agF status-right "#{E:@catppuccin_status_battery}"

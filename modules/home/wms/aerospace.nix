@@ -43,19 +43,13 @@ in {
             "/bin/bash"
             "-c"
           ]
-          (lib.optionals bars.simple-bar.enable [
-            "osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\"'"
-          ])
-          (lib.optionals bars.sketchybar.enable [
+          (lib.optionals bars.enable [
             "${lib.getExe pkgs.sketchybar} --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
           ])
         ];
         on-focus-changed = lib.mkMerge [
           ["move-mouse window-lazy-center"]
-          (lib.optionals bars.simple-bar.enable [
-            "exec-and-forget osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-index-jsx\"'"
-          ])
-          (lib.optionals bars.sketchybar.enable [
+          (lib.optionals bars.enable [
             "exec-and-forget ${lib.getExe pkgs.sketchybar} --trigger aerospace_focus_change"
           ])
         ];
@@ -66,9 +60,7 @@ in {
           };
           outer = {
             top = lib.mkDefault (
-              if bars.sketchybar.enable
-              then 30
-              else if bars.simple-bar.enable
+              if bars.enable
               then 30
               else 2
             );
