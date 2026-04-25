@@ -22,7 +22,10 @@ If you don’t want to do all of installation manually, use my script:
 ‼️ Backup your `~/dotfiles` if you already have existing configurations
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/phucisstupid/dotflow/main/nix.sh | sh -s
+curl -fsSL https://raw.githubusercontent.com/phucisstupid/dotflow/main/nix.sh -o nix.sh
+# Inspect the script before running it
+cat nix.sh
+sh nix.sh
 ```
 
 > See the script here: [nix.sh](https://github.com/phucisstupid/dotflow/blob/main/nix.sh)
