@@ -111,7 +111,6 @@ in {
         stylix.enable = false;
       };
       extra-darwin-apps.enable = false;
-      extra-linux-apps.enable = false;
     };
   };
 }
