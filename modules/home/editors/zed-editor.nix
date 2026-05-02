@@ -11,18 +11,40 @@ in {
     programs.zed-editor = {
       enable = true;
       userSettings = {
-        redact_private_values = true;
+        session = {
+          trust_all_worktrees = true;
+        };
+
+        git = {
+          inline_blame = {
+            enabled = true;
+          };
+        };
+
+        gutter = {
+          line_numbers = true;
+        };
+
+        cursor_shape = "bar";
+        cursor_blink = false;
+        use_system_window_tabs = true;
+        show_whitespaces = "all";
+        show_edit_predictions = true;
+        hard_tabs = true;
 
         git_panel = {
+          tree_view = true;
           dock = "right";
         };
 
-        features = {
-          edit_prediction_provider = "zed";
+        icon_theme = {
+          mode = "dark";
+          light = "Catppuccin Mocha";
+          dark = "Catppuccin Mocha";
         };
 
         ui_font_size = 17;
-        buffer_font_size = 18;
+        buffer_font_size = 18.5;
 
         file_finder = {
           modal_max_width = "medium";
@@ -32,7 +54,11 @@ in {
 
         vim_mode = true;
 
-        relative_line_numbers = true;
+        which_key = {
+          enabled = true;
+        };
+
+        relative_line_numbers = "enabled";
 
         tab_bar = {
           show = true;
@@ -56,19 +82,6 @@ in {
           right_padding = 0.15;
         };
 
-        agent = {
-          default_model = {
-            provider = "copilot_chat";
-            model = "gpt-4o";
-          };
-        };
-
-        language_models = {
-          ollama = {
-            api_url = "http://localhost:11434";
-          };
-        };
-
         inlay_hints = {
           enabled = true;
         };
@@ -88,6 +101,9 @@ in {
 
         languages = {
           TypeScript = {
+            show_whitespaces = "all";
+            show_edit_predictions = true;
+            hard_tabs = true;
             inlay_hints = {
               enabled = true;
               show_parameter_hints = false;
@@ -97,6 +113,9 @@ in {
           };
 
           Python = {
+            show_whitespaces = "all";
+            show_edit_predictions = true;
+            hard_tabs = true;
             format_on_save = "on";
             formatter = {
               language_server = {
@@ -104,13 +123,18 @@ in {
               };
             };
             language_servers = [
-              "pyright"
+              "ty"
               "ruff"
+              "!basedpyright"
+              "!pyrefly"
+              "!pyright"
+              "!pylsp"
             ];
           };
         };
 
         terminal = {
+          font_size = 17.0;
           font_family = "Maple Mono NF";
           env = {
             EDITOR = "zed --wait";
@@ -158,6 +182,7 @@ in {
         };
 
         project_panel = {
+          auto_fold_dirs = false;
           button = true;
           dock = "right";
           git_status = true;
