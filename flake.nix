@@ -54,6 +54,5 @@
       url = "github:phucisstupid/sketchybar-config";
       flake = false;
     };
-    tmux-nerd-font-window-name.url = "github:joshmedeski/tmux-nerd-font-window-name";
   };
 }

@@ -33,7 +33,6 @@ in {
             set -g @fingers-key space
           '';
         }
-        flake.inputs.tmux-nerd-font-window-name.packages.${pkgs.system}.default
       ];
       extraConfig = ''
         set -ga terminal-overrides ",*:Tc"
