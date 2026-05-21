@@ -1,6 +1,4 @@
-{
-  ...
-}: let
+_: let
   mod = "alt";
   aerospace = {
     homeManager = {lib, ...}: {

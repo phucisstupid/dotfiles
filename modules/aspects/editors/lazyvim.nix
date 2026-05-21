@@ -1,4 +1,4 @@
-{ ...}: let
+_: let
   lazyvim = {
     homeManager.programs.lazyvim = {
       enable = true;

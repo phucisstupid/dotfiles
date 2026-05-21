@@ -1,6 +1,4 @@
-{
-  ...
-}: let
+_: let
   git = {
     homeManager = {
       programs.git = {

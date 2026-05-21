@@ -1,6 +1,4 @@
-{
-  ...
-}: let
+_: let
   tmux = {
     homeManager = {pkgs, ...}: {
       programs = {

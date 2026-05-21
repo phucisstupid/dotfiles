@@ -1,4 +1,4 @@
-{ ...}: let
+_: let
   fish = {
     homeManager = {
       home = {

@@ -1,6 +1,4 @@
-{
-  ...
-}: let
+_: let
   cli = {
     homeManager = {pkgs, ...}: let
       relativeMotionsKeymap =

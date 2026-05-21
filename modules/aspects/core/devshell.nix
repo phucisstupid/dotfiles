@@ -1,5 +1,5 @@
 # Development shell for this dotfiles flake.
-{...}: {
+_: {
   perSystem = {pkgs, ...}: {
     devShells.default = pkgs.mkShell {
       name = "dotfiles-shell";

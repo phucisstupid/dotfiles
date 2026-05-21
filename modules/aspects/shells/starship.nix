@@ -1,4 +1,4 @@
-{ ...}: let
+_: let
   starship = {
     homeManager.programs.starship = {
       enable = true;

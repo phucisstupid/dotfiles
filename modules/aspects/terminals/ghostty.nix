@@ -1,6 +1,4 @@
-{
-  ...
-}: let
+_: let
   ghostty = {
     homeManager = {pkgs, ...}: {
       programs.ghostty = {

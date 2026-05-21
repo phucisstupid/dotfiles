@@ -1,4 +1,4 @@
-{ ...}: let
+_: let
   catppuccin = {
     homeManager.catppuccin = {
       enable = true;
