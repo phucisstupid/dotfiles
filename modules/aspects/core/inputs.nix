@@ -20,17 +20,4 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
-  # Temporary while legacy modules are migrated. Task 7 removes this override
-  # when generated flake.nix can import the full ./modules tree.
-  flake-file.outputs = ''
-    inputs:
-      inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-        imports = [
-          (inputs.import-tree ./modules/aspects)
-          (inputs.import-tree ./modules/hosts)
-          (inputs.import-tree ./modules/users)
-        ];
-      }
-  '';
 }

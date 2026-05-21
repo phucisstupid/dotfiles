@@ -1,15 +1,7 @@
 # DO-NOT-EDIT. This file was auto-generated using github:vic/flake-file.
 # Use `nix run .#write-flake` to regenerate it.
 {
-  outputs =
-    inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [
-        (inputs.import-tree ./modules/aspects)
-        (inputs.import-tree ./modules/hosts)
-        (inputs.import-tree ./modules/users)
-      ];
-    };
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
   inputs = {
     catppuccin.url = "github:catppuccin/nix";
@@ -40,6 +32,10 @@
     nvf = {
       url = "github:NotAShelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    sketchybar-config = {
+      url = "github:phucisstupid/sketchybar-config";
+      flake = false;
     };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
