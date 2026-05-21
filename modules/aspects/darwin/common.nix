@@ -1,5 +1,5 @@
 # Common nix-darwin host settings.
-{den, ...}: let
+{ ...}: let
   common = {
     darwin = {
       users.users.wow.home = "/Users/wow";

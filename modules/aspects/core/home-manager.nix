@@ -1,6 +1,5 @@
 # Home Manager settings and shared external modules.
 {
-  den,
   inputs,
   ...
 }: let

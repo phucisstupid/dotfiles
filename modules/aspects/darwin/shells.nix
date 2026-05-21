@@ -1,5 +1,5 @@
 # System shells for Darwin.
-{den, pkgs, ...}: let
+{ pkgs, ...}: let
   fish = {
     darwin = {
       programs.fish.enable = true;

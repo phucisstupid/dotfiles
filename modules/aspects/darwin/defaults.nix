@@ -1,5 +1,5 @@
 # macOS defaults.
-{den, ...}: let
+{ ...}: let
   defaults = {
     darwin = {
       system.defaults = {
