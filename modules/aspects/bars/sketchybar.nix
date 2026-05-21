@@ -1,5 +1,9 @@
 # Optional SketchyBar aspect.
-{den, inputs, ...}: {
+{
+  den,
+  inputs,
+  ...
+}: {
   flake-file.inputs.sketchybar-config = {
     url = "github:phucisstupid/sketchybar-config";
     flake = false;

@@ -1,5 +1,9 @@
 # Optional desktop app aspects.
-{den, inputs, ...}: let
+{
+  den,
+  inputs,
+  ...
+}: let
   perUser = homeManager: den.lib.perUser {inherit homeManager;};
 in {
   den.aspects.kodi.includes = [

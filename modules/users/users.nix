@@ -1,5 +1,5 @@
 # Default user context.
-{ lib, ...}: {
+{lib, ...}: {
   den.schema.user.includes = [
     <den/define-user>
   ];

@@ -1,8 +1,5 @@
 # Home Manager settings and shared external modules.
-{
-  inputs,
-  ...
-}: let
+{inputs, ...}: let
   hostConfig = {
     darwin.home-manager = {
       useUserPackages = true;

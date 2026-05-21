@@ -1,5 +1,9 @@
 # Host registry.
-{den, lib, ...}: let
+{
+  den,
+  lib,
+  ...
+}: let
   darwinDefaults = {
     darwin.system.stateVersion = lib.mkDefault 6;
   };
