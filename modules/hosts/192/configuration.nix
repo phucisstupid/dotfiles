@@ -1,10 +1,7 @@
 {den, ...}: {
   den.aspects."192" = {
     includes = with den.aspects; [
-      darwin-common
-      home-manager
-      macos-defaults
-      darwin-shells
+      darwin-workstation
     ];
 
     darwin.networking.hostName = "192";

@@ -1,11 +1,10 @@
 {
   den,
-  lib,
   ...
 }: let
   mod = "alt";
   aerospace = {
-    homeManager = {
+    homeManager = {lib, ...}: {
       services.jankyborders = {
         enable = true;
         settings = {

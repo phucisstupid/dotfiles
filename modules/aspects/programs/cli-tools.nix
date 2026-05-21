@@ -1,20 +1,18 @@
 {
   den,
-  pkgs,
-  lib,
   ...
 }: let
-  relativeMotionsKeymap =
-    builtins.genList (n: let
-      m = toString (n + 1);
-    in {
-      on = m;
-      run = "plugin relative-motions ${m}";
-    })
-    9;
-
   cli = {
-    homeManager = {
+    homeManager = {pkgs, ...}: let
+      relativeMotionsKeymap =
+        builtins.genList (n: let
+          m = toString (n + 1);
+        in {
+          on = m;
+          run = "plugin relative-motions ${m}";
+        })
+        9;
+    in {
       programs.yazi = {
         enable = true;
         plugins = with pkgs.yaziPlugins; {
