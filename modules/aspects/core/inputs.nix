@@ -11,6 +11,14 @@
     den.url = "github:vic/den";
     import-tree.url = "github:vic/import-tree";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # Temporary while legacy modules are migrated. Task 7 removes this override
@@ -20,6 +28,8 @@
       inputs.flake-parts.lib.mkFlake { inherit inputs; } {
         imports = [
           (inputs.import-tree ./modules/aspects)
+          (inputs.import-tree ./modules/hosts)
+          (inputs.import-tree ./modules/users)
         ];
       }
   '';
