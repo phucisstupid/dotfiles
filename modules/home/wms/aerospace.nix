@@ -15,6 +15,7 @@ in {
       settings = {
         active_color = "0xffcba6f7";
         hidpi = "on";
+        ax_focus = "off";
       };
     };
     programs.aerospace = {
