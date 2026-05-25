@@ -5,15 +5,6 @@
   flake,
   ...
 }: let
-  relativeMotionsKeymap =
-    builtins.genList (n: let
-      m = toString (n + 1);
-    in {
-      on = m;
-      run = "plugin relative-motions ${m}";
-    })
-    9;
-
   inherit (flake.config.me) namespace;
 in {
   options.${namespace}.tools.yazi.enable = lib.mkEnableOption "yazi";
@@ -28,16 +19,12 @@ in {
             chmod
             toggle-pane
             smart-enter
-            relative-motions
             ;
         }
         // lib.optionalAttrs config.${namespace}.tools.git.lazygit.enable {inherit lazygit;};
       initLua = ''
         require("git"):setup({
 	        order = 1500,
-        })
-        require("relative-motions"):setup({
-          show_numbers = "relative_absolute",
         })
       '';
       settings = {
@@ -81,7 +68,6 @@ in {
             run = "plugin chmod";
           }
         ]
-        ++ relativeMotionsKeymap
         ++ lib.optionals git.lazygit.enable [
           {
             on = [
