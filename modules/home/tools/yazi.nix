@@ -33,7 +33,9 @@ in {
         }
         // lib.optionalAttrs config.${namespace}.tools.git.lazygit.enable {inherit lazygit;};
       initLua = ''
-        require("git"):setup()
+        require("git"):setup({
+	        order = 1500,
+        })
         require("relative-motions"):setup({
           show_numbers = "relative_absolute",
         })
@@ -46,14 +48,14 @@ in {
         };
         plugin.prepend_fetchers = [
           {
-            id = "git";
-            name = "*";
+            url = "*";
             run = "git";
+            group = "git";
           }
           {
-            id = "git";
-            name = "*/";
+            url = "*/";
             run = "git";
+            group = "git";
           }
         ];
       };
