@@ -24,7 +24,7 @@ in {
         // lib.optionalAttrs config.${namespace}.tools.git.lazygit.enable {inherit lazygit;};
       initLua = ''
         require("git"):setup({
-	        order = 1500,
+         order = 1500,
         })
       '';
       settings = {
