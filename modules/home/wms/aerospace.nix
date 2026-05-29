@@ -144,7 +144,7 @@ in {
             run = "move-node-to-workspace 1";
           }
           {
-            "if".app-name-regex-substring = "preview";
+            "if".app-name-regex-substring = "preview|libreoffice";
             run = "move-node-to-workspace 2";
           }
           {
