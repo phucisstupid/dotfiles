@@ -160,7 +160,7 @@ in {
             run = "move-node-to-workspace 5";
           }
           {
-            "if".app-name-regex-substring = "codex|opencode";
+            "if".app-name-regex-substring = "codex|opencode|antigravity";
             run = "move-node-to-workspace 6";
           }
         ];
