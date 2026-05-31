@@ -25,7 +25,6 @@ in {
         # colemak-dh
         key-mapping = {
           preset = "colemak";
-
           key-notation-to-key-code = {
             g = "b";
             d = "g";
@@ -37,6 +36,7 @@ in {
             m = "h";
           };
         };
+
         default-root-container-layout = "tiles";
         automatically-unhide-macos-hidden-apps = true;
         exec-on-workspace-change = lib.mkMerge [
