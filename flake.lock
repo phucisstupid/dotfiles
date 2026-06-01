@@ -115,13 +115,13 @@
       "locked": {
         "lastModified": 1778781969,
         "narHash": "sha256-Jjuz5CmSkur8KvLDoGa+vylEp+RkQtv4mt/qcMznpH0=",
-        "owner": "vic",
+        "owner": "denful",
         "repo": "import-tree",
         "rev": "d321337efd0f23a9eb14a42adb7b2c29313ab274",
         "type": "github"
       },
       "original": {
-        "owner": "vic",
+        "owner": "denful",
         "repo": "import-tree",
         "type": "github"
       }
@@ -193,13 +193,13 @@
       "locked": {
         "lastModified": 1779036909,
         "narHash": "sha256-zXcwYQGCT6pzinK+1dBB2ekTVtfxGZAapb3Evdcu4fY=",
-        "owner": "LnL7",
+        "owner": "nix-darwin",
         "repo": "nix-darwin",
         "rev": "56c666e108467d87d13508936aade6d567f2a501",
         "type": "github"
       },
       "original": {
-        "owner": "LnL7",
+        "owner": "nix-darwin",
         "repo": "nix-darwin",
         "type": "github"
       }
