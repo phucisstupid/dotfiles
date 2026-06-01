@@ -30,10 +30,6 @@
 
     # Software
     catppuccin.url = "github:catppuccin/nix";
-    stylix = {
-      url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,10 +40,6 @@
     };
     lazyvim = {
       url = "github:pfassina/lazyvim-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix4nvchad = {
-      url = "github:nix-community/nix4nvchad";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sketchybar-config = {

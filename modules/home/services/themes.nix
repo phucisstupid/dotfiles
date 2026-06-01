@@ -9,7 +9,6 @@
 in {
   options.${namespace}.services.themes = {
     catppuccin.enable = lib.mkEnableOption "catppuccin";
-    stylix.enable = lib.mkEnableOption "stylix.catppuccin";
   };
   config = with config.${namespace}.services.themes; {
     catppuccin = {
@@ -28,20 +27,6 @@ in {
         set -agF status-right "#{E:@catppuccin_status_battery}"
         set -agF status-right "#{E:@catppuccin_status_date_time}"
       '';
-    };
-    stylix = {
-      inherit (stylix) enable;
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-      fonts = {
-        sizes.applications = 17;
-        monospace = {
-          package = pkgs.maple-mono.NF;
-          name = "Maple Mono NF";
-        };
-        serif = config.stylix.fonts.monospace;
-        sansSerif = config.stylix.fonts.monospace;
-        emoji = config.stylix.fonts.monospace;
-      };
     };
   };
 }

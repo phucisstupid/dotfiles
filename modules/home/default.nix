@@ -26,7 +26,6 @@ in {
     editors = {
       neovim = {
         lazyvim.enable = true;
-        nvchad.enable = false;
         nvf.enable = false;
       };
       helix.enable = false;
@@ -106,10 +105,7 @@ in {
       aerospace.enable = true;
     };
     services = {
-      themes = {
-        catppuccin.enable = true;
-        stylix.enable = false;
-      };
+      themes.catppuccin.enable = true;
       extra-darwin-apps.enable = false;
       extra-linux-apps.enable = false;
     };

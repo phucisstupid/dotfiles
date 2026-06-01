@@ -4,10 +4,8 @@
     (inputs)
     self
     catppuccin
-    stylix
     lazyvim
     nvf
-    nix4nvchad
     spicetify-nix
     ;
 in {
@@ -20,10 +18,8 @@ in {
         sharedModules = [
           self.homeModules.default
           catppuccin.homeModules.catppuccin
-          stylix.homeModules.stylix
           lazyvim.homeManagerModules.lazyvim
           nvf.homeManagerModules.default
-          nix4nvchad.homeManagerModules.default
           spicetify-nix.homeManagerModules.spicetify
         ];
       };
