@@ -1,6 +1,10 @@
 {pkgs, ...}: {
   # Best macOS settings you’ll ever need
   system.defaults = {
+    universalaccess = {
+      reduceMotion = true;
+      reduceTransparency = true;
+    };
     CustomUserPreferences."com.apple.AdLib".allowApplePersonalizedAdvertising = false;
     LaunchServices.LSQuarantine = false;
     controlcenter = {
@@ -22,9 +26,6 @@
       autohide = true;
       show-recents = false;
       expose-group-apps = true;
-      magnification = true;
-      tilesize = 40;
-      largesize = 80;
       autohide-delay = 0.0;
       autohide-time-modifier = 0.0;
     };
