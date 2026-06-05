@@ -134,11 +134,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780594829,
-        "narHash": "sha256-uWfhrU3xJzha7DQ+i21NlymE9LDqXYxmAwgk5TPYp2g=",
+        "lastModified": 1780596270,
+        "narHash": "sha256-2nu8r7PjYRkn+gWMptZnmE1JE9L3eMBizXEXkY5KIBc=",
         "owner": "pfassina",
         "repo": "lazyvim-nix",
-        "rev": "4028c6c369881a95efcd6559627cc53ccfd06875",
+        "rev": "5397d6bbeae7405eb4efb350e655f98af050fbc6",
         "type": "github"
       },
       "original": {
@@ -275,11 +275,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1780511420,
-        "narHash": "sha256-Ib44d47GTijSfCtcxFDliP3C9uUiLDYaAE/nVH8TQoY=",
+        "lastModified": 1780625129,
+        "narHash": "sha256-Y2aO9pxxx7x6lm57/Xk1dUtCHcX9yhjV3ygZAXXlwNA=",
         "owner": "NotAShelf",
         "repo": "nvf",
-        "rev": "29f7eb8491d9833ee55006ab11169130a60c2652",
+        "rev": "ab4b268efcb8b4a34de1796552b12a64688f41e7",
         "type": "github"
       },
       "original": {
