@@ -49,8 +49,9 @@ in {
         };
         git.pagers = [
           {
-            pager = "delta --paging=never --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
+            pager = "delta --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
           }
+          {}
         ];
       };
     };

@@ -22,17 +22,12 @@ in {
       customPaneNavigationAndResize = true;
       baseIndex = 1;
       plugins = with pkgs.tmuxPlugins; [
-        yank
+        extrakto
         cpu
         weather
         battery
         vim-tmux-navigator
-        {
-          plugin = fingers;
-          extraConfig = ''
-            set -g @fingers-key space
-          '';
-        }
+        tmux-window-name
       ];
       extraConfig = ''
         set -ga terminal-overrides ",*:Tc"
