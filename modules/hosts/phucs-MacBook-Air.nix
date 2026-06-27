@@ -1,7 +1,4 @@
-{
-  den,
-  ...
-}: let
+{den, ...}: let
   hostName = "phucs-MacBook-Air";
   system = "aarch64-darwin";
 in {

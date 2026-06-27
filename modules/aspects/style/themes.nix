@@ -9,7 +9,7 @@
       imports = [inputs.catppuccin.homeModules.catppuccin];
       catppuccin = {
         enable = true;
-        autoEnable= true;
+        autoEnable = true;
         flavor = "mocha";
         accent = "mauve";
         tmux.extraConfig = ''
