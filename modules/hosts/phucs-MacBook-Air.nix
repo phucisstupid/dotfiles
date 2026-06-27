@@ -35,6 +35,7 @@ in {
       tools.fzf
       tools.git.lazygit
       tools.eza
+      tools.zoxide
       themes.catppuccin
     ];
   };
