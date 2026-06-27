@@ -53,7 +53,7 @@ jobs:
       # Update flake.lock
       - name: Update flake.lock
         run: |
-          nix run .#write-flake
+          nix flake update
           if ! git diff --quiet; then
             git commit -am "chore: update flake.lock"
             git pull --rebase origin "$GITHUB_REF_NAME"
