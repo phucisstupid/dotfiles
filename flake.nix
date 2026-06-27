@@ -1,50 +1,29 @@
+# DO-NOT-EDIT. This file was auto-generated using github:vic/flake-file.
+# Use `nix run .#write-flake` to regenerate it.
 {
-  outputs = inputs @ {
-    flake-parts,
-    import-tree,
-    ...
-  }:
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = [
-        "aarch64-darwin"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "x86_64-linux"
-      ];
-      imports = [(import-tree ./modules/flake)];
-    };
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
+
   inputs = {
-    # System
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    nixos-unified.url = "github:srid/nixos-unified";
-    import-tree.url = "github:denful/import-tree";
-    nix-darwin = {
-      url = "github:nix-darwin/nix-darwin";
+    catppuccin = {
+      url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    darwin.url = "github:nix-darwin/nix-darwin";
+    den.url = "github:denful/den";
+    flake-file.url = "github:denful/flake-file";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Software
-    catppuccin.url = "github:catppuccin/nix";
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nvf = {
-      url = "github:NotAShelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    lazyvim = {
+    import-tree.url = "github:vic/import-tree";
+    lazyvim-nix = {
       url = "github:pfassina/lazyvim-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sketchybar-config = {
-      url = "github:phucisstupid/sketchybar-config";
-      flake = false;
-    };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 }
