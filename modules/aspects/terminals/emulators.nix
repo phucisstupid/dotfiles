@@ -1,4 +1,4 @@
-{lib, ...}: {
+{ ...}: {
   den.aspects.terminals.emulators = {
     wezterm = {
       homeManager = {
