@@ -1,7 +1,6 @@
 {inputs, ...}: {
   flake-file.inputs.catppuccin = {
     url = "github:catppuccin/nix";
-    inputs.nixpkgs.follows = "nixpkgs";
   };
 
   den.aspects.themes.catppuccin = {
