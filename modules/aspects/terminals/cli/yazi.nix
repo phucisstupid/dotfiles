@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  den.aspects.tools.yazi = {
+  den.aspects.terminal.cli.yazi = {
     homeManager = {
       programs.yazi = {
         enable = true;
@@ -18,7 +18,7 @@
               smart-enter
               ;
           }
-          // lib.optionalAttrs config.den.aspects.tools.git.lazygit.enable {inherit lazygit;};
+          // lib.optionalAttrs config.den.aspects.terminal.cli.git.lazygit.enable {inherit lazygit;};
         initLua = ''
           require("git"):setup({
            order = 1500,
@@ -65,7 +65,7 @@
               run = "plugin chmod";
             }
           ]
-          ++ lib.optionals config.den.aspects.tools.git.lazygit.enable [
+          ++ lib.optionals config.den.aspects.terminal.cli.git.lazygit.enable [
             {
               on = [
                 "g"

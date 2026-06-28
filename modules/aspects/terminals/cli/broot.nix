@@ -1,7 +1,7 @@
 _: {
-  den.aspects.tools.bottom = {
+  den.aspects.terminal.cli.broot = {
     homeManager = {
-      programs.bottom = {
+      programs.broot = {
         enable = true;
       };
     };

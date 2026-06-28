@@ -6,7 +6,7 @@
   inherit (flake) inputs;
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
 in {
-  den.aspects.apps.spotify = {
+  den.aspects.app.spotify = {
     homeManager = {
       programs.spicetify = {
         enable = true;

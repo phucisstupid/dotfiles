@@ -1,5 +1,5 @@
 _: {
-  den.aspects.tools = {
+  den.aspects.terminal.cli = {
     fd = {
       homeManager = {
         programs.fd = {

@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  den.aspects.shells = {
+  den.aspects.terminal.shell = {
     homeManager = {
       home = {
         shell.enableShellIntegration = true;

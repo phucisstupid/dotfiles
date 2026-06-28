@@ -6,8 +6,8 @@
 }: let
   mod = "alt";
 in {
-  den.aspects.wms.aerospace = {host, ...}: let
-    hasSketchybar = host.hasAspect den.aspects.bars;
+  den.aspects.window-manager.aerospace = {host, ...}: let
+    hasSketchybar = host.hasAspect den.aspects.bar.sketchybar;
   in {
     homeManager = {
       services.jankyborders = {

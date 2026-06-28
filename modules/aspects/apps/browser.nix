@@ -1,5 +1,5 @@
 _: {
-  den.aspects.apps = {
+  den.aspects.app.browser = {
     chromium = {
       homeManager = {
         programs.chromium = {

@@ -1,5 +1,5 @@
 _: {
-  den.aspects.editors.neovim = {
+  den.aspects.editor.neovim = {
     homeManager = {
       programs.neovim = {
         defaultEditor = true;

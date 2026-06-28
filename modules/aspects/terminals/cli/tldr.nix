@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  den.aspects.tools.tldr = {
+  den.aspects.terminal.cli.tldr = {
     homeManager = {
       home.packages = with pkgs; [tlrc];
       services.tldr-update = {

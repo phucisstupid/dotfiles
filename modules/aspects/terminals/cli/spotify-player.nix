@@ -1,5 +1,5 @@
 _: {
-  den.aspects.tools.spotify-player = {
+  den.aspects.terminal.cli.spotify-player = {
     homeManager = {
       programs.spotify-player = {
         enable = true;

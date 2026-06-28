@@ -25,19 +25,21 @@ in {
 
     includes = with den.aspects; [
       home-manager
-      editors.neovim.lazyvim
-      terminals.emulators.ghostty
-      shells
-      shells.fish
-      shells.prompts.starship
-      wms.aerospace
-      tools.nh
-      tools.fzf
-      tools.git.lazygit
-      tools.eza
-      tools.zoxide
-      tools.atuin
-      themes.catppuccin
+      style.theme.catppuccin
+      window-manager.aerospace
+      editor.neovim.lazyvim
+      terminal.emulator.ghostty
+      terminal.shell
+      terminal.shell.fish
+      terminal.shell.prompt.starship
+      terminal.cli.git
+      terminal.cli.nh
+      terminal.cli.fzf
+      terminal.cli.lazygit
+      terminal.cli.eza
+      terminal.cli.zoxide
+      terminal.cli.atuin
+      terminal.cli.delta
     ];
   };
 }

@@ -321,7 +321,7 @@
     };
   };
 in {
-  den.aspects.tools.fastfetch = {
+  den.aspects.terminal.cli.fastfetch = {
     hyde = presetConfig "hyde";
     ml4w = presetConfig "ml4w";
     jakoolit = presetConfig "jakoolit";

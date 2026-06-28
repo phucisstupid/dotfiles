@@ -1,5 +1,5 @@
 _: {
-  den.aspects.editors.helix = {
+  den.aspects.editor.helix = {
     homeManager = {
       programs.helix = {
         enable = true;

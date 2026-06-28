@@ -1,17 +1,19 @@
 {flake, ...}: {
-  den.aspects.tools.git = {
+  den.aspects.terminal.cli = {
+    git = {
     homeManager = {
       programs.git = {
         enable = true;
         settings = {
-          user = {
-            inherit (flake.config.me) name;
-            inherit (flake.config.me) email;
-          };
+          # user = {
+          #   inherit (flake.config.me) name;
+          #   inherit (flake.config.me) email;
+          # };
           init.defaultBranch = "main";
           credential.helper = "osxkeychain";
         };
       };
+    };
     };
 
     delta = {
@@ -57,7 +59,6 @@
               {
                 pager = "delta --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format=\"lazygit-edit://{path}:{line}\"";
               }
-              {}
             ];
           };
         };

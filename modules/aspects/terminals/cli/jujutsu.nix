@@ -1,5 +1,5 @@
 {flake, ...}: {
-  den.aspects.tools.jujutsu = {
+  den.aspects.terminal.cli.jujutsu = {
     homeManager = {
       programs.jujutsu = {
         enable = true;

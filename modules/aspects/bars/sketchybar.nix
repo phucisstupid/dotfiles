@@ -5,7 +5,7 @@
 }: let
   inherit (flake) inputs;
 in {
-  den.aspects.bars = {
+  den.aspects.bar.sketchybar = {
     homeManager = {
       home.packages = with pkgs; [
         sketchybar-app-font

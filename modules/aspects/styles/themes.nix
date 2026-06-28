@@ -3,7 +3,7 @@
     url = "github:catppuccin/nix";
   };
 
-  den.aspects.themes.catppuccin = {
+  den.aspects.style.theme.catppuccin = {
     homeManager = {
       imports = [inputs.catppuccin.homeModules.catppuccin];
       catppuccin = {

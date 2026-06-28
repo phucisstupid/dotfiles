@@ -1,5 +1,5 @@
 _: {
-  den.aspects.shells.prompts = {
+  den.aspects.terminal.shell.prompt = {
     starship = {
       homeManager = {
         programs.starship = {

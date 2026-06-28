@@ -1,5 +1,5 @@
 _: {
-  den.aspects.terminals.emulators = {
+  den.aspects.terminal.emulator = {
     wezterm = {
       homeManager = {
         programs.wezterm = {

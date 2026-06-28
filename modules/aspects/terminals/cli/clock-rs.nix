@@ -1,5 +1,5 @@
 _: {
-  den.aspects.tools.clock-rs = {
+  den.aspects.terminal.cli.clock-rs = {
     homeManager = {
       programs.clock-rs = {
         enable = true;
