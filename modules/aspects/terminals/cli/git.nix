@@ -1,4 +1,4 @@
-{flake, ...}: {
+{ ...}: {
   den.aspects.terminal.cli = {
     git = {
     homeManager = {
