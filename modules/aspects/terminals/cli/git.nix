@@ -1,19 +1,19 @@
 _: {
   den.aspects.terminal.cli = {
     git = {
-    homeManager = {
-      programs.git = {
-        enable = true;
-        settings = {
-          # user = {
-          #   inherit (flake.config.me) name;
-          #   inherit (flake.config.me) email;
-          # };
-          init.defaultBranch = "main";
-          credential.helper = "osxkeychain";
+      homeManager = {
+        programs.git = {
+          enable = true;
+          settings = {
+            # user = {
+            #   inherit (flake.config.me) name;
+            #   inherit (flake.config.me) email;
+            # };
+            init.defaultBranch = "main";
+            credential.helper = "osxkeychain";
+          };
         };
       };
-    };
     };
 
     delta = {
