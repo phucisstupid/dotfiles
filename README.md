@@ -1,10 +1,3 @@
-## The philosophy my dotfiles
-
-- Clean and declarative.
-- The result of thousands of hours spent simplifying configs, removing clutter, and digging through documentation
-- Fully structured for effortless updates, no hard-coded configs.
-- No personal preferences included - A set options that should be acceptable to everyone.
-
 ## Usage
 
 Apply this flake to the current host, using `nh`
