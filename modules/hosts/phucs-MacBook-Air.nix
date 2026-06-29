@@ -5,7 +5,7 @@ in {
   flake-file.inputs.darwin.url = "github:nix-darwin/nix-darwin";
 
   den.hosts.${system}.${hostName}.users = {
-    wow ={};
+    wow = {};
   };
 
   den.aspects.wow.includes = [den.batteries.host-aspects];
