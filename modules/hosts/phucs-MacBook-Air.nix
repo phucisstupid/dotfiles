@@ -5,14 +5,13 @@ in {
   flake-file.inputs.darwin.url = "github:nix-darwin/nix-darwin";
 
   den.hosts.${system}.${hostName}.users = {
-    wow.classes = ["homeManager"];
+    wow ={};
   };
 
   den.aspects.wow.includes = [den.batteries.host-aspects];
 
   den.aspects.${hostName} = {
     darwin = {
-      system.stateVersion = 7;
       nix.enable = false; # for Determinate Nix
       security.pam.services.sudo_local = {
         touchIdAuth = true;

@@ -23,9 +23,5 @@
         overwriteBackup = true;
       };
     };
-
-    homeManager = {
-      home.stateVersion = "26.05";
-    };
   };
 }
