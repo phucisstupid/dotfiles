@@ -4,7 +4,7 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  den.aspects.editor.neovim.lazyvim = {
+  den.aspects.editor.lazyvim = {
     homeManager = {
       imports = [inputs.lazyvim-nix.homeManagerModules.default];
 

@@ -1,5 +1,5 @@
 {lib, ...}: {
-  den.aspects.editor.neovim.nvf = {
+  den.aspects.editor.nvf = {
     homeManager = {
       programs.nvf = {
         enable = true;

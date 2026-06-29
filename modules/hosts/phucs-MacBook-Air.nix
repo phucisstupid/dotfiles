@@ -27,7 +27,7 @@ in {
       home-manager
       style.theme.catppuccin
       window-manager.aerospace
-      editor.neovim.lazyvim
+      editor.lazyvim
       terminal.emulator.ghostty
       terminal.shell
       terminal.shell.fish
