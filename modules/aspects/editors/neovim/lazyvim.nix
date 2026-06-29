@@ -28,6 +28,7 @@
           };
           lang = {
             nix.enable = true;
+            markdown.enable = true;
           };
           util.mini-hipatterns.enable = true;
         };
