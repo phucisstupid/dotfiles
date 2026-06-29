@@ -1,4 +1,4 @@
-{ lib, den, ... }:
+{ lib, ... }:
 {
   den.default.nixos.system.stateVersion = "26.05";
   den.default.homeManager.home.stateVersion = "26.05";
