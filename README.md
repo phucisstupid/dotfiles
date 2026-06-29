@@ -1,18 +1,18 @@
 ## Usage
 
-Apply this flake to the current host, using `nh`
+Apply this flake to the current host, using [nh](https://github.com/nix-community/nh):
 
 ```sh
 make switch
 ```
 
-Update `flake.lock`, then run `make switch`.
+Update `flake.lock`, then run `make switch`:
 
 ```sh
 make update
 ```
 
-Install Nix with flakes enabled.
+Install Nix with flakes enabled:
 
 ```sh
 make install-nix
