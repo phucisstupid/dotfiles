@@ -1,4 +1,4 @@
-.PHONY: install-nix switch update
+.PHONY: install-nix switch update write-flake
 
 install-nix:
 	curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --enable-flakes
