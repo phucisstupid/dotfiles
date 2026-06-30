@@ -5,13 +5,16 @@ install-nix:
 
 switch:
 	@nh='nh'; \
-	if ! command -v nh >/dev/null 2>&1; then nh='nix run nixpkgs#nh --'; fi; \
-	if [ "$$(uname)" = Darwin ]; then \
+		if ! command -v nh >/dev/null 2>&1; then nh='nix run nixpkgs#nh --'; fi; \
+		if [ "$$(uname)" = Darwin ]; then \
 		$$nh darwin switch . -H "$$(hostname -s)"; \
-	else \
+		else \
 		$$nh os switch . -H "$$(hostname -s)"; \
-	fi
+		fi
 
 update:
 	nix flake update
 	$(MAKE) switch
+
+write-flake:
+	nix run .#write-flake

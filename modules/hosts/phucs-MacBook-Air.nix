@@ -2,8 +2,6 @@
   hostName = "phucs-MacBook-Air";
   system = "aarch64-darwin";
 in {
-  flake-file.inputs.darwin.url = "github:nix-darwin/nix-darwin";
-
   den.hosts.${system}.${hostName}.users = {
     wow = {};
   };
