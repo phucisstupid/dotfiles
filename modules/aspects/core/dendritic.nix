@@ -1,5 +1,5 @@
 # Main dendritic entry
-{inputs, lib, ...}: {
+{inputs, ...}: {
   flake-file.inputs = {
     flake-file.url = "github:denful/flake-file";
     den.url = "github:denful/den";
