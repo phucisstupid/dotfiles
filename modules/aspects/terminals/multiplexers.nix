@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   den.aspects.terminal.multiplexer = {
     tmux = {
-      homeManager = {
+      homeManager = {pkgs,...}: {
         programs.tmux = {
           enable = true;
           sensibleOnTop = true;
