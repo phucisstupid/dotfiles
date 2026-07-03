@@ -1,10 +1,9 @@
 {pkgs, ...}: {
   den.aspects.terminal.cli.tldr = {
     homeManager = {
-      home.packages = with pkgs; [tlrc];
-      services.tldr-update = {
+      programs.tealdeer = {
         enable = true;
-        package = pkgs.tlrc;
+        enableAutoUpdates = true;
       };
     };
   };
