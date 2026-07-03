@@ -1,4 +1,4 @@
-{ ...}: {
+_: {
   den.aspects.terminal.cli.tldr = {
     homeManager = {
       programs.tealdeer = {
