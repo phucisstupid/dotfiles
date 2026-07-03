@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ ...}: {
   den.aspects.terminal.multiplexer = {
     tmux = {
       homeManager = {pkgs,...}: {
