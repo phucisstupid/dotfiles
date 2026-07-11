@@ -22,6 +22,8 @@ in {
         enable = true;
         launchd.enable = true;
         settings = {
+          config-version = 2;
+
           # colemak-dh
           key-mapping = {
             preset = "colemak";
@@ -38,6 +40,7 @@ in {
           };
 
           default-root-container-layout = "tiles";
+          default-root-container-orientation = "auto";
           automatically-unhide-macos-hidden-apps = true;
           exec-on-workspace-change = lib.mkMerge [
             [
@@ -54,6 +57,7 @@ in {
               "exec-and-forget ${lib.getExe pkgs.sketchybar} --trigger aerospace_focus_change"
             ])
           ];
+          on-focused-monitor-changed = ["move-mouse monitor-lazy-center"];
           gaps = {
             inner = {
               horizontal = 3;
