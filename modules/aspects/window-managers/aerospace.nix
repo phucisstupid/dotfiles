@@ -164,7 +164,7 @@ in {
               run = "move-node-to-workspace 5";
             }
             {
-              "if".app-name-regex-substring = "codex|opencode|antigravity";
+              "if".app-name-regex-substring = "chatgpt|opencode|antigravity";
               run = "move-node-to-workspace 6";
             }
           ];
