@@ -1,4 +1,4 @@
-.PHONY: switch update write-flake install-nix 
+.PHONY: switch update install-nix 
 
 switch:
 	@nh='nh'; \
@@ -12,9 +12,6 @@ switch:
 update:
 	nix flake update
 	$(MAKE) switch
-
-write-flake:
-	nix run .#write-flake
 
 install-nix:
 	curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --enable-flakes
