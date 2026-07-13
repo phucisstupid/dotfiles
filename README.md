@@ -12,12 +12,6 @@ Update `flake.lock`, then run `make switch`:
 make update
 ```
 
-Update `flake.nix`, using [flake-file](https://github.com/denful/flake-file)
-
-```sh
-make write-flake
-```
-
 Install Nix with flakes enabled:
 
 ```sh
