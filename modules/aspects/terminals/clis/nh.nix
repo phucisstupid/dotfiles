@@ -3,7 +3,6 @@ _: {
     homeManager = {
       programs.nh = {
         enable = true;
-        flake = ../../../..;
         clean.enable = true;
       };
     };
