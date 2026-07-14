@@ -1,4 +1,4 @@
-.PHONY: switch update install-nix 
+.PHONY: switch update install-nix
 
 switch:
 	@nh='nh'; \
