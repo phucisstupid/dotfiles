@@ -1,15 +1,14 @@
-{
-  den,
-  pkgs,
-  lib,
-  ...
-}: let
+{den, ...}: let
   mod = "alt";
 in {
   den.aspects.window-manager.aerospace = {host, ...}: let
     hasSketchybar = host.hasAspect den.aspects.bar.sketchybar;
   in {
     homeManager = {
+      pkgs,
+      lib,
+      ...
+    }: {
       services.jankyborders = {
         enable = true;
         settings = {
