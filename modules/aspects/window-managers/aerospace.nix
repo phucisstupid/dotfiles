@@ -164,7 +164,7 @@ in {
               run = "move-node-to-workspace 5";
             }
             {
-              "if".app-name-regex-substring = "chatgpt|opencode|antigravity";
+              "if".app-name-regex-substring = "chatgpt|opencode|antigravity|claude";
               run = "move-node-to-workspace 6";
             }
           ];
