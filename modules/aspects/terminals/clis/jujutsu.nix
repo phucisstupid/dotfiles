@@ -1,12 +1,12 @@
-{config, ...}: {
-  den.aspects.terminal.cli.jujutsu = {
+_: {
+  den.aspects.terminal.cli.jujutsu = {user, ...}: {
     homeManager = {
       programs.jujutsu = {
         enable = true;
         settings = {
           user = {
-            inherit (config.me) name;
-            inherit (config.me) email;
+            name = user.fullName;
+            inherit (user) email;
           };
         };
       };

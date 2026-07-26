@@ -3,7 +3,10 @@
   system = "aarch64-darwin";
 in {
   den.hosts.${system}.${hostName}.users = {
-    wow = {};
+    wow = {
+      fullName = "phucisstupid";
+      email = "phucleeuwu@gmail.com";
+    };
   };
 
   den.aspects.wow.includes = [den.batteries.host-aspects];
