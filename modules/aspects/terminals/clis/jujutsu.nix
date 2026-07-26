@@ -1,12 +1,12 @@
-{flake, ...}: {
+{config, ...}: {
   den.aspects.terminal.cli.jujutsu = {
     homeManager = {
       programs.jujutsu = {
         enable = true;
         settings = {
           user = {
-            inherit (flake.config.me) name;
-            inherit (flake.config.me) email;
+            inherit (config.me) name;
+            inherit (config.me) email;
           };
         };
       };

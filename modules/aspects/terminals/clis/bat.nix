@@ -1,16 +1,17 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
-  den.aspects.terminal.cli.bat = {
+{den, ...}: {
+  den.aspects.terminal.cli.bat = {host, ...}: let
+    hasRipgrep = host.hasAspect den.aspects.terminal.cli.ripgrep;
+  in {
     homeManager = {
+      pkgs,
+      lib,
+      ...
+    }: {
       programs.bat = {
         enable = true;
-        extraPackages = lib.mkIf config.den.aspects.terminal.cli.ripgrep.enable [pkgs.bat-extras.batgrep];
+        extraPackages = lib.mkIf hasRipgrep [pkgs.bat-extras.batgrep];
       };
-      home.shellAliases = lib.mkIf config.den.aspects.terminal.cli.ripgrep.enable {
+      home.shellAliases = lib.mkIf hasRipgrep {
         rg = "batgrep";
       };
     };

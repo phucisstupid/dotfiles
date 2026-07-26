@@ -29,7 +29,12 @@ in {
       terminal.shell
       terminal.shell.fish
       terminal.shell.prompt.starship
+      terminal.multiplexer.tmux
+      terminal.multiplexer.tmux.sesh
       terminal.cli.git
+      terminal.cli.gh
+      terminal.cli.gh-dash
+      terminal.cli.jujutsu
       terminal.cli.nh
       terminal.cli.fzf
       terminal.cli.lazygit
@@ -37,6 +42,19 @@ in {
       terminal.cli.zoxide
       terminal.cli.atuin
       terminal.cli.delta
+      terminal.cli.yazi
+      terminal.cli.bat
+      terminal.cli.bottom
+      terminal.cli.broot
+      terminal.cli.btop
+      terminal.cli.carapace
+      terminal.cli.clock-rs
+      terminal.cli.fd
+      terminal.cli.ripgrep
+      terminal.cli.navi
+      terminal.cli.pay-respects
+      terminal.cli.spotify-player
+      terminal.cli.tldr
     ];
   };
 }

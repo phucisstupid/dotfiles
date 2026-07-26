@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+_: {
   den.aspects.terminal.shell = {
     homeManager = {
       home = {
@@ -11,7 +11,7 @@
     };
 
     zsh = {
-      homeManager = {
+      homeManager = {pkgs, ...}: {
         programs.zsh = {
           enable = true;
           autocd = true;
@@ -57,7 +57,6 @@
         };
       };
       darwin = {pkgs, ...}: {
-        programs.nushell.enable = true;
         environment.shells = [pkgs.nushell];
       };
     };
