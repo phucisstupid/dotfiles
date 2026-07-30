@@ -49,11 +49,11 @@
             ])
           ];
           on-focused-monitor-changed = ["move-mouse monitor-lazy-center"];
-          gaps.outer.top= lib.mkDefault (
-                if hasSketchybar
-                then 30
-                else 0
-              );
+          gaps.outer.top = lib.mkDefault (
+            if hasSketchybar
+            then 30
+            else 0
+          );
           mode = {
             main.binding =
               {
