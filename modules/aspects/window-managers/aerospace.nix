@@ -3,11 +3,10 @@
   pkgs,
   lib,
   ...
-}: let
-  mod = "alt";
-in {
+}: {
   den.aspects.window-manager.aerospace = {host, ...}: let
     hasSketchybar = host.hasAspect den.aspects.bar.sketchybar;
+    mod = "alt";
   in {
     homeManager = {
       services.jankyborders = {
@@ -104,7 +103,7 @@ in {
                     name = "${mod}-shift-${toString n}";
                     value = "move-node-to-workspace ${toString n}";
                   }
-                ]) (lib.range 1 6)
+                ]) (lib.range 1 5)
               );
             service.binding = {
               "esc" = ["mode main"];
@@ -148,24 +147,20 @@ in {
               run = "move-node-to-workspace 1";
             }
             {
-              "if".app-name-regex-substring = "preview|libreoffice";
+              "if".app-name-regex-substring = "wezterm|kitty|ghostty|terminal";
               run = "move-node-to-workspace 2";
             }
             {
-              "if".app-name-regex-substring = "bluebook";
+              "if".app-name-regex-substring = "chatgpt|opencode|antigravity|claude";
               run = "move-node-to-workspace 3";
             }
             {
-              "if".app-name-regex-substring = "wezterm|kitty|ghostty|terminal";
+              "if".app-name-regex-substring = "preview|libreoffice";
               run = "move-node-to-workspace 4";
             }
             {
               "if".app-name-regex-substring = "tv|music|spotify|stremio|netflix";
               run = "move-node-to-workspace 5";
-            }
-            {
-              "if".app-name-regex-substring = "chatgpt|opencode|antigravity|claude";
-              run = "move-node-to-workspace 6";
             }
           ];
         };
