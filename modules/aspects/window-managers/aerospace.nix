@@ -9,14 +9,6 @@
     mod = "alt";
   in {
     homeManager = {
-      services.jankyborders = {
-        enable = true;
-        settings = {
-          active_color = "0xffcba6f7";
-          hidpi = "on";
-          ax_focus = "off";
-        };
-      };
       programs.aerospace = {
         enable = true;
         launchd.enable = true;
@@ -57,22 +49,11 @@
             ])
           ];
           on-focused-monitor-changed = ["move-mouse monitor-lazy-center"];
-          gaps = {
-            inner = {
-              horizontal = 3;
-              vertical = 3;
-            };
-            outer = {
-              top = lib.mkDefault (
+          gaps.outer.top= lib.mkDefault (
                 if hasSketchybar
                 then 30
-                else 2
+                else 0
               );
-              bottom = 2;
-              left = 2;
-              right = 2;
-            };
-          };
           mode = {
             main.binding =
               {
