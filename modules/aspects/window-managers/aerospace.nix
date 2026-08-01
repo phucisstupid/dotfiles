@@ -63,16 +63,16 @@
                 "${mod}-j" = "focus down";
                 "${mod}-k" = "focus up";
                 "${mod}-l" = "focus right";
-                "${mod}-shift-h" = "move left";
-                "${mod}-shift-j" = "move down";
-                "${mod}-shift-k" = "move up";
-                "${mod}-shift-l" = "move right";
+                "${mod}-ctrl-h" = "move left";
+                "${mod}-ctrl-j" = "move down";
+                "${mod}-ctrl-k" = "move up";
+                "${mod}-ctrl-l" = "move right";
                 "${mod}-minus" = "resize smart -50";
                 "${mod}-equal" = "resize smart +50";
                 "${mod}-tab" = "workspace-back-and-forth";
-                "${mod}-shift-tab" = "move-workspace-to-monitor --wrap-around next";
-                "${mod}-shift-semicolon" = "mode service";
-                "${mod}-shift-f" = "fullscreen --no-outer-gaps";
+                "${mod}-ctrl-tab" = "move-workspace-to-monitor --wrap-around next";
+                "${mod}-ctrl-semicolon" = "mode service";
+                "${mod}-ctrl-f" = "fullscreen --no-outer-gaps";
               }
               // builtins.listToAttrs (
                 builtins.concatMap (n: [
@@ -81,7 +81,7 @@
                     value = "workspace ${toString n}";
                   }
                   {
-                    name = "${mod}-shift-${toString n}";
+                    name = "${mod}-ctrl-${toString n}";
                     value = "move-node-to-workspace ${toString n}";
                   }
                 ]) (lib.range 1 5)
@@ -104,19 +104,19 @@
                 "close-all-windows-but-current"
                 "mode main"
               ];
-              "${mod}-shift-h" = [
+              "${mod}-ctrl-h" = [
                 "join-with left"
                 "mode main"
               ];
-              "${mod}-shift-j" = [
+              "${mod}-ctrl-j" = [
                 "join-with down"
                 "mode main"
               ];
-              "${mod}-shift-k" = [
+              "${mod}-ctrl-k" = [
                 "join-with up"
                 "mode main"
               ];
-              "${mod}-shift-l" = [
+              "${mod}-ctrl-l" = [
                 "join-with right"
                 "mode main"
               ];
