@@ -3,12 +3,12 @@
   lib,
   ...
 }: {
-  den.aspects.terminal.cli.fzf = { host, ... }:
-    let
-      hasAtuin = host.hasAspect den.aspects.terminal.cli.atuin;
-    in {
-      homeManager = {
-        programs.fzf = {
+  den.aspects.terminal.cli.fzf = {host, ...}: let
+    hasAtuin = host.hasAspect den.aspects.terminal.cli.atuin;
+  in {
+    homeManager = {
+      programs.fzf =
+        {
           enable = true;
           tmux.enableShellIntegration = true;
           defaultOptions = [
@@ -19,6 +19,6 @@
         // lib.optionalAttrs hasAtuin {
           historyWidget.command = "";
         };
-      };
     };
+  };
 }

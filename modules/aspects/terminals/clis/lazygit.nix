@@ -1,5 +1,5 @@
 _: {
-  den.aspects.terminal.cli.lazygit = 
+  den.aspects.terminal.cli.lazygit =
     # { host, ... }:
     # let
     #   hasDelta = host.hasAspect den.aspects.terminal.cli.delta;
@@ -14,15 +14,15 @@ _: {
               showBottomLine = false;
               nerdFontsVersion = "3";
             };
-            git.pagers = 
-              # lib.optionals hasDelta 
-            [
-              {
-                pager = ''
-                  delta --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
-                '';
-              }
-            ];
+            git.pagers =
+              # lib.optionals hasDelta
+              [
+                {
+                  pager = ''
+                    delta --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+                  '';
+                }
+              ];
           };
         };
       };

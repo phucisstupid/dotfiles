@@ -1,6 +1,6 @@
 _: {
   den.aspects.terminal.cli.bat = {
-    homeManager = { pkgs, ... }: {
+    homeManager = {pkgs, ...}: {
       programs.bat = {
         enable = true;
         extraPackages = with pkgs.bat-extras; [
