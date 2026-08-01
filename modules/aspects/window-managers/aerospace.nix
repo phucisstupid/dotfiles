@@ -1,22 +1,14 @@
-{den, ...}: let
-  mod = "alt";
-in {
+{
+  den,
+  pkgs,
+  lib,
+  ...
+}: {
   den.aspects.window-manager.aerospace = {host, ...}: let
     hasSketchybar = host.hasAspect den.aspects.bar.sketchybar;
+    mod = "alt";
   in {
     homeManager = {
-      pkgs,
-      lib,
-      ...
-    }: {
-      services.jankyborders = {
-        enable = true;
-        settings = {
-          active_color = "0xffcba6f7";
-          hidpi = "on";
-          ax_focus = "off";
-        };
-      };
       programs.aerospace = {
         enable = true;
         launchd.enable = true;
@@ -57,22 +49,11 @@ in {
             ])
           ];
           on-focused-monitor-changed = ["move-mouse monitor-lazy-center"];
-          gaps = {
-            inner = {
-              horizontal = 3;
-              vertical = 3;
-            };
-            outer = {
-              top = lib.mkDefault (
-                if hasSketchybar
-                then 30
-                else 2
-              );
-              bottom = 2;
-              left = 2;
-              right = 2;
-            };
-          };
+          gaps.outer.top = lib.mkDefault (
+            if hasSketchybar
+            then 30
+            else 0
+          );
           mode = {
             main.binding =
               {
@@ -82,16 +63,16 @@ in {
                 "${mod}-j" = "focus down";
                 "${mod}-k" = "focus up";
                 "${mod}-l" = "focus right";
-                "${mod}-shift-h" = "move left";
-                "${mod}-shift-j" = "move down";
-                "${mod}-shift-k" = "move up";
-                "${mod}-shift-l" = "move right";
+                "${mod}-ctrl-h" = "move left";
+                "${mod}-ctrl-j" = "move down";
+                "${mod}-ctrl-k" = "move up";
+                "${mod}-ctrl-l" = "move right";
                 "${mod}-minus" = "resize smart -50";
                 "${mod}-equal" = "resize smart +50";
                 "${mod}-tab" = "workspace-back-and-forth";
-                "${mod}-shift-tab" = "move-workspace-to-monitor --wrap-around next";
-                "${mod}-shift-semicolon" = "mode service";
-                "${mod}-shift-f" = "fullscreen --no-outer-gaps";
+                "${mod}-ctrl-tab" = "move-workspace-to-monitor --wrap-around next";
+                "${mod}-ctrl-semicolon" = "mode service";
+                "${mod}-ctrl-f" = "fullscreen --no-outer-gaps";
               }
               // builtins.listToAttrs (
                 builtins.concatMap (n: [
@@ -100,10 +81,10 @@ in {
                     value = "workspace ${toString n}";
                   }
                   {
-                    name = "${mod}-shift-${toString n}";
+                    name = "${mod}-ctrl-${toString n}";
                     value = "move-node-to-workspace ${toString n}";
                   }
-                ]) (lib.range 1 6)
+                ]) (lib.range 1 5)
               );
             service.binding = {
               "esc" = ["mode main"];
@@ -123,19 +104,19 @@ in {
                 "close-all-windows-but-current"
                 "mode main"
               ];
-              "${mod}-shift-h" = [
+              "${mod}-ctrl-h" = [
                 "join-with left"
                 "mode main"
               ];
-              "${mod}-shift-j" = [
+              "${mod}-ctrl-j" = [
                 "join-with down"
                 "mode main"
               ];
-              "${mod}-shift-k" = [
+              "${mod}-ctrl-k" = [
                 "join-with up"
                 "mode main"
               ];
-              "${mod}-shift-l" = [
+              "${mod}-ctrl-l" = [
                 "join-with right"
                 "mode main"
               ];
@@ -147,24 +128,20 @@ in {
               run = "move-node-to-workspace 1";
             }
             {
-              "if".app-name-regex-substring = "preview|libreoffice";
+              "if".app-name-regex-substring = "wezterm|kitty|ghostty|terminal";
               run = "move-node-to-workspace 2";
             }
             {
-              "if".app-name-regex-substring = "bluebook";
+              "if".app-name-regex-substring = "chatgpt|opencode|antigravity|claude";
               run = "move-node-to-workspace 3";
             }
             {
-              "if".app-name-regex-substring = "wezterm|kitty|ghostty|terminal";
+              "if".app-name-regex-substring = "preview|libreoffice";
               run = "move-node-to-workspace 4";
             }
             {
               "if".app-name-regex-substring = "tv|music|spotify|stremio|netflix";
               run = "move-node-to-workspace 5";
-            }
-            {
-              "if".app-name-regex-substring = "chatgpt|opencode|antigravity|claude";
-              run = "move-node-to-workspace 6";
             }
           ];
         };
