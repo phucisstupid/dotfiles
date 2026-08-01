@@ -11,6 +11,7 @@
         enable = true;
         autoEnable = true;
         flavor = "mocha";
+        accent = "mauve";
         tmux.extraConfig = ''
           set -g status-position top
           set -g status-right-length 100
