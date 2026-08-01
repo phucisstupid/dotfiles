@@ -1,11 +1,13 @@
-{den,...}: {
-  den.aspects.window-manager.aerospace = {host,  ...}: let
+{den, ...}: {
+  den.aspects.window-manager.aerospace = {host, ...}: let
     hasSketchybar = host.hasAspect den.aspects.bar.sketchybar;
     mod = "alt";
   in {
-    homeManager = 
-      { pkgs, lib, ... }:
-      {
+    homeManager = {
+      pkgs,
+      lib,
+      ...
+    }: {
       programs.aerospace = {
         enable = true;
         launchd.enable = true;
