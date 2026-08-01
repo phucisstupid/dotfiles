@@ -1,9 +1,7 @@
 {
-  den,
-  lib,
   ...
 }: {
-  den.aspects.terminal.cli.git = { user, host, ... }:
+  den.aspects.terminal.cli.git = { user, ... }:
     {
       homeManager = {
         programs.git = {

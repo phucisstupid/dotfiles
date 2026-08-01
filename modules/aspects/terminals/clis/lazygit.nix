@@ -1,6 +1,4 @@
 {
-  den,
-  lib,
   ...
 }: {
   den.aspects.terminal.cli.lazygit = 
