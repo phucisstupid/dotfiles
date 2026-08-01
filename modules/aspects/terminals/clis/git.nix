@@ -1,6 +1,4 @@
-{
-  ...
-}: {
+_: {
   den.aspects.terminal.cli.git = { user, ... }:
     {
       homeManager = {
