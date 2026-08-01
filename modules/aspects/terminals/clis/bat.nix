@@ -1,10 +1,9 @@
-{den, ...}: {
+{den, lib, ...}: {
   den.aspects.terminal.cli.bat = {host, ...}: let
     hasRipgrep = host.hasAspect den.aspects.terminal.cli.ripgrep;
   in {
     homeManager = {
       pkgs,
-      lib,
       ...
     }: {
       programs.bat = {

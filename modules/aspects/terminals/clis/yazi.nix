@@ -1,10 +1,9 @@
-{den, ...}: {
+{den, lib,...}: {
   den.aspects.terminal.cli.yazi = {host, ...}: let
     hasLazygit = host.hasAspect den.aspects.terminal.cli.lazygit;
   in {
     homeManager = {
       pkgs,
-      lib,
       ...
     }: {
       programs.yazi = {

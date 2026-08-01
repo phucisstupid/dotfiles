@@ -1,11 +1,10 @@
-{den, ...}: {
+{den, lib, ...}: {
   den.aspects.window-manager.aerospace = {host, ...}: let
     hasSketchybar = host.hasAspect den.aspects.bar.sketchybar;
     mod = "alt";
   in {
     homeManager = {
       pkgs,
-      lib,
       ...
     }: {
       programs.aerospace = {
