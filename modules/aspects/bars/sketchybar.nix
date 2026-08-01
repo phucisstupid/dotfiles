@@ -1,12 +1,6 @@
-{
-  pkgs,
-  flake,
-  ...
-}: let
-  inherit (flake) inputs;
-in {
+{inputs, ...}: {
   den.aspects.bar.sketchybar = {
-    homeManager = {
+    homeManager = {pkgs, ...}: {
       home.packages = with pkgs; [
         sketchybar-app-font
       ];

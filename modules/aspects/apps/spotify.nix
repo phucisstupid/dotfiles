@@ -1,13 +1,8 @@
-{
-  pkgs,
-  flake,
-  ...
-}: let
-  inherit (flake) inputs;
-  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
-in {
+{inputs, ...}: {
   den.aspects.app.spotify = {
-    homeManager = {
+    homeManager = {pkgs, ...}: let
+      spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
+    in {
       programs.spicetify = {
         enable = true;
         theme = spicePkgs.themes.catppuccin;

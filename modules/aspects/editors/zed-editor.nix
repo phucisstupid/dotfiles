@@ -1,4 +1,4 @@
-_: {
+{lib, ...}: {
   den.aspects.editor.zed-editor = {
     homeManager = {
       programs.zed-editor = {
@@ -30,7 +30,7 @@ _: {
             dock = "right";
           };
 
-          icon_theme = {
+          icon_theme = lib.mkDefault {
             mode = "dark";
             light = "Catppuccin Mocha";
             dark = "Catppuccin Mocha";
