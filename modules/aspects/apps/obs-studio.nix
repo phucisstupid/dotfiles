@@ -1,6 +1,6 @@
 _: {
   den.aspects.app.obs-studio = {
-    homeManager = {pkgs, ...}: {
+    homeManager = { ...}: {
       programs.obs-studio = {
         enable = true;
       };
