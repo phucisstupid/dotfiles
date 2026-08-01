@@ -27,28 +27,29 @@ in {
         style.theme.catppuccin
         window-manager.aerospace
         editor.lazyvim
-        terminal.emulator.ghostty
-        terminal.shell
-        terminal.shell.fish
-        terminal.shell.prompt.starship
-        terminal.multiplexer.tmux
-        terminal.multiplexer.tmux.sesh
-        terminal.cli.git
-        terminal.cli.gh
-        terminal.cli.nh
-        terminal.cli.fzf
-        terminal.cli.lazygit
-        terminal.cli.eza
-        terminal.cli.zoxide
-        terminal.cli.atuin
-        terminal.cli.delta
-        terminal.cli.yazi
-        terminal.cli.bat
-        terminal.cli.btop
-        terminal.cli.carapace
-        terminal.cli.fd
-        terminal.cli.ripgrep
-        terminal.cli.pay-respects
+        app.zathura
+        terminal.ghostty
+        shell
+        shell.fish
+        shell.prompt.starship
+        multiplexer.tmux
+        multiplexer.tmux.sesh
+        cli.git
+        cli.gh
+        cli.nh
+        cli.fzf
+        cli.lazygit
+        cli.eza
+        cli.zoxide
+        cli.atuin
+        cli.delta
+        cli.yazi
+        cli.bat
+        cli.btop
+        cli.carapace
+        cli.fd
+        cli.ripgrep
+        cli.pay-respects
       ];
     };
   };

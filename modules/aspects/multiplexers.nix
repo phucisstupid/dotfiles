@@ -1,5 +1,5 @@
 _: {
-  den.aspects.terminal.multiplexer = {
+  den.aspects.multiplexer = {
     tmux = {
       homeManager = {pkgs, ...}: {
         programs.tmux = {

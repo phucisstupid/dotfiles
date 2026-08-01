@@ -1,5 +1,5 @@
 _: {
-  den.aspects.terminal.cli.delta = {
+  den.aspects.cli.delta = {
     homeManager = {
       programs.delta = {
         enable = true;

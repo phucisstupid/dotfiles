@@ -1,5 +1,5 @@
 _: {
-  den.aspects.terminal.cli.atuin = {
+  den.aspects.cli.atuin = {
     homeManager = {
       programs.atuin = {
         enable = true;

@@ -1,5 +1,5 @@
 _: {
-  den.aspects.terminal.cli.git = {user, ...}: {
+  den.aspects.cli.git = {user, ...}: {
     homeManager = {
       programs.git = {
         enable = true;

@@ -1,8 +1,8 @@
 _: {
-  den.aspects.terminal.cli.lazygit =
+  den.aspects.cli.lazygit =
     # { host, ... }:
     # let
-    #   hasDelta = host.hasAspect den.aspects.terminal.cli.delta;
+    #   hasDelta = host.hasAspect den.aspects.cli.delta;
     # in
     {
       homeManager = {

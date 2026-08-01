@@ -1,5 +1,5 @@
 _: {
-  den.aspects.terminal.shell = {
+  den.aspects.shell = {
     homeManager = {
       home = {
         shell.enableShellIntegration = true;

@@ -3,8 +3,8 @@
   lib,
   ...
 }: {
-  den.aspects.terminal.cli.fzf = {host, ...}: let
-    hasAtuin = host.hasAspect den.aspects.terminal.cli.atuin;
+  den.aspects.cli.fzf = {host, ...}: let
+    hasAtuin = host.hasAspect den.aspects.cli.atuin;
   in {
     homeManager = {
       programs.fzf =

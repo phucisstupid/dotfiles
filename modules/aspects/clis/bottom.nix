@@ -1,5 +1,5 @@
 _: {
-  den.aspects.terminal.cli.bottom = {
+  den.aspects.cli.bottom = {
     homeManager = {
       programs.bottom = {
         enable = true;

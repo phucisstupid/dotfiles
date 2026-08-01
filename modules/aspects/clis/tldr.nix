@@ -1,5 +1,5 @@
 _: {
-  den.aspects.terminal.cli.tldr = {
+  den.aspects.cli.tldr = {
     homeManager = {
       programs.tealdeer = {
         enable = true;

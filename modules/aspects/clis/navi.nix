@@ -1,5 +1,5 @@
 _: {
-  den.aspects.terminal.cli.navi = {
+  den.aspects.cli.navi = {
     homeManager = {
       programs.navi = {
         enable = true;

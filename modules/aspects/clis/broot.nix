@@ -1,5 +1,5 @@
 _: {
-  den.aspects.terminal.cli.broot = {
+  den.aspects.cli.broot = {
     homeManager = {
       programs.broot = {
         enable = true;

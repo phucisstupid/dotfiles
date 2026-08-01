@@ -1,5 +1,5 @@
 _: {
-  den.aspects.terminal.cli.bat = {
+  den.aspects.cli.bat = {
     homeManager = {pkgs, ...}: {
       programs.bat = {
         enable = true;

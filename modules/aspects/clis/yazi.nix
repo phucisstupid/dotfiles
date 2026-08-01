@@ -3,8 +3,8 @@
   lib,
   ...
 }: {
-  den.aspects.terminal.cli.yazi = {host, ...}: let
-    hasLazygit = host.hasAspect den.aspects.terminal.cli.lazygit;
+  den.aspects.cli.yazi = {host, ...}: let
+    hasLazygit = host.hasAspect den.aspects.cli.lazygit;
   in {
     homeManager = {pkgs, ...}: {
       programs.yazi = {

@@ -1,5 +1,5 @@
 _: {
-  den.aspects.terminal.cli.pay-respects = {
+  den.aspects.cli.pay-respects = {
     homeManager = {
       programs.pay-respects.enable = true;
     };

@@ -1,5 +1,5 @@
 _: {
-  den.aspects.terminal.cli.nh = {
+  den.aspects.cli.nh = {
     homeManager = {
       programs.nh = {
         enable = true;

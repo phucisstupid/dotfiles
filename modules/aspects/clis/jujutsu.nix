@@ -1,5 +1,5 @@
 _: {
-  den.aspects.terminal.cli.jujutsu = {user, ...}: {
+  den.aspects.cli.jujutsu = {user, ...}: {
     homeManager = {
       programs.jujutsu = {
         enable = true;

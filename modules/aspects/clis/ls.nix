@@ -1,5 +1,5 @@
 _: {
-  den.aspects.terminal.cli.eza = {
+  den.aspects.cli.eza = {
     homeManager = {
       programs.eza = {
         enable = true;

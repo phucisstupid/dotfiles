@@ -1,5 +1,5 @@
 _: {
-  den.aspects.terminal.cli.btop = {
+  den.aspects.cli.btop = {
     homeManager = {
       programs.btop = {
         enable = true;
