@@ -47,17 +47,11 @@ in {
       terminal.cli.delta
       terminal.cli.yazi
       terminal.cli.bat
-      terminal.cli.bottom
-      terminal.cli.broot
       terminal.cli.btop
       terminal.cli.carapace
-      terminal.cli.clock-rs
       terminal.cli.fd
       terminal.cli.ripgrep
-      terminal.cli.navi
       terminal.cli.pay-respects
-      terminal.cli.spotify-player
-      terminal.cli.tldr
     ];
   };
 }
