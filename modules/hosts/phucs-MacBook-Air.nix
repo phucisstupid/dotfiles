@@ -9,8 +9,7 @@ in {
     };
 
     aspects = {
-      ${hostName} = {
-      };
+      ${hostName} = {};
 
       wow = {
         darwin = {
