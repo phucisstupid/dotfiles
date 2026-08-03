@@ -8,22 +8,20 @@ in {
       email = "125681538+phucisstupid@users.noreply.github.com";
     };
 
-    aspects.${hostName} = {
-      darwin = {
-        nix.enable = false; # for Determinate Nix
-        security.pam.services.sudo_local = {
-          touchIdAuth = true;
-          reattach = true;
-        };
-        users.users.wow = {
-          home = "/Users/wow";
-        };
+    aspects = {
+      ${hostName} = {
       };
 
-      wow.includes = [den.batteries.host-aspects];
+      wow = {
+        darwin = {
+          nix.enable = false; # for Determinate Nix
+          security.pam.services.sudo_local = {
+            touchIdAuth = true;
+            reattach = true;
+          };
+        };
 
-      includes = with den.aspects; [
-        home-manager
+        includes = with den.aspects; [
         style.theme.catppuccin
         window-manager.aerospace
         editor.lazyvim
@@ -51,6 +49,7 @@ in {
         cli.ripgrep
         cli.pay-respects
       ];
+      };
     };
   };
 }

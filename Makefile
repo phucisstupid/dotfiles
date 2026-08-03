@@ -10,8 +10,18 @@ switch:
 		fi
 
 update:
+	nix run .#write-flake
 	nix flake update
 	$(MAKE) switch
 
 install-nix:
-	curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --enable-flakes
+	@if [ "$$(uname)" != "Darwin" ]; then \
+		echo "install-nix is only supported on macOS."; \
+		exit 0; \
+		fi
+	@if command -v nix >/dev/null 2>&1; then \
+		echo "Nix is already installed."; \
+		else \
+		echo "Installing Nix..."; \
+		curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --enable-flakes; \
+		fi
