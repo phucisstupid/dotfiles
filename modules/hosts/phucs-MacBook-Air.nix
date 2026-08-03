@@ -9,9 +9,7 @@ in {
     };
 
     aspects = {
-      ${hostName} = {};
-
-      wow = {
+      ${hostName} = {
         darwin = {
           nix.enable = false; # for Determinate Nix
           security.pam.services.sudo_local = {
@@ -19,7 +17,9 @@ in {
             reattach = true;
           };
         };
+      };
 
+      wow = {
         includes = with den.aspects; [
           style.theme.catppuccin
           window-manager.aerospace
