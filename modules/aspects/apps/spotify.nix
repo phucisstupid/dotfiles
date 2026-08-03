@@ -1,11 +1,15 @@
-{den,inputs, ...}: {
+{
+  den,
+  inputs,
+  ...
+}: {
   flake-file.inputs.spicetify-nix = {
     url = "github:Gerg-L/spicetify-nix";
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
   den.aspects.app.spotify = {
-    includes = [ (den.batteries.unfree ["spotify"]) ];
+    includes = [(den.batteries.unfree ["spotify"])];
     homeManager = {pkgs, ...}: let
       spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
     in {
