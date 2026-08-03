@@ -8,18 +8,16 @@ in {
       email = "125681538+phucisstupid@users.noreply.github.com";
     };
 
-    aspects = {
-      ${hostName} = {
-        darwin = {
-          nix.enable = false; # for Determinate Nix
-          security.pam.services.sudo_local = {
-            touchIdAuth = true;
-            reattach = true;
-          };
+    aspects.${hostName} = {
+      darwin = {
+        nix.enable = false; # for Determinate Nix
+        security.pam.services.sudo_local = {
+          touchIdAuth = true;
+          reattach = true;
         };
       };
 
-      wow = {
+      provides.wow = {
         includes = with den.aspects; [
           style.theme.catppuccin
           window-manager.aerospace
