@@ -1,7 +1,7 @@
 {
-lib,
-den,
-...
+  lib,
+  den,
+  ...
 }: {
   den = {
     default = {

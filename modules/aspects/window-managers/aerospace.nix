@@ -51,15 +51,15 @@
           gaps = {
             inner = {
               horizontal = 0;
-              vertical =   0;
+              vertical = 0;
             };
             outer = {
-              left =       0;
-              bottom =     0;
-              right =      0;
+              left = 0;
+              bottom = 0;
+              right = 0;
               top = lib.mkDefault (
                 if hasSketchybar
-                  then 30
+                then 30
                 else 0
               );
             };
