@@ -1,4 +1,4 @@
-_: {
+{den,...}: {
   den.aspects.shell = {
     homeManager = {
       home = {
@@ -11,6 +11,10 @@ _: {
     };
 
     zsh = {
+      includes = with den.aspects; [
+        shell
+        (den.batteries.user-shell "zsh")
+      ];
       homeManager = {pkgs, ...}: {
         programs.zsh = {
           enable = true;
@@ -23,13 +27,13 @@ _: {
           ];
         };
       };
-      darwin = {pkgs, ...}: {
-        programs.zsh.enable = true;
-        environment.shells = [pkgs.zsh];
-      };
     };
 
     fish = {
+      includes = with den.aspects; [
+        shell
+        (den.batteries.user-shell "fish")
+      ];
       homeManager = {
         programs.fish = {
           enable = true;
@@ -40,13 +44,13 @@ _: {
           '';
         };
       };
-      darwin = {pkgs, ...}: {
-        programs.fish.enable = true;
-        environment.shells = [pkgs.fish];
-      };
     };
 
     nushell = {
+      includes = with den.aspects; [
+        shell
+        (den.batteries.user-shell "nushell")
+      ];
       homeManager = {
         programs.nushell = {
           enable = true;
@@ -55,9 +59,6 @@ _: {
             edit_mode = "vi";
           };
         };
-      };
-      darwin = {pkgs, ...}: {
-        environment.shells = [pkgs.nushell];
       };
     };
   };

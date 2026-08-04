@@ -18,17 +18,20 @@ in {
           reattach = true;
         };
       };
+      includes = with den.aspects; [
+        preset.darwin
+      ];
 
       provides.wow = {
         includes = with den.aspects; [
+          den.batteries.primary-user
+          shell.fish
+          shell.prompt.starship
           style.theme.catppuccin
           window-manager.aerospace
           editor.lazyvim
           app.zathura
           terminal.ghostty
-          shell
-          shell.fish
-          shell.prompt.starship
           multiplexer.tmux
           multiplexer.tmux.sesh
           cli.git

@@ -6,22 +6,13 @@
   };
 
   den.aspects.home-manager = {
-    nixos = {
+     os = {
       home-manager = {
         useUserPackages = true;
         useGlobalPkgs = true;
         backupFileExtension = "backup";
         overwriteBackup = true;
       };
-    };
-
-    darwin = {
-      home-manager = {
-        useUserPackages = true;
-        useGlobalPkgs = true;
-        backupFileExtension = "backup";
-        overwriteBackup = true;
-      };
-    };
+     };
   };
 }

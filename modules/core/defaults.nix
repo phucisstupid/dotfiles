@@ -9,11 +9,11 @@
       darwin.system.stateVersion = 7;
       homeManager.home.stateVersion = "26.05";
 
-      includes = with den; [
-        batteries.define-user
-        batteries.hostname
-        batteries.inputs'
-        aspects.home-manager
+      includes = with den.batteries; [
+        define-user
+        hostname
+        inputs'
+        den.aspects.home-manager
       ];
     };
 
