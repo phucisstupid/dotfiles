@@ -1,4 +1,4 @@
-{den,...}: {
+{den, ...}: {
   den.aspects.shell = {
     homeManager = {
       home = {
