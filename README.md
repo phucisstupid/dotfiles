@@ -12,7 +12,7 @@ Update `flake.lock`, then run `make switch`:
 make update
 ```
 
-Install Nix with flakes enabled:
+Install Nix with flakes enabled (macOS only):
 
 ```sh
 make install-nix

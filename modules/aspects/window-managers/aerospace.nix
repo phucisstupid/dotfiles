@@ -48,16 +48,28 @@
             ])
           ];
           on-focused-monitor-changed = ["move-mouse monitor-lazy-center"];
-          gaps.outer.top = lib.mkDefault (
-            if hasSketchybar
-            then 30
-            else 0
-          );
+          gaps = {
+            inner = {
+              horizontal = 0;
+              vertical =   0;
+            };
+            outer = {
+              left =       0;
+              bottom =     0;
+              right =      0;
+              top = lib.mkDefault (
+                if hasSketchybar
+                  then 30
+                else 0
+              );
+            };
+          };
           mode = {
             main.binding =
               {
                 "${mod}-slash" = "layout tiles horizontal vertical";
                 "${mod}-comma" = "layout accordion horizontal vertical";
+                "${mod}-f" = "fullscreen";
                 "${mod}-h" = "focus left";
                 "${mod}-j" = "focus down";
                 "${mod}-k" = "focus up";
@@ -135,7 +147,7 @@
               run = "move-node-to-workspace 3";
             }
             {
-              "if".app-name-regex-substring = "preview|libreoffice";
+              "if".app-name-regex-substring = "libreoffice";
               run = "move-node-to-workspace 4";
             }
             {

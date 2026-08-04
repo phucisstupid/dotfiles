@@ -3,9 +3,11 @@
   system = "aarch64-darwin";
 in {
   den = {
-    hosts.${system}.${hostName}.users.wow = {
-      fullName = "phucisstupid";
-      email = "125681538+phucisstupid@users.noreply.github.com";
+    hosts.${system}.${hostName}.users = {
+      wow = {
+        fullName = "phucisstupid";
+        email = "125681538+phucisstupid@users.noreply.github.com";
+      };
     };
 
     aspects.${hostName} = {
