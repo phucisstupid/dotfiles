@@ -43,7 +43,6 @@ jobs:
       # Format
       - name: Format
         run: |
-          nix run github:Swarsel/pedantix -- --formatter alejandra -
           nix run nixpkgs#alejandra -- .
           if ! git diff --quiet; then
             git commit -am "chore: format nix files"
