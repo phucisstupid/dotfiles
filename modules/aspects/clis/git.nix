@@ -9,7 +9,6 @@ _: {
             inherit (user) email;
           };
           init.defaultBranch = "main";
-          credential.helper = "osxkeychain";
         };
       };
     };
