@@ -2,7 +2,7 @@
   den.aspects.window-manager.aerospace = let
     mod = "alt";
   in {
-    homeManager = { ...}: {
+    homeManager = _: {
       programs.aerospace = {
         enable = true;
         launchd.enable = true;
