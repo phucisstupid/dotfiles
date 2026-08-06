@@ -8,6 +8,10 @@ _: {
           inline_height = 20;
         };
       };
+
+      programs.fzf = {
+        historyWidget.command = "";
+      };
     };
   };
 }

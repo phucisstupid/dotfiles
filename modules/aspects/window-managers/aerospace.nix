@@ -1,10 +1,5 @@
-{
-  den,
-  lib,
-  ...
-}: {
-  den.aspects.window-manager.aerospace = {host, ...}: let
-    hasSketchybar = host.hasAspect den.aspects.bar.sketchybar;
+{lib, ...}: {
+  den.aspects.window-manager.aerospace = let
     mod = "alt";
   in {
     homeManager = {pkgs, ...}: {
@@ -32,21 +27,11 @@
           default-root-container-layout = "tiles";
           default-root-container-orientation = "auto";
           automatically-unhide-macos-hidden-apps = true;
-          exec-on-workspace-change = lib.mkMerge [
-            [
-              "/bin/bash"
-              "-c"
-            ]
-            (lib.optionals hasSketchybar [
-              "${lib.getExe pkgs.sketchybar} --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
-            ])
+          exec-on-workspace-change = [
+            "/bin/bash"
+            "-c"
           ];
-          on-focus-changed = lib.mkMerge [
-            ["move-mouse window-lazy-center"]
-            (lib.optionals hasSketchybar [
-              "exec-and-forget ${lib.getExe pkgs.sketchybar} --trigger aerospace_focus_change"
-            ])
-          ];
+          on-focus-changed = ["move-mouse window-lazy-center"];
           on-focused-monitor-changed = ["move-mouse monitor-lazy-center"];
           gaps = {
             inner = {
@@ -57,11 +42,7 @@
               left = 0;
               bottom = 0;
               right = 0;
-              top = lib.mkDefault (
-                if hasSketchybar
-                then 30
-                else 0
-              );
+              top = lib.mkDefault 0;
             };
           };
           mode = {

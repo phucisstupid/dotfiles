@@ -10,6 +10,7 @@
 
   den.aspects.app.spotify = {
     includes = [(den.batteries.unfree ["spotify"])];
+
     homeManager = {pkgs, ...}: let
       spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
     in {

@@ -14,7 +14,7 @@ _: {
     };
 
     ripgrep = {
-      homeManager = {
+      homeManager = {pkgs, ...}: {
         programs.ripgrep = {
           enable = true;
           arguments = [
@@ -24,6 +24,12 @@ _: {
             "--glob=!.git/*"
             "--smart-case"
           ];
+        };
+        programs.bat = {
+          extraPackages = with pkgs.bat-extras; [batgrep];
+        };
+        home.shellAliases = {
+          rg = "batgrep";
         };
       };
     };

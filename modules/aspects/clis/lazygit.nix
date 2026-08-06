@@ -1,30 +1,31 @@
 _: {
-  den.aspects.cli.lazygit =
-    # { host, ... }:
-    # let
-    #   hasDelta = host.hasAspect den.aspects.cli.delta;
-    # in
-    {
-      homeManager = {
-        programs.lazygit = {
-          enable = true;
-          settings = {
-            gui = {
-              expandFocusedSidePanel = true;
-              showBottomLine = false;
-              nerdFontsVersion = "3";
-            };
-            git.pagers =
-              # lib.optionals hasDelta
-              [
-                {
-                  pager = ''
-                    delta --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
-                  '';
-                }
-              ];
+  den.aspects.cli.lazygit = {
+    homeManager = {pkgs, ...}: {
+      programs.lazygit = {
+        enable = true;
+        settings = {
+          gui = {
+            expandFocusedSidePanel = true;
+            showBottomLine = false;
+            nerdFontsVersion = "3";
           };
         };
       };
+
+      programs.yazi = {
+        plugins = with pkgs.yaziPlugins; {
+          inherit lazygit;
+        };
+        keymap.mgr.prepend_keymap = [
+          {
+            on = [
+              "g"
+              "i"
+            ];
+            run = "plugin lazygit";
+          }
+        ];
+      };
     };
+  };
 }
