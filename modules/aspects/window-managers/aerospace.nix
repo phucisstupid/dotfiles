@@ -1,6 +1,6 @@
 {lib, ...}: {
   den.aspects.window-manager.aerospace = {
-    homeManager = let 
+    homeManager = let
       mod = "alt";
     in {
       programs.aerospace = {
