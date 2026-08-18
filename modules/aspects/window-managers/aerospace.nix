@@ -1,8 +1,8 @@
 {lib, ...}: {
-  den.aspects.window-manager.aerospace = let
-    mod = "alt";
-  in {
-    homeManager = {
+  den.aspects.window-manager.aerospace = {
+    homeManager = let 
+      mod = "alt";
+    in {
       programs.aerospace = {
         enable = true;
         launchd.enable = true;
@@ -55,16 +55,16 @@
                 "${mod}-j" = "focus down";
                 "${mod}-k" = "focus up";
                 "${mod}-l" = "focus right";
-                "${mod}-ctrl-h" = "move left";
-                "${mod}-ctrl-j" = "move down";
-                "${mod}-ctrl-k" = "move up";
-                "${mod}-ctrl-l" = "move right";
+                "${mod}-shift-h" = "move left";
+                "${mod}-shift-j" = "move down";
+                "${mod}-shift-k" = "move up";
+                "${mod}-shift-l" = "move right";
                 "${mod}-minus" = "resize smart -50";
                 "${mod}-equal" = "resize smart +50";
                 "${mod}-tab" = "workspace-back-and-forth";
-                "${mod}-ctrl-tab" = "move-workspace-to-monitor --wrap-around next";
-                "${mod}-ctrl-semicolon" = "mode service";
-                "${mod}-ctrl-f" = "fullscreen --no-outer-gaps";
+                "${mod}-shift-tab" = "move-workspace-to-monitor --wrap-around next";
+                "${mod}-shift-semicolon" = "mode service";
+                "${mod}-shift-f" = "fullscreen --no-outer-gaps";
               }
               // builtins.listToAttrs (
                 builtins.concatMap (n: [
@@ -73,7 +73,7 @@
                     value = "workspace ${toString n}";
                   }
                   {
-                    name = "${mod}-ctrl-${toString n}";
+                    name = "${mod}-shift-${toString n}";
                     value = "move-node-to-workspace ${toString n}";
                   }
                 ]) (lib.range 1 5)
@@ -96,19 +96,19 @@
                 "close-all-windows-but-current"
                 "mode main"
               ];
-              "${mod}-ctrl-h" = [
+              "${mod}-shift-h" = [
                 "join-with left"
                 "mode main"
               ];
-              "${mod}-ctrl-j" = [
+              "${mod}-shift-j" = [
                 "join-with down"
                 "mode main"
               ];
-              "${mod}-ctrl-k" = [
+              "${mod}-shift-k" = [
                 "join-with up"
                 "mode main"
               ];
-              "${mod}-ctrl-l" = [
+              "${mod}-shift-l" = [
                 "join-with right"
                 "mode main"
               ];
