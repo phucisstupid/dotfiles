@@ -3,7 +3,7 @@ _: {
     homeManager = {
       programs.concord = {
         enable = true;
-  };
-  };
+      };
+    };
   };
 }
