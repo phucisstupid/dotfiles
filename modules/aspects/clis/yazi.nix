@@ -13,9 +13,9 @@ _: {
             ;
         };
         initLua = ''
-          require("git"):setup({
+          require("git"):setup {
            order = 1500,
-          })
+          }
         '';
         settings = {
           mgr.show_hidden = true;

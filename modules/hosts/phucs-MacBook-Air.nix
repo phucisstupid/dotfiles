@@ -50,6 +50,7 @@ in {
           cli.fd
           cli.ripgrep
           cli.pay-respects
+          cli.concord
         ];
       };
     };
