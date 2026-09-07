@@ -17,7 +17,7 @@
         enable = true;
         pluginSource = "nixpkgs";
         extras = {
-          ai.sidekick.enable = true;
+          ai.copilot.enable = true;
           coding = {
             mini-surround.enable = true;
             yanky.enable = true;
@@ -28,6 +28,7 @@
           };
           lang = {
             nix.enable = true;
+            python.enable = true;
             markdown.enable = true;
           };
           util.mini-hipatterns.enable = true;
