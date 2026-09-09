@@ -114,28 +114,6 @@
               ];
             };
           };
-          on-window-detected = [
-            {
-              "if".app-name-regex-substring = "zen|safari|helium";
-              run = "move-node-to-workspace 1";
-            }
-            {
-              "if".app-name-regex-substring = "wezterm|kitty|ghostty|terminal";
-              run = "move-node-to-workspace 2";
-            }
-            {
-              "if".app-name-regex-substring = "chatgpt|opencode|antigravity|claude";
-              run = "move-node-to-workspace 3";
-            }
-            {
-              "if".app-name-regex-substring = "libreoffice";
-              run = "move-node-to-workspace 4";
-            }
-            {
-              "if".app-name-regex-substring = "tv|music|spotify|stremio|netflix";
-              run = "move-node-to-workspace 5";
-            }
-          ];
         };
       };
     };
