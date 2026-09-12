@@ -7,7 +7,6 @@ _: {
           hidden = true;
           ignores = [
             ".git/"
-            "*.bak"
           ];
         };
       };
@@ -25,9 +24,11 @@ _: {
             "--smart-case"
           ];
         };
+
         programs.bat = {
           extraPackages = with pkgs.bat-extras; [batgrep];
         };
+
         home.shellAliases = {
           rg = "batgrep";
         };
