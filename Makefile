@@ -10,6 +10,7 @@ switch:
 		fi
 
 update:
+	git pull
 	nix run .#write-flake
 	nix flake update
 	$(MAKE) switch
