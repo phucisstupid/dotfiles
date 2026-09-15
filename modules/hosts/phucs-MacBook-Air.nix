@@ -51,6 +51,7 @@ in {
           cli.ripgrep
           cli.pay-respects
           cli.direnv
+          cli.mise
         ];
       };
     };
