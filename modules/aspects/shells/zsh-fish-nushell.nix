@@ -11,7 +11,7 @@
     };
 
     zsh = {
-      includes =  [
+      includes = [
         den.aspects.shell
         (den.batteries.user-shell "zsh")
       ];

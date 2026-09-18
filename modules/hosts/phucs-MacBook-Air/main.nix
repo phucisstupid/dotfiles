@@ -10,8 +10,8 @@ in {
     };
 
     aspects.${hostName} = {
-      wow ={
-        includes =  [
+      wow = {
+        includes = [
           den.batteries.primary-user
         ];
       };
