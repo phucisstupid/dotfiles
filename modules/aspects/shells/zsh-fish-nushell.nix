@@ -11,8 +11,8 @@
     };
 
     zsh = {
-      includes = with den.aspects; [
-        shell
+      includes =  [
+        den.aspects.shell
         (den.batteries.user-shell "zsh")
       ];
       homeManager = {pkgs, ...}: {
@@ -30,8 +30,8 @@
     };
 
     fish = {
-      includes = with den.aspects; [
-        shell
+      includes = [
+        den.aspects.shell
         (den.batteries.user-shell "fish")
       ];
       homeManager = {
@@ -47,8 +47,8 @@
     };
 
     nushell = {
-      includes = with den.aspects; [
-        shell
+      includes = [
+        den.aspects.shell
         (den.batteries.user-shell "nushell")
       ];
       homeManager = {

@@ -1,7 +1,14 @@
+# Best macOS settings you’ll ever need
 {
-  den.aspects.preset.darwin = {
+  den.aspects.phucs-MacBook-Air = {
     darwin = {
-      # Best macOS settings you’ll ever need
+      nix.enable = false; # for Determinate Nix
+
+      security.pam.services.sudo_local = {
+        touchIdAuth = true;
+        reattach = true;
+      };
+
       system.defaults = {
         universalaccess = {
           reduceMotion = true;
