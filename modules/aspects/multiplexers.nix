@@ -6,7 +6,6 @@ _: {
           enable = true;
           sensibleOnTop = true;
           terminal = "tmux-256color";
-          shortcut = "a";
           keyMode = "vi";
           customPaneNavigationAndResize = true;
           baseIndex = 1;
