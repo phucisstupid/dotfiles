@@ -6,7 +6,6 @@
       style.theme.catppuccin
       window-manager.aerospace
       editor.lazyvim
-      app.zathura
       terminal.ghostty
       multiplexer.tmux
       multiplexer.tmux.sesh
