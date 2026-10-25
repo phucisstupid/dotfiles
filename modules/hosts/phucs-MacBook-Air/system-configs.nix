@@ -15,7 +15,6 @@
           reduceTransparency = true;
         };
         CustomUserPreferences."com.apple.AdLib".allowApplePersonalizedAdvertising = false;
-        LaunchServices.LSQuarantine = false;
         controlcenter = {
           BatteryShowPercentage = true;
           Bluetooth = true;
