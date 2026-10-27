@@ -1,6 +1,6 @@
 _: {
   den.aspects.cli.yazi = {
-    homeManager = {pkgs, ...}: {
+    homeManager = { pkgs, ... }: {
       programs.yazi = {
         enable = true;
         plugins = with pkgs.yaziPlugins; {

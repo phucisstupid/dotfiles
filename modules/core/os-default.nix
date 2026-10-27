@@ -2,7 +2,8 @@
   lib,
   den,
   ...
-}: {
+}:
+{
   flake-file.inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     darwin = {
@@ -37,6 +38,6 @@
     };
 
     # enable homeManager as default for all users
-    schema.user.classes = lib.mkDefault ["homeManager"];
+    schema.user.classes = lib.mkDefault [ "homeManager" ];
   };
 }

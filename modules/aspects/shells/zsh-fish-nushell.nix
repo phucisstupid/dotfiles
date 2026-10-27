@@ -1,8 +1,9 @@
-{den, ...}: {
+{ den, ... }: {
   den.aspects.shell = {
-    homeManager = {
+    homeManager = { config, ... }: {
       home = {
         shell.enableShellIntegration = true;
+        sessionPath = [ "${config.home.homeDirectory}/dotfiles" ];
         shellAliases = {
           "..." = "cd ../..";
           "...." = "cd ../../..";
@@ -15,7 +16,7 @@
         den.aspects.shell
         (den.batteries.user-shell "zsh")
       ];
-      homeManager = {pkgs, ...}: {
+      homeManager = { pkgs, ... }: {
         programs.zsh = {
           enable = true;
           autocd = true;
@@ -23,7 +24,7 @@
           defaultKeymap = "viins";
           syntaxHighlighting.enable = true;
           plugins = with pkgs; [
-            {inherit (zsh-fzf-tab) name src;}
+            { inherit (zsh-fzf-tab) name src; }
           ];
         };
       };

@@ -1,4 +1,5 @@
-{lib, ...}: let
+{ lib, ... }:
+let
   presetConfig = preset: {
     homeManager = {
       programs.fastfetch = {
@@ -320,7 +321,8 @@
       };
     };
   };
-in {
+in
+{
   den.aspects.cli.fastfetch = {
     hyde = presetConfig "hyde";
     ml4w = presetConfig "ml4w";

@@ -3,19 +3,25 @@
 Apply this flake to the current host, using [nh](https://github.com/nix-community/nh):
 
 ```sh
-make switch
+dotfiles switch
 ```
 
-Update `flake.lock`, then run `make switch`:
+Pull latest changes, then run `dotfiles switch`:
 
 ```sh
-make update
+dotfiles update
+```
+
+Regenerate `flake.nix`:
+
+```sh
+dotfiles write-flake
 ```
 
 Install Nix with flakes enabled (macOS only):
 
 ```sh
-make install-nix
+dotfiles install-nix
 ```
 
 ## Screenshots

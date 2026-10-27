@@ -1,6 +1,8 @@
-{den, ...}: let
+{ den, ... }:
+let
   hostName = "phucs-MacBook-Air";
-in {
+in
+{
   den = {
     hosts.aarch64-darwin.${hostName}.users = {
       wow = {

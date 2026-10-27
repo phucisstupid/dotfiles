@@ -13,7 +13,7 @@ _: {
     };
 
     ripgrep = {
-      homeManager = {pkgs, ...}: {
+      homeManager = { pkgs, ... }: {
         programs.ripgrep = {
           enable = true;
           arguments = [
@@ -26,7 +26,7 @@ _: {
         };
 
         programs.bat = {
-          extraPackages = with pkgs.bat-extras; [batgrep];
+          extraPackages = with pkgs.bat-extras; [ batgrep ];
         };
 
         home.shellAliases = {

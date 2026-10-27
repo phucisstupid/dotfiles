@@ -1,4 +1,4 @@
-{lib, ...}: {
+{ lib, ... }: {
   den.aspects.editor.nvf = {
     homeManager = {
       programs.nvf = {

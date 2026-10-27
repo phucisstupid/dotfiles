@@ -32,7 +32,7 @@ _: {
     };
 
     ghostty = {
-      homeManager = {pkgs, ...}: {
+      homeManager = { pkgs, ... }: {
         programs.ghostty = {
           enable = true;
           package = pkgs.ghostty-bin;

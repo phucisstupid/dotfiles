@@ -1,7 +1,7 @@
 _: {
   den.aspects.multiplexer = {
     tmux = {
-      homeManager = {pkgs, ...}: {
+      homeManager = { pkgs, ... }: {
         programs.tmux = {
           enable = true;
           sensibleOnTop = true;

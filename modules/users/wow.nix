@@ -1,4 +1,4 @@
-{den, ...}: {
+{ den, ... }: {
   den.aspects.wow = {
     includes = with den.aspects; [
       shell.fish

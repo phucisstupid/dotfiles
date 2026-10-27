@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{ inputs, ... }: {
   flake-file.inputs.catppuccin = {
     url = "github:catppuccin/nix";
     inputs.nixpkgs.follows = "nixpkgs";
@@ -6,7 +6,7 @@
 
   den.aspects.style.theme.catppuccin = {
     homeManager = {
-      imports = [inputs.catppuccin.homeModules.catppuccin];
+      imports = [ inputs.catppuccin.homeModules.catppuccin ];
       catppuccin = {
         enable = true;
         autoEnable = true;

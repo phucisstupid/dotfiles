@@ -1,4 +1,4 @@
-{lib, ...}: {
+{ lib, ... }: {
   den.aspects.editor.zed-editor = {
     homeManager = {
       programs.zed-editor = {

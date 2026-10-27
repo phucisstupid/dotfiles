@@ -1,0 +1,61 @@
+#!/bin/sh
+set -eu
+
+# shortcut: assumes direct invocation or repo dir on PATH, resolve symlinks if linked elsewhere
+cd "$(dirname "$0")"
+
+do_switch() {
+  nh="nh"
+  if ! command -v nh >/dev/null 2>&1; then
+    nh="nix run nixpkgs#nh --"
+  fi
+  if [ "$(uname)" = "Darwin" ]; then
+    $nh darwin switch . -H "$(hostname -s)"
+  else
+    $nh os switch . -H "$(hostname -s)"
+  fi
+}
+
+usage() {
+  cat <<EOF
+Usage: dotfiles <command>
+
+Commands:
+  switch       Apply this flake to the current host
+  update       Pull latest changes and switch
+  write-flake  Regenerate flake.nix
+  install-nix  Install Nix with flakes enabled (macOS only)
+EOF
+}
+
+case "${1:-}" in
+switch)
+  do_switch
+  ;;
+update)
+  git pull
+  do_switch
+  ;;
+write-flake)
+  nix run .#write-flake
+  ;;
+install-nix)
+  if [ "$(uname)" != "Darwin" ]; then
+    echo "install-nix is only supported on macOS."
+    exit 0
+  fi
+  if command -v nix >/dev/null 2>&1; then
+    echo "Nix is already installed."
+  else
+    echo "Installing Nix..."
+    curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --enable-flakes
+  fi
+  ;;
+help | -h | --help)
+  usage
+  ;;
+*)
+  usage >&2
+  exit 1
+  ;;
+esac

@@ -2,9 +2,10 @@
   inputs,
   lib,
   ...
-}: {
+}:
+{
   den.aspects.status-bar.sketchybar = {
-    homeManager = {pkgs, ...}: {
+    homeManager = { pkgs, ... }: {
       home.packages = with pkgs; [
         sketchybar-app-font
       ];
@@ -20,7 +21,8 @@
         ];
       };
       xdg.configFile = {
-        "sketchybar/helpers/spaces_util/icon_map.lua".source = "${pkgs.sketchybar-app-font}/lib/sketchybar-app-font/icon_map.lua";
+        "sketchybar/helpers/spaces_util/icon_map.lua".source =
+          "${pkgs.sketchybar-app-font}/lib/sketchybar-app-font/icon_map.lua";
         "sketchybar/settings.lua".text = ''
           return {
             bar_preset = "compact",

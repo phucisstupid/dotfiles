@@ -20,32 +20,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      # Deadnix
-      - name: Deadnix
-        run: |
-          nix run nixpkgs#deadnix -- --edit .
-          if ! git diff --quiet; then
-            git commit -am "chore: clean dead code"
-            git pull --rebase origin "$GITHUB_REF_NAME"
-            git push
-          fi
-
-      # Statix
-      - name: Statix
-        run: |
-          nix run nixpkgs#statix -- fix .
-          if ! git diff --quiet; then
-            git commit -am "chore: lint with statix"
-            git pull --rebase origin "$GITHUB_REF_NAME"
-            git push
-          fi
-
       # Format
       - name: Format
         run: |
-          nix run nixpkgs#alejandra -- .
+          nix fmt
           if ! git diff --quiet; then
-            git commit -am "chore: format nix files"
+            git commit -am "chore: format files"
             git pull --rebase origin "$GITHUB_REF_NAME"
             git push
           fi
@@ -54,6 +34,8 @@ jobs:
       - name: Update flake.lock
         run: |
           nix flake update
+          nix flake check
+          nix eval .#darwinConfigurations.phucs-MacBook-Air.system.drvPath
           if ! git diff --quiet; then
             git commit -am "chore: update flake.lock"
             git pull --rebase origin "$GITHUB_REF_NAME"

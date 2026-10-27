@@ -5,7 +5,7 @@ _: {
         programs.starship = {
           enable = true;
           enableTransience = true;
-          presets = ["nerd-font-symbols"];
+          presets = [ "nerd-font-symbols" ];
           settings = {
             character = {
               success_symbol = "[[󰄛](green) ❯](peach)";
@@ -19,7 +19,7 @@ _: {
             git_branch.style = "bold mauve";
             git_metrics.disabled = false;
             battery.display = [
-              {threshold = 30;}
+              { threshold = 30; }
             ];
           };
         };
