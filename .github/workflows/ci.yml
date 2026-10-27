@@ -35,7 +35,6 @@ jobs:
         run: |
           nix flake update
           nix flake check
-          nix eval .#darwinConfigurations.phucs-MacBook-Air.system.drvPath
           if ! git diff --quiet; then
             git commit -am "chore: update flake.lock"
             git pull --rebase origin "$GITHUB_REF_NAME"
