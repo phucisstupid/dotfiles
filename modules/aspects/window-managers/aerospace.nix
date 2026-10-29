@@ -50,7 +50,6 @@
             mode = {
               main.binding = {
                 "${mod}-slash" = "layout tiles horizontal vertical";
-                "${mod}-comma" = "layout accordion horizontal vertical";
                 "${mod}-f" = "fullscreen";
                 "${mod}-h" = "focus left";
                 "${mod}-j" = "focus down";
