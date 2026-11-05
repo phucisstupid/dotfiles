@@ -170,7 +170,8 @@
                 }
               )
 
-              # Close Window
+              # Close Tab / Quit Window
+              (bindMod "W" ''universal_clipboard_shortcut("CTRL", "W", "CTRL SHIFT", "W")'')
               (bindModFlags "Q" "hl.dsp.window.close()" {
                 repeat = false;
               })
