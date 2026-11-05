@@ -96,9 +96,6 @@
               general = {
                 layout = "scrolling";
               };
-              binds = {
-                scroll_event_delay = 150;
-              };
               scrolling = {
                 fullscreen_on_one_column = false;
                 column_width = 0.5;
@@ -213,23 +210,6 @@
               (bindMod "SHIFT + Page_Up" ''hl.dsp.window.move({ workspace = "e-1", follow = true })'')
               (bindMod "SHIFT + U" ''hl.dsp.window.move({ workspace = "e+1", follow = true })'')
               (bindMod "SHIFT + I" ''hl.dsp.window.move({ workspace = "e-1", follow = true })'')
-
-              # Mouse Wheel Navigation (uses binds.scroll_event_delay = 150)
-              (bindMod "mouse_down" ''hl.dsp.focus({ workspace = "e+1" })'')
-              (bindMod "mouse_up" ''hl.dsp.focus({ workspace = "e-1" })'')
-              (bindMod "SHIFT + mouse_down" ''hl.dsp.window.move({ workspace = "e+1", follow = true })'')
-              (bindMod "SHIFT + mouse_up" ''hl.dsp.window.move({ workspace = "e-1", follow = true })'')
-
-              (bindMod "mouse_right" ''hl.dsp.layout("focus r")'')
-              (bindMod "mouse_left" ''hl.dsp.layout("focus l")'')
-              (bindMod "SHIFT + mouse_right" ''hl.dsp.layout("swapcol r")'')
-              (bindMod "SHIFT + mouse_left" ''hl.dsp.layout("swapcol l")'')
-
-              (bindMod "CTRL + mouse_down" ''hl.dsp.layout("focus r")'')
-              (bindMod "CTRL + mouse_up" ''hl.dsp.layout("focus l")'')
-              (bindMod "CTRL + SHIFT + mouse_down" ''hl.dsp.layout("swapcol r")'')
-              (bindMod "CTRL + SHIFT + mouse_up" ''hl.dsp.layout("swapcol l")'')
-
               (bindMod "Tab" ''hl.dsp.focus({ workspace = "previous" })'')
 
               # Column Stack Management (Consume / Expel / Promote)
