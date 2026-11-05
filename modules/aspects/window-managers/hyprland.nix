@@ -132,28 +132,28 @@
               (bindMod "L" ''hl.dsp.layout("focus r")'')
 
               # Column & Window Movement
-              (bindMod "CTRL + Left" ''hl.dsp.layout("swapcol l")'')
-              (bindMod "CTRL + Down" ''hl.dsp.window.move({ direction = "down" })'')
-              (bindMod "CTRL + Up" ''hl.dsp.window.move({ direction = "up" })'')
-              (bindMod "CTRL + Right" ''hl.dsp.layout("swapcol r")'')
-              (bindMod "CTRL + H" ''hl.dsp.layout("swapcol l")'')
-              (bindMod "CTRL + J" ''hl.dsp.window.move({ direction = "down" })'')
-              (bindMod "CTRL + K" ''hl.dsp.window.move({ direction = "up" })'')
-              (bindMod "CTRL + L" ''hl.dsp.layout("swapcol r")'')
+              (bindMod "SHIFT + Left" ''hl.dsp.layout("swapcol l")'')
+              (bindMod "SHIFT + Down" ''hl.dsp.window.move({ direction = "down" })'')
+              (bindMod "SHIFT + Up" ''hl.dsp.window.move({ direction = "up" })'')
+              (bindMod "SHIFT + Right" ''hl.dsp.layout("swapcol r")'')
+              (bindMod "SHIFT + H" ''hl.dsp.layout("swapcol l")'')
+              (bindMod "SHIFT + J" ''hl.dsp.window.move({ direction = "down" })'')
+              (bindMod "SHIFT + K" ''hl.dsp.window.move({ direction = "up" })'')
+              (bindMod "SHIFT + L" ''hl.dsp.layout("swapcol r")'')
 
               # First / Last Column on Tape
               (bindMod "Home" ''hl.dsp.layout("fit tobeg")'')
               (bindMod "End" ''hl.dsp.layout("fit toend")'')
 
               # Monitor Focus
-              (bindMod "SHIFT + Left" ''hl.dsp.focus({ monitor = "l" })'')
-              (bindMod "SHIFT + Down" ''hl.dsp.focus({ monitor = "d" })'')
-              (bindMod "SHIFT + Up" ''hl.dsp.focus({ monitor = "u" })'')
-              (bindMod "SHIFT + Right" ''hl.dsp.focus({ monitor = "r" })'')
-              (bindMod "SHIFT + H" ''hl.dsp.focus({ monitor = "l" })'')
-              (bindMod "SHIFT + J" ''hl.dsp.focus({ monitor = "d" })'')
-              (bindMod "SHIFT + K" ''hl.dsp.focus({ monitor = "u" })'')
-              (bindMod "SHIFT + L" ''hl.dsp.focus({ monitor = "r" })'')
+              (bindMod "CTRL + Left" ''hl.dsp.focus({ monitor = "l" })'')
+              (bindMod "CTRL + Down" ''hl.dsp.focus({ monitor = "d" })'')
+              (bindMod "CTRL + Up" ''hl.dsp.focus({ monitor = "u" })'')
+              (bindMod "CTRL + Right" ''hl.dsp.focus({ monitor = "r" })'')
+              (bindMod "CTRL + H" ''hl.dsp.focus({ monitor = "l" })'')
+              (bindMod "CTRL + J" ''hl.dsp.focus({ monitor = "d" })'')
+              (bindMod "CTRL + K" ''hl.dsp.focus({ monitor = "u" })'')
+              (bindMod "CTRL + L" ''hl.dsp.focus({ monitor = "r" })'')
 
               # Move Window to Monitor
               (bindMod "SHIFT + CTRL + Left" ''hl.dsp.window.move({ monitor = "l", follow = true })'')
@@ -170,24 +170,24 @@
               (bindMod "Page_Up" ''hl.dsp.focus({ workspace = "e-1" })'')
               (bindMod "U" ''hl.dsp.focus({ workspace = "e+1" })'')
               (bindMod "I" ''hl.dsp.focus({ workspace = "e-1" })'')
-              (bindMod "CTRL + Page_Down" ''hl.dsp.window.move({ workspace = "e+1", follow = true })'')
-              (bindMod "CTRL + Page_Up" ''hl.dsp.window.move({ workspace = "e-1", follow = true })'')
-              (bindMod "CTRL + U" ''hl.dsp.window.move({ workspace = "e+1", follow = true })'')
-              (bindMod "CTRL + I" ''hl.dsp.window.move({ workspace = "e-1", follow = true })'')
+              (bindMod "SHIFT + Page_Down" ''hl.dsp.window.move({ workspace = "e+1", follow = true })'')
+              (bindMod "SHIFT + Page_Up" ''hl.dsp.window.move({ workspace = "e-1", follow = true })'')
+              (bindMod "SHIFT + U" ''hl.dsp.window.move({ workspace = "e+1", follow = true })'')
+              (bindMod "SHIFT + I" ''hl.dsp.window.move({ workspace = "e-1", follow = true })'')
 
               # Mouse Wheel Navigation (uses binds.scroll_event_delay = 150)
               (bindMod "mouse_down" ''hl.dsp.focus({ workspace = "e+1" })'')
               (bindMod "mouse_up" ''hl.dsp.focus({ workspace = "e-1" })'')
-              (bindMod "CTRL + mouse_down" ''hl.dsp.window.move({ workspace = "e+1", follow = true })'')
-              (bindMod "CTRL + mouse_up" ''hl.dsp.window.move({ workspace = "e-1", follow = true })'')
+              (bindMod "SHIFT + mouse_down" ''hl.dsp.window.move({ workspace = "e+1", follow = true })'')
+              (bindMod "SHIFT + mouse_up" ''hl.dsp.window.move({ workspace = "e-1", follow = true })'')
 
               (bindMod "mouse_right" ''hl.dsp.layout("focus r")'')
               (bindMod "mouse_left" ''hl.dsp.layout("focus l")'')
-              (bindMod "CTRL + mouse_right" ''hl.dsp.layout("swapcol r")'')
-              (bindMod "CTRL + mouse_left" ''hl.dsp.layout("swapcol l")'')
+              (bindMod "SHIFT + mouse_right" ''hl.dsp.layout("swapcol r")'')
+              (bindMod "SHIFT + mouse_left" ''hl.dsp.layout("swapcol l")'')
 
-              (bindMod "SHIFT + mouse_down" ''hl.dsp.layout("focus r")'')
-              (bindMod "SHIFT + mouse_up" ''hl.dsp.layout("focus l")'')
+              (bindMod "CTRL + mouse_down" ''hl.dsp.layout("focus r")'')
+              (bindMod "CTRL + mouse_up" ''hl.dsp.layout("focus l")'')
               (bindMod "CTRL + SHIFT + mouse_down" ''hl.dsp.layout("swapcol r")'')
               (bindMod "CTRL + SHIFT + mouse_up" ''hl.dsp.layout("swapcol l")'')
 
@@ -204,9 +204,8 @@
               (bindMod "SHIFT + R" ''hl.dsp.layout("colresize -conf")'')
               (bindMod "F" ''hl.dsp.layout("colresize 1.0")'')
               (bindMod "SHIFT + F" ''hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" })'')
-              (bindMod "CTRL + F" ''hl.dsp.layout("colresize 1.0")'')
               (bindMod "C" ''hl.dsp.layout("fit active")'')
-              (bindMod "CTRL + C" ''hl.dsp.layout("fit visible")'')
+              (bindMod "SHIFT + C" ''hl.dsp.layout("fit visible")'')
               (bindMod "Minus" ''hl.dsp.layout("colresize -0.1")'')
               (bindMod "Equal" ''hl.dsp.layout("colresize +0.1")'')
               (bindMod "SHIFT + Minus" "hl.dsp.window.resize({ x = 0, y = -100, relative = true })")
@@ -222,7 +221,6 @@
             ]
             ++ builtins.concatMap (n: [
               (bindMod (toString n) "hl.dsp.focus({ workspace = ${toString n} })")
-              (bindMod "CTRL + ${toString n}" "hl.dsp.window.move({ workspace = ${toString n}, follow = true })")
               (bindMod "SHIFT + ${toString n}" "hl.dsp.window.move({ workspace = ${toString n}, follow = true })")
             ]) (lib.range 1 9);
           };
