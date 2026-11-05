@@ -1,4 +1,8 @@
-{ inputs, ... }:
+{
+  inputs,
+  lib,
+  ...
+}:
 {
   flake-file.inputs.vicinae-extensions = {
     url = "github:vicinaehq/extensions";
@@ -8,7 +12,7 @@
   den.aspects.app.vicinae = {
     homeManager =
       { pkgs, ... }:
-      {
+      lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
         programs.vicinae = {
           enable = true;
           systemd.enable = true;
