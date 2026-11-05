@@ -1,6 +1,6 @@
 { den, ... }:
 let
-  hostName = "linux";
+  hostName = "lg-gram";
 in
 {
   den = {
@@ -14,6 +14,7 @@ in
     aspects.${hostName} = {
       includes = [
         den.aspects.preset.nixos
+        (den.aspects.facter ./facter.json)
       ];
     };
   };
