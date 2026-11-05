@@ -9,6 +9,7 @@
       terminal.ghostty
       multiplexer.tmux
       multiplexer.tmux.sesh
+      app.spotify
       cli.git
       cli.gh
       cli.nh

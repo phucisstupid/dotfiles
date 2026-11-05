@@ -27,7 +27,6 @@
             adblock
             keyboardShortcut
           ];
-          enabledCustomApps = with spicePkgs.apps; [ lyricsPlus ];
         };
       };
   };
