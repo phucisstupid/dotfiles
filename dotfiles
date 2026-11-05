@@ -24,6 +24,7 @@ Commands:
   switch       Apply this flake to the current host
   update       Pull latest changes and switch
   write-flake  Regenerate flake.nix
+  facter       Generate facter.json for the current host (Linux only)
   install-nix  Install Nix with flakes enabled (macOS only)
 EOF
 }
@@ -38,6 +39,19 @@ update)
   ;;
 write-flake)
   nix run .#write-flake
+  ;;
+facter)
+  if [ "$(uname)" = "Darwin" ]; then
+    echo "facter is only supported on Linux."
+    exit 0
+  fi
+  report="modules/hosts/$(hostname -s)/facter.json"
+  if command -v nixos-facter >/dev/null 2>&1; then
+    sudo nixos-facter -o "$report"
+  else
+    sudo nix run nixpkgs#nixos-facter -- -o "$report"
+  fi
+  git add "$report"
   ;;
 install-nix)
   if [ "$(uname)" != "Darwin" ]; then

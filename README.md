@@ -18,6 +18,12 @@ Regenerate `flake.nix`:
 dotfiles write-flake
 ```
 
+Generate `facter.json` for the current host (Linux only):
+
+```sh
+dotfiles facter
+```
+
 Install Nix with flakes enabled (macOS only):
 
 ```sh
