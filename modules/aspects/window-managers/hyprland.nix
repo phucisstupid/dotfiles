@@ -121,6 +121,7 @@
               (bindMod "C" ''universal_clipboard_shortcut("CTRL", "C", "CTRL SHIFT", "C")'')
               (bindMod "V" ''universal_clipboard_shortcut("CTRL", "V", "CTRL SHIFT", "V")'')
               (bindMod "X" ''send_shortcut_once("CTRL", "X")'')
+              (bindMod "CTRL + V" ''hl.dsp.exec_cmd("vicinae deeplink vicinae://launch/clipboard/history")'')
 
               # Audio & Media Controls
               (bindKeyFlags "XF86AudioRaiseVolume"
