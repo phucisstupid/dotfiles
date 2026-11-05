@@ -17,6 +17,7 @@ _: {
             center = [
               "Tempo"
               "Privacy"
+              "Notifications"
             ];
             right = [
               "Tray"
@@ -79,7 +80,7 @@ _: {
           };
 
           appearance = {
-            font_name = "JetBrainsMono Nerd Font";
+            font_name = "Maple Mono NF";
             bar = {
               surface = "solid";
               radius = "none";
