@@ -95,9 +95,12 @@
             config = {
               general = {
                 layout = "scrolling";
+                gaps_in = 0;
+                gaps_out = 0;
+                border_size = 1;
+                "col.active_border" = lua "colors.accent";
               };
               scrolling = {
-                fullscreen_on_one_column = false;
                 column_width = 0.5;
                 focus_fit_method = 1;
                 follow_focus = 1;
