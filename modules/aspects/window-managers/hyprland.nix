@@ -1,12 +1,6 @@
 { lib, ... }:
 {
   den.aspects.window-manager.hyprland = {
-    nixos = {
-      programs.hyprland = {
-        enable = true;
-      };
-    };
-
     homeManager =
       let
         lua = lib.generators.mkLuaInline;
