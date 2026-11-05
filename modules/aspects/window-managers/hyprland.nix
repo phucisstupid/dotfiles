@@ -43,6 +43,61 @@
           settings = {
             mod._var = "SUPER";
 
+            "01_send_shortcut_once" = {
+              name = "send_shortcut_once";
+              _var = lua ''
+                function(mods, key)
+                  return function()
+                    hl.dispatch(hl.dsp.send_key_state({ mods = mods, key = key, state = "down" }))
+
+                    hl.timer(function()
+                      hl.dispatch(hl.dsp.send_key_state({ mods = mods, key = key, state = "up" }))
+                    end, { timeout = 50, type = "oneshot" })
+                  end
+                end
+              '';
+            };
+
+            "02_active_window_is_terminal" = {
+              name = "active_window_is_terminal";
+              _var = lua ''
+                function()
+                  local window = hl.get_active_window()
+                  if not window then
+                    return false
+                  end
+
+                  for _, tag in ipairs(window.tags or {}) do
+                    if tag:gsub("%*$", "") == "terminal" then
+                      return true
+                    end
+                  end
+
+                  return false
+                end
+              '';
+            };
+
+            "03_universal_clipboard_shortcut" = {
+              name = "universal_clipboard_shortcut";
+              _var = lua ''
+                function(default_mods, default_key, terminal_mods, terminal_key)
+                  return function()
+                    if active_window_is_terminal() then
+                      send_shortcut_once(terminal_mods, terminal_key)()
+                    else
+                      send_shortcut_once(default_mods, default_key)()
+                    end
+                  end
+                end
+              '';
+            };
+
+            window_rule = {
+              match.class = "(Alacritty|kitty|com.mitchellh.ghostty|foot|org\\.codeberg\\.dnkl\\.foot|wezterm)";
+              tag = "+terminal";
+            };
+
             config = {
               general = {
                 layout = "scrolling";
@@ -66,6 +121,12 @@
               # Applications
               (bindMod "Return" ''hl.dsp.exec_cmd("$TERMINAL")'')
               (bindMod "SHIFT + Return" ''hl.dsp.exec_cmd("$BROWSER")'')
+
+              # Universal Clipboard Shortcuts (Omarchy)
+              (bindMod "A" ''send_shortcut_once("CTRL", "A")'')
+              (bindMod "C" ''universal_clipboard_shortcut("CTRL", "C", "CTRL SHIFT", "C")'')
+              (bindMod "V" ''universal_clipboard_shortcut("CTRL", "V", "CTRL SHIFT", "V")'')
+              (bindMod "X" ''send_shortcut_once("CTRL", "X")'')
 
               # Audio & Media Controls
               (bindKeyFlags "XF86AudioRaiseVolume"
@@ -186,7 +247,7 @@
               (bindMod "SHIFT + R" ''hl.dsp.layout("colresize -conf")'')
               (bindMod "F" ''hl.dsp.layout("colresize 1.0")'')
               (bindMod "SHIFT + F" ''hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" })'')
-              (bindMod "C" ''hl.dsp.layout("fit active")'')
+              (bindMod "CTRL + C" ''hl.dsp.layout("fit active")'')
               (bindMod "SHIFT + C" ''hl.dsp.layout("fit visible")'')
               (bindMod "Minus" ''hl.dsp.layout("colresize -0.1")'')
               (bindMod "Equal" ''hl.dsp.layout("colresize +0.1")'')
@@ -194,7 +255,7 @@
               (bindMod "SHIFT + Equal" "hl.dsp.window.resize({ x = 0, y = 100, relative = true })")
 
               # Floating Mode
-              (bindMod "V" ''hl.dsp.window.float({ action = "toggle" })'')
+              (bindMod "T" ''hl.dsp.window.float({ action = "toggle" })'')
 
               # Session & Power Controls
               (bindMod "SHIFT + E" "hl.dsp.exit()")
