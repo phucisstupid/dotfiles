@@ -12,9 +12,11 @@
   den.aspects.app.vicinae = {
     homeManager =
       { pkgs, ... }:
-      lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
+      {
         programs.vicinae = {
           enable = true;
+        }
+        // lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
           systemd.enable = true;
           settings = {
             launcher_window = {
