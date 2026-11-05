@@ -38,7 +38,7 @@ _: {
         home.sessionVariables.TERMINAL = "ghostty";
         programs.ghostty = {
           enable = true;
-          package = if pkgs.stdenv.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
+          package = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
           settings = {
             font-family = "Maple Mono NF";
             font-size = 17;
