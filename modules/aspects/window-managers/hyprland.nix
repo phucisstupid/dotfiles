@@ -4,7 +4,6 @@
     nixos = {
       programs.hyprland = {
         enable = true;
-        withUWSM = true;
       };
     };
 
@@ -122,20 +121,12 @@
               })
 
               # Column & Window Focus
-              (bindMod "Left" ''hl.dsp.layout("focus l")'')
-              (bindMod "Down" ''hl.dsp.layout("focus d")'')
-              (bindMod "Up" ''hl.dsp.layout("focus u")'')
-              (bindMod "Right" ''hl.dsp.layout("focus r")'')
               (bindMod "H" ''hl.dsp.layout("focus l")'')
               (bindMod "J" ''hl.dsp.layout("focus d")'')
               (bindMod "K" ''hl.dsp.layout("focus u")'')
               (bindMod "L" ''hl.dsp.layout("focus r")'')
 
               # Column & Window Movement
-              (bindMod "SHIFT + Left" ''hl.dsp.layout("swapcol l")'')
-              (bindMod "SHIFT + Down" ''hl.dsp.window.move({ direction = "down" })'')
-              (bindMod "SHIFT + Up" ''hl.dsp.window.move({ direction = "up" })'')
-              (bindMod "SHIFT + Right" ''hl.dsp.layout("swapcol r")'')
               (bindMod "SHIFT + H" ''hl.dsp.layout("swapcol l")'')
               (bindMod "SHIFT + J" ''hl.dsp.window.move({ direction = "down" })'')
               (bindMod "SHIFT + K" ''hl.dsp.window.move({ direction = "up" })'')
@@ -146,20 +137,12 @@
               (bindMod "End" ''hl.dsp.layout("fit toend")'')
 
               # Monitor Focus
-              (bindMod "CTRL + Left" ''hl.dsp.focus({ monitor = "l" })'')
-              (bindMod "CTRL + Down" ''hl.dsp.focus({ monitor = "d" })'')
-              (bindMod "CTRL + Up" ''hl.dsp.focus({ monitor = "u" })'')
-              (bindMod "CTRL + Right" ''hl.dsp.focus({ monitor = "r" })'')
               (bindMod "CTRL + H" ''hl.dsp.focus({ monitor = "l" })'')
               (bindMod "CTRL + J" ''hl.dsp.focus({ monitor = "d" })'')
               (bindMod "CTRL + K" ''hl.dsp.focus({ monitor = "u" })'')
               (bindMod "CTRL + L" ''hl.dsp.focus({ monitor = "r" })'')
 
               # Move Window to Monitor
-              (bindMod "SHIFT + CTRL + Left" ''hl.dsp.window.move({ monitor = "l", follow = true })'')
-              (bindMod "SHIFT + CTRL + Down" ''hl.dsp.window.move({ monitor = "d", follow = true })'')
-              (bindMod "SHIFT + CTRL + Up" ''hl.dsp.window.move({ monitor = "u", follow = true })'')
-              (bindMod "SHIFT + CTRL + Right" ''hl.dsp.window.move({ monitor = "r", follow = true })'')
               (bindMod "SHIFT + CTRL + H" ''hl.dsp.window.move({ monitor = "l", follow = true })'')
               (bindMod "SHIFT + CTRL + J" ''hl.dsp.window.move({ monitor = "d", follow = true })'')
               (bindMod "SHIFT + CTRL + K" ''hl.dsp.window.move({ monitor = "u", follow = true })'')
