@@ -2,6 +2,7 @@ _: {
   den.aspects.app = {
     chromium = {
       homeManager = {
+        home.sessionVariables.BROWSER = "chromium";
         programs.chromium = {
           enable = true;
           extensions = [
@@ -21,6 +22,7 @@ _: {
 
     brave = {
       homeManager = {
+        home.sessionVariables.BROWSER = "brave";
         programs.brave = {
           enable = true;
           extensions = [

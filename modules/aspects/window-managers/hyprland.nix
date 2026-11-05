@@ -1,6 +1,12 @@
 { lib, ... }:
 {
   den.aspects.window-manager.hyprland = {
+    nixos = {
+      programs.hyprland = {
+        enable = true;
+      };
+    };
+
     homeManager =
       let
         lua = lib.generators.mkLuaInline;
@@ -57,10 +63,9 @@
             };
 
             bind = [
-              # Applications (from niri default-config.kdl)
-              (bindMod "T" ''hl.dsp.exec_cmd("alacritty")'')
-              (bindMod "D" ''hl.dsp.exec_cmd("fuzzel")'')
-              (bindMod "ALT + L" ''hl.dsp.exec_cmd("swaylock")'')
+              # Applications
+              (bindMod "Return" ''hl.dsp.exec_cmd("$TERMINAL")'')
+              (bindMod "SHIFT + Return" ''hl.dsp.exec_cmd("$BROWSER")'')
 
               # Audio & Media Controls
               (bindKeyFlags "XF86AudioRaiseVolume"
