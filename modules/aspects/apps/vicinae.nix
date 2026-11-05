@@ -8,23 +8,6 @@
   den.aspects.app.vicinae = {
     homeManager =
       { pkgs, ... }:
-      let
-        inherit (pkgs.stdenv.hostPlatform) system;
-        extPkgs = inputs.vicinae-extensions.packages.${system};
-        bluetooth =
-          extPkgs.bluetooth or (inputs.vicinae-extensions.inputs.vicinae.lib.${system}.mkVicinaeExtension {
-            pname = "vicinae-extension-bluetooth";
-            version = "0";
-            src = "${inputs.vicinae-extensions}/extensions/bluetooth";
-            npmFlags = [
-              "--legacy-peer-deps"
-              "--ignore-scripts"
-            ];
-            postPatch = ''
-              substituteInPlace tsconfig.json --replace "../../" "${inputs.vicinae-extensions}/"
-            '';
-          });
-      in
       {
         programs.vicinae = {
           enable = true;
@@ -34,10 +17,10 @@
               rounding = 0;
             };
           };
-          extensions = [
+          extensions = with inputs.vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system}; [
             bluetooth
-            extPkgs.wifi-commander
-            extPkgs.vscrot
+            wifi-commander
+            vscrot
           ];
         };
       };
