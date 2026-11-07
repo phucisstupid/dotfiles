@@ -4,6 +4,20 @@ set -eu
 # shortcut: assumes direct invocation or repo dir on PATH, resolve symlinks if linked elsewhere
 cd "$(dirname "$0")"
 
+do_facter() {
+  if [ "$(uname)" = "Darwin" ]; then
+    echo "facter is only supported on Linux."
+    exit 0
+  fi
+  report="modules/hosts/$(hostname -s)/facter.json"
+  if command -v nixos-facter >/dev/null 2>&1; then
+    sudo nixos-facter -o "$report"
+  else
+    sudo nix run nixpkgs#nixos-facter -- -o "$report"
+  fi
+  git add "$report"
+}
+
 do_switch() {
   nh="nh"
   if ! command -v nh >/dev/null 2>&1; then
@@ -12,6 +26,12 @@ do_switch() {
   if [ "$(uname)" = "Darwin" ]; then
     $nh darwin switch . -H "$(hostname -s)"
   else
+    report="modules/hosts/$(hostname -s)/facter.json"
+    if [ ! -f "$report" ]; then
+      do_facter
+    else
+      git add "$report"
+    fi
     $nh os switch . -H "$(hostname -s)"
   fi
 }
@@ -24,6 +44,7 @@ Commands:
   switch       Apply this flake to the current host
   update       Pull latest changes and switch
   write-flake  Regenerate flake.nix
+  facter       Generate facter.json for the current host (Linux only)
   install-nix  Install Nix with flakes enabled (macOS only)
 EOF
 }
@@ -38,6 +59,9 @@ update)
   ;;
 write-flake)
   nix run .#write-flake
+  ;;
+facter)
+  do_facter
   ;;
 install-nix)
   if [ "$(uname)" != "Darwin" ]; then
