@@ -2,6 +2,7 @@ _: {
   den.aspects.terminal = {
     wezterm = {
       homeManager = {
+        home.sessionVariables.TERMINAL = "wezterm";
         programs.wezterm = {
           enable = true;
           extraConfig = ''
@@ -17,6 +18,7 @@ _: {
 
     kitty = {
       homeManager = {
+        home.sessionVariables.TERMINAL = "kitty";
         programs.kitty = {
           enable = true;
           font = {
@@ -33,6 +35,7 @@ _: {
 
     ghostty = {
       homeManager = { pkgs, ... }: {
+        home.sessionVariables.TERMINAL = "ghostty";
         programs.ghostty = {
           enable = true;
           package = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
