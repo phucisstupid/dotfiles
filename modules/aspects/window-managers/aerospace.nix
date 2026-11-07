@@ -29,10 +29,6 @@
             default-root-container-layout = "tiles";
             default-root-container-orientation = "auto";
             automatically-unhide-macos-hidden-apps = true;
-            exec-on-workspace-change = [
-              "/bin/bash"
-              "-c"
-            ];
             on-focus-changed = [ "move-mouse window-lazy-center" ];
             on-focused-monitor-changed = [ "move-mouse monitor-lazy-center" ];
             gaps = {
