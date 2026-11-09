@@ -46,8 +46,8 @@
               halign = "center";
               valign = "center";
 
-              inner_color = "rgba($baseAlphacc)";
-              outer_color = "$text";
+              inner_color = "$surface0";
+              outer_color = "$accent";
               outline_thickness = 4;
 
               font_family = "Maple Mono NF";
@@ -57,6 +57,7 @@
               check_color = "$accent";
               fail_color = "$red";
               fail_text = "<i>$FAIL ($ATTEMPTS)</i>";
+              capslock_color = "$yellow";
 
               rounding = 0;
               shadow_passes = 0;
