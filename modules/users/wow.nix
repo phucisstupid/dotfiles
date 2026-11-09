@@ -7,6 +7,7 @@
       (style.font {
         name = "Maple Mono NF";
         size = 17;
+        package = pkgs: pkgs.maple-mono.NF;
       })
       window-manager.aerospace
       editor.lazyvim
