@@ -1,4 +1,5 @@
-{ den, ... }: {
+{ den, ... }:
+{
   den.aspects.wow = {
     includes = with den.aspects; [
       shell.fish
@@ -7,6 +8,7 @@
       window-manager.aerospace
       editor.lazyvim
       terminal.ghostty
+      terminal.default.ghostty
       multiplexer.tmux
       multiplexer.tmux.sesh
       app.spotify

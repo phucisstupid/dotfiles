@@ -1,6 +1,13 @@
 _: {
   den.aspects.terminal = {
+    default = {
+      wezterm.homeManager.home.sessionVariables.TERMINAL = "wezterm";
+      kitty.homeManager.home.sessionVariables.TERMINAL = "kitty";
+      ghostty.homeManager.home.sessionVariables.TERMINAL = "ghostty";
+    };
+
     wezterm = {
+      default.homeManager.home.sessionVariables.TERMINAL = "wezterm";
       homeManager = {
         programs.wezterm = {
           enable = true;
@@ -16,6 +23,7 @@ _: {
     };
 
     kitty = {
+      default.homeManager.home.sessionVariables.TERMINAL = "kitty";
       homeManager = {
         programs.kitty = {
           enable = true;
@@ -32,19 +40,22 @@ _: {
     };
 
     ghostty = {
-      homeManager = { pkgs, ... }: {
-        programs.ghostty = {
-          enable = true;
-          package = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
-          settings = {
-            font-family = "Maple Mono NF";
-            font-size = 17;
-            mouse-hide-while-typing = true;
-            macos-option-as-alt = true;
-            macos-titlebar-style = "hidden";
+      default.homeManager.home.sessionVariables.TERMINAL = "ghostty";
+      homeManager =
+        { pkgs, ... }:
+        {
+          programs.ghostty = {
+            enable = true;
+            package = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
+            settings = {
+              font-family = "Maple Mono NF";
+              font-size = 17;
+              mouse-hide-while-typing = true;
+              macos-option-as-alt = true;
+              macos-titlebar-style = "hidden";
+            };
           };
         };
-      };
     };
   };
 }

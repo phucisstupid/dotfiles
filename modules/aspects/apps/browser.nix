@@ -1,6 +1,12 @@
 _: {
   den.aspects.app = {
+    default = {
+      chromium.homeManager.home.sessionVariables.BROWSER = "chromium";
+      brave.homeManager.home.sessionVariables.BROWSER = "brave";
+    };
+
     chromium = {
+      default.homeManager.home.sessionVariables.BROWSER = "chromium";
       homeManager = {
         programs.chromium = {
           enable = true;
@@ -20,6 +26,7 @@ _: {
     };
 
     brave = {
+      default.homeManager.home.sessionVariables.BROWSER = "brave";
       homeManager = {
         programs.brave = {
           enable = true;
