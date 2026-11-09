@@ -1,6 +1,6 @@
 {
   den.aspects.keyboard = {
-    keyd = {
+    caps2esc = {
       nixos = {
         services.keyd = {
           enable = true;

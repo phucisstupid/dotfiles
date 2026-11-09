@@ -14,7 +14,7 @@ in
     aspects.${hostName} = {
       includes = [
         den.aspects.preset.nixos
-        den.aspects.keyboard.keyd
+        den.aspects.keyboard.caps2esc
       ];
     };
   };
