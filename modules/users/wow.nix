@@ -4,6 +4,10 @@
       shell.fish
       shell.prompt.starship
       style.theme.catppuccin
+      (style.font {
+        name = "Maple Mono NF";
+        size = 17;
+      })
       window-manager.aerospace
       editor.lazyvim
       terminal.ghostty
