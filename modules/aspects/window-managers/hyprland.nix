@@ -169,14 +169,16 @@
 
               # Audio & Media Controls
               (bindKeyFlags "XF86AudioRaiseVolume"
-                ''hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0")''
+                ''hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.0")''
                 {
+                  repeating = true;
                   locked = true;
                 }
               )
               (bindKeyFlags "XF86AudioLowerVolume"
-                ''hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-")''
+                ''hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")''
                 {
+                  repeating = true;
                   locked = true;
                 }
               )
@@ -200,25 +202,26 @@
               (bindKeyFlags "XF86AudioNext" ''hl.dsp.exec_cmd("playerctl next")'' {
                 locked = true;
               })
+              (bindModFlags "XF86AudioNext" ''hl.dsp.exec_cmd("playerctl next")'' {
+                long_press = true;
+              })
+              (bindMod "XF86AudioNext" ''hl.dsp.exec_cmd("playerctl position +5")'')
 
               # Brightness Controls
-              (bindKeyFlags "XF86MonBrightnessUp" ''hl.dsp.exec_cmd("brightnessctl --class=backlight set +10%")''
+              (bindKeyFlags "XF86MonBrightnessUp" ''hl.dsp.exec_cmd("brightnessctl --class=backlight set +5%")'' {
+                repeating = true;
+                locked = true;
+              })
+              (bindKeyFlags "XF86MonBrightnessDown" ''hl.dsp.exec_cmd("brightnessctl --class=backlight set 5%-")''
                 {
-                  locked = true;
-                }
-              )
-              (bindKeyFlags "XF86MonBrightnessDown"
-                ''hl.dsp.exec_cmd("brightnessctl --class=backlight set 10%-")''
-                {
+                  repeating = true;
                   locked = true;
                 }
               )
 
               # Close Tab / Quit Window
               (bindMod "W" ''universal_clipboard_shortcut("CTRL", "W", "CTRL SHIFT", "W")'')
-              (bindModFlags "Q" "hl.dsp.window.close()" {
-                repeat = false;
-              })
+              (bindMod "Q" "hl.dsp.window.close()")
 
               # Column & Window Focus
               (bindMod "H" ''hl.dsp.layout("focus l")'')
