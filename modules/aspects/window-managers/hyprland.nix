@@ -131,10 +131,29 @@
               '';
             };
 
-            window_rule = {
-              match.class = "(Alacritty|kitty|com.mitchellh.ghostty|foot|org\\.codeberg\\.dnkl\\.foot|wezterm)";
-              tag = "+terminal";
-            };
+            window_rule = [
+              {
+                match.class = "(Alacritty|kitty|com.mitchellh.ghostty|foot|org\\.codeberg\\.dnkl\\.foot|wezterm)";
+                tag = "+terminal";
+              }
+              {
+                name = "suppress-maximize-events";
+                match.class = ".*";
+                suppress_event = "maximize";
+              }
+              {
+                name = "fix-xwayland-drags";
+                match = {
+                  class = "^$";
+                  title = "^$";
+                  xwayland = true;
+                  float = true;
+                  fullscreen = false;
+                  pin = false;
+                };
+                no_focus = true;
+              }
+            ];
 
             config = {
               general = {
@@ -143,6 +162,22 @@
                 gaps_out = 0;
                 border_size = 1;
                 "col.active_border" = lua "colors.accent";
+                "col.inactive_border" = lua "colors.surface0";
+              };
+              decoration = {
+                rounding = 0;
+                shadow.enabled = false;
+              };
+              misc = {
+                disable_hyprland_logo = true;
+                disable_splash_rendering = true;
+                focus_on_activate = true;
+              };
+              input = {
+                touchpad = {
+                  natural_scroll = true;
+                  tap-to-click = true;
+                };
               };
               scrolling = {
                 column_width = 0.5;
@@ -159,12 +194,17 @@
               # Applications
               (bindMod "Return" ''hl.dsp.exec_cmd("$TERMINAL")'')
               (bindMod "SHIFT + Return" ''hl.dsp.exec_cmd("$BROWSER")'')
+              (bindMod "Space" ''hl.dsp.exec_cmd("vicinae toggle")'')
 
-              # Universal Clipboard Shortcuts (Omarchy)
+              # Universal Shortcuts (Omarchy)
               (bindMod "A" ''send_shortcut_once("CTRL", "A")'')
               (bindMod "C" ''universal_clipboard_shortcut("CTRL", "C", "CTRL SHIFT", "C")'')
               (bindMod "V" ''universal_clipboard_shortcut("CTRL", "V", "CTRL SHIFT", "V")'')
               (bindMod "X" ''send_shortcut_once("CTRL", "X")'')
+              (bindMod "Z" ''send_shortcut_once("CTRL", "Z")'')
+              (bindMod "SHIFT + Z" ''send_shortcut_once("CTRL SHIFT", "Z")'')
+              (bindMod "T" ''universal_clipboard_shortcut("CTRL", "T", "CTRL SHIFT", "T")'')
+              (bindMod "N" ''universal_clipboard_shortcut("CTRL", "N", "CTRL SHIFT", "N")'')
               (bindMod "CTRL + V" ''hl.dsp.exec_cmd("vicinae deeplink vicinae://launch/clipboard/history")'')
 
               # Audio & Media Controls
@@ -271,13 +311,18 @@
               (bindMod "SHIFT + F" ''hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" })'')
               (bindMod "CTRL + C" ''hl.dsp.layout("fit active")'')
               (bindMod "SHIFT + C" ''hl.dsp.layout("fit visible")'')
-              (bindMod "Minus" ''hl.dsp.layout("colresize -0.1")'')
-              (bindMod "Equal" ''hl.dsp.layout("colresize +0.1")'')
-              (bindMod "SHIFT + Minus" "hl.dsp.window.resize({ x = 0, y = -100, relative = true })")
-              (bindMod "SHIFT + Equal" "hl.dsp.window.resize({ x = 0, y = 100, relative = true })")
-
-              # Floating Mode
-              (bindMod "T" ''hl.dsp.window.float({ action = "toggle" })'')
+              (bindModFlags "Minus" ''hl.dsp.layout("colresize -0.1")'' {
+                repeating = true;
+              })
+              (bindModFlags "Equal" ''hl.dsp.layout("colresize +0.1")'' {
+                repeating = true;
+              })
+              (bindModFlags "SHIFT + Minus" "hl.dsp.window.resize({ x = 0, y = -100, relative = true })" {
+                repeating = true;
+              })
+              (bindModFlags "SHIFT + Equal" "hl.dsp.window.resize({ x = 0, y = 100, relative = true })" {
+                repeating = true;
+              })
 
               # Session & Power Controls
               (bindMod "SHIFT + E" "hl.dsp.exit()")
