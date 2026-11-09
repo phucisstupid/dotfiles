@@ -14,7 +14,7 @@ in
     aspects.${hostName} = {
       includes = [
         den.aspects.preset.nixos
-        den.aspects.keyd
+        den.aspects.keyboard.keyd
       ];
     };
   };
