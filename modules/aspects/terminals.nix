@@ -1,8 +1,9 @@
-_: {
+{ lib, ... }:
+{
   den.aspects.terminal = {
     wezterm = {
       homeManager = {
-        home.sessionVariables.TERMINAL = "wezterm";
+        home.sessionVariables.TERMINAL = lib.mkOverride 1003 "wezterm";
         programs.wezterm = {
           enable = true;
           extraConfig = ''
@@ -18,7 +19,7 @@ _: {
 
     kitty = {
       homeManager = {
-        home.sessionVariables.TERMINAL = "kitty";
+        home.sessionVariables.TERMINAL = lib.mkOverride 1002 "kitty";
         programs.kitty = {
           enable = true;
           font = {
@@ -34,20 +35,22 @@ _: {
     };
 
     ghostty = {
-      homeManager = { pkgs, ... }: {
-        home.sessionVariables.TERMINAL = "ghostty";
-        programs.ghostty = {
-          enable = true;
-          package = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
-          settings = {
-            font-family = "Maple Mono NF";
-            font-size = 17;
-            mouse-hide-while-typing = true;
-            macos-option-as-alt = true;
-            macos-titlebar-style = "hidden";
+      homeManager =
+        { pkgs, ... }:
+        {
+          home.sessionVariables.TERMINAL = lib.mkOverride 1001 "ghostty";
+          programs.ghostty = {
+            enable = true;
+            package = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
+            settings = {
+              font-family = "Maple Mono NF";
+              font-size = 17;
+              mouse-hide-while-typing = true;
+              macos-option-as-alt = true;
+              macos-titlebar-style = "hidden";
+            };
           };
         };
-      };
     };
   };
 }

@@ -1,8 +1,9 @@
-_: {
+{ lib, ... }:
+{
   den.aspects.app = {
     chromium = {
       homeManager = {
-        home.sessionVariables.BROWSER = "chromium";
+        home.sessionVariables.BROWSER = lib.mkOverride 1002 "chromium";
         programs.chromium = {
           enable = true;
           extensions = [
@@ -22,7 +23,7 @@ _: {
 
     brave = {
       homeManager = {
-        home.sessionVariables.BROWSER = "brave";
+        home.sessionVariables.BROWSER = lib.mkOverride 1001 "brave";
         programs.brave = {
           enable = true;
           extensions = [
