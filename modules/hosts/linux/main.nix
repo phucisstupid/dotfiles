@@ -14,6 +14,7 @@ in
     aspects.${hostName} = {
       includes = [
         den.aspects.preset.nixos
+        den.aspects.colemak-dh
       ];
     };
   };
