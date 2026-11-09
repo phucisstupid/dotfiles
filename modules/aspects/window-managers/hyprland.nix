@@ -87,6 +87,50 @@
               '';
             };
 
+            "04_niri_workspace_target" = {
+              name = "niri_workspace_target";
+              _var = lua ''
+                function(n)
+                  local ids = {}
+                  for _, ws in ipairs(hl.get_workspaces() or {}) do
+                    if ws.id and ws.id > 0 then
+                      local wins = hl.get_workspace_windows(ws)
+                      if wins and #wins > 0 then
+                        table.insert(ids, ws.id)
+                      end
+                    end
+                  end
+                  table.sort(ids)
+                  if n <= #ids then
+                    return ids[n]
+                  end
+                  return (ids[#ids] or 0) + 1
+                end
+              '';
+            };
+
+            "05_focus_niri_workspace" = {
+              name = "focus_niri_workspace";
+              _var = lua ''
+                function(n)
+                  return function()
+                    hl.dispatch(hl.dsp.focus({ workspace = niri_workspace_target(n) }))
+                  end
+                end
+              '';
+            };
+
+            "06_move_to_niri_workspace" = {
+              name = "move_to_niri_workspace";
+              _var = lua ''
+                function(n)
+                  return function()
+                    hl.dispatch(hl.dsp.window.move({ workspace = niri_workspace_target(n), follow = true }))
+                  end
+                end
+              '';
+            };
+
             window_rule = {
               match.class = "(Alacritty|kitty|com.mitchellh.ghostty|foot|org\\.codeberg\\.dnkl\\.foot|wezterm)";
               tag = "+terminal";
@@ -205,12 +249,8 @@
               (bindMod "SHIFT + CTRL + L" ''hl.dsp.window.move({ monitor = "r", follow = true })'')
 
               # Workspace Focus & Movement
-              (bindMod "Page_Down" ''hl.dsp.focus({ workspace = "e+1" })'')
-              (bindMod "Page_Up" ''hl.dsp.focus({ workspace = "e-1" })'')
               (bindMod "U" ''hl.dsp.focus({ workspace = "e+1" })'')
               (bindMod "I" ''hl.dsp.focus({ workspace = "e-1" })'')
-              (bindMod "SHIFT + Page_Down" ''hl.dsp.window.move({ workspace = "e+1", follow = true })'')
-              (bindMod "SHIFT + Page_Up" ''hl.dsp.window.move({ workspace = "e-1", follow = true })'')
               (bindMod "SHIFT + U" ''hl.dsp.window.move({ workspace = "e+1", follow = true })'')
               (bindMod "SHIFT + I" ''hl.dsp.window.move({ workspace = "e-1", follow = true })'')
               (bindMod "Tab" ''hl.dsp.focus({ workspace = "previous" })'')
@@ -242,8 +282,8 @@
               (bindMod "SHIFT + P" ''hl.dsp.dpms({ action = "off" })'')
             ]
             ++ builtins.concatMap (n: [
-              (bindMod (toString n) "hl.dsp.focus({ workspace = ${toString n} })")
-              (bindMod "SHIFT + ${toString n}" "hl.dsp.window.move({ workspace = ${toString n}, follow = true })")
+              (bindMod (toString n) "focus_niri_workspace(${toString n})")
+              (bindMod "SHIFT + ${toString n}" "move_to_niri_workspace(${toString n})")
             ]) (lib.range 1 9);
           };
         };
