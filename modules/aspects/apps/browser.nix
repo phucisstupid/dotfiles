@@ -33,7 +33,7 @@ _: {
             "hlepfoohegkhhmjieoechaddaejaokhf" # Refined GitHub
             "mnjggcdmjocbbbhaepdhchncahnbgone" # SponsorBlock
             "dbepggeogbaibhgnhhndojpepiihcmeb" # Vimium
-\          ];
+          ];
         };
       };
     };
