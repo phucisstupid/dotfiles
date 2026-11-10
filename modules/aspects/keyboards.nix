@@ -9,11 +9,9 @@ let
       console.useXkbConfig = true;
     };
 
-    homeManager = {
-      wayland.windowManager.hyprland.settings.input = {
-        kb_layout = "us";
-        kb_variant = variant;
-      };
+    provides.to-users.homeManager.wayland.windowManager.hyprland.settings.config.input = {
+      kb_layout = "us";
+      kb_variant = variant;
     };
   };
 in
