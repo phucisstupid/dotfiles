@@ -15,6 +15,7 @@ in
       includes = [
         den.aspects.preset.nixos
         den.aspects.keyboard.colemak-dh
+        den.aspects.keyboard.caps2esc
       ];
     };
   };

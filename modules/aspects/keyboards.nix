@@ -20,5 +20,13 @@ in
     qwerty = mkLayout "";
     dvorak = mkLayout "dvorak";
     colemak-dh = mkLayout "colemak_dh";
+
+    caps2esc.nixos.services.keyd = {
+      enable = true;
+      keyboards.default.settings = {
+        global.overload_tap_timeout = 250;
+        main.capslock = "overload(control, esc)";
+      };
+    };
   };
 }
