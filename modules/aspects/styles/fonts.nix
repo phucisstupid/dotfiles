@@ -10,7 +10,6 @@
       }:
       let
         hasSize = size != null;
-        fontWithSize = sep: "${name}${lib.optionalString hasSize "${sep}${toString size}"}";
         resolvePkg = pkgs: if builtins.isFunction package then package pkgs else package;
       in
       {
@@ -50,25 +49,6 @@
             };
 
             programs = {
-              alacritty.settings.font = lib.mkIf config.programs.alacritty.enable (
-                {
-                  normal.family = lib.mkDefault name;
-                }
-                // lib.optionalAttrs hasSize {
-                  size = lib.mkDefault size;
-                }
-              );
-
-              ashell.settings.appearance.font_name = lib.mkIf config.programs.ashell.enable (lib.mkDefault name);
-
-              foot.settings.main.font = lib.mkIf config.programs.foot.enable (
-                lib.mkDefault (fontWithSize ":size=")
-              );
-
-              fuzzel.settings.main.font = lib.mkIf config.programs.fuzzel.enable (
-                lib.mkDefault (fontWithSize ":size=")
-              );
-
               ghostty.settings = lib.mkIf config.programs.ghostty.enable (
                 {
                   font-family = lib.mkDefault name;
@@ -90,35 +70,13 @@
                 }
               );
 
-              rio.settings.fonts = lib.mkIf config.programs.rio.enable (
+              wezterm.settings = lib.mkIf config.programs.wezterm.enable (
                 {
-                  family = lib.mkDefault name;
+                  font = lib.mkDefault (lib.generators.mkLuaInline "wezterm.font(${lib.generators.toLua { } name})");
                 }
                 // lib.optionalAttrs hasSize {
-                  size = lib.mkDefault size;
+                  font_size = lib.mkDefault size;
                 }
-              );
-
-              rofi.font = lib.mkIf config.programs.rofi.enable (lib.mkDefault (fontWithSize " "));
-
-              tofi.settings = lib.mkIf config.programs.tofi.enable (
-                {
-                  font = lib.mkDefault name;
-                }
-                // lib.optionalAttrs hasSize {
-                  font-size = lib.mkDefault (toString size);
-                }
-              );
-
-              wezterm.extraConfig = lib.mkIf config.programs.wezterm.enable (
-                lib.mkBefore (
-                  ''
-                    config.font = wezterm.font '${name}'
-                  ''
-                  + lib.optionalString hasSize ''
-                    config.font_size = ${toString size}
-                  ''
-                )
               );
 
               zed-editor.userSettings = lib.mkIf config.programs.zed-editor.enable (
@@ -137,14 +95,6 @@
                   ui_font_size = lib.mkDefault size;
                 }
               );
-            };
-
-            services = {
-              dunst.settings.global.font = lib.mkIf config.services.dunst.enable (
-                lib.mkDefault (fontWithSize " ")
-              );
-
-              mako.settings.font = lib.mkIf config.services.mako.enable (lib.mkDefault (fontWithSize " "));
             };
           };
       };

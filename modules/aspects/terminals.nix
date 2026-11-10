@@ -4,11 +4,10 @@ _: {
       homeManager = {
         programs.wezterm = {
           enable = true;
-          extraConfig = ''
-            config.window_decorations = "RESIZE"
-            config.hide_tab_bar_if_only_one_tab = true
-            return config
-          '';
+          settings = {
+            window_decorations = "RESIZE";
+            hide_tab_bar_if_only_one_tab = true;
+          };
         };
       };
     };
