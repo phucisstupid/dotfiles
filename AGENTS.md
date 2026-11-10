@@ -6,7 +6,11 @@ This Nix flake manages an Apple Silicon Mac (`phucs-MacBook-Air`) and an x86_64 
 
 ## Configuration Philosophy
 
-Follow KISS and rely on defaults. Before adding or keeping an option such as `enable = true`, check the effective default on each affected host. Remove the setting if the default already gives the intended behavior everywhere it applies.
+Follow KISS. Omit or remove settings such as `enable = true` after verifying the default gives the intended behavior on every affected host.
+
+Follow DRY (Don't Repeat Yourself). When multiple hosts intentionally share a custom setting, define it once in a shared Den aspect and include that aspect where needed.
+
+Follow the Boy Scout Rule. Make small cleanups in modules you already touch while preserving their behavior. Put larger refactors in separate commits.
 
 ## Development Commands
 
