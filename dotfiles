@@ -33,6 +33,7 @@ switch)
   do_switch
   ;;
 update)
+  git checkout main
   git pull
   do_switch
   ;;
