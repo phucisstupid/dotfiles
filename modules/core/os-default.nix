@@ -20,7 +20,10 @@
     default = {
       nixos.system.stateVersion = "26.05";
       darwin.system.stateVersion = 7;
-      homeManager.home.stateVersion = "26.05";
+      homeManager = {
+        home.stateVersion = "26.05";
+        xdg.enable = true;
+      };
 
       os = {
         home-manager = {
