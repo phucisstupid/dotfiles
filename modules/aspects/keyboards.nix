@@ -25,7 +25,13 @@ in
       enable = true;
       keyboards.default.settings = {
         global.overload_tap_timeout = 250;
-        main.capslock = "overload(control, esc)";
+        main = {
+          capslock = "overload(control, esc)";
+          # keyd otherwise emits left-side keycodes for these modifiers.
+          rightcontrol = "rightcontrol";
+          rightshift = "rightshift";
+          rightmeta = "rightmeta";
+        };
       };
     };
   };
