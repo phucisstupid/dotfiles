@@ -36,14 +36,11 @@
             dark = "Catppuccin Mocha";
           };
 
-          ui_font_size = 17;
           buffer_font_size = 18.5;
 
           file_finder = {
             modal_max_width = "medium";
           };
-
-          buffer_font_family = "Maple Mono NF";
 
           vim_mode = true;
 
@@ -127,8 +124,6 @@
           };
 
           terminal = {
-            font_size = 17.0;
-            font_family = "Maple Mono NF";
             env = {
               EDITOR = "zed --wait";
             };
