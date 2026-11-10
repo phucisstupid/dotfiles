@@ -1,6 +1,13 @@
 _: {
   den.aspects.terminal = {
+    default = {
+      wezterm.homeManager.home.sessionVariables.TERMINAL = "wezterm";
+      kitty.homeManager.home.sessionVariables.TERMINAL = "kitty";
+      ghostty.homeManager.home.sessionVariables.TERMINAL = "ghostty";
+    };
+
     wezterm = {
+      default.homeManager.home.sessionVariables.TERMINAL = "wezterm";
       homeManager = {
         programs.wezterm = {
           enable = true;
@@ -13,6 +20,7 @@ _: {
     };
 
     kitty = {
+      default.homeManager.home.sessionVariables.TERMINAL = "kitty";
       homeManager = {
         programs.kitty = {
           enable = true;
@@ -25,6 +33,7 @@ _: {
     };
 
     ghostty = {
+      default.homeManager.home.sessionVariables.TERMINAL = "ghostty";
       homeManager = { pkgs, ... }: {
         programs.ghostty = {
           enable = true;
