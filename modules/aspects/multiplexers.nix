@@ -16,7 +16,6 @@ _: {
               weather
               battery
               vim-tmux-navigator
-              tmux-window-name
             ];
             extraConfig = ''
               set -ga terminal-overrides ",*:Tc"

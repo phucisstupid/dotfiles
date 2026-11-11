@@ -54,23 +54,25 @@ usage() {
 Usage: dotfiles <command> [options]
 
 Commands:
-  switch [--host HOST]  Apply this flake
-  update [--host HOST]  Pull latest changes and switch
-  write-flake           Regenerate flake.nix
-  facter [--host HOST]  Generate facter.json for the current host (Linux only)
-  install-nix           Install Nix with flakes enabled (macOS only)
+  switch           Apply this flake
+  update           Pull latest changes and switch
+  write-flake      Regenerate flake.nix
+  facter           Generate facter.json for the current host (Linux only)
+  install-nix      Install Nix with flakes enabled (macOS only)
 
-HOST defaults to the current short hostname.
+Options:
+  -h, --help       Show this help message
+  -H, --host HOST  Target host for switch, update, and facter (defaults to current short hostname)
 EOF
 }
 
 case "${1:-}" in
 switch | update | facter)
   host=""
-  if [ "$#" -eq 3 ] && [ "$2" = --host ]; then
+  if [ "$#" -eq 3 ] && { [ "$2" = -H ] || [ "$2" = --host ]; }; then
     case "$3" in
     "" | -*)
-      printf '%s\n' '--host requires a hostname.' >&2
+      printf '%s\n' "$2 requires a hostname." >&2
       exit 1
       ;;
     esac
