@@ -11,10 +11,8 @@
       })
       window-manager.aerospace
       editor.lazyvim
-      terminal.ghostty
       terminal.default.ghostty
       multiplexer.tmux
-      multiplexer.tmux.sesh
       app.spotify
       cli.git
       cli.gh

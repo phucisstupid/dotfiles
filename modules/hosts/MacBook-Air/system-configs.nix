@@ -1,6 +1,6 @@
 # Best macOS settings you’ll ever need
 {
-  den.aspects.phucs-MacBook-Air = {
+  den.aspects.MacBook-Air = {
     darwin = {
       nix.enable = false; # for Determinate Nix
 
