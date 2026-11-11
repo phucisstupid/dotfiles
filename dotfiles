@@ -1,40 +1,67 @@
 #!/bin/sh
 set -eu
 
-# shortcut: assumes direct invocation or repo dir on PATH, resolve symlinks if linked elsewhere
-cd "$(dirname "$0")"
+script_path=$(readlink -f -- "$0")
+cd "$(dirname "$script_path")"
 
 do_switch() {
+  host="${1:-$(hostname -s)}"
   nh="nh"
   if ! command -v nh >/dev/null 2>&1; then
     nh="nix run nixpkgs#nh --"
   fi
   if [ "$(uname)" = "Darwin" ]; then
-    $nh darwin switch . -H "$(hostname -s)"
+    $nh darwin switch . -H "$host"
   else
-    $nh os switch . -H "$(hostname -s)"
+    $nh os switch . -H "$host"
+  fi
+
+  bin_dir="${HOME:?}/.local/bin"
+  mkdir -p "$bin_dir"
+  # Pass the parent directory so ln treats an existing dotfiles directory as a collision.
+  if [ -L "$bin_dir/dotfiles" ]; then
+    if [ "$(readlink "$bin_dir/dotfiles")" != "$script_path" ]; then
+      ln -sfn -- "$script_path" "$bin_dir/"
+    fi
+  else
+    ln -s -- "$script_path" "$bin_dir/"
   fi
 }
 
 usage() {
   cat <<EOF
-Usage: dotfiles <command>
+Usage: dotfiles <command> [options]
 
 Commands:
-  switch       Apply this flake to the current host
-  update       Pull latest changes and switch
-  write-flake  Regenerate flake.nix
-  install-nix  Install Nix with flakes enabled (macOS only)
+  switch [--host HOST]  Apply this flake
+  update [--host HOST]  Pull latest changes and switch
+  write-flake           Regenerate flake.nix
+  install-nix           Install Nix with flakes enabled (macOS only)
+
+HOST defaults to the current short hostname.
 EOF
 }
 
 case "${1:-}" in
-switch)
-  do_switch
-  ;;
-update)
-  git pull
-  do_switch
+switch | update)
+  host=""
+  if [ "$#" -eq 3 ] && [ "$2" = --host ]; then
+    case "$3" in
+    "" | -*)
+      printf '%s\n' '--host requires a hostname.' >&2
+      exit 1
+      ;;
+    esac
+    host="$3"
+  elif [ "$#" -ne 1 ]; then
+    usage >&2
+    exit 1
+  fi
+  if [ "$1" = update ]; then
+    git checkout main
+    git pull
+  fi
+  do_switch "$host"
   ;;
 write-flake)
   nix run .#write-flake

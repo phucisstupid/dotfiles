@@ -1,10 +1,10 @@
 { den, ... }:
 let
-  hostName = "linux";
+  hostName = "MacBook-Air";
 in
 {
   den = {
-    hosts.x86_64-linux.${hostName}.users = {
+    hosts.aarch64-darwin.${hostName}.users = {
       wow = {
         fullName = "phucisstupid";
         email = "125681538+phucisstupid@users.noreply.github.com";
@@ -12,9 +12,11 @@ in
     };
 
     aspects.${hostName} = {
-      includes = [
-        den.aspects.preset.nixos
-      ];
+      wow = {
+        includes = [
+          den.batteries.primary-user
+        ];
+      };
     };
   };
 }
