@@ -3,7 +3,7 @@
   ...
 }:
 {
-  den.aspects.preset.nixos = {
+  den.aspects.lg-gram = {
     nixos = {
       # Bootloader defaults
       boot = {

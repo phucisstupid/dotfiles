@@ -1,22 +1,26 @@
 { den, ... }:
 let
-  hostName = "phucs-MacBook-Air";
+  hostName = "lg-gram";
 in
 {
   den = {
-    hosts.aarch64-darwin.${hostName}.users = {
-      wow = {
+    hosts.x86_64-linux.${hostName}.users = {
+      phuclee = {
         fullName = "phucisstupid";
         email = "125681538+phucisstupid@users.noreply.github.com";
       };
     };
 
     aspects.${hostName} = {
-      wow = {
+      phuclee = {
         includes = [
           den.batteries.primary-user
         ];
       };
+      includes = with den.aspects; [
+        keyboard.colemak-dh
+        # keyboard.caps2esc
+      ];
     };
   };
 }
