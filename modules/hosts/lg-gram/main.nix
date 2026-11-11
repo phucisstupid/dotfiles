@@ -19,7 +19,7 @@ in
       };
       includes = with den.aspects; [
         keyboard.colemak-dh
-        # keyboard.caps2esc
+        keyboard.caps2esc
       ];
     };
   };
