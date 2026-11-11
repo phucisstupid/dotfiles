@@ -2,7 +2,8 @@ _: {
   den.aspects.multiplexer = {
     tmux = {
       homeManager = { pkgs, ... }: {
-        programs.tmux = {
+        programs = {
+          tmux = {
           enable = true;
           sensibleOnTop = true;
           terminal = "tmux-256color";
@@ -21,20 +22,9 @@ _: {
             set -ga terminal-overrides ",*:Tc"
           '';
         };
-      };
-
-      sesh = {
-        homeManager = {
-          programs.sesh = {
-            enable = true;
-            settings.session = [
-              {
-                name = "Downloads 📥";
-                path = "~/Downloads";
-                startup_command = "ls";
-              }
-            ];
-          };
+        sesh = {
+          enable = true;
+        };
         };
       };
     };
