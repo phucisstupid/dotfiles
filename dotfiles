@@ -4,6 +4,9 @@ set -eu
 script_path=$(readlink -f -- "$0")
 cd "$(dirname "$script_path")"
 
+export NIX_CONFIG="extra-experimental-features = nix-command flakes${NIX_CONFIG:+
+$NIX_CONFIG}"
+
 do_facter() {
   host="${1:-$(hostname -s)}"
   if [ "$(uname)" = "Darwin" ]; then
@@ -14,7 +17,7 @@ do_facter() {
   if command -v nixos-facter >/dev/null 2>&1; then
     sudo nixos-facter -o "$report"
   else
-    sudo nix run nixpkgs#nixos-facter -- -o "$report"
+    sudo nix --extra-experimental-features "nix-command flakes" run nixpkgs#nixos-facter -- -o "$report"
   fi
   git add "$report"
 }
