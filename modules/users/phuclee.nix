@@ -2,7 +2,6 @@
   den.aspects.phuclee = {
     includes = with den.aspects; [
       shell.fish
-      shell.prompt.starship
       style.theme.catppuccin
       (style.font {
         name = "Maple Mono NF";
