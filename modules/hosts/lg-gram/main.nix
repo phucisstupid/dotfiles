@@ -18,6 +18,7 @@ in
         ];
       };
       includes = with den.aspects; [
+        (facter ./facter.json)
         keyboard.colemak-dh
         keyboard.caps2esc
       ];

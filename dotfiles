@@ -4,6 +4,21 @@ set -eu
 script_path=$(readlink -f -- "$0")
 cd "$(dirname "$script_path")"
 
+do_facter() {
+  host="${1:-$(hostname -s)}"
+  if [ "$(uname)" = "Darwin" ]; then
+    echo "facter is only supported on Linux."
+    exit 0
+  fi
+  report="modules/hosts/$host/facter.json"
+  if command -v nixos-facter >/dev/null 2>&1; then
+    sudo nixos-facter -o "$report"
+  else
+    sudo nix run nixpkgs#nixos-facter -- -o "$report"
+  fi
+  git add "$report"
+}
+
 do_switch() {
   host="${1:-$(hostname -s)}"
   nh="nh"
@@ -13,6 +28,12 @@ do_switch() {
   if [ "$(uname)" = "Darwin" ]; then
     $nh darwin switch . -H "$host"
   else
+    report="modules/hosts/$host/facter.json"
+    if [ ! -f "$report" ]; then
+      do_facter "$host"
+    else
+      git add "$report"
+    fi
     $nh os switch . -H "$host"
   fi
 
@@ -36,6 +57,7 @@ Commands:
   switch [--host HOST]  Apply this flake
   update [--host HOST]  Pull latest changes and switch
   write-flake           Regenerate flake.nix
+  facter [--host HOST]  Generate facter.json for the current host (Linux only)
   install-nix           Install Nix with flakes enabled (macOS only)
 
 HOST defaults to the current short hostname.
@@ -43,7 +65,7 @@ EOF
 }
 
 case "${1:-}" in
-switch | update)
+switch | update | facter)
   host=""
   if [ "$#" -eq 3 ] && [ "$2" = --host ]; then
     case "$3" in
@@ -57,11 +79,15 @@ switch | update)
     usage >&2
     exit 1
   fi
-  if [ "$1" = update ]; then
-    git checkout main
-    git pull
+  if [ "$1" = facter ]; then
+    do_facter "$host"
+  else
+    if [ "$1" = update ]; then
+      git checkout main
+      git pull
+    fi
+    do_switch "$host"
   fi
-  do_switch "$host"
   ;;
 write-flake)
   nix run .#write-flake
