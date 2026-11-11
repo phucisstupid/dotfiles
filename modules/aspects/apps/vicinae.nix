@@ -13,6 +13,7 @@
     homeManager =
       { pkgs, ... }:
       {
+        home.packages = lib.optional pkgs.stdenv.hostPlatform.isLinux pkgs.grimblast;
         programs.vicinae = {
           enable = true;
         }
