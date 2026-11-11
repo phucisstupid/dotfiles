@@ -49,6 +49,8 @@
             };
 
             programs = {
+              ashell.settings.appearance.font_name = lib.mkIf config.programs.ashell.enable (lib.mkDefault name);
+
               ghostty.settings = lib.mkIf config.programs.ghostty.enable (
                 {
                   font-family = lib.mkDefault name;
