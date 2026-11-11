@@ -1,6 +1,6 @@
 { den, ... }:
 let
-  hostName = "phucs-MacBook-Air";
+  hostName = "MacBook-Air";
 in
 {
   den = {

@@ -20,7 +20,10 @@
     default = {
       nixos.system.stateVersion = "26.05";
       darwin.system.stateVersion = 7;
-      homeManager.home.stateVersion = "26.05";
+      homeManager = {
+        home.stateVersion = "26.05";
+        xdg.enable = true;
+      };
 
       os = {
         home-manager = {
@@ -37,7 +40,10 @@
       ];
     };
 
-    # enable homeManager as default for all users
-    schema.user.classes = lib.mkDefault [ "homeManager" ];
+    schema = {
+      host.includes = [ den.batteries.user-aspects ];
+      # enable homeManager as default for all users
+      user.classes = lib.mkDefault [ "homeManager" ];
+    };
   };
 }

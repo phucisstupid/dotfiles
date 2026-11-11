@@ -5,16 +5,22 @@ in
 {
   den = {
     hosts.x86_64-linux.${hostName}.users = {
-      wow = {
+      phuclee = {
         fullName = "phucisstupid";
         email = "125681538+phucisstupid@users.noreply.github.com";
       };
     };
 
     aspects.${hostName} = {
-      includes = [
-        den.aspects.preset.nixos
-        (den.aspects.facter ./facter.json)
+      phuclee = {
+        includes = [
+          den.batteries.primary-user
+        ];
+      };
+      includes = with den.aspects; [
+        (facter ./facter.json)
+        keyboard.colemak-dh
+        keyboard.caps2esc
       ];
     };
   };

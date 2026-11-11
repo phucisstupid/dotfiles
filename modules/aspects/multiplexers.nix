@@ -2,38 +2,28 @@ _: {
   den.aspects.multiplexer = {
     tmux = {
       homeManager = { pkgs, ... }: {
-        programs.tmux = {
-          enable = true;
-          sensibleOnTop = true;
-          terminal = "tmux-256color";
-          keyMode = "vi";
-          customPaneNavigationAndResize = true;
-          baseIndex = 1;
-          plugins = with pkgs.tmuxPlugins; [
-            extrakto
-            cpu
-            weather
-            battery
-            vim-tmux-navigator
-            tmux-window-name
-          ];
-          extraConfig = ''
-            set -ga terminal-overrides ",*:Tc"
-          '';
-        };
-      };
-
-      sesh = {
-        homeManager = {
-          programs.sesh = {
+        programs = {
+          tmux = {
             enable = true;
-            settings.session = [
-              {
-                name = "Downloads 📥";
-                path = "~/Downloads";
-                startup_command = "ls";
-              }
+            sensibleOnTop = true;
+            terminal = "tmux-256color";
+            keyMode = "vi";
+            customPaneNavigationAndResize = true;
+            baseIndex = 1;
+            plugins = with pkgs.tmuxPlugins; [
+              extrakto
+              cpu
+              weather
+              battery
+              vim-tmux-navigator
+              tmux-window-name
             ];
+            extraConfig = ''
+              set -ga terminal-overrides ",*:Tc"
+            '';
+          };
+          sesh = {
+            enable = true;
           };
         };
       };

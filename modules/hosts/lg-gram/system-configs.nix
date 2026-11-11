@@ -3,7 +3,7 @@
   ...
 }:
 {
-  den.aspects.preset.nixos = {
+  den.aspects.lg-gram = {
     nixos = {
       # Bootloader defaults
       boot = {
@@ -32,6 +32,7 @@
         alsa.enable = true;
         alsa.support32Bit = true;
         pulse.enable = true;
+        wireplumber.enable = true;
       };
 
       # Security & Polkit
