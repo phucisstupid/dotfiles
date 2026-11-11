@@ -55,10 +55,6 @@ _: {
               shadow_passes = 0;
               fade_on_empty = false;
             };
-
-            auth = {
-              "fingerprint:enabled" = false;
-            };
           };
         };
 
