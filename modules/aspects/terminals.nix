@@ -1,13 +1,20 @@
-_: {
+{ den, ... }:
+let
+  mkDefault = name: {
+    includes = [ den.aspects.terminal.${name} ];
+    homeManager.home.sessionVariables.TERMINAL = name;
+  };
+in
+{
   den.aspects.terminal = {
     default = {
-      wezterm.homeManager.home.sessionVariables.TERMINAL = "wezterm";
-      kitty.homeManager.home.sessionVariables.TERMINAL = "kitty";
-      ghostty.homeManager.home.sessionVariables.TERMINAL = "ghostty";
+      wezterm = mkDefault "wezterm";
+      kitty = mkDefault "kitty";
+      ghostty = mkDefault "ghostty";
     };
 
     wezterm = {
-      default.homeManager.home.sessionVariables.TERMINAL = "wezterm";
+      default = mkDefault "wezterm";
       homeManager = {
         programs.wezterm = {
           enable = true;
@@ -20,7 +27,7 @@ _: {
     };
 
     kitty = {
-      default.homeManager.home.sessionVariables.TERMINAL = "kitty";
+      default = mkDefault "kitty";
       homeManager = {
         programs.kitty = {
           enable = true;
@@ -33,18 +40,20 @@ _: {
     };
 
     ghostty = {
-      default.homeManager.home.sessionVariables.TERMINAL = "ghostty";
-      homeManager = { pkgs, ... }: {
-        programs.ghostty = {
-          enable = true;
-          package = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
-          settings = {
-            mouse-hide-while-typing = true;
-            macos-option-as-alt = true;
-            macos-titlebar-style = "hidden";
+      default = mkDefault "ghostty";
+      homeManager =
+        { pkgs, ... }:
+        {
+          programs.ghostty = {
+            enable = true;
+            package = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
+            settings = {
+              mouse-hide-while-typing = true;
+              macos-option-as-alt = true;
+              macos-titlebar-style = "hidden";
+            };
           };
         };
-      };
     };
   };
 }
