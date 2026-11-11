@@ -12,5 +12,12 @@
         enable = true;
       };
     };
+
+    hyprpolkitagent = {
+      homeManager = {
+        services.hyprpolkitagent.enable = true;
+        catppuccin.hyprtoolkit.enable = true;
+      };
+    };
   };
 }
