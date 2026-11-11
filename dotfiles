@@ -1,8 +1,8 @@
 #!/bin/sh
 set -eu
 
-# shortcut: assumes direct invocation or repo dir on PATH, resolve symlinks if linked elsewhere
-cd "$(dirname "$0")"
+script_path=$(readlink -f -- "$0")
+cd "$(dirname "$script_path")"
 
 do_switch() {
   nh="nh"
@@ -13,6 +13,17 @@ do_switch() {
     $nh darwin switch . -H "$(hostname -s)"
   else
     $nh os switch . -H "$(hostname -s)"
+  fi
+
+  bin_dir="${HOME:?}/.local/bin"
+  mkdir -p "$bin_dir"
+  # Pass the parent directory so ln treats an existing dotfiles directory as a collision.
+  if [ -L "$bin_dir/dotfiles" ]; then
+    if [ "$(readlink "$bin_dir/dotfiles")" != "$script_path" ]; then
+      ln -sfn -- "$script_path" "$bin_dir/"
+    fi
+  else
+    ln -s -- "$script_path" "$bin_dir/"
   fi
 }
 

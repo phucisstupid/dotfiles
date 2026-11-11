@@ -3,7 +3,7 @@
     homeManager = { config, ... }: {
       home = {
         shell.enableShellIntegration = true;
-        sessionPath = [ "${config.home.homeDirectory}/dotfiles" ];
+        sessionPath = [ "${config.home.homeDirectory}/.local/bin" ];
         shellAliases = {
           "..." = "cd ../..";
           "...." = "cd ../../..";
