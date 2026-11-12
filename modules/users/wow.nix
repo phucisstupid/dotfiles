@@ -2,8 +2,8 @@
   den.aspects.wow = {
     includes = with den.aspects; [
       shell.fish
-      style.theme.catppuccin
-      (style.font {
+      appearance.theme.catppuccin
+      (appearance.font {
         name = "Maple Mono NF";
         size = 17;
         package = pkgs: pkgs.maple-mono.NF;
