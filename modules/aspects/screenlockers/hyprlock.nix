@@ -18,7 +18,8 @@ _: {
       {
         catppuccin.hyprlock.useDefaultConfig = false;
 
-        programs.ashell.settings.settings.lock_cmd = lib.mkIf config.programs.ashell.enable "${lib.getExe pkgs.playerctl} --all-players pause; loginctl lock-session";
+        programs.ashell.settings.settings.lock_cmd =
+          lib.mkIf config.programs.ashell.enable "${lib.getExe pkgs.playerctl} --all-players pause; loginctl lock-session";
 
         programs.hyprlock = {
           enable = true;
