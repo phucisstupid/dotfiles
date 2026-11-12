@@ -4,7 +4,7 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  den.aspects.style.theme.catppuccin = {
+  den.aspects.appearance.theme.catppuccin = {
     homeManager = {
       imports = [ inputs.catppuccin.homeModules.catppuccin ];
       catppuccin = {
