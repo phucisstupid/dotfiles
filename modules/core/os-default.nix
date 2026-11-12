@@ -18,7 +18,13 @@
 
   den = {
     default = {
-      nixos.system.stateVersion = "26.05";
+      nixos = {
+        system.stateVersion = "26.05";
+        nix.settings.experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
+      };
       darwin.system.stateVersion = 7;
       homeManager = {
         home.stateVersion = "26.05";
