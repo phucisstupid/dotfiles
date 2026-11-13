@@ -50,7 +50,7 @@ Apply the configuration for the current host.
 dotfiles switch
 ```
 
-Pull the latest changes and apply the configuration.
+Pull the latest changes on github and apply the configuration.
 
 ```sh
 dotfiles update
