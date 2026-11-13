@@ -1,10 +1,11 @@
 { lib, ... }: {
   den.aspects.window-manager.aerospace = {
     homeManager =
+      { pkgs, ... }:
       let
         mod = "alt";
       in
-      {
+      lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
         programs.aerospace = {
           enable = true;
           launchd.enable = true;
