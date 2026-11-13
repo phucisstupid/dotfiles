@@ -1,9 +1,21 @@
 { lib, ... }: {
   den.aspects.window-manager.aerospace = {
     homeManager =
-      { pkgs, ... }:
+      { config, pkgs, ... }:
       let
         mod = "alt";
+        terminal = config.home.sessionVariables.TERMINAL or "Terminal";
+        openDefaultBrowser = pkgs.writeShellScript "open-default-browser" ''
+          browser=$(/usr/bin/osascript -l JavaScript <<'APPKIT'
+          ObjC.import("AppKit");
+          const url = $.NSURL.URLWithString("https://example.com");
+          const app = $.NSWorkspace.sharedWorkspace.URLForApplicationToOpenURL(url);
+          if (app.isNil()) throw new Error("No default web browser found");
+          ObjC.unwrap(app.path);
+          APPKIT
+          ) || exit 1
+          exec /usr/bin/open -a "$browser"
+        '';
       in
       lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
         programs.aerospace = {
@@ -46,6 +58,8 @@
             };
             mode = {
               main.binding = {
+                "${mod}-enter" = "exec-and-forget /usr/bin/open -a ${lib.escapeShellArg terminal}";
+                "${mod}-shift-enter" = "exec-and-forget ${openDefaultBrowser}";
                 "${mod}-slash" = "layout tiles horizontal vertical";
                 "${mod}-f" = "fullscreen";
                 "${mod}-h" = "focus left";
