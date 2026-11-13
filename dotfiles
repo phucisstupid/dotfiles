@@ -13,7 +13,12 @@ do_facter() {
     echo "facter is only supported on Linux."
     exit 0
   fi
-  report="modules/hosts/$host/facter.json"
+  host_dir="modules/hosts/$host"
+  if [ "$host" != "${host##*/}" ] || [ "$host" = . ] || [ "$host" = .. ] || [ ! -d "$host_dir" ]; then
+    printf '%s\n' "Unknown host '$host'." >&2
+    return 1
+  fi
+  report="$host_dir/facter.json"
   if command -v nixos-facter >/dev/null 2>&1; then
     sudo nixos-facter -o "$report"
   else
@@ -41,12 +46,15 @@ do_switch() {
   fi
 
   bin_dir="${HOME:?}/.local/bin"
+  launcher="$bin_dir/dotfiles"
   mkdir -p "$bin_dir"
   # Pass the parent directory so ln treats an existing dotfiles directory as a collision.
-  if [ -L "$bin_dir/dotfiles" ]; then
-    if [ "$(readlink "$bin_dir/dotfiles")" != "$script_path" ]; then
+  if [ -L "$launcher" ]; then
+    if [ "$(readlink "$launcher")" != "$script_path" ]; then
       ln -sfn -- "$script_path" "$bin_dir/"
     fi
+  elif [ -e "$launcher" ]; then
+    printf '%s\n' "Skipping launcher symlink because $launcher already exists." >&2
   else
     ln -s -- "$script_path" "$bin_dir/"
   fi
@@ -72,8 +80,8 @@ EOF
 case "${1:-}" in
 switch | update | facter)
   host=""
-  if [ "$#" -eq 3 ] && { [ "$2" = -H ] || [ "$2" = --host ]; }; then
-    case "$3" in
+  if [ "$#" -ge 2 ] && [ "$#" -le 3 ] && { [ "$2" = -H ] || [ "$2" = --host ]; }; then
+    case "${3:-}" in
     "" | -*)
       printf '%s\n' "$2 requires a hostname." >&2
       exit 1
