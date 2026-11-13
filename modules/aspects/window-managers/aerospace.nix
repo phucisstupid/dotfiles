@@ -5,6 +5,11 @@
       let
         mod = "alt";
         terminal = config.home.sessionVariables.TERMINAL or "Terminal";
+        openTerminal =
+          if terminal == "ghostty" then
+            ''/usr/bin/open -a ghostty "$HOME"''
+          else
+            "/usr/bin/open -n -a ${lib.escapeShellArg terminal}";
         openDefaultBrowser = pkgs.writeShellScript "open-default-browser" ''
           browser=$(/usr/bin/osascript -l JavaScript <<'APPKIT'
           ObjC.import("AppKit");
@@ -18,6 +23,8 @@
         '';
       in
       lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
+        # Ghostty handles opening a directory in the running instance.
+        programs.ghostty.settings.macos-dock-drop-behavior = lib.mkIf (terminal == "ghostty") "new-window";
         programs.aerospace = {
           enable = true;
           launchd.enable = true;
@@ -58,7 +65,7 @@
             };
             mode = {
               main.binding = {
-                "${mod}-enter" = "exec-and-forget /usr/bin/open -a ${lib.escapeShellArg terminal}";
+                "${mod}-enter" = "exec-and-forget ${openTerminal}";
                 "${mod}-shift-enter" = "exec-and-forget ${openDefaultBrowser}";
                 "${mod}-slash" = "layout tiles horizontal vertical";
                 "${mod}-f" = "fullscreen";
