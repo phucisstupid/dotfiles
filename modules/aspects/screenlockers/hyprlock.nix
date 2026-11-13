@@ -15,7 +15,7 @@ _: {
       let
         brightnessctl = lib.getExe pkgs.brightnessctl;
       in
-      {
+      lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
         catppuccin.hyprlock.useDefaultConfig = false;
 
         programs.ashell.settings.settings.lock_cmd =
