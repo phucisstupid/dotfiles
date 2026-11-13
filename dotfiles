@@ -7,7 +7,7 @@ cd "$(dirname "$script_path")"
 export NIX_CONFIG="extra-experimental-features = nix-command flakes${NIX_CONFIG:+
 $NIX_CONFIG}"
 
-do_facter() {
+do_facter() (
   host="${1:-$(hostname -s)}"
   if [ "$(uname)" = "Darwin" ]; then
     echo "facter is only supported on Linux."
@@ -19,13 +19,21 @@ do_facter() {
     return 1
   fi
   report="$host_dir/facter.json"
-  if command -v nixos-facter >/dev/null 2>&1; then
-    sudo nixos-facter -o "$report"
-  else
-    sudo nix --extra-experimental-features "nix-command flakes" run nixpkgs#nixos-facter -- -o "$report"
+  if [ -d "$report" ]; then
+    printf '%s is a directory.\n' "$report" >&2
+    exit 1
   fi
+  temp_report=$(mktemp "$report.XXXXXX")
+  trap 'rm -f "$temp_report"' EXIT
+  # Keep the report caller-owned and replace it only after a successful scan.
+  if command -v nixos-facter >/dev/null 2>&1; then
+    sudo nixos-facter >"$temp_report"
+  else
+    sudo nix --extra-experimental-features "nix-command flakes" run nixpkgs#nixos-facter >"$temp_report"
+  fi
+  mv -f "$temp_report" "$report"
   git add "$report"
-}
+)
 
 do_switch() {
   host="${1:-$(hostname -s)}"
@@ -37,7 +45,7 @@ do_switch() {
     $nh darwin switch . -H "$host"
   else
     report="modules/hosts/$host/facter.json"
-    if [ ! -f "$report" ]; then
+    if [ ! -f "$report" ] || [ ! -r "$report" ]; then
       do_facter "$host"
     else
       git add "$report"

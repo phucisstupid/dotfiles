@@ -8,7 +8,8 @@ dotfiles="$test_dir/dotfiles"
 stub_dir="$test_dir/stubs"
 test_home="$test_dir/home"
 launcher="$test_home/.local/bin/dotfiles"
-mkdir -p "$stub_dir" "$test_dir/modules/hosts/selected-host"
+report="$test_dir/modules/hosts/selected-host/facter.json"
+mkdir -p "$stub_dir" "$(dirname "$report")"
 cp "$(dirname "$0")/../dotfiles" "$dotfiles"
 
 cat >"$stub_dir/stub" <<'EOF'
@@ -16,14 +17,23 @@ cat >"$stub_dir/stub" <<'EOF'
 case "${0##*/}" in
 uname) printf '%s\n' "${DOTFILES_TEST_PLATFORM:-Darwin}" ;;
 hostname) printf '%s\n' local-host ;;
-sudo | git | nh) printf '%s %s\n' "${0##*/}" "$*" ;;
+sudo)
+  [ "$*" = "${DOTFILES_TEST_FACTER_COMMAND:-nixos-facter}" ] || exit 1
+  default_report='{}'
+  printf '%s\n' "${DOTFILES_TEST_REPORT:-$default_report}"
+  exit "${DOTFILES_TEST_FACTER_STATUS:-0}"
+  ;;
+git | nh) printf '%s %s\n' "${0##*/}" "$*" ;;
 esac
 EOF
 chmod +x "$stub_dir/stub"
 for command in uname hostname sudo nixos-facter git nh; do
   ln -s stub "$stub_dir/$command"
 done
-export PATH="$stub_dir:$PATH"
+for command in cat dirname env grep ln mkdir mktemp mv readlink rm; do
+  ln -s "$(command -v "$command")" "$stub_dir/$command"
+done
+export PATH="$stub_dir"
 
 run_dotfiles() {
   env "HOME=$test_home" "$dotfiles" "$@"
@@ -34,12 +44,23 @@ run_dotfiles() {
 ln -sfn "$test_dir/stale-dotfiles" "$launcher"
 [ "$(DOTFILES_TEST_PLATFORM=Linux run_dotfiles update --host selected-host)" = 'git checkout main
 git pull
-sudo nixos-facter -o modules/hosts/selected-host/facter.json
 git add modules/hosts/selected-host/facter.json
 nh os switch . -H selected-host' ]
 [ "$(readlink "$launcher")" = "$dotfiles" ]
-[ "$(DOTFILES_TEST_PLATFORM=Linux run_dotfiles facter --host selected-host)" = 'sudo nixos-facter -o modules/hosts/selected-host/facter.json
-git add modules/hosts/selected-host/facter.json' ]
+[ "$(cat "$report")" = '{}' ]
+
+rm "$stub_dir/nixos-facter"
+export DOTFILES_TEST_FACTER_COMMAND='nix --extra-experimental-features nix-command flakes run nixpkgs#nixos-facter'
+[ "$(DOTFILES_TEST_PLATFORM=Linux DOTFILES_TEST_REPORT='{"new":true}' run_dotfiles facter --host selected-host)" = 'git add modules/hosts/selected-host/facter.json' ]
+[ "$(cat "$report")" = '{"new":true}' ]
+
+if output=$(DOTFILES_TEST_PLATFORM=Linux DOTFILES_TEST_REPORT='partial' DOTFILES_TEST_FACTER_STATUS=1 run_dotfiles facter --host selected-host) || [ -n "$output" ]; then
+  printf '%s\n' 'A failed scan must fail before staging the report.' >&2
+  exit 1
+fi
+[ "$(cat "$report")" = '{"new":true}' ]
+set -- "$report".*
+[ ! -e "$1" ]
 
 for flag in -H --host; do
   if output=$(run_dotfiles update "$flag" 2>&1) || [ "$output" != "$flag requires a hostname." ]; then
