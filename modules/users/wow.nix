@@ -12,6 +12,7 @@
       editor.lazyvim
       terminal.default.ghostty
       multiplexer.tmux
+      app.default.helium
       app.spotify
       cli.git
       cli.gh
