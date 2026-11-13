@@ -7,27 +7,39 @@ git clone https://github.com/phucisstupid/dotfiles.git
 cd dotfiles
 ```
 
-Install Nix with flakes enabled if not already installed (macOS):
+On macOS, install Nix if needed.
 
 ```sh
 ./dotfiles install-nix
 ```
 
-Create your user and host configurations first, and stage the new files with `git add`:
+After installing Nix, open a new terminal and return to the checkout.
 
-- **User**: Add your user config in `modules/users/` (see [`wow.nix`](modules/users/wow.nix) and [`phuclee.nix`](modules/users/phuclee.nix) for reference).
-- **Host**: Add your host config in `modules/hosts/<hostname>/` (see [`MacBook-Air`](modules/hosts/MacBook-Air) and [`lg-gram`](modules/hosts/lg-gram) for reference). Name the folder the same as your hostname, and include `(facter ./facter.json)` on Linux.
+On Linux, start from an existing NixOS installation.
 
-Generate `facter.json` for the new host (Linux only):
+Create your user and host configurations.
+
+- Put your user configuration in `modules/users/<username>.nix` and set the user aspect name to match your account. See [`wow.nix`](modules/users/wow.nix) and [`phuclee.nix`](modules/users/phuclee.nix) for examples.
+- Put your host configuration in `modules/hosts/<hostname>/`. Update the host and user names throughout the copied modules. Use [`MacBook-Air`](modules/hosts/MacBook-Air) as the macOS example or [`lg-gram`](modules/hosts/lg-gram) as the Linux example. Keep `(facter ./facter.json)` in the Linux host module.
+
+Stage the new modules so the Git-backed flake can see them. If your configuration uses different names, set `user` and `host` to match.
 
 ```sh
-./dotfiles facter -H <hostname>
+user=$(id -un)
+host=$(hostname -s)
+git add "modules/users/$user.nix" "modules/hosts/$host/"
 ```
 
-Apply the flake for the new host:
+On Linux, generate and stage the hardware report.
 
 ```sh
-./dotfiles switch -H <hostname>
+./dotfiles facter -H "$host"
+```
+
+Apply the flake for the new host.
+
+```sh
+./dotfiles switch -H "$host"
 ```
 
 ## Usage
