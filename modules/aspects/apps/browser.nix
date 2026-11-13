@@ -35,12 +35,12 @@ in
             enable = true;
             extensions = [
               "ddkjiahejlhfcafbddmgiahcphecmpfh" # uBlock Origin Lite
-            "nngceckbapebfimnlniiiahkandclblb" # Bitwarden Password Manager
-            "lnjaiaapbakfhlbjenjkhffcdpoompki" # Catppuccin Web File Icons
-            "hlepfoohegkhhmjieoechaddaejaokhf" # Refined GitHub
-            "mnjggcdmjocbbbhaepdhchncahnbgone" # SponsorBlock
-            "clngdbkpkpeebahjckkjfobafhncgmne" # Stylus
-            "dbepggeogbaibhgnhhndojpepiihcmeb" # Vimium
+              "nngceckbapebfimnlniiiahkandclblb" # Bitwarden Password Manager
+              "lnjaiaapbakfhlbjenjkhffcdpoompki" # Catppuccin Web File Icons
+              "hlepfoohegkhhmjieoechaddaejaokhf" # Refined GitHub
+              "mnjggcdmjocbbbhaepdhchncahnbgone" # SponsorBlock
+              "clngdbkpkpeebahjckkjfobafhncgmne" # Stylus
+              "dbepggeogbaibhgnhhndojpepiihcmeb" # Vimium
             ];
           };
         };
