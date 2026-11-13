@@ -381,11 +381,20 @@
 
     hyprpolkitagent = {
       homeManager =
-        { lib, pkgs, ... }:
-        lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
-          services.hyprpolkitagent.enable = true;
-          catppuccin.hyprtoolkit.enable = true;
-        };
+        {
+          lib,
+          options,
+          pkgs,
+          ...
+        }:
+        lib.mkIf pkgs.stdenv.hostPlatform.isLinux (
+          {
+            services.hyprpolkitagent.enable = true;
+          }
+          // lib.optionalAttrs (options ? catppuccin.hyprtoolkit.enable) {
+            catppuccin.hyprtoolkit.enable = true;
+          }
+        );
     };
   };
 }
