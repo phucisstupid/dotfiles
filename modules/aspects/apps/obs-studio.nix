@@ -1,9 +1,11 @@
 _: {
   den.aspects.app.obs-studio = {
-    homeManager = {
-      programs.obs-studio = {
-        enable = true;
+    homeManager =
+      { lib, pkgs, ... }:
+      lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
+        programs.obs-studio = {
+          enable = true;
+        };
       };
-    };
   };
 }

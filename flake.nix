@@ -28,6 +28,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    sketchybar-config = {
+      url = "github:phucisstupid/sketchybar-config";
+      flake = false;
+    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";

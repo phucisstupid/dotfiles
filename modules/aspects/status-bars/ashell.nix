@@ -1,10 +1,14 @@
-{ den, ... }: {
+{ den, lib, ... }: {
   den.aspects.status-bar.ashell = {
-    includes = [ den.aspects.app.vicinae ];
+    includes = [
+      ({ host, ... }: {
+        includes = lib.optional (lib.hasSuffix "-linux" host.system) den.aspects.app.vicinae;
+      })
+    ];
 
     homeManager =
-      { config, lib, ... }:
-      {
+      { config, pkgs, ... }:
+      lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
         programs.ashell = {
           enable = true;
           systemd.enable = true;
