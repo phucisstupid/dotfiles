@@ -44,15 +44,13 @@ Apply the flake for the new host.
 
 ## Usage
 
-After cloning or moving the repo, apply this flake from the repo folder using [nh](https://github.com/nix-community/nh):
+Apply the configuration for the current host.
 
 ```sh
-./dotfiles switch
+dotfiles switch
 ```
 
-A successful switch updates `~/.local/bin/dotfiles`. Open a new shell to use `dotfiles switch` from any directory.
-
-Pull latest changes, then run `dotfiles switch`:
+Pull the latest changes and apply the configuration.
 
 ```sh
 dotfiles update
