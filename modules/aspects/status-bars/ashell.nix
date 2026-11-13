@@ -1,7 +1,9 @@
-_: {
+{ den, ... }: {
   den.aspects.status-bar.ashell = {
+    includes = [ den.aspects.app.vicinae ];
+
     homeManager =
-      { lib, pkgs, ... }:
+      { config, lib, ... }:
       {
         programs.ashell = {
           enable = true;
@@ -31,7 +33,7 @@ _: {
               {
                 name = "appLauncher";
                 icon = "󰣇";
-                command = "vicinae toggle";
+                command = "${lib.getExe config.programs.vicinae.package} toggle";
                 on_right_click = "$TERMINAL";
               }
             ];
@@ -48,7 +50,6 @@ _: {
                 "%A %H:%M"
                 "%d %B W%V %Y"
               ];
-              weather_location = "Current";
             };
 
             system_info = {
@@ -56,7 +57,6 @@ _: {
             };
 
             settings = {
-              lock_cmd = "${lib.getExe pkgs.playerctl} --all-players pause; loginctl lock-session";
               indicators = [
                 "IdleInhibitor"
                 "Bluetooth"

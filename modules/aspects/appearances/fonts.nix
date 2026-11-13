@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  den.aspects.style.font = {
+  den.aspects.appearance.font = {
     __functor =
       _:
       {

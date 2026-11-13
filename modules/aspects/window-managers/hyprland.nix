@@ -1,7 +1,9 @@
-{ den, ... }:
+{ den, lib, ... }:
 {
   den.aspects.window-manager.hyprland = {
-    includes = [ den.aspects.app.vicinae ];
+    includes = [
+      ({ host }: if lib.hasSuffix "-linux" host.system then den.aspects.app.vicinae else { })
+    ];
 
     nixos.programs.hyprland = {
       enable = true;
@@ -50,7 +52,7 @@
           ];
         };
       in
-      {
+      lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
         wayland.windowManager.hyprland = {
           enable = true;
           settings = {
@@ -209,7 +211,6 @@
                 layout = "scrolling";
                 gaps_in = 0;
                 gaps_out = 0;
-                border_size = 1;
               }
               //
                 lib.optionalAttrs
@@ -218,29 +219,18 @@
                     "col.active_border" = lua "colors.accent";
                     "col.inactive_border" = lua "colors.surface0";
                   };
-              decoration = {
-                rounding = 0;
-                shadow.enabled = false;
-              };
+              decoration.shadow.enabled = false;
               misc = {
                 disable_hyprland_logo = true;
                 disable_splash_rendering = true;
                 focus_on_activate = true;
               };
-              input = {
-                touchpad = {
-                  natural_scroll = true;
-                  tap-to-click = true;
-                };
-              };
+              input.touchpad.natural_scroll = true;
               scrolling = {
-                column_width = 0.5;
                 focus_fit_method = 1;
-                follow_focus = 1;
                 explicit_column_widths = "0.33333, 0.5, 0.66667";
                 wrap_focus = false;
                 wrap_swapcol = false;
-                direction = "right";
               };
             };
 
@@ -390,10 +380,12 @@
       };
 
     hyprpolkitagent = {
-      homeManager = {
-        services.hyprpolkitagent.enable = true;
-        catppuccin.hyprtoolkit.enable = true;
-      };
+      homeManager =
+        { lib, pkgs, ... }:
+        lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
+          services.hyprpolkitagent.enable = true;
+          catppuccin.hyprtoolkit.enable = true;
+        };
     };
   };
 }
