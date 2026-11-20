@@ -8,68 +8,68 @@ export NIX_CONFIG="extra-experimental-features = nix-command flakes${NIX_CONFIG:
 $NIX_CONFIG}"
 
 do_facter() (
-  host="${1:-$(hostname -s)}"
-  if [ "$(uname)" = "Darwin" ]; then
-    echo "facter is only supported on Linux."
-    exit 0
-  fi
-  host_dir="modules/hosts/$host"
-  if [ "$host" != "${host##*/}" ] || [ "$host" = . ] || [ "$host" = .. ] || [ ! -d "$host_dir" ]; then
-    printf '%s\n' "Unknown host '$host'." >&2
-    return 1
-  fi
-  report="$host_dir/facter.json"
-  if [ -d "$report" ]; then
-    printf '%s is a directory.\n' "$report" >&2
-    exit 1
-  fi
-  temp_report=$(mktemp "$report.XXXXXX")
-  trap 'rm -f "$temp_report"' EXIT
-  # Keep the report caller-owned and replace it only after a successful scan.
-  if command -v nixos-facter >/dev/null 2>&1; then
-    sudo nixos-facter >"$temp_report"
-  else
-    sudo nix --extra-experimental-features "nix-command flakes" run nixpkgs#nixos-facter >"$temp_report"
-  fi
-  mv -f "$temp_report" "$report"
-  git add "$report"
+	host="${1:-$(hostname -s)}"
+	if [ "$(uname)" = "Darwin" ]; then
+		echo "facter is only supported on Linux."
+		exit 0
+	fi
+	host_dir="modules/hosts/$host"
+	if [ "$host" != "${host##*/}" ] || [ "$host" = . ] || [ "$host" = .. ] || [ ! -d "$host_dir" ]; then
+		printf '%s\n' "Unknown host '$host'." >&2
+		return 1
+	fi
+	report="$host_dir/facter.json"
+	if [ -d "$report" ]; then
+		printf '%s is a directory.\n' "$report" >&2
+		exit 1
+	fi
+	temp_report=$(mktemp "$report.XXXXXX")
+	trap 'rm -f "$temp_report"' EXIT
+	# Keep the report caller-owned and replace it only after a successful scan.
+	if command -v nixos-facter >/dev/null 2>&1; then
+		sudo nixos-facter >"$temp_report"
+	else
+		sudo nix --extra-experimental-features "nix-command flakes" run nixpkgs#nixos-facter >"$temp_report"
+	fi
+	mv -f "$temp_report" "$report"
+	git add "$report"
 )
 
 do_switch() {
-  host="${1:-$(hostname -s)}"
-  nh="nh"
-  if ! command -v nh >/dev/null 2>&1; then
-    nh="nix run nixpkgs#nh --"
-  fi
-  if [ "$(uname)" = "Darwin" ]; then
-    $nh darwin switch . -H "$host"
-  else
-    report="modules/hosts/$host/facter.json"
-    if [ ! -f "$report" ] || [ ! -r "$report" ]; then
-      do_facter "$host"
-    else
-      git add "$report"
-    fi
-    $nh os switch . -H "$host"
-  fi
+	host="${1:-$(hostname -s)}"
+	nh="nh"
+	if ! command -v nh >/dev/null 2>&1; then
+		nh="nix run nixpkgs#nh --"
+	fi
+	if [ "$(uname)" = "Darwin" ]; then
+		$nh darwin switch . -H "$host"
+	else
+		report="modules/hosts/$host/facter.json"
+		if [ ! -f "$report" ] || [ ! -r "$report" ]; then
+			do_facter "$host"
+		else
+			git add "$report"
+		fi
+		$nh os switch . -H "$host"
+	fi
 
-  bin_dir="${HOME:?}/.local/bin"
-  launcher="$bin_dir/dotfiles"
-  mkdir -p "$bin_dir"
-  # Pass the parent directory so ln treats an existing dotfiles directory as a collision.
-  if [ -L "$launcher" ]; then
-    if [ "$(readlink "$launcher")" != "$script_path" ]; then
-      ln -sfn -- "$script_path" "$bin_dir/"
-    fi
-  elif [ -e "$launcher" ]; then
-    printf '%s\n' "Skipping launcher symlink because $launcher already exists." >&2
-  else
-    ln -s -- "$script_path" "$bin_dir/"
-  fi
+	bin_dir="${HOME:?}/.local/bin"
+	launcher="$bin_dir/dotfiles"
+	mkdir -p "$bin_dir"
+	# Pass the parent directory so ln treats an existing dotfiles directory as a collision.
+	if [ -L "$launcher" ]; then
+		if [ "$(readlink "$launcher")" != "$script_path" ]; then
+			ln -sfn -- "$script_path" "$bin_dir/"
+		fi
+	elif [ -e "$launcher" ]; then
+		printf '%s\n' "Skipping launcher symlink because $launcher already exists." >&2
+	else
+		ln -s -- "$script_path" "$bin_dir/"
+	fi
 }
 
 usage() {
-  cat <<EOF
+	cat <<EOF
 Usage: dotfiles <command> [options]
 
 Commands:
@@ -87,49 +87,49 @@ EOF
 
 case "${1:-}" in
 switch | update | facter)
-  host=""
-  if [ "$#" -ge 2 ] && [ "$#" -le 3 ] && { [ "$2" = -H ] || [ "$2" = --host ]; }; then
-    case "${3:-}" in
-    "" | -*)
-      printf '%s\n' "$2 requires a hostname." >&2
-      exit 1
-      ;;
-    esac
-    host="$3"
-  elif [ "$#" -ne 1 ]; then
-    usage >&2
-    exit 1
-  fi
-  if [ "$1" = facter ]; then
-    do_facter "$host"
-  else
-    if [ "$1" = update ]; then
-      git checkout main
-      git pull
-    fi
-    do_switch "$host"
-  fi
-  ;;
+	host=""
+	if [ "$#" -ge 2 ] && [ "$#" -le 3 ] && { [ "$2" = -H ] || [ "$2" = --host ]; }; then
+		case "${3:-}" in
+		"" | -*)
+			printf '%s\n' "$2 requires a hostname." >&2
+			exit 1
+			;;
+		esac
+		host="$3"
+	elif [ "$#" -ne 1 ]; then
+		usage >&2
+		exit 1
+	fi
+	if [ "$1" = facter ]; then
+		do_facter "$host"
+	else
+		if [ "$1" = update ]; then
+			git checkout main
+			git pull
+		fi
+		do_switch "$host"
+	fi
+	;;
 write-flake)
-  nix run .#write-flake
-  ;;
+	nix run .#write-flake
+	;;
 install-nix)
-  if [ "$(uname)" != "Darwin" ]; then
-    echo "install-nix is only supported on macOS."
-    exit 0
-  fi
-  if command -v nix >/dev/null 2>&1; then
-    echo "Nix is already installed."
-  else
-    echo "Installing Nix..."
-    curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --enable-flakes
-  fi
-  ;;
+	if [ "$(uname)" != "Darwin" ]; then
+		echo "install-nix is only supported on macOS."
+		exit 0
+	fi
+	if command -v nix >/dev/null 2>&1; then
+		echo "Nix is already installed."
+	else
+		echo "Installing Nix..."
+		curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --enable-flakes
+	fi
+	;;
 help | -h | --help)
-  usage
-  ;;
+	usage
+	;;
 *)
-  usage >&2
-  exit 1
-  ;;
+	usage >&2
+	exit 1
+	;;
 esac

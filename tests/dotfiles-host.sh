@@ -28,15 +28,15 @@ esac
 EOF
 chmod +x "$stub_dir/stub"
 for command in uname hostname sudo nixos-facter git nh; do
-  ln -s stub "$stub_dir/$command"
+	ln -s stub "$stub_dir/$command"
 done
 for command in cat dirname env grep ln mkdir mktemp mv readlink rm; do
-  ln -s "$(command -v "$command")" "$stub_dir/$command"
+	ln -s "$(command -v "$command")" "$stub_dir/$command"
 done
 export PATH="$stub_dir"
 
 run_dotfiles() {
-  env "HOME=$test_home" "$dotfiles" "$@"
+	env "HOME=$test_home" "$dotfiles" "$@"
 }
 
 [ "$(DOTFILES_TEST_PLATFORM=Darwin run_dotfiles switch)" = 'nh darwin switch . -H local-host' ]
@@ -55,26 +55,26 @@ export DOTFILES_TEST_FACTER_COMMAND='nix --extra-experimental-features nix-comma
 [ "$(cat "$report")" = '{"new":true}' ]
 
 if output=$(DOTFILES_TEST_PLATFORM=Linux DOTFILES_TEST_REPORT='partial' DOTFILES_TEST_FACTER_STATUS=1 run_dotfiles facter --host selected-host) || [ -n "$output" ]; then
-  printf '%s\n' 'A failed scan must fail before staging the report.' >&2
-  exit 1
+	printf '%s\n' 'A failed scan must fail before staging the report.' >&2
+	exit 1
 fi
 [ "$(cat "$report")" = '{"new":true}' ]
 set -- "$report".*
 [ ! -e "$1" ]
 
 for flag in -H --host; do
-  if output=$(run_dotfiles update "$flag" 2>&1) || [ "$output" != "$flag requires a hostname." ]; then
-    printf '%s\n' 'update with a missing host must fail before running Git or nh.' >&2
-    exit 1
-  fi
+	if output=$(run_dotfiles update "$flag" 2>&1) || [ "$output" != "$flag requires a hostname." ]; then
+		printf '%s\n' 'update with a missing host must fail before running Git or nh.' >&2
+		exit 1
+	fi
 done
 
 for host in missing-host ../hosts/selected-host; do
-  if output=$(DOTFILES_TEST_PLATFORM=Linux run_dotfiles facter --host "$host" 2>&1) ||
-    [ "$output" != "Unknown host '$host'." ]; then
-    printf '%s\n' 'facter with an unknown host must fail before running sudo or Git.' >&2
-    exit 1
-  fi
+	if output=$(DOTFILES_TEST_PLATFORM=Linux run_dotfiles facter --host "$host" 2>&1) ||
+		[ "$output" != "Unknown host '$host'." ]; then
+		printf '%s\n' 'facter with an unknown host must fail before running sudo or Git.' >&2
+		exit 1
+	fi
 done
 
 rm "$launcher"
